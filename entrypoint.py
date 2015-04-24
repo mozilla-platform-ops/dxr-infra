@@ -99,16 +99,16 @@ class SetupRepo(object):
             print 'No match'
 
     def clone_or_update(self):
-        cc = subprocess.check_call
         if not os.path.exists(self.config['source_dest']):
             try:
                 os.stat(self.config['source_parent'])
             except:
                 os.makedirs(self.config['source_parent'], 0755)
-            cc([self.cmd, 'clone', self.fullurl],
-               cwd=self.config['source_parent'])
+            subprocess.check_call([self.cmd, 'clone', self.fullurl],
+                                  cwd=self.config['source_parent'])
         else:
-            cc([self.cmd] + self.update_cmd, cwd=self.config['source_dest'])
+            subprocess.check_call([self.cmd] + self.update_cmd,
+                                  cwd=self.config['source_dest'])
 
 
 if __name__ == "__main__":
@@ -121,3 +121,5 @@ if __name__ == "__main__":
             print "Error: {0} returned {1}".format(e.cmd, e.output)
         except:
             print "Something went wrong!"
+    sys.stdout.flush()
+    # os.execv('venv/bin/dxr', ['dxr', 'index', '--config dxr.config'])
