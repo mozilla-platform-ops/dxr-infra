@@ -52,7 +52,9 @@ class SetupRepo(object):
             self.config['source_dest'])
         self.config['object_dir'] = os.path.join('obj', self.path)
         self.template_env = Environment(
-            loader=FileSystemLoader(os.path.join(cfg_dir, 'templates')))
+            loader=FileSystemLoader(os.path.join(cfg_dir, 'templates')),
+            keep_trailing_newline=True,
+        )
         self.templates = {
             'dxr_config.j2': os.path.join(dxr_home, 'dxr.config'),
             'mozconfig.j2': os.path.join(self.config['source_dest'],
