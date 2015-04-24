@@ -122,4 +122,5 @@ if __name__ == "__main__":
         except:
             print "Something went wrong!"
     sys.stdout.flush()
-    # os.execv('venv/bin/dxr', ['dxr', 'index', '--config dxr.config'])
+    os.execv('venv/bin/dxr',
+             ['venv/bin/dxr', 'index', '-v', '--config dxr.config'])
