@@ -1,0 +1,8 @@
+default:
+  build_command: ""
+  mozconfig: ""
+"http://hg.mozilla.org/mozilla-central":
+  build_command: "cd $source_folder && ./mach build -j {workers}"
+  mozconfig: 
+    - "ac_add_options --enable-debug"
+    - "ac_add_options --enable-stdcxx-compat"
