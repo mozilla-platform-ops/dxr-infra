@@ -47,6 +47,7 @@ class SetupRepo(object):
         self.hg_or_git(url)
         self.load_config(config, self.fullurl)
         self.config['path'] = self.path
+        self.config['es_name'] = self.path.replace("/", "_")
         self.config['source_dest'] = os.path.join('src', self.path)
         self.config['source_parent'] = os.path.dirname(
             self.config['source_dest'])
