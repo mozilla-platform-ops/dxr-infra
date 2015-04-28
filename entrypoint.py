@@ -5,12 +5,14 @@
 
 import os
 import re
+import requests
 import subprocess
 import sys
 import urlparse
 import yaml
 
 from jinja2 import Environment, FileSystemLoader
+from lxml import etree
 
 dxr_home = os.environ['DXR_HOME']
 cfg_dir = dxr_home
@@ -112,16 +114,30 @@ class SetupRepo(object):
                                   cwd=self.config['source_dest'])
 
 
+def main(url):
+    repo = SetupRepo(url)
+    try:
+        repo.clone_or_update()
+        repo.create_config_files()
+    except subprocess.CalledProcessError as e:
+        print "Error: {0} returned {1}".format(e.cmd, e.output)
+    except:
+        print "Something went wrong with %s!", repo
+
 if __name__ == "__main__":
     for url in sys.argv[1:]:
-        repo = SetupRepo(url)
-        try:
-            repo.clone_or_update()
-            repo.create_config_files()
-        except subprocess.CalledProcessError as e:
-            print "Error: {0} returned {1}".format(e.cmd, e.output)
-        except:
-            print "Something went wrong!"
-    sys.stdout.flush()
-    os.execv('venv/bin/dxr',
-             ['venv/bin/dxr', 'index', '-v', '--config', 'dxr.config'])
+        # test for proto://host/* and scrape
+        url_re = re.compile('/\*$')
+        if url_re.search(url):
+            baseurl = url[:-1]
+            page = requests.get(baseurl)
+            tree = etree.HTML(page.content)
+            repos = tree.xpath("//td/a[@class='list']/b/text()")
+            repos = [baseurl + r for r in repos]
+            for r in repos:
+                main(r)
+        else:
+            main(url)
+        sys.stdout.flush()
+        os.execv('venv/bin/dxr',
+                 ['venv/bin/dxr', 'index', '-v', '--config', 'dxr.config'])
