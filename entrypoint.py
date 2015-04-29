@@ -86,8 +86,6 @@ class SetupRepo(object):
                     contents = self.render_template(t)
                     f.write(contents)
                     f.close()
-                # print contents
-                # print "---"
 
     def hg_or_git(self, url):
         git_re = re.compile(r'git(hub\.com|\.mozilla\.(org|com))')
