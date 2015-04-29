@@ -13,9 +13,8 @@ RUN yum install -y \
     npm \
     nodejs
 
-RUN pip install \
-    PyYAML \
-    Jinja2==2.7.3
+COPY requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
 
 ENV SHELL /bin/bash
 ENV DXR_BRANCH es

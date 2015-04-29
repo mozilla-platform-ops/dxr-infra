@@ -1,0 +1,4 @@
+Jinja2==2.7.3
+lxml
+PyYAML
+requests
