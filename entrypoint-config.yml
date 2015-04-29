@@ -1,6 +1,13 @@
 default:
   build_command: ""
   mozconfig: ""
+"example1":
+  build_command: ""
+  disable_plugins: "*"
+"example2":
+  build_command: "cd $source_folder && make"
+  mozconfig:
+    - "foo=bar"
 "http://hg.mozilla.org/mozilla-central":
   build_command: "cd $source_folder && ./mach build -j {workers}"
   mozconfig: 
