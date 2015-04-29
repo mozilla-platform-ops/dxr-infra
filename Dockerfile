@@ -3,15 +3,17 @@ MAINTAINER Kendall Libby <klibby@mozilla.com>
 
 COPY mrepo.repo /etc/yum.repos.d/mrepo.repo
 RUN yum install -y \
+    libxml2-devel \
+    libxslt-devel \
     mozilla-python27-virtualenv \
-    pyxdg \
+    nodejs \
+    npm \
+    pip \
     python-devel \
     python-jinja2 \
     python-pygments \
-    pip \
-    sqlite-devel \
-    npm \
-    nodejs
+    pyxdg \
+    sqlite-devel
 
 COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
