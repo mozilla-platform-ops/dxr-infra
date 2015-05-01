@@ -47,16 +47,19 @@ class SetupRepo(object):
         self.url = urlparse.urlsplit(self.fullurl)
         self.path = self.url.path.lstrip('/')
         self.hg_or_git(url)
-        self.load_config(config, self.fullurl)
-        self.config['path'] = self.path
-        self.config['es_name'] = self.path.replace("/", ":").lower()
+        self.cfg_name = '{0}{1}'.format(self.url.netloc, self.url.path)
+        self.load_config(config, self.cfg_name)
+        if 'es_name' not in self.config:
+            self.config['es_name'] = self.path.replace("/", ":").lower()
         self.config['source_dest'] = os.path.join('src', self.path)
         self.config['source_parent'] = os.path.dirname(
             self.config['source_dest'])
         self.config['object_dir'] = os.path.join('obj', self.path)
         self.template_env = Environment(
             loader=FileSystemLoader(os.path.join(cfg_dir, 'templates')),
-            keep_trailing_newline=True,
+            keep_trailing_newline=False,
+            lstrip_blocks=False,
+            trim_blocks=False,
         )
         self.templates = {
             'dxr_config.j2': os.path.join(dxr_home, 'dxr.config'),
@@ -130,6 +133,7 @@ if __name__ == "__main__":
             baseurl = url[:-1]
             page = requests.get(baseurl)
             tree = etree.HTML(page.content)
+            # only works for hg.m.o!
             repos = tree.xpath("//td/a[@class='list']/b/text()")
             repos = [baseurl + r for r in repos]
             for r in repos:

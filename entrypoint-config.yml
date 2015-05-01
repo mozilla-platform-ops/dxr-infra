@@ -1,15 +1,16 @@
 default:
   build_command: ""
   mozconfig: ""
-"example1":
-  build_command: ""
-  disable_plugins: "*"
-"example2":
-  build_command: "cd $source_folder && make"
-  mozconfig:
-    - "foo=bar"
-"http://hg.mozilla.org/mozilla-central":
+"hg.mozilla.org/mozilla-central":
   build_command: "cd $source_folder && ./mach build -j {workers}"
   mozconfig: 
     - "ac_add_options --enable-debug"
     - "ac_add_options --enable-stdcxx-compat"
+"hg.mozilla.org/comm-central":
+  build_command: "cd $source_folder && python client.py checkout && ./mach build -j {workers}"
+  mozconfig: 
+    - "ac_add_options --enable-debug"
+    - "ac_add_options --enable-application=suite"
+    - "ac_add_options --disable-optimize"
+    - "ac_add_options --disable-stdcxx-compat"
+    - "ac_add_options --disable-elf-hack"
