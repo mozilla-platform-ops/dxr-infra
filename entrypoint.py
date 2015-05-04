@@ -83,9 +83,10 @@ class SetupRepo(object):
         for t in self.templates:
             if t == 'mozconfig.j2' and not self.config['build_command']:
                 continue
+            elif t == 'mozconfig.j2' and os.path.exists(self.templates[t]):
+                continue
             else:
-                fname = self.templates[t]
-                with open(fname, 'a') as f:
+                with open(self.templates[t], 'a') as f:
                     contents = self.render_template(t)
                     f.write(contents)
                     f.close()
