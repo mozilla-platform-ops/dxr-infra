@@ -1,11 +1,11 @@
 [{{ es_name }}]
 source_folder = {{ source_dest }}
 object_folder = {{ object_dir }}
-{{- '\nbuild_command = %s' % build_command if build_command }}
-{{- '\ndisabled_plugins = %s' % disabled_plugins if disabled_plugins }}
-{{- '\nenabled_plugins = %s' % enabled_plugins if enabled_plugins }}
-{{- '\nignore_patterns = %s' % ignore_patterns if ignore_patterns }}
-{{- '\nsource_encoding = %s' % source_encoding if source_encoding }}
+{{ 'build_command = %s\n' % build_command if build_command -}}
+{{ 'disabled_plugins = %s\n' % disabled_plugins if disabled_plugins -}}
+{{ 'enabled_plugins = %s\n' % enabled_plugins if enabled_plugins -}}
+{{ 'ignore_patterns = %s\n' % ignore_patterns if ignore_patterns -}}
+{{ 'source_encoding = %s\n' % source_encoding if source_encoding -}}
 [[buglink]]
 url=http://bugzilla.mozilla.org/show_bug.cgi?id=%s
 name=bugzilla.mozilla.org
