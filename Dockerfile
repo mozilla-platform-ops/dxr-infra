@@ -30,13 +30,14 @@ RUN mkdir $DXR_HOME
 WORKDIR $DXR_HOME
 ADD clang-3.3.tar.bz2 $DXR_HOME/
 RUN git clone --recursive -b $DXR_BRANCH $DXR_REPO
-COPY dxr.config $DXR_HOME/dxr.config
-COPY entrypoint-config.yml $DXR_HOME/entrypoint-config.yml
-COPY entrypoint.py /entrypoint.py
-RUN mkdir templates src obj
-COPY templates/* $DXR_HOME/templates/
 
 RUN /bin/env CC=clang CXX=clang++ make -C dxr
 RUN /usr/local/bin/virtualenv --system-site-packages venv && venv/bin/pip install -r dxr/requirements.txt && cd dxr && ../venv/bin/python setup.py install
+
+RUN mkdir templates src obj
+COPY dxr.config $DXR_HOME/dxr.config
+COPY entrypoint.py /entrypoint.py
+COPY templates/* $DXR_HOME/templates/
+COPY entrypoint-config.yml $DXR_HOME/entrypoint-config.yml
 
 ENTRYPOINT ["/entrypoint.py"]
