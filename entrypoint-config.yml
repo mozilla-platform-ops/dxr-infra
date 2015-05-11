@@ -2,12 +2,13 @@ default:
   build_command: ""
   mozconfig: ""
 "hg.mozilla.org/mozilla-central":
-  build_command: "cd $source_folder && ./mach build -j {workers}"
+  build_command: "cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS='-s'"
   mozconfig: 
     - "ac_add_options --enable-debug"
     - "ac_add_options --enable-stdcxx-compat"
+    - "ac_add_options --disable-elf-hack"
 "hg.mozilla.org/comm-central":
-  build_command: "cd $source_folder && python client.py checkout && ./mach build -j {workers}"
+  build_command: "cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS='-s'"
   mozconfig: 
     - "ac_add_options --enable-debug"
     - "ac_add_options --enable-application=suite"
