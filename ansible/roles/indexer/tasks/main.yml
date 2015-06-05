@@ -1,0 +1,37 @@
+---
+- name: install packages
+  yum: pkg={{item}} state=installed
+  with_items:
+    - lxc
+    - lxc-libs
+    - docker-io
+    - python-setuptools
+
+- name: copy requirements.txt
+  copy: src=requirements.txt dest=/data/requirements.txt mode=0644 owner=root group=root
+
+# TODO: we should really use a local copy of peep
+# mozilla pip rpm is broken
+- name: install pip
+  easy_install: name=pip
+
+- name: install requirements
+  pip: requirements=/data/requirements.txt
+
+- name: configure docker storage options
+  copy: src=docker-storage dest=/etc/sysconfig/docker-storage mode=0644 owner=root group=root
+
+- name: ensure docker is running
+  service: name=docker state=started enabled=yes
+
+- name: ensure data directory exists
+  file: path=/data owner=root group=root state=directory mode=0775
+
+- name: ensure indexing container exists
+  docker:
+    image: klibby/dxr-es
+    state: present
+    pull: missing
+    volumes:
+      - /builds/src:/builds/dxr-build-env/src
+

@@ -1,0 +1,4 @@
+---
+- hosts: dxr-processor1.private.scl3.mozilla.com
+  roles:
+    - indexer
