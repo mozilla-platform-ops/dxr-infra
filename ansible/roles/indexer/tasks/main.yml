@@ -25,7 +25,7 @@
   service: name=docker state=started enabled=yes
 
 - name: ensure data directory exists
-  file: path=/data owner=root group=root state=directory mode=0775
+  file: path=/data/dxr_data owner=root group=root state=directory mode=0775
 
 - name: ensure indexing container exists
   docker:
