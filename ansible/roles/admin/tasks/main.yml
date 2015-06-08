@@ -19,6 +19,12 @@
     - /data/stage/builds
     - /data/dxr_data
 
+- name: create src symlinks
+  file: path=/data/dxr_data dest=/data/{{ item }}/src state=link
+  with_items:
+    - prod
+    - stage
+
 - name: create DXR configs
   copy: src=dxr-{{ item }}.config dest=/data/{{ item }}/dxr.config mode=0644 owner=root group=apache
   with_items:
