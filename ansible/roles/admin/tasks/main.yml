@@ -20,7 +20,7 @@
     - /data/dxr_data
 
 - name: create src symlinks
-  file: path=/data/dxr_data dest=/data/{{ item }}/src state=link
+  file: src=/data/dxr_data dest=/data/{{ item }}/src state=link
   with_items:
     - prod
     - stage
