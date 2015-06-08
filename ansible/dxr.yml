@@ -2,6 +2,7 @@
 - hosts: dxradm.private.scl3.mozilla.com
   roles:
     - admin
+    - jenkins-master
 
 - hosts: dxr-processor1.private.scl3.mozilla.com
   roles:
