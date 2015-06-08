@@ -1,0 +1,37 @@
+AddType image/svg+xml .svg
+
+WSGISocketPrefix run/wsgi
+
+# UserAgents we will normally want to ignore (internal & monitoring) (bug 1010323)
+BrowserMatch ^HTTP-Monitor/ dontlog
+BrowserMatch ^collectd/     dontlog
+
+# Don't log connections from localhost either
+SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
+SetEnvIf Remote_Addr "::1" dontlog
+
+<VirtualHost *:80>
+  ServerName {{ domain }}
+  CustomLog /var/log/httpd/{{ domain }}/access_log proxy env=!dontlog
+  ErrorLog /var/log/httpd/{{ domain }}/error_log
+
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/x-javascript
+
+  Alias /static/ {{ sitehome }}/dxr/dxr/static/
+
+  SetEnv DXR_CONFIG /data/dxr.config
+  # threads=1 because I'm not sure if trilite is threadsafe
+  WSGIDaemonProcess dxr python-path={{ sitehome }}/virtualenv/lib/python2.7/site-packages processes={{ wsgi_processes }} threads=1 maximum-requests=500 display-name=dxr-stage
+  WSGIProcessGroup dxr
+  WSGIScriptAlias / {{ sitehome }}/dxr/dxr/wsgi.py
+
+  <Directory {{ sitehome }}>
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>
+

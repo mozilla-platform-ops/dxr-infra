@@ -1,0 +1,22 @@
+---
+- name: install system packages
+  yum: pkg={{ item }} state=present
+  with_items:
+    - git
+    - mercurial
+    - python27
+    - python27-devel
+    - python27-setuptools
+    - python27-virtualenv
+    - python27-mod_wsgi
+    - nodejs
+    - npm
+
+- name: add data dir and NFS mount point(s)
+  file: path={{ item }} state=directory owner=root group=root mode=0755
+  with_items:
+    - /data/prod
+    - /data/stage
+    - /data/dxr_data
+
+# cron jobs to deploy

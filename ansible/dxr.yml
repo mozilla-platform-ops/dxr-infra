@@ -1,4 +1,23 @@
 ---
+- hosts: dxradm.private.scl3.mozilla.com
+  roles:
+    - admin
+
 - hosts: dxr-processor1.private.scl3.mozilla.com
   roles:
     - indexer
+
+- hosts: dxr1.stage.webapp.scl3.mozilla.com
+  vars:
+    domain: dxr.allizom.org
+    sitehome: /data/dxr-staging
+  roles:
+    - web
+
+- hosts: dxrweb-prod
+  vars:
+    domain: dxr.mozilla.org
+    sitehome: /data/dxr-prod
+  roles:
+    - web
+

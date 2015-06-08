@@ -1,2 +1,6 @@
+dxradm.private.scl3.mozilla.com ansible_sudo=true
 dxr-processor1.private.scl3.mozilla.com ansible_sudo=true 
+dxr1.stage.webapp.scl3.mozilla.com ansible_sudo=true
 
+[dxrweb-prod]
+dxr[1:2].webapp.scl3.mozilla.com ansible_sudo=true
