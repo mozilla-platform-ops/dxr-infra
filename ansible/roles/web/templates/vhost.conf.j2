@@ -21,15 +21,15 @@ SetEnvIf Remote_Addr "::1" dontlog
   AddOutputFilterByType DEFLATE application/json
   AddOutputFilterByType DEFLATE application/x-javascript
 
-  Alias /static/ {{ sitehome }}/dxr/dxr/static/
+  Alias /static/ {{ approot }}/dxr/static/
 
-  SetEnv DXR_CONFIG /data/dxr.config
+  SetEnv DXR_CONFIG {{ sitehome }}/dxr.config
   # threads=1 because I'm not sure if trilite is threadsafe
-  WSGIDaemonProcess dxr python-path={{ sitehome }}/virtualenv/lib/python2.7/site-packages processes={{ wsgi_processes }} threads=1 maximum-requests=500 display-name=dxr-stage
+  WSGIDaemonProcess dxr python-path={{ approot }}/venv/lib/python2.7/site-packages processes={{ wsgi_processes }} threads=1 maximum-requests=500 display-name=dxr-stage
   WSGIProcessGroup dxr
-  WSGIScriptAlias / {{ sitehome }}/dxr/dxr/wsgi.py
+  WSGIScriptAlias / {{ approot }}/dxr/wsgi.py
 
-  <Directory {{ sitehome }}>
+  <Directory {{ approot }}>
     Order allow,deny
     Allow from all
   </Directory>

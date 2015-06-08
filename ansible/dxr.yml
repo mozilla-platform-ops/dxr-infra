@@ -10,14 +10,16 @@
 - hosts: dxr1.stage.webapp.scl3.mozilla.com
   vars:
     domain: dxr.allizom.org
-    sitehome: /data/dxr-staging
+    sitehome: /data/stage
+    approot: /data/stage/dxr-staging
   roles:
     - web
 
 - hosts: dxrweb-prod
   vars:
     domain: dxr.mozilla.org
-    sitehome: /data/dxr-prod
+    sitehome: /data/prod
+    approot: /data/prod/dxr-prod
   roles:
     - web
 
