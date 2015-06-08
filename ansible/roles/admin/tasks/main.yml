@@ -12,11 +12,17 @@
     - nodejs
     - npm
 
-- name: add data dir and NFS mount point(s)
+- name: create data dirs and NFS mount point
   file: path={{ item }} state=directory owner=root group=root mode=0755
   with_items:
-    - /data/prod
-    - /data/stage
+    - /data/prod/builds
+    - /data/stage/builds
     - /data/dxr_data
+
+- name: create DXR configs
+  copy: src=dxr-{{ item }}.config dest=/data/{{ item }}/dxr.config mode=0644 owner=root group=apache
+  with_items:
+    - prod
+    - stage
 
 # cron jobs to deploy
