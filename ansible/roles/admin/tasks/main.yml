@@ -31,4 +31,8 @@
     - prod
     - stage
 
-# cron jobs to deploy
+# TODO enable once Ansible 2.0 is released
+# - name: cronvar: user=root name=MAILTO value="..."
+
+- name: create staging deploy cron job
+  cron: name="dxr staging deploy" minute="*/5" job="/data/stage/dxr-staging/venv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k staging"
