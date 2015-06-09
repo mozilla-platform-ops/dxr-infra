@@ -1,11 +1,16 @@
 ansible==1.9.0.1
 ecdsa==0.13
 httplib2==0.9.1
+jenkins-job-builder===1.2.0.73.g4c79912
 Jinja2==2.7.3
 MarkupSafe==0.23
+ordereddict==1.1
 paramiko==1.15.2
 pbr==0.10.0
 pycrypto==2.6.1
+python-jenkins==0.4.6
 PyYAML==3.11
 six==1.8.0
 stevedore==1.1.0
+virtualenv-clone==0.2.5
+virtualenvwrapper==4.3.1
