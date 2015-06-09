@@ -5,8 +5,11 @@
     - jenkins-master
 
 - hosts: dxr-processor1.private.scl3.mozilla.com
+  vars:
+    jenkins_master: dxradm.private.scl3.mozilla.com
   roles:
     - indexer
+    - jenkins-slave
 
 - hosts: dxr1.stage.webapp.scl3.mozilla.com
   vars:
