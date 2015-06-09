@@ -20,8 +20,13 @@
 - name: install requirements
   pip: requirements=/data/requirements.txt
 
+- name: configure docker options
+  lineinfile: dest=/etc/sysconfig/docker regexp="^other_args=" line='"other_args=--host=tcp://127.0.0.1:6666 --host=unix:///var/run/docker.sock"'
+  notify: restart docker
+
 - name: configure docker storage options
   copy: src=docker-storage dest=/etc/sysconfig/docker-storage mode=0644 owner=root group=root
+  notify: restart docker
 
 - name: ensure docker is running
   service: name=docker state=started enabled=yes
