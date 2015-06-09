@@ -21,7 +21,7 @@
   pip: requirements=/data/requirements.txt
 
 - name: configure docker options
-  lineinfile: dest=/etc/sysconfig/docker regexp="^other_args=" line='"other_args=--host=tcp://127.0.0.1:6666 --host=unix:///var/run/docker.sock"'
+  lineinfile: dest=/etc/sysconfig/docker regexp="^other_args=" line='"other_args=--host=tcp://0.0.0.0:6666 --host=unix:///var/run/docker.sock"'
   notify: restart docker
 
 - name: configure docker storage options
