@@ -15,7 +15,7 @@
   vars:
     domain: dxr.allizom.org
     sitehome: /data/stage
-    approot: /data/stage/dxr-staging
+    approot: /data/stage/dxr-stage
   roles:
     - web
 
