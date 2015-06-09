@@ -1,6 +1,6 @@
 ---
 - name: create jenkins user
-  user: name=jenkins
+  user: name=jenkins groups=docker append=yes
 
 - name: add authorized_keys for jenkins user
   authorized_key: user=jenkins
