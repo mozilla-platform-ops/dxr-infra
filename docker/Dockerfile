@@ -13,7 +13,8 @@ RUN yum install -y \
     python-jinja2 \
     python-pygments \
     pyxdg \
-    sqlite-devel
+    sqlite-devel \
+    vim
 
 COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
