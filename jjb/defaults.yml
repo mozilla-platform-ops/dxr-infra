@@ -1,0 +1,35 @@
+- defaults:
+    name: indexer
+    description: 'Do not edit this job through the web!'
+    docker_img: 'klibby/dxr-es'
+    docker_vol: '/data/dxr_data://builds/dxr-build-env/src'
+    workers: 6
+    my-quiet-period: 3600
+    is_disabled: false
+    concurrent: false
+    retry-count: 3
+    logrotate:
+       daysToKeep: 3
+       numToKeep: 20
+       artifactDaysToKeep: -1
+       artifactNumToKeep: -1
+
+- job-template:
+    name: '{name}_index'
+    project-type: freestyle
+    defaults: indexer
+    disabled: "{obj:is_disabled}"
+    quiet-period: "{my-quiet-period}"
+    triggers:
+      - timed: "{sched}"
+    builders:
+      - docker-run:
+          docker_img: "{docker_img}"
+          docker_vol: "{docker_vol}"
+          url: "{url}"
+
+- builder:
+    name: docker-run
+    builders:
+      - shell: "docker run --rm -v {docker_vol} {docker_img} {url}"
+
