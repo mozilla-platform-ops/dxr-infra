@@ -13,6 +13,7 @@
   shell: >
     curl -L https://updates.jenkins-ci.org/update-center.json | sed '1d;$d' > /var/lib/jenkins/updates/default.json
     creates=/var/lib/jenkins/updates/default.json
+
 - name: Permissions for default.json updates info.
   file:
     path: /var/lib/jenkins/updates/default.json

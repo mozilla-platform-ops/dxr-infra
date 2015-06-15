@@ -6,6 +6,7 @@ jenkins_connection_retries: 60
 jenkins_hostname: localhost
 jenkins_jar_location: /data/jenkins-cli.jar
 jenkins_plugins:
+  - docker-build-step
   - git
   - mercurial
-  - docker-build-step
+  - timestamper
