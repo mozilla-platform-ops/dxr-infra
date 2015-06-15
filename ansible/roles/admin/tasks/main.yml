@@ -26,7 +26,7 @@
     - stage
 
 - name: fix virtualenv link
-  file: src=/usr/bin/virtualenv dest=/usr/bin/virtualenv-2.7 state=link
+  file: src=/usr/bin/virtualenv-2.7 dest=/usr/bin/virtualenv state=link
 
 - name: create DXR configs
   copy: src=dxr-{{ item }}.config dest=/data/{{ item }}/dxr.config mode=0644 owner=root group=apache
