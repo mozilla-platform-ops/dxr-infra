@@ -38,8 +38,8 @@
 # - name: cronvar: user=root name=MAILTO value="..."
 
 #- name: create prod deploy cron job
-#stage  cron: name="dxr prod deploy" minute="*/5" job="/data/prod/dxr-prod/venv/bin/dxr deploy -c /data/prod/dxr.config -b /data/prod -h es -k prod 1>>/var/log/dxr-prod.log"
+#stage  cron: name="dxr prod deploy" minute="*/5" job="/data/prod/dxr-prod/virtualenv/bin/dxr deploy -c /data/prod/dxr.config -b /data/prod -h es -k prod 1>>/var/log/dxr-prod.log"
 
 - name: create staging deploy cron job
-  cron: name="dxr staging deploy" minute="*/5" job="/data/stage/dxr-stage/venv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k stage 1>>/var/log/dxr-stage.log"
+  cron: name="dxr staging deploy" minute="*/5" job="/data/stage/dxr-stage/virtualenv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k stage 1>>/var/log/dxr-stage.log"
 
