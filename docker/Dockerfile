@@ -14,29 +14,19 @@ RUN yum install -y \
     pyxdg \
     vi
 
-COPY requirements.txt /requirements.txt
-RUN pip2.7 install -r /requirements.txt
-
 ENV SHELL /bin/bash
-ENV DXR_BRANCH es
-ENV DXR_REPO https://github.com/mozilla/dxr.git
 ENV DXR_HOME /builds/dxr-build-env
 ENV LC_ALL C
 ENV LD_LIBRARY_PATH /tools/gcc-4.3.3/installed/lib64:$DXR_HOME/dxr/trilite
 ENV PATH /usr/lib64/ccache:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/tools/git/bin:$DXR_HOME/clang/bin
 
-RUN mkdir $DXR_HOME
+RUN mkdir -p $DXR_HOME/src $DXR_HOME/obj
 WORKDIR $DXR_HOME
 ADD clang-3.3.tar.bz2 $DXR_HOME/
-RUN git clone --recursive -b $DXR_BRANCH $DXR_REPO
+RUN git clone --recursive -b $DXR_BRANCH $DXR_REPO && cd dxr && git co $DXR_REV
+RUN /bin/env CC=clang CXX=clang++ make
 
-RUN /bin/env CC=clang CXX=clang++ make -C dxr
+WORKDIR $DXR_HOME
 RUN virtualenv-2.7 venv && venv/bin/pip install -r dxr/requirements.txt && cd dxr && ../venv/bin/python setup.py install
 
-RUN mkdir templates src obj
 COPY dxr.config $DXR_HOME/dxr.config
-COPY entrypoint.py /entrypoint.py
-COPY templates/* $DXR_HOME/templates/
-COPY entrypoint-config.yml $DXR_HOME/entrypoint-config.yml
-
-ENTRYPOINT ["/entrypoint.py"]
