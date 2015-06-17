@@ -1,15 +1,19 @@
 default:
   build_command: ""
   mozconfig: ""
+
 "hg.mozilla.org/mozilla-central":
-  build_command: "cd $source_folder && make -f client.mk build MOZ_OBJDIR=$build_folder MOZ_MAKE_FLAGS='-s -j{workers}'"
+  build_command: "cd $source_folder && make -f client.mk build MOZ_OBJDIR=$object_folder MOZ_MAKE_FLAGS='-s -j{workers}'"
   mozconfig: 
+    - "mk_add_options AUTOCLOBBER=1"
     - "ac_add_options --enable-debug"
     - "ac_add_options --enable-stdcxx-compat"
     - "ac_add_options --disable-elf-hack"
+
 "hg.mozilla.org/comm-central":
-  build_command: "cd $source_folder && python client.py checkout && make -f client.mk build MOZ_OBJDIR=$build_folder MOZ_MAKE_FLAGS='-s -j{workers}'"
+  build_command: "cd $source_folder && python client.py checkout && make -f client.mk build MOZ_OBJDIR=$object_folder MOZ_MAKE_FLAGS='-s -j{workers}'"
   mozconfig: 
+    - "mk_add_options AUTOCLOBBER=1"
     - "ac_add_options --enable-debug"
     - "ac_add_options --enable-application=suite"
     - "ac_add_options --disable-optimize"
