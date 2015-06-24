@@ -2,7 +2,7 @@
     name: indexer
     description: 'Do not edit this job through the web!'
     docker_img: 'klibby/dxr-es'
-    docker_vol: '/data/dxr_data://builds/dxr-build-env/src'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     workers: 6
     my-quiet-period: 3600
     is_disabled: false
