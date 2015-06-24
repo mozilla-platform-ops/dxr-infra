@@ -1,0 +1,46 @@
+---
+dxr_defaults:
+  www_root: '/'
+  workers: 6
+  default_tree: 'mozilla-central'
+  disabled_plugins: ''
+  enabled_plugins: '*'
+  es_hosts:
+    - http://node46.bunker.scl3.mozilla.com:9200/
+    - http://node47.bunker.scl3.mozilla.com:9200/
+    - http://node48.bunker.scl3.mozilla.com:9200/
+    - http://node49.bunker.scl3.mozilla.com:9200/
+  es_catalog_replicas: 4
+  es_catalog_index: 'dxr_catalog'
+  es_index: 'dxr_hot_{format}_{tree}_{unique}'
+  es_alias: 'dxr_{format}_{tree}'
+  es_indexing_timeout: 60
+  es_refresh_interval: 30
+
+job_defaults:
+  schedule: '@weekly'
+  disable: false
+  build_command: ''   # DXR's default is 'make ...'
+
+trees:
+  - name: 'mozilla-central'
+    url: "https://hg.mozilla.org/mozilla-central"
+    schedule: "H H/4 * * *"
+    build_command: "cd $source_folder && make -f client.mk build MOZ_OBJDIR=$object_folder MOZ_MAKE_FLAGS='-s -j{workers}'"
+    mozconfig: 
+      - "mk_add_options AUTOCLOBBER=1"
+      - "ac_add_options --enable-debug"
+      - "ac_add_options --enable-stdcxx-compat"
+      - "ac_add_options --disable-elf-hack"
+
+  - name: 'build-central'
+    url: "https://hg.mozilla.org/build/*"
+    source_folder: "src/build"
+    build_command: ''
+
+  - name: 'hgcustom:version-control-tools'
+    url: "https://hg.mozilla.org/hgcustom/verstion-control-tools"
+
+  - name: 'rust'
+    url: "https://github.com/rust-lang/rust"
+    docker_img: 'klibby/dxr-es-ubuntu'

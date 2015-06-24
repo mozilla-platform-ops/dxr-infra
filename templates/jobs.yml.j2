@@ -1,0 +1,19 @@
+{% for t in trees %}
+- project:
+    name: '{{ t.name }}'
+    url: '{{ t.url }}'
+    is_disabled: {{ t.disable }}
+    sched: '{{ t.schedule }}'
+    {% if t.quiet_period -%}
+    my_quiet_period: {{ t.quiet_period }}
+    {% endif -%}
+    {% if t.docker_img -%}
+    docker_img: '{{ t.docker_img }}'
+    {% endif -%}
+    {% if t.docker_vol -%}
+    docker_vol: '{{ t.docker_vol }}'
+    {% endif -%}
+    jobs:
+        - '{name}_index'
+
+{% endfor %}
