@@ -24,23 +24,24 @@ job_defaults:
 
 trees:
   - name: 'mozilla-central'
-    url: "https://hg.mozilla.org/mozilla-central"
-    schedule: "H H/4 * * *"
-    build_command: "cd $source_folder && make -f client.mk build MOZ_OBJDIR=$object_folder MOZ_MAKE_FLAGS='-s -j{workers}'"
+    url: 'https://hg.mozilla.org/mozilla-central'
+    schedule: 'H H/4 * * *'
+    build_command: 'cd $source_folder && make -f client.mk build MOZ_OBJDIR=$object_folder MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig: 
-      - "mk_add_options AUTOCLOBBER=1"
-      - "ac_add_options --enable-debug"
-      - "ac_add_options --enable-stdcxx-compat"
-      - "ac_add_options --disable-elf-hack"
+      - 'mk_add_options AUTOCLOBBER=1'
+      - 'ac_add_options --enable-debug'
+      - 'ac_add_options --enable-stdcxx-compat'
+      - 'ac_add_options --disable-elf-hack'
 
   - name: 'build-central'
-    url: "https://hg.mozilla.org/build/*"
-    source_folder: "src/build"
+    url: 'https://hg.mozilla.org/build/*'
+    source_folder: 'src/build'
     build_command: ''
 
   - name: 'hgcustom:version-control-tools'
-    url: "https://hg.mozilla.org/hgcustom/verstion-control-tools"
+    url: 'https://hg.mozilla.org/hgcustom/verstion-control-tools'
 
   - name: 'rust'
-    url: "https://github.com/rust-lang/rust"
+    url: 'https://github.com/rust-lang/rust'
     docker_img: 'klibby/dxr-es-ubuntu'
+    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-clang && make rustc-stage2 -j{workers}'
