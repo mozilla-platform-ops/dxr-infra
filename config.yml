@@ -1,5 +1,5 @@
 ---
-dxr_defaults:
+dxr:
   www_root: '/'
   workers: 4
   default_tree: 'mozilla-central'
