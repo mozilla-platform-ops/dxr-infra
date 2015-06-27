@@ -33,11 +33,25 @@ trees:
     url: 'https://hg.mozilla.org/mozilla-central'
     schedule: 'H H/4 * * *'
     quiet_period: '14400'
-    build_command: 'cd $source_folder && make -f client.mk build MOZ_OBJDIR=$object_folder MOZ_MAKE_FLAGS="-s -j{workers}"'
+    build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig: 
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --enable-stdcxx-compat'
+      - 'ac_add_options --disable-elf-hack'
+
+  - name: 'comm-central'
+    url: 'https://hg.mozilla.org/comm-central'
+    disable: True
+    schedule: 'H H/4 * * *'
+    quiet_period: '14400'
+    build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    mozconfig: 
+      - 'mk_add_options AUTOCLOBBER=1'
+      - 'ac_add_options --enable-debug'
+      - 'ac_add_options --enable-application=suite'
+      - 'ac_add_options --disable-optimize'
+      - 'ac_add_options --disable-stdcxx-compat'
       - 'ac_add_options --disable-elf-hack'
 
   - name: 'build-central'
