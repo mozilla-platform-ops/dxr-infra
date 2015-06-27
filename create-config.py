@@ -70,7 +70,7 @@ if __name__ == '__main__':
         if 'object_folder' not in t:
             t['object_folder'] = convert_url('obj', t['url'])
         # merge dicts, with tree dict taking precedence
-        trees.append(dict(cfg['job_defaults'], **t))
+        trees.append(dict(cfg['tree_defaults'], **t))
     # pprint(trees)
 
     for t in templates:
