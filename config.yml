@@ -34,7 +34,7 @@ trees:
     schedule: 'H H/4 * * *'
     quiet_period: '14400'
     build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
-    mozconfig: 
+    mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --enable-stdcxx-compat'
@@ -46,7 +46,7 @@ trees:
     schedule: 'H H/4 * * *'
     quiet_period: '14400'
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
-    mozconfig: 
+    mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --enable-application=suite'
