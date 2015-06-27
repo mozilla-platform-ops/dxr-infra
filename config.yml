@@ -20,7 +20,7 @@ dxr_defaults:
 tree_defaults:
   schedule: '@weekly'
   disable: false
-  my-quiet-period: '3600'
+  quiet_period: '3600'
   build_command: ''   # DXR's default is 'make ...'
   plugins:
     - plugin: 'buglink'
@@ -32,7 +32,7 @@ trees:
   - name: 'mozilla-central'
     url: 'https://hg.mozilla.org/mozilla-central'
     schedule: 'H H/4 * * *'
-    my-quiet-period: '14400'
+    quiet_period: '14400'
     build_command: 'cd $source_folder && make -f client.mk build MOZ_OBJDIR=$object_folder MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig: 
       - 'mk_add_options AUTOCLOBBER=1'
@@ -51,7 +51,7 @@ trees:
   - name: 'rust'
     url: 'https://github.com/rust-lang/rust'
     docker_img: 'klibby/dxr-es-ubuntu'
-    my-quiet-period: '14400'
+    quiet_period: '14400'
     build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-clang && make -j{workers}'
     plugins:
       - plugin: 'buglink'
