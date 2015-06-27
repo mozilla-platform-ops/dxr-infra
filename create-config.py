@@ -58,10 +58,10 @@ if __name__ == '__main__':
         f.close()
 
     # override defaults with ENV
-    dxr_defaults = cfg['dxr_defaults']
-    for i in dxr_defaults:
-        dxr_defaults[i] = envget(dxr_defaults, i)
-    # pprint(dxr_defaults)
+    dxr_config = cfg['dxr']
+    for i in dxr_config:
+        dxr_config[i] = envget(dxr_config, i)
+    # pprint(dxr_config)
 
     trees = []
     for t in cfg['trees']:
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
     for t in templates:
         print template_env.get_template(t).render(trees=trees,
-                                                  dxr=dxr_defaults)
+                                                  dxr=dxr_config)
 #        with open(templates[t], 'a') as f:
 #            contents = template_env.get_template(t).render(config)
 #            f.write(contents)
