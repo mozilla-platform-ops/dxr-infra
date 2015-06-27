@@ -17,8 +17,10 @@ es_refresh_interval = {{ dxr.es_refresh_interval }}
 source_folder = {{ t.source_folder }}
 object_folder = {{ t.object_folder }}
 build_command = {{ t.build_command }}
-[[buglink]]
-url=http://bugzilla.mozilla.org/show_bug.cgi?id=%s
-name=bugzilla.mozilla.org
-
+  {% for p in t.plugins -%}
+  [[{{ p.plugin }}]]
+  name = {{ p.name }}
+  url = {{ p.url }}
+  regex = {{ p.regex }}
+  {% endfor %}
 {% endfor %}

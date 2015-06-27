@@ -17,10 +17,15 @@ dxr_defaults:
   es_indexing_timeout: 60
   es_refresh_interval: 30
 
-job_defaults:
+tree_defaults:
   schedule: '@weekly'
   disable: false
   build_command: ''   # DXR's default is 'make ...'
+  plugins:
+    - plugin: 'buglink'
+      name: 'bugzilla'
+      url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=%s'
+      regex: '(?i)bug\s+#?([0-9]+)'
 
 trees:
   - name: 'mozilla-central'
@@ -44,4 +49,10 @@ trees:
   - name: 'rust'
     url: 'https://github.com/rust-lang/rust'
     docker_img: 'klibby/dxr-es-ubuntu'
-    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-clang && make rustc-stage2 -j{workers}'
+    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-clang && make -j{workers}'
+    plugins:
+      - plugin: 'buglink'
+        name: 'github'
+        url: 'https://github.com/mozilla/rust/issues/%s'
+        regex: '#([0-9]+)'
+
