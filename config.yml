@@ -1,7 +1,7 @@
 ---
 dxr_defaults:
   www_root: '/'
-  workers: 6
+  workers: 4
   default_tree: 'mozilla-central'
   disabled_plugins: ''
   enabled_plugins: '*'
