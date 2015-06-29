@@ -1,7 +1,8 @@
 ---
 - hosts: dxradm.private.scl3.mozilla.com
   vars:
-    jenkins_key: ../credentials/jenkins_rsa
+    # need to handle secrets, currently managed by hand. boo.
+    jenkins_key: /root/.ssh/jenkins_rsa
   roles:
     - admin
     - jenkins-master
