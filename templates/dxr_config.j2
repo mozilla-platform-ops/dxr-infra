@@ -12,7 +12,7 @@ es_alias = {{ dxr.es_alias }}
 es_indexing_timeout = {{ dxr.es_indexing_timeout }}
 es_refresh_interval = {{ dxr.es_refresh_interval }}
 
-{% for t in trees -%}
+{% for t in trees if not t.disable -%}
 [{{ t.name }}]
 source_folder = {{ t.source_folder }}
 object_folder = {{ t.object_folder }}

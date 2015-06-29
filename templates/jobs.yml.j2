@@ -1,4 +1,4 @@
-{% for t in trees %}
+{% for t in trees if not t.disable %}
 - project:
     name: '{{ t.name }}'
     url: '{{ t.url }}'
