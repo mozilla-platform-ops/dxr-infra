@@ -10,3 +10,4 @@ jenkins_plugins:
   - git
   - mercurial
   - timestamper
+  - heavy-job
