@@ -3,6 +3,7 @@
     name: '{{ t.name }}'
     url: '{{ t.url }}'
     is_disabled: {{ t.disable }}
+    job_weight: {{ t.job_weight }}
     sched: '{{ t.schedule }}'
     {% if t.quiet_period -%}
     my_quiet_period: {{ t.quiet_period }}

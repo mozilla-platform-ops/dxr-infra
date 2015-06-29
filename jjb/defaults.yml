@@ -20,7 +20,7 @@
     project-type: freestyle
     defaults: indexer
     disabled: "{obj:is_disabled}"
-    quiet-period: "{my-quiet-period}"
+    quiet-period: "{my_quiet_period}"
     triggers:
       - timed: "{sched}"
     properties:
