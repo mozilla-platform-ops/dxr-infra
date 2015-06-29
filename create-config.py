@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import urlparse
+import tempfile
 import yaml
 
 from jinja2 import Environment, FileSystemLoader
@@ -74,9 +75,12 @@ if __name__ == '__main__':
     # pprint(trees)
 
     for t in templates:
-        print template_env.get_template(t).render(trees=trees,
-                                                  dxr=dxr_config)
-#        with open(templates[t], 'a') as f:
-#            contents = template_env.get_template(t).render(config)
-#            f.write(contents)
-#            f.close()
+        # print template_env.get_template(t).render(trees=trees,
+        #                                           dxr=dxr_config)
+        with tempfile.NamedTemporaryFile('w',
+                                         dir=os.path.dirname(templates[t]),
+                                         delete=False) as tf:
+            tf.write(template_env.get_template(t).render(trees=trees,
+                                                         dxr=dxr_config))
+            tempname = tf.name
+        os.rename(tempname, templates[t])
