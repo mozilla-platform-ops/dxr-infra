@@ -2,6 +2,8 @@
     name: 'mozilla-central'
     url: 'https://hg.mozilla.org/mozilla-central'
     sched: 'H H/4 * * *'
+    my-quiet-period: 14400
+    job_weight: 4
     jobs:
         - '{name}_index'
 
@@ -9,6 +11,8 @@
     name: 'comm-central'
     url: 'https://hg.mozilla.org/comm-central'
     sched: 'H H/4 * * *'
+    my-quiet-period: 14400
+    job_weight: 4
     jobs:
         - '{name}_index'
 
@@ -16,6 +20,7 @@
     name: 'build'
     url: 'https://hg.mozilla.org/build/*'
     sched: 'H H/6 * * *'
+    job_weight: 2
     jobs:
         - '{name}_index'
 
