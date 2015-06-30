@@ -26,6 +26,8 @@
     properties:
       - heavy-job:
           weight: "{job_weight}"
+    wrappers:
+      - timestamps
     builders:
       - docker-run:
           docker_img: "{docker_img}"
