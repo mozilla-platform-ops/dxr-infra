@@ -26,6 +26,9 @@
     properties:
       - heavy-job:
           weight: "{job_weight}"
+    publishers:
+      - email:
+          recipients: fubar@mozilla.com
     wrappers:
       - timestamps
     builders:
