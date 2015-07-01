@@ -17,13 +17,16 @@ dxr:
   es_indexing_timeout: 60
   es_refresh_interval: 30
 
-tree_defaults:
-  schedule: '@weekly'
+defaults:
   disable: false
+  schedule: '@weekly'
   quiet_period: 3600
   job_weight: 1
   build_command: ''   # DXR's default is 'make ...'
-  plugins:
+  mail_rcpts: fubar@mozilla.com
+  docker_img: 'klibby/dxr-es'
+  docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+  dxr_plugins:
     - plugin: 'buglink'
       name: 'bugzilla'
       url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=%s'
@@ -58,8 +61,8 @@ trees:
       - 'ac_add_options --disable-elf-hack'
 
   - name: 'build-central'
+    disable: True
     url: 'https://hg.mozilla.org/build/*'
-    source_folder: 'src/build'
     job_weight: 2
     build_command: ''
 
@@ -67,7 +70,7 @@ trees:
     url: 'https://hg.mozilla.org/hgcustom/verstion-control-tools'
 
   - name: 'rust'
-    url: 'https://github.com/rust-lang/rust'
+    url: 'https://github.com/rust-lang/rust.git'
     docker_img: 'klibby/dxr-es-ubuntu'
     quiet_period: 14400
     job_weight: 4

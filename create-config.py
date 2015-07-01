@@ -17,12 +17,21 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 config_file = os.path.join(HERE, 'config.yml')
 
 
-def convert_url(prefix, url):
-    url_re = re.compile('/\*$')
-    if url_re.search(url):
+scm_hosts = {
+    'hg.mozilla.org': 'hg',
+    'git.mozilla.org': 'git',
+    'github.com': 'git',
+}
+
+
+def cleanup_url(url):
+    git_re = re.compile('\.git$')
+    wildcard_re = re.compile('/\*$')
+    if git_re.search(url):
+        url = url[:-4]
+    elif wildcard_re.search(url):
         url = url[:-1]
-    path = urlparse.urlsplit(url).path.lstrip('/')
-    return os.path.join(prefix, path)
+    return url
 
 
 def envget(dict, key):
@@ -66,12 +75,24 @@ if __name__ == '__main__':
 
     trees = []
     for t in cfg['trees']:
+        t['url'] = cleanup_url(t['url'])
+        u = urlparse.urlsplit(t['url'])
+        t['subpath'] = u.path.lstrip('/')
+
+        try:
+            t['scm'] = scm_hosts[u.netloc]
+        except KeyError:
+            print 'Unknown host/SCM type'
+            raise
+
+        # obj_folder deprecated? bug 842547
+        t['object_folder'] = os.path.join('obj', t['subpath'])
+
         if 'source_folder' not in t:
-            t['source_folder'] = convert_url('src', t['url'])
-        if 'object_folder' not in t:
-            t['object_folder'] = convert_url('obj', t['url'])
+            t['source_folder'] = os.path.join('src', t['subpath'])
+
         # merge dicts, with tree dict taking precedence
-        trees.append(dict(cfg['tree_defaults'], **t))
+        trees.append(dict(cfg['defaults'], **t))
     # pprint(trees)
 
     for t in templates:

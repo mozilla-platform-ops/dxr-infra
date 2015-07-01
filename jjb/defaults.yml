@@ -1,12 +1,9 @@
 - defaults:
     name: indexer
     description: 'Do not edit this job through the web!'
-    docker_img: 'klibby/dxr-es'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    workers: 6
-    my-quiet-period: 3600
+    repo_dir: '../../../dxr_data'
+    subpath: ''
     is_disabled: false
-    job_weight: 1
     concurrent: false
     retry-count: 3
     logrotate:
@@ -20,25 +17,32 @@
     project-type: freestyle
     defaults: indexer
     disabled: "{obj:is_disabled}"
-    quiet-period: "{my_quiet_period}"
+    quiet-period: "{quiet_period}"
     triggers:
-      - timed: "{sched}"
+      - pollscm: "{schedule}"
     properties:
       - heavy-job:
           weight: "{job_weight}"
     publishers:
       - email:
-          recipients: fubar@mozilla.com
+          recipients: "{mail_rcpts}"
     wrappers:
       - timestamps
+    scm:
+      - "{scm}":
+          url: '{url}'
+          subdir: "{repo_dir}/{subpath}"  # mercurial
+          basedir: "{repo_dir}/{subpath}" # git
     builders:
       - docker-run:
+          name: "{name}"
           docker_img: "{docker_img}"
           docker_vol: "{docker_vol}"
-          url: "{url}"
 
 - builder:
     name: docker-run
     builders:
-      - shell: "docker run --rm -v {docker_vol} {docker_img} {url}"
+      - shell: |
+          docker pull {docker_img}:latest
+          docker run --rm -v {docker_vol} {docker_img} venv/bin/dxr index -v {name}
 

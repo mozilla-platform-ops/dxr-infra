@@ -17,7 +17,7 @@ es_refresh_interval = {{ dxr.es_refresh_interval }}
 source_folder = {{ t.source_folder }}
 object_folder = {{ t.object_folder }}
 build_command = {{ t.build_command }}
-  {% for p in t.plugins -%}
+  {% for p in t.dxr_plugins -%}
   [[{{ p.plugin }}]]
   name = {{ p.name }}
   url = {{ p.url }}
