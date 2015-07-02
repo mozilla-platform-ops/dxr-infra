@@ -23,10 +23,9 @@ ENV PATH /usr/lib64/ccache:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/tools/
 RUN mkdir -p $DXR_HOME/src
 WORKDIR $DXR_HOME
 ADD clang-3.3.tar.bz2 $DXR_HOME/
-RUN git clone --recursive -b $DXR_BRANCH $DXR_REPO && cd dxr && git co $DXR_REV
-RUN /bin/env CC=clang CXX=clang++ make
+RUN git clone --recursive -b es https://github.com/mozilla/dxr
+RUN /bin/env CC=clang CXX=clang++ make -C dxr
 
-WORKDIR $DXR_HOME
 RUN virtualenv-2.7 venv && venv/bin/pip install -r dxr/requirements.txt && cd dxr && ../venv/bin/python setup.py install
 
-COPY ../dxr.config $DXR_HOME/dxr.config
+COPY dxr.config $DXR_HOME/dxr.config
