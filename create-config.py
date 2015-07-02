@@ -77,7 +77,8 @@ if __name__ == '__main__':
     for t in cfg['trees']:
         t['url'] = cleanup_url(t['url'])
         u = urlparse.urlsplit(t['url'])
-        t['subpath'] = u.path.lstrip('/')
+        if 'subpath' not in t:
+            t['subpath'] = u.path.lstrip('/')
 
         try:
             t['scm'] = scm_hosts[u.netloc]
