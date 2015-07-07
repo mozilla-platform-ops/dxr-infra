@@ -27,10 +27,12 @@ defaults:
   docker_img: 'klibby/dxr-es'
   docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
   dxr_plugins:
+    - plugin: 'python'
+      python_path: '/builds/dxr-build-env/venv/lib64/python2.7'
     - plugin: 'buglink'
       name: 'bugzilla'
       url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=%s'
-      regex: '(?i)bug\s+#?([0-9]+)'
+      regex: '"(?i)bug\s+#?([0-9]+)"'
 
 trees:
   - name: 'mozilla-central'
@@ -67,7 +69,11 @@ trees:
     build_command: ''
 
   - name: 'hgcustom:version-control-tools'
-    url: 'https://hg.mozilla.org/hgcustom/verstion-control-tools'
+    url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
+
+  - name: 'test-hgcustom:version-control-tools'
+    url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
+    subpath: 'hgcustom/version-control-tools-test'
 
   - name: 'rust'
     url: 'https://github.com/rust-lang/rust.git'

@@ -50,8 +50,8 @@ if __name__ == '__main__':
 
     template_env = Environment(
         loader=FileSystemLoader(os.path.join(HERE, 'templates')),
-        keep_trailing_newline=False,
-        lstrip_blocks=False,
+        keep_trailing_newline=True,
+        lstrip_blocks=True,
         trim_blocks=False,
     )
     templates = {

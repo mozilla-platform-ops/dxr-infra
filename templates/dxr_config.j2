@@ -12,15 +12,21 @@ es_alias = {{ dxr.es_alias }}
 es_indexing_timeout = {{ dxr.es_indexing_timeout }}
 es_refresh_interval = {{ dxr.es_refresh_interval }}
 
-{% for t in trees if not t.disable -%}
+{% for t in trees if not t.disable %}
 [{{ t.name }}]
 source_folder = {{ t.source_folder }}
 object_folder = {{ t.object_folder }}
 build_command = {{ t.build_command }}
-  {% for p in t.dxr_plugins -%}
-  [[{{ p.plugin }}]]
-  name = {{ p.name }}
-  url = {{ p.url }}
-  regex = {{ p.regex }}
-  {% endfor %}
+  {%- for p in t.dxr_plugins -%}
+  {% for (k,v) in p.iteritems() -%}
+{%+ if k == 'plugin' %}
+  [[{{ v }}]]
+{%- endif -%}
+  {% endfor -%}
+{% for (k,v) in p.iteritems() -%}
+{%+ if k != 'plugin' %}
+    {{ k }} = {{ v }}
+{%- endif -%}
+{%- endfor %}
+{%- endfor %}
 {% endfor %}
