@@ -71,7 +71,7 @@
     scm: 'hg'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'klibby/dxr-es'
+    docker_img: 'klibby/dxr-es-test'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1

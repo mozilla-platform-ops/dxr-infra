@@ -74,6 +74,7 @@ trees:
   - name: 'test-hgcustom_version-control-tools'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools-test'
+    docker_img: 'klibby/dxr-es-test'
 
   - name: 'rust'
     url: 'https://github.com/rust-lang/rust.git'
