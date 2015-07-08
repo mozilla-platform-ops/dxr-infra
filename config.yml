@@ -88,3 +88,16 @@ trees:
         url: 'https://github.com/mozilla/rust/issues/%s'
         regex: '#([0-9]+)'
 
+  - name: 'test-mozilla-central'
+    url: 'https://hg.mozilla.org/mozilla-central'
+    subpath: 'mozilla-central-test'
+    docker_img: 'klibby/dxr-es-test'
+    quiet_period: 14400
+    job_weight: 4
+    build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    mozconfig:
+      - 'mk_add_options AUTOCLOBBER=1'
+      - 'ac_add_options --enable-debug'
+      - 'ac_add_options --enable-stdcxx-compat'
+      - 'ac_add_options --disable-elf-hack'
+

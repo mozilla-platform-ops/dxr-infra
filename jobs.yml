@@ -95,3 +95,19 @@
         - '{name}_index'
 
 
+- project:
+    name: 'test-mozilla-central'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/mozilla-central'
+    subpath: 'mozilla-central-test'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 14400
+    docker_img: 'klibby/dxr-es-test'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 4
+    jobs:
+        - '{name}_index'
+
+
