@@ -64,7 +64,7 @@
 
 
 - project:
-    name: 'test-hgcustom:version-control-tools'
+    name: 'test-hgcustom_version-control-tools'
     is_disabled: False
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools-test'
