@@ -1,31 +1,24 @@
-FROM mrrrgn/releng_base_linux_64_builds
-MAINTAINER Kendall Libby <klibby@mozilla.com>
+FROM            centos:centos6
+MAINTAINER      Kendall Libby <klibby@mozilla.com>
 
-COPY mrepo.repo /etc/yum.repos.d/mrepo.repo
-RUN yum install -y \
-    libxml2-devel \
-    libxslt-devel \
-    mercurial \
-    nodejs \
-    npm \
-    python27-devel \
-    python27-pip \
-    python27-virtualenv \
-    pyxdg \
-    vi
+# Install system dependencies in a single layer
+ADD         system-setup.sh     /tmp/system-setup.sh
+RUN         ["/tmp/system-setup.sh"]
 
-ENV SHELL /bin/bash
-ENV DXR_HOME /builds/dxr-build-env
-ENV LC_ALL C
-ENV LD_LIBRARY_PATH /tools/gcc-4.3.3/installed/lib64:$DXR_HOME/dxr/trilite
-ENV PATH /usr/lib64/ccache:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/tools/git/bin:$DXR_HOME/clang/bin
+# Install DXR in a single layer
+ADD         dxr-setup.sh        /tmp/dxr-setup.sh
+RUN         ["/tmp/dxr-setup.sh"]
 
-RUN mkdir -p $DXR_HOME/src
-WORKDIR $DXR_HOME
-ADD clang-3.3.tar.bz2 $DXR_HOME/
-RUN git clone --recursive -b es https://github.com/mozilla/dxr
-RUN /bin/env CC=clang CXX=clang++ make -C dxr
+# Set variable normally configured at login, by the shells parent process, these
+# are taken from GNU su manual
+ENV         HOME        /home/worker
+ENV         SHELL       /bin/bash
+ENV         USER        worker
+ENV         LOGNAME     worker
+ENV         PATH        /builds/dxr-build-env/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN virtualenv-2.7 venv && venv/bin/pip install -r dxr/requirements.txt && cd dxr && ../venv/bin/python setup.py install
+# Declare default working folder
+WORKDIR     /builds/dxr-build-env
 
-COPY dxr.config $DXR_HOME/dxr.config
+# Set a default command useful for debugging
+CMD ["/bin/bash", "--login"]
