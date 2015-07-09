@@ -9,15 +9,6 @@ useradd -u 5507 -d /home/jenkins -s /bin/bash -m jenkins;
 mkdir -p /builds/dxr-build-env/src
 chown -R jenkins:jenkins /builds
 
-mkdir -p /etc/mercurial
-cat <<EOF > /etc/mercurial/hgrc
-[trusted]
-users = root, jenkins
-
-[web]
-cacerts = /etc/ssl/certs/ca-certificates.crt
-EOF
-
 # Install deps for DXR and rust
 apt-get update -y
 apt-get install -y      \
@@ -40,11 +31,34 @@ apt-get install -y      \
     ;
 apt-get build-dep -y clang llvm
 
+# The system hg version will barf on this until Ubuntu updates to >= 3.4
+mkdir /builds/dxr-build-env/hgext
+wget -O /builds/dxr-build-env/hgext/bundleclone.py \
+    https://hg.mozilla.org/hgcustom/version-control-tools/raw-file/default/hgext/bundleclone/__init__.py
+
+# Configure mercurial
+mkdir -p /etc/mercurial
+cat <<EOF > /etc/mercurial/hgrc
+[trusted]
+users = root, jenkins
+
+[web]
+cacerts = /etc/ssl/certs/ca-certificates.crt
+
+[extensions]
+bundleclone  = /builds/dxr-build-env/hgext/bundleclone.py
+#prefers = ec2region=us-west-2, stream=revlogv1
+EOF
+
 git clone --recursive -b es https://github.com/mozilla/dxr
 env LD_LIBRARY_PATH=/builds/dxr-build-env/dxr/trilite \
     CC=clang    \
     CXX=clang++ \
     make -C dxr
+
+# pypy currently barfs on installing hg 3.4.2
+#curl -L https://bitbucket.org/pypy/pypy/downloads/pypy3-2.4.0-linux64.tar.bz2 | tar -xj
+# virtualenv -p pypy3-2.4.0-linux64/bin/pypy3 venv
 
 virtualenv venv 
 . venv/bin/activate
