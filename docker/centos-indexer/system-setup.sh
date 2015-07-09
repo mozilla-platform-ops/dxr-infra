@@ -5,11 +5,8 @@
 ### Check that we are running as root
 test `whoami` == 'root';
 
-### Add worker user
-# Minimize the number of things which the build script can do, security-wise
-# it's not a problem to let the build script install things with yum. But it
-# really shouldn't do this, so let's forbid root access.
-useradd -u 5507 -d /home/worker -s /bin/bash -m worker;
+### Add jenkins user
+useradd -u 5507 -d /home/jenkins -s /bin/bash -m jenkins;
 
 # Install extra package mirror
 yum install -y \
@@ -46,26 +43,42 @@ yum install -y                      \
   python27-devel                    \
   python27-backports-ssl_match_hostname \
   npm                               \
-  clang                             \
-  clang-devel                       \
-  llvm                              \
-  llvm-libs                         \
-  llvm-devel                        \
+  ncurses-devel                     \
   yum-plugin-replace                \
   ;
 
 
-## Sadly not available via EPEL or IUS
-#wget -O /tmp/mercurial.rpm http://mercurial.selenic.com/release/centos6/RPMS/x86_64/mercurial-3.4.1-0.x86_64.rpm
-#rpm -Uvh /tmp/mercurial.rpm
-#rm /tmp/mercurial.rpm
+# Sadly not available via EPEL or IUS
+wget -O /tmp/mercurial.rpm http://mercurial.selenic.com/release/centos6/RPMS/x86_64/mercurial-3.4.1-0.x86_64.rpm
+rpm -Uvh /tmp/mercurial.rpm
+rm /tmp/mercurial.rpm
 
 # Then let's install all firefox build dependencies, these are extracted from
 # mozboot. See python/mozboot/bin/bootstrap.py in mozilla-central.
+yum install -y                      \
+  autoconf213                       \
+  curl-devel                        \
+  alsa-lib-devel                    \
+  dbus-glib-devel                   \
+  GConf2-devel                      \
+  glibc-static                      \
+  gstreamer-devel                   \
+  gstreamer-plugins-base-devel      \
+  gtk2-devel                        \
+  libstdc++-static                  \
+  libXt-devel                       \
+  mesa-libGL-devel                  \
+  pulseaudio-libs-devel             \
+  wireless-tools-devel              \
+  yasm                              \
+  which                             \
+  ;
+
 yum groupinstall -y                 \
   "Development Tools"               \
   "Development Libraries"           \
-  "GNOME Software Development"
+  "GNOME Software Development"      \
+  ;
 
 # Replace git with a recent version
 yum replace -y git --replace-with git2u
