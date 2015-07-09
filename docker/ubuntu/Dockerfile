@@ -1,41 +1,14 @@
-FROM ubuntu:14.10
+FROM quay.io/djmitche/ubuntu-build:0.0.2
 MAINTAINER Kendall Libby <klibby@mozilla.com>
 
-RUN apt-get update
-RUN apt-get install -y \
-    build-essential \
-    clang libclang-dev \
-    curl \
-    git \
-    file \
-    mercurial \
-    libxml2-dev libxslt1-dev nodejs npm \
-    libpython2.7 \
-    libpython2.7-dev \
-    libyaml-dev \
-    python2.7 \
-    python2.7-dev \
-    python-pip \
-    python-virtualenv \
-    vim \
-    perl libc6-dev-i386 gcc-multilib g++-multilib llvm llvm-dev libz-dev \
-    freeglut3-dev \
-    libfreetype6-dev libgl1-mesa-dri libglib2.0-dev xorg-dev \
-    gperf g++ cmake libssl-dev libbz2-dev libosmesa6-dev libxmu6 libxmu-dev
-RUN apt-get build-dep -y clang llvm
-RUN ln -s /usr/bin/nodejs /usr/bin/node
+# Declare default working folder
+WORKDIR     /builds/dxr-build-env
+#
+# Ensure that DXR specific dependencies live in a single layer
+ADD           dxr-setup.sh   /tmp/dxr-setup.sh
+RUN           ["/tmp/dxr-setup.sh"]
 
-ENV SHELL /bin/bash
-ENV DXR_HOME /builds/dxr-build-env
-ENV LC_ALL C
-ENV LD_LIBRARY_PATH $DXR_HOME/dxr/trilite
-ENV PATH /usr/lib64/ccache:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
+ENV PATH /usr/lib64/ccache:$PATH
 
-RUN mkdir -p $DXR_HOME/src
-WORKDIR $DXR_HOME
-RUN git clone --recursive -b es https://github.com/mozilla/dxr
-RUN env CC=clang CXX=clang++ make -C dxr
-
-RUN virtualenv venv && venv/bin/pip install -r dxr/requirements.txt && cd dxr && ../venv/bin/python setup.py install
-
-COPY dxr.config $DXR_HOME/dxr.config
+# Set a default command useful for debugging
+CMD ["/bin/bash", "--login"]
