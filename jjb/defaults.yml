@@ -43,6 +43,6 @@
     name: docker-run
     builders:
       - shell: |
-          docker pull {docker_img}:latest
+          docker pull {docker_img}
           docker run --rm -v {docker_vol} {docker_img} venv/bin/dxr index -v {name}
 
