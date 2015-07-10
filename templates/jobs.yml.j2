@@ -22,7 +22,10 @@
     {%- endif %}
     {%+ if t.job_weight -%}
     job_weight: {{ t.job_weight }}
-    {%- endif %}
+    {%- endif -%}
+{% if t.mozconfig %}
+    mozconfig: '{% for m in t.mozconfig %}{{ m }}\n{% endfor %}'
+{%- endif %}
     jobs:
         - '{name}_index'
 

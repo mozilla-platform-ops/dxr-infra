@@ -6,6 +6,7 @@
     is_disabled: false
     concurrent: false
     retry-count: 3
+    mozconfig: ''
     logrotate:
        daysToKeep: 3
        numToKeep: 20
@@ -28,6 +29,9 @@
           recipients: "{mail_rcpts}"
     wrappers:
       - timestamps
+      - inject:
+          script-content: |
+              /bin/echo -e "{mozconfig}" > {repo_dir}/{subpath}/.mozconfig
     scm:
       - "{scm}":
           url: '{url}'
