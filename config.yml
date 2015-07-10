@@ -75,7 +75,7 @@ trees:
   - name: 'test-hgcustom_version-control-tools'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools-test'
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.2'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.3'
     schedule: '@daily'
 
   - name: 'rust'
@@ -95,7 +95,7 @@ trees:
     subpath: 'mozilla-central-test'
     quiet_period: 14400
     job_weight: 4
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.2'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.3'
     disabled_plugins: 'rust'
     build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
