@@ -56,15 +56,12 @@ env LD_LIBRARY_PATH=/builds/dxr-build-env/dxr/trilite \
     CXX=clang++ \
     make -C dxr
 
-# pypy currently barfs on installing hg 3.4.2
-#curl -L https://bitbucket.org/pypy/pypy/downloads/pypy3-2.4.0-linux64.tar.bz2 | tar -xj
-# virtualenv -p pypy3-2.4.0-linux64/bin/pypy3 venv
-
-virtualenv venv 
-. venv/bin/activate
-venv/bin/pip install -r dxr/requirements.txt && \
+curl -L https://bitbucket.org/pypy/pypy/downloads/pypy-2.6.0-linux64.tar.bz2 | tar -xj
+virtualenv -p pypy-2.6.0-linux64/bin/pypy penv
+. penv/bin/activate
+dxr/peep.py install -r dxr/requirements.txt && \
     cd dxr && \
-    ../venv/bin/python setup.py install && \
+    python setup.py install && \
     cd -
 
 # Grab the latest config
