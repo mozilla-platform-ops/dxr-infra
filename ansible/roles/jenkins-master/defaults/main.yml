@@ -11,3 +11,4 @@ jenkins_plugins:
   - mercurial
   - timestamper
   - heavy-job
+  - envinject
