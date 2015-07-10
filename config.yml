@@ -75,6 +75,7 @@ trees:
   - name: 'test-hgcustom_version-control-tools'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools-test'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.2'
     schedule: '@daily'
 
   - name: 'rust'
@@ -94,10 +95,10 @@ trees:
     subpath: 'mozilla-central-test'
     quiet_period: 14400
     job_weight: 4
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.2'
+    disabled_plugins: 'rust'
     build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
-      - 'ac_add_options --enable-stdcxx-compat'
-      - 'ac_add_options --disable-elf-hack'
 
