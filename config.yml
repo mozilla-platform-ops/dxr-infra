@@ -28,7 +28,7 @@ defaults:
   docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
   dxr_plugins:
     - plugin: 'python'
-      python_path: '/builds/dxr-build-env/venv/lib64/python2.7'
+      python_path: '/builds/dxr-build-env/venv/site-packages'
     - plugin: 'buglink'
       name: 'bugzilla'
       url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=%s'
