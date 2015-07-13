@@ -25,8 +25,13 @@
     {%- endif -%}
 {% if t.mozconfig %}
     mozconfig: '{% for m in t.mozconfig %}{{ m }}\n{% endfor %}'
-{%- endif %}
+{%- endif -%}
+{%+ if t.cross_tree %}
+    jobs:
+        - '{name}_tree'
+{%- else %}
     jobs:
         - '{name}_index'
+{%- endif %}
 
 {% endfor %}

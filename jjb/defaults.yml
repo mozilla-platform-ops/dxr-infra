@@ -44,6 +44,27 @@
           docker_img: "{docker_img}"
           docker_vol: "{docker_vol}"
 
+- job-template:
+    name: '{name}_tree'
+    defaults: indexer
+    disabled: "{obj:is_disabled}"
+    quiet-period: "{quiet_period}"
+    triggers:
+      - timed: "{schedule}"
+    properties:
+      - heavy-job:
+          weight: "{job_weight}"
+    publishers:
+      - email:
+          recipients: "{mail_rcpts}"
+    wrappers:
+      - timestamps
+    builders:
+      - docker-run:
+          name: "{name}"
+          docker_img: "{docker_img}"
+          docker_vol: "{docker_vol}"
+
 - builder:
     name: docker-run
     builders:
