@@ -73,8 +73,11 @@ if __name__ == '__main__':
         dxr_config[i] = envget(dxr_config, i)
     # pprint(dxr_config)
 
+    name_re = re.compile('[/:]')
     trees = []
     for t in cfg['trees']:
+        if name_re.search(t['name']) is not None:
+            raise Exception("Invalid characters ('/:') in name.", t['name'])
         t['url'] = cleanup_url(t['url'])
         u = urlparse.urlsplit(t['url'])
         if 'subpath' not in t:
