@@ -26,6 +26,7 @@ defaults:
   mail_rcpts: fubar@mozilla.com
   docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
   docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+  cross_tree: false
   dxr_plugins:
     - plugin: 'python'
       python_path: '/builds/dxr-build-env/venv/site-packages'
@@ -63,19 +64,20 @@ trees:
       - 'ac_add_options --disable-elf-hack'
 
   - name: 'build-central'
-    disable: True
-    url: 'https://hg.mozilla.org/build/*'
+    url: 'https://hg.mozilla.org/build/'
+    subpath: 'build'
     job_weight: 2
     build_command: ''
+    cross_tree: true
 
-  - name: 'hgcustom:version-control-tools'
+  - name: 'hgcustom_version-control-tools'
     schedule: '@daily'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
 
   - name: 'test-hgcustom_version-control-tools'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools-test'
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.3'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.4'
     schedule: '@daily'
 
   - name: 'rust'
@@ -83,7 +85,7 @@ trees:
     schedule: 'H H/4 * * *'
     quiet_period: 14400
     job_weight: 4
-    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-clang && make -j{workers}'
+    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j{workers}'
     plugins:
       - plugin: 'buglink'
         name: 'github'
@@ -95,10 +97,100 @@ trees:
     subpath: 'mozilla-central-test'
     quiet_period: 14400
     job_weight: 4
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.3'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.4'
     disabled_plugins: 'rust'
     build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
+
+  - name: 'build_ash-mozharness'
+    url: 'https://hg.mozilla.org/build/ash-mozharness'
+
+  - name: 'build_autoland'
+    url: 'https://hg.mozilla.org/build/autoland'
+
+  - name: 'build_braindump'
+    url: 'https://hg.mozilla.org/build/braindump'
+
+  - name: 'build_buildapi'
+    url: 'https://hg.mozilla.org/build/buildapi'
+
+  - name: 'build_buildbot'
+    url: 'https://hg.mozilla.org/build/buildbot'
+
+  - name: 'build_buildbot-configs'
+    url: 'https://hg.mozilla.org/build/buildbot-configs'
+
+  - name: 'build_buildbotcustom'
+    url: 'https://hg.mozilla.org/build/buildbotcustom'
+
+  - name: 'build_cloud-tools'
+    url: 'https://hg.mozilla.org/build/cloud-tools'
+
+  - name: 'build_compare-locales'
+    url: 'https://hg.mozilla.org/build/compare-locales'
+
+  - name: 'build_fork-hg-git'
+    url: 'https://hg.mozilla.org/build/fork-hg-git'
+
+  - name: 'build_mapper'
+    url: 'https://hg.mozilla.org/build/mapper'
+
+  - name: 'build_mozharness'
+    url: 'https://hg.mozilla.org/build/mozharness'
+
+  - name: 'build_mozpool'
+    url: 'https://hg.mozilla.org/build/mozpool'
+
+  - name: 'build_nagios-tools'
+    url: 'https://hg.mozilla.org/build/nagios-tools'
+
+  - name: 'build_opsi-package-sources'
+    url: 'https://hg.mozilla.org/build/opsi-package-sources'
+
+  - name: 'build_partner-repacks'
+    url: 'https://hg.mozilla.org/build/partner-repacks'
+
+  - name: 'build_preproduction'
+    url: 'https://hg.mozilla.org/build/preproduction'
+
+  - name: 'build_puppet'
+    url: 'https://hg.mozilla.org/build/puppet'
+
+  - name: 'build_puppet-manifests'
+    url: 'https://hg.mozilla.org/build/puppet-manifests'
+
+  - name: 'build_relabs-puppet'
+    url: 'https://hg.mozilla.org/build/relabs-puppet'
+
+  - name: 'build_relengapi'
+    url: 'https://hg.mozilla.org/build/relengapi'
+
+  - name: 'build_rpm-sources'
+    url: 'https://hg.mozilla.org/build/rpm-sources'
+
+  - name: 'build_serveS3'
+    url: 'https://hg.mozilla.org/build/serveS3'
+
+  - name: 'build_slaveapi'
+    url: 'https://hg.mozilla.org/build/slaveapi'
+
+  - name: 'build_slave_health'
+    url: 'https://hg.mozilla.org/build/slave_health'
+
+  - name: 'build_talos'
+    url: 'https://hg.mozilla.org/build/talos'
+
+  - name: 'build_tools'
+    url: 'https://hg.mozilla.org/build/tools'
+
+  - name: 'build_tooltool'
+    url: 'https://hg.mozilla.org/build/tooltool'
+
+  - name: 'build_tupperware'
+    url: 'https://hg.mozilla.org/build/tupperware'
+
+  - name: 'build_twisted'
+    url: 'https://hg.mozilla.org/build/twisted'
 

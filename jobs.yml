@@ -35,9 +35,9 @@
 
 - project:
     name: 'build-central'
-    is_disabled: True
+    is_disabled: False
     url: 'https://hg.mozilla.org/build/'
-    subpath: 'build/'
+    subpath: 'build'
     scm: 'hg'
     schedule: '@weekly'
     quiet_period: 3600
@@ -46,11 +46,11 @@
     mail_rcpts: fubar@mozilla.com
     job_weight: 2
     jobs:
-        - '{name}_index'
+        - '{name}_tree'
 
 
 - project:
-    name: 'hgcustom:version-control-tools'
+    name: 'hgcustom_version-control-tools'
     is_disabled: False
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools'
@@ -73,7 +73,7 @@
     scm: 'hg'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.3'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -105,11 +105,491 @@
     scm: 'hg'
     schedule: '@weekly'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.3'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 4
     mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\n'
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_ash-mozharness'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/ash-mozharness'
+    subpath: 'build/ash-mozharness'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_autoland'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/autoland'
+    subpath: 'build/autoland'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_braindump'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/braindump'
+    subpath: 'build/braindump'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_buildapi'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/buildapi'
+    subpath: 'build/buildapi'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_buildbot'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/buildbot'
+    subpath: 'build/buildbot'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_buildbot-configs'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/buildbot-configs'
+    subpath: 'build/buildbot-configs'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_buildbotcustom'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/buildbotcustom'
+    subpath: 'build/buildbotcustom'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_cloud-tools'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/cloud-tools'
+    subpath: 'build/cloud-tools'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_compare-locales'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/compare-locales'
+    subpath: 'build/compare-locales'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_fork-hg-git'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/fork-hg-git'
+    subpath: 'build/fork-hg-git'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_mapper'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/mapper'
+    subpath: 'build/mapper'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_mozharness'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/mozharness'
+    subpath: 'build/mozharness'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_mozpool'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/mozpool'
+    subpath: 'build/mozpool'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_nagios-tools'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/nagios-tools'
+    subpath: 'build/nagios-tools'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_opsi-package-sources'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/opsi-package-sources'
+    subpath: 'build/opsi-package-sources'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_partner-repacks'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/partner-repacks'
+    subpath: 'build/partner-repacks'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_preproduction'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/preproduction'
+    subpath: 'build/preproduction'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_puppet'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/puppet'
+    subpath: 'build/puppet'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_puppet-manifests'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/puppet-manifests'
+    subpath: 'build/puppet-manifests'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_relabs-puppet'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/relabs-puppet'
+    subpath: 'build/relabs-puppet'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_relengapi'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/relengapi'
+    subpath: 'build/relengapi'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_rpm-sources'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/rpm-sources'
+    subpath: 'build/rpm-sources'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_serveS3'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/serveS3'
+    subpath: 'build/serveS3'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_slaveapi'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/slaveapi'
+    subpath: 'build/slaveapi'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_slave_health'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/slave_health'
+    subpath: 'build/slave_health'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_talos'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/talos'
+    subpath: 'build/talos'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_tools'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/tools'
+    subpath: 'build/tools'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_tooltool'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/tooltool'
+    subpath: 'build/tooltool'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_tupperware'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/tupperware'
+    subpath: 'build/tupperware'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
+    jobs:
+        - '{name}_index'
+
+
+- project:
+    name: 'build_twisted'
+    is_disabled: False
+    url: 'https://hg.mozilla.org/build/twisted'
+    subpath: 'build/twisted'
+    scm: 'hg'
+    schedule: '@weekly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com
+    job_weight: 1
     jobs:
         - '{name}_index'
 
