@@ -57,7 +57,8 @@ env LD_LIBRARY_PATH=/builds/dxr-build-env/dxr/trilite \
     make -C dxr
 
 curl -L https://bitbucket.org/pypy/pypy/downloads/pypy-2.6.0-linux64.tar.bz2 | tar -xj
-virtualenv -p pypy-2.6.0-linux64/bin/pypy venv
+#virtualenv -p pypy-2.6.0-linux64/bin/pypy venv
+virtualenv venv
 . venv/bin/activate
 dxr/peep.py install -r dxr/requirements.txt && \
     cd dxr && \
