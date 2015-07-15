@@ -37,8 +37,5 @@ pip install -r dxr/requirements.txt && \
     cd - && \
     deactivate
 
-# Grab the latest config
-wget -O dxr.config https://github.com/klibby/dxr-docker/raw/rust/dxr.config
-
 # Remove this script
 rm $0; echo "Deleted $0";
