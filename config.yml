@@ -58,7 +58,7 @@ trees:
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
-      - 'ac_add_options --enable-application=suite'
+      - 'ac_add_options --enable-application=mail'
       - 'ac_add_options --disable-optimize'
       - 'ac_add_options --disable-stdcxx-compat'
       - 'ac_add_options --disable-elf-hack'
