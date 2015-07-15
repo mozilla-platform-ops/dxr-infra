@@ -8,20 +8,34 @@ test `whoami` == 'root';
 ### Add jenkins user
 useradd -u 5507 -d /home/jenkins -s /bin/bash -m jenkins;
 
-# Install extra package mirror
-yum install -y \
-  epel-release                      \
-  wget                              \
-  ;
+
+cat <<EOM >/etc/yum.repos.d/mrepo.repo
+[mrepo-epel-x86_64]
+name=mrepo-epel-x86_64
+baseurl=https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.epel
+
+[mrepo-centos6-x86_64-base]
+name=mrepo-centos6-x86_64-base
+baseurl=https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.centos-base
+
+[mrepo-centos6-x86_64-updates]
+name=mrepo-centos6-x86_64-updates
+baseurl=https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.centos-updates
+
+[mrepo-centos6-x86_64-mozilla]
+name=Mozilla Package Repo - $basearch
+baseurl=https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.mozilla
+EOM
 
 # Install IUS repo for packages from this decade
-wget -O /tmp/ius-release.rpm http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-14.ius.centos6.noarch.rpm
-rpm -Uvh /tmp/ius-release.rpm
-rm /tmp/ius-release.rpm
+#wget -O /tmp/ius-release.rpm http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-14.ius.centos6.noarch.rpm
+#rpm -Uvh /tmp/ius-release.rpm
+#rm /tmp/ius-release.rpm
+#cat /etc/yum.repos.d/*
 
 ### Install Useful Packages
 # First we update and upgrade to latest versions.
-yum update -y
+#yum update -y
 
 # Let's install some goodies, ca-certificates is needed for https with hg.
 # sudo will be required anyway, but let's make it explicit. It nice to have
@@ -81,7 +95,7 @@ yum groupinstall -y                 \
   ;
 
 # Replace git with a recent version
-yum replace -y git --replace-with git2u
+#yum replace -y git --replace-with git2u
 
 ### Clean up from setup
 # Remove cached packages. Cached package takes up a lot of space and

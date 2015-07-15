@@ -1,4 +1,5 @@
-FROM            quay.io/mozilla/b2g-build:0.2.9
+FROM mrrrgn/releng_base_linux_64_builds
+#FROM            quay.io/mozilla/b2g-build:0.2.9
 #FROM            centos:centos6
 MAINTAINER      Kendall Libby <klibby@mozilla.com>
 
