@@ -29,7 +29,7 @@ defaults:
   cross_tree: false
   dxr_plugins:
     - plugin: 'python'
-      python_path: '/builds/dxr-build-env/venv/site-packages'
+      python_path: '/builds/dxr-build-env/venv/lib/python2.7/site-packages'
     - plugin: 'buglink'
       name: 'bugzilla'
       url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=%s'
