@@ -24,7 +24,7 @@ defaults:
   job_weight: 1
   build_command: ''   # DXR's default is 'make ...'
   mail_rcpts: fubar@mozilla.com
-  docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.1'
+  docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
   docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
   cross_tree: false
   dxr_plugins:
@@ -53,7 +53,6 @@ trees:
     schedule: 'H H/4 * * *'
     quiet_period: 14400
     job_weight: 4
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.2'
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
@@ -77,7 +76,6 @@ trees:
   - name: 'test-hgcustom_version-control-tools'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools-test'
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.4'
     schedule: '@daily'
 
   - name: 'rust'
@@ -97,7 +95,6 @@ trees:
     subpath: 'mozilla-central-test'
     quiet_period: 14400
     job_weight: 4
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.1.4'
     disabled_plugins: 'rust'
     build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
