@@ -50,10 +50,10 @@ trees:
 
   - name: 'comm-central'
     url: 'https://hg.mozilla.org/comm-central'
-    disable: True
     schedule: 'H H/4 * * *'
     quiet_period: 14400
     job_weight: 4
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.2'
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
