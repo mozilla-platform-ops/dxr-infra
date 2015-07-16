@@ -39,7 +39,7 @@
     url: 'https://hg.mozilla.org/build/'
     subpath: 'build'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -55,7 +55,7 @@
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools'
     scm: 'hg'
-    schedule: '@daily'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -71,7 +71,7 @@
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools-test'
     scm: 'hg'
-    schedule: '@daily'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -103,7 +103,7 @@
     url: 'https://hg.mozilla.org/mozilla-central'
     subpath: 'mozilla-central-test'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -120,7 +120,7 @@
     url: 'https://hg.mozilla.org/build/ash-mozharness'
     subpath: 'build/ash-mozharness'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -136,7 +136,7 @@
     url: 'https://hg.mozilla.org/build/autoland'
     subpath: 'build/autoland'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -152,7 +152,7 @@
     url: 'https://hg.mozilla.org/build/braindump'
     subpath: 'build/braindump'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -168,7 +168,7 @@
     url: 'https://hg.mozilla.org/build/buildapi'
     subpath: 'build/buildapi'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -184,7 +184,7 @@
     url: 'https://hg.mozilla.org/build/buildbot'
     subpath: 'build/buildbot'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -200,7 +200,7 @@
     url: 'https://hg.mozilla.org/build/buildbot-configs'
     subpath: 'build/buildbot-configs'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -216,7 +216,7 @@
     url: 'https://hg.mozilla.org/build/buildbotcustom'
     subpath: 'build/buildbotcustom'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -232,7 +232,7 @@
     url: 'https://hg.mozilla.org/build/cloud-tools'
     subpath: 'build/cloud-tools'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -248,7 +248,7 @@
     url: 'https://hg.mozilla.org/build/compare-locales'
     subpath: 'build/compare-locales'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -264,7 +264,7 @@
     url: 'https://hg.mozilla.org/build/fork-hg-git'
     subpath: 'build/fork-hg-git'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -280,7 +280,7 @@
     url: 'https://hg.mozilla.org/build/mapper'
     subpath: 'build/mapper'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -296,7 +296,7 @@
     url: 'https://hg.mozilla.org/build/mozharness'
     subpath: 'build/mozharness'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -312,7 +312,7 @@
     url: 'https://hg.mozilla.org/build/mozpool'
     subpath: 'build/mozpool'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -328,7 +328,7 @@
     url: 'https://hg.mozilla.org/build/nagios-tools'
     subpath: 'build/nagios-tools'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -344,7 +344,7 @@
     url: 'https://hg.mozilla.org/build/opsi-package-sources'
     subpath: 'build/opsi-package-sources'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -360,7 +360,7 @@
     url: 'https://hg.mozilla.org/build/partner-repacks'
     subpath: 'build/partner-repacks'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -376,7 +376,7 @@
     url: 'https://hg.mozilla.org/build/preproduction'
     subpath: 'build/preproduction'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -392,7 +392,7 @@
     url: 'https://hg.mozilla.org/build/puppet'
     subpath: 'build/puppet'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -408,7 +408,7 @@
     url: 'https://hg.mozilla.org/build/puppet-manifests'
     subpath: 'build/puppet-manifests'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -424,7 +424,7 @@
     url: 'https://hg.mozilla.org/build/relabs-puppet'
     subpath: 'build/relabs-puppet'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -440,7 +440,7 @@
     url: 'https://hg.mozilla.org/build/relengapi'
     subpath: 'build/relengapi'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -456,7 +456,7 @@
     url: 'https://hg.mozilla.org/build/rpm-sources'
     subpath: 'build/rpm-sources'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -472,7 +472,7 @@
     url: 'https://hg.mozilla.org/build/serveS3'
     subpath: 'build/serveS3'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -488,7 +488,7 @@
     url: 'https://hg.mozilla.org/build/slaveapi'
     subpath: 'build/slaveapi'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -504,7 +504,7 @@
     url: 'https://hg.mozilla.org/build/slave_health'
     subpath: 'build/slave_health'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -520,7 +520,7 @@
     url: 'https://hg.mozilla.org/build/talos'
     subpath: 'build/talos'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -536,7 +536,7 @@
     url: 'https://hg.mozilla.org/build/tools'
     subpath: 'build/tools'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -552,7 +552,7 @@
     url: 'https://hg.mozilla.org/build/tooltool'
     subpath: 'build/tooltool'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -568,7 +568,7 @@
     url: 'https://hg.mozilla.org/build/tupperware'
     subpath: 'build/tupperware'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -584,7 +584,7 @@
     url: 'https://hg.mozilla.org/build/twisted'
     subpath: 'build/twisted'
     scm: 'hg'
-    schedule: '@weekly'
+    schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'

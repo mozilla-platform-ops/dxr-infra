@@ -19,7 +19,7 @@ dxr:
 
 defaults:
   disable: false
-  schedule: '@weekly'
+  schedule: 'H H/4 * * *'
   quiet_period: 3600
   job_weight: 1
   build_command: ''   # DXR's default is 'make ...'
@@ -38,7 +38,6 @@ defaults:
 trees:
   - name: 'mozilla-central'
     url: 'https://hg.mozilla.org/mozilla-central'
-    schedule: 'H H/4 * * *'
     quiet_period: 14400
     job_weight: 4
     build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
@@ -50,7 +49,6 @@ trees:
 
   - name: 'comm-central'
     url: 'https://hg.mozilla.org/comm-central'
-    schedule: 'H H/4 * * *'
     quiet_period: 14400
     job_weight: 4
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
@@ -70,17 +68,14 @@ trees:
     cross_tree: true
 
   - name: 'hgcustom_version-control-tools'
-    schedule: '@daily'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
 
   - name: 'test-hgcustom_version-control-tools'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
     subpath: 'hgcustom/version-control-tools-test'
-    schedule: '@daily'
 
   - name: 'rust'
     url: 'https://github.com/rust-lang/rust.git'
-    schedule: 'H H/4 * * *'
     quiet_period: 14400
     job_weight: 4
     build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j{workers}'
