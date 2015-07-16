@@ -264,6 +264,8 @@
     url: 'https://hg.mozilla.org/build/fork-hg-git'
     subpath: 'build/fork-hg-git'
     scm: 'hg'
+    hg_revision_type: 'tag'
+    hg_revision: 'tip'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
@@ -280,6 +282,8 @@
     url: 'https://hg.mozilla.org/build/mapper'
     subpath: 'build/mapper'
     scm: 'hg'
+    hg_revision_type: 'tag'
+    hg_revision: 'tip'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
@@ -467,7 +471,7 @@
 
 
 - project:
-    name: 'build_serveS3'
+    name: 'build_serves3'
     is_disabled: False
     url: 'https://hg.mozilla.org/build/serveS3'
     subpath: 'build/serveS3'
@@ -552,6 +556,8 @@
     url: 'https://hg.mozilla.org/build/tooltool'
     subpath: 'build/tooltool'
     scm: 'hg'
+    hg_revision_type: 'tag'
+    hg_revision: 'tip'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'

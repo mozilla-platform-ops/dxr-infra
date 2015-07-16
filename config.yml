@@ -126,9 +126,13 @@ trees:
 
   - name: 'build_fork-hg-git'
     url: 'https://hg.mozilla.org/build/fork-hg-git'
+    hg_revision_type: "tag"
+    hg_revision: "tip"
 
   - name: 'build_mapper'
     url: 'https://hg.mozilla.org/build/mapper'
+    hg_revision_type: "tag"
+    hg_revision: "tip"
 
   - name: 'build_mozharness'
     url: 'https://hg.mozilla.org/build/mozharness'
@@ -163,7 +167,7 @@ trees:
   - name: 'build_rpm-sources'
     url: 'https://hg.mozilla.org/build/rpm-sources'
 
-  - name: 'build_serveS3'
+  - name: 'build_serves3'
     url: 'https://hg.mozilla.org/build/serveS3'
 
   - name: 'build_slaveapi'
@@ -180,6 +184,8 @@ trees:
 
   - name: 'build_tooltool'
     url: 'https://hg.mozilla.org/build/tooltool'
+    hg_revision_type: "tag"
+    hg_revision: "tip"
 
   - name: 'build_tupperware'
     url: 'https://hg.mozilla.org/build/tupperware'
