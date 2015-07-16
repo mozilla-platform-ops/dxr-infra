@@ -5,6 +5,12 @@
     url: '{{ t.url }}'
     subpath: '{{ t.subpath }}'
     scm: '{{ t.scm }}'
+{%- if t.hg_revision_type %}
+    hg_revision_type: '{{ t.hg_revision_type }}'
+{%- endif %}
+{%- if t.hg_revision %}
+    hg_revision: '{{ t.hg_revision }}'
+{%- endif %}
     schedule: '{{ t.schedule }}'
     quiet_period: {{ t.quiet_period }}
     docker_img: '{{ t.docker_img }}'

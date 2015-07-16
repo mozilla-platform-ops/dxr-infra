@@ -7,6 +7,8 @@
     concurrent: false
     retry-count: 3
     mozconfig: ''
+    hg_revision: 'default'
+    hg_revision_type: 'branch'
     logrotate:
        daysToKeep: 3
        numToKeep: 20
@@ -36,8 +38,10 @@
     scm:
       - "{scm}":
           url: '{url}'
-          subdir: "{repo_dir}/{subpath}"  # mercurial
-          basedir: "{repo_dir}/{subpath}" # git
+          revision: "{hg_revision}"             # hg
+          revision-type: "{hg_revision_type}"   # hg
+          subdir: "{repo_dir}/{subpath}"        # hg
+          basedir: "{repo_dir}/{subpath}"       # git
     builders:
       - docker-run:
           name: "{name}"
