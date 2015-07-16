@@ -3,27 +3,15 @@
     name: '{{ t.name }}'
     is_disabled: {{ t.disable }}
     url: '{{ t.url }}'
-    {%+ if t.subpath -%}
     subpath: '{{ t.subpath }}'
-    {%- endif %}
     scm: '{{ t.scm }}'
     schedule: '{{ t.schedule }}'
-    {%+ if t.quiet_period -%}
     quiet_period: {{ t.quiet_period }}
-    {%- endif %}
-    {%+ if t.docker_img -%}
     docker_img: '{{ t.docker_img }}'
-    {%- endif %}
-    {%+ if t.docker_vol -%}
     docker_vol: '{{ t.docker_vol }}'
-    {%- endif %}
-    {%+ if t.mail_rcpts -%}
     mail_rcpts: {{ t.mail_rcpts }}
-    {%- endif %}
-    {%+ if t.job_weight -%}
     job_weight: {{ t.job_weight }}
-    {%- endif -%}
-{% if t.mozconfig %}
+{%- if t.mozconfig %}
     mozconfig: '{% for m in t.mozconfig %}{{ m }}\n{% endfor %}'
 {%- endif -%}
 {%+ if t.cross_tree %}
