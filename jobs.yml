@@ -109,7 +109,7 @@
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 4
-    mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\n'
+    mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --disable-elf-hack\n'
     jobs:
         - '{name}_index'
 

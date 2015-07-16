@@ -100,6 +100,7 @@ trees:
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
+      - 'ac_add_options --disable-elf-hack'
 
   - name: 'build_ash-mozharness'
     url: 'https://hg.mozilla.org/build/ash-mozharness'
