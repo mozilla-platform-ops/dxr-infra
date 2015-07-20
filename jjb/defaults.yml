@@ -42,6 +42,7 @@
           revision-type: "{hg_revision_type}"   # hg
           subdir: "{repo_dir}/{subpath}"        # hg
           basedir: "{repo_dir}/{subpath}"       # git
+          skip-tag: true                        # git
     builders:
       - docker-run:
           name: "{name}"
