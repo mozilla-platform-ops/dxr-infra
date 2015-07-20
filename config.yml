@@ -38,6 +38,7 @@ defaults:
 trees:
   - name: 'mozilla-central'
     url: 'https://hg.mozilla.org/mozilla-central'
+    schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
     build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
@@ -49,6 +50,7 @@ trees:
 
   - name: 'comm-central'
     url: 'https://hg.mozilla.org/comm-central'
+    schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
@@ -76,6 +78,7 @@ trees:
 
   - name: 'rust'
     url: 'https://github.com/rust-lang/rust.git'
+    schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
     build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j{workers}'
@@ -88,6 +91,7 @@ trees:
   - name: 'test-mozilla-central'
     url: 'https://hg.mozilla.org/mozilla-central'
     subpath: 'mozilla-central-test'
+    schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
     disabled_plugins: 'rust'
