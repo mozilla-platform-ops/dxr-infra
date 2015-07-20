@@ -5,7 +5,7 @@
     url: 'https://hg.mozilla.org/mozilla-central'
     subpath: 'mozilla-central'
     scm: 'hg'
-    schedule: 'H H/4 * * *'
+    schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -22,7 +22,7 @@
     url: 'https://hg.mozilla.org/comm-central'
     subpath: 'comm-central'
     scm: 'hg'
-    schedule: 'H H/4 * * *'
+    schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -87,9 +87,9 @@
     url: 'https://github.com/rust-lang/rust'
     subpath: 'rust-lang/rust'
     scm: 'git'
-    schedule: 'H H/4 * * *'
+    schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.5'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 4
@@ -103,7 +103,7 @@
     url: 'https://hg.mozilla.org/mozilla-central'
     subpath: 'mozilla-central-test'
     scm: 'hg'
-    schedule: 'H H/4 * * *'
+    schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
