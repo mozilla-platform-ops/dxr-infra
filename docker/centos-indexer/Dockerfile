@@ -8,7 +8,7 @@ ADD         bin                 /builds/dxr-build-env/bin
 RUN         ["/builds/dxr-build-env/bin/system-setup.sh"]
 
 ENV         PATH        /builds/dxr-build-env/bin:/builds/dxr-build-env/venv/bin:/builds/dxr-build-env/clang/bin:$PATH
-env         LD_LIBRARY_PATH=/builds/dxr-build-env/dxr/trilite:/tools/gcc-4.3.3/installed/lib64:$LD_LIBRARY_PATH
+env         LD_LIBRARY_PATH=/builds/dxr-build-env/dxr/trilite:/tools/gcc-4.7.3-0moz1/lib64:$LD_LIBRARY_PATH
 #
 # Install DXR in a single layer
 RUN         ["/builds/dxr-build-env/bin/dxr-setup.sh"]

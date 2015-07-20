@@ -81,6 +81,7 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.5'
     build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j{workers}'
     plugins:
       - plugin: 'buglink'
