@@ -1,0 +1,9 @@
+[trusted]
+users = root, jenkins
+
+[web]
+cacerts = /etc/pki/tls/certs/ca-bundle.crt
+
+[extensions]
+bundleclone = /data/bundleclone.py
+#prefers = ec2region=us-west-2, stream=revlogv1

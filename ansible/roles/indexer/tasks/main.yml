@@ -20,6 +20,12 @@
 - name: install requirements
   pip: requirements=/data/requirements.txt
 
+- name: install mercurial bundleclone extension
+  get_url: url={{ bundleclone_url }} dest=/data/bundleclone.py mode=0644 force=yes
+
+- name: configure mercurial
+  copy: src=hgrc dest=/etc/mercurial/hgrc mode=0664 owner=root group=root
+
 - name: configure docker options
   lineinfile: dest=/etc/sysconfig/docker regexp="^other_args=" line='"other_args=--host=tcp://0.0.0.0:6666 --host=unix:///var/run/docker.sock"'
   notify: restart docker
@@ -33,12 +39,4 @@
 
 - name: ensure data directory exists
   file: path=/data/dxr_data owner=root group=root state=directory mode=0775
-
-- name: ensure indexing container exists
-  docker:
-    image: klibby/dxr-es
-    state: present
-    pull: missing
-    volumes:
-      - /data/dxr_data:/builds/dxr-build-env/src
 
