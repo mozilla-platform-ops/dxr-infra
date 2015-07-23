@@ -41,10 +41,8 @@
   file: src=/usr/bin/virtualenv-2.7 dest=/usr/bin/virtualenv state=link
 
 - name: create DXR configs
-  copy: src=dxr-{{ item }}.config dest=/data/{{ item }}/dxr.config mode=0644 owner=root group=apache
-  with_items:
-    - prod
-    - stage
+  get_url: url=https://github.com/klibby/dxr-docker/raw/{{ item.value.branch }}/dxr.config dest=/data/{{ item.key }}/dxr.config mode=0644 owner=root group=apache force=yes
+  with_dict: "{{ environ }}"
 
 - name: add logrotate config
   copy: src=logrotate.conf dest=/etc/logrotate.d/dxr

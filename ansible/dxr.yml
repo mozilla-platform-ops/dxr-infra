@@ -3,6 +3,11 @@
   vars:
     # need to handle secrets, currently managed by hand. boo.
     jenkins_key: /root/.ssh/jenkins_rsa
+    environ:
+      prod:
+        branch: rust
+      stage:
+        branch: rust
   roles:
     - admin
     - jenkins-master
