@@ -7,7 +7,7 @@
     scm: 'hg'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 4
@@ -24,7 +24,7 @@
     scm: 'hg'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 4
@@ -41,7 +41,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 2
@@ -57,7 +57,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -73,7 +73,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -89,7 +89,7 @@
     scm: 'git'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.5'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 4
@@ -105,7 +105,7 @@
     scm: 'hg'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 4
@@ -122,7 +122,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -138,7 +138,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -154,7 +154,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -170,7 +170,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -186,7 +186,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -202,7 +202,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -218,7 +218,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -234,7 +234,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -250,7 +250,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -268,7 +268,7 @@
     hg_revision: 'tip'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -286,7 +286,7 @@
     hg_revision: 'tip'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -302,7 +302,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -318,7 +318,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -334,7 +334,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -350,7 +350,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -366,7 +366,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -382,7 +382,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -398,7 +398,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -414,7 +414,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -430,7 +430,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -446,7 +446,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -462,7 +462,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -478,7 +478,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -494,7 +494,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -510,7 +510,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -526,7 +526,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -542,7 +542,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -560,7 +560,7 @@
     hg_revision: 'tip'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -576,7 +576,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
@@ -592,7 +592,7 @@
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/centos-indexer:0.0.4'
+    docker_img: 'quay.io/fubar/centos-indexer:0.0.6'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com
     job_weight: 1
