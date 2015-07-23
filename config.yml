@@ -46,7 +46,6 @@ trees:
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
-      - 'ac_add_options --enable-stdcxx-compat'
       - 'ac_add_options --disable-elf-hack'
 
   - name: 'comm-central'
