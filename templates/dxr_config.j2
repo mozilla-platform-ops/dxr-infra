@@ -16,6 +16,12 @@ es_refresh_interval = {{ dxr.es_refresh_interval }}
 [{{ t.name }}]
 source_folder = {{ t.source_folder }}
 object_folder = {{ t.object_folder }}
+{%- if t.disabled_plugins %}
+disabled_plugins: {{ t.disabled_plugins }}
+{%- endif %}
+{%- if t.ignore_patterns %}
+ignore_patterns: {{ t.ignore_patterns }}
+{%- endif %}
 build_command = {{ t.build_command }}
   {%- for p in t.dxr_plugins -%}
   {% for (k,v) in p.iteritems() -%}
