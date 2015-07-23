@@ -7,9 +7,9 @@
     - admin
     - jenkins-master
 
-- hosts: dxr-processor1.private.scl3.mozilla.com
+- hosts: dxr-builders
   vars:
-    jenkins_master: dxradm.private.scl3.mozilla.com
+    jenkins_master: dxradm.private.scl3.mozilla.com:8080
   roles:
     - indexer
     - jenkins-slave
