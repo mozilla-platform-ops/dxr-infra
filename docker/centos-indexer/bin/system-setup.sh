@@ -5,10 +5,6 @@
 ### Check that we are running as root
 test `whoami` == 'root';
 
-### Add jenkins user
-useradd -u 5507 -d /home/jenkins -s /bin/bash -m jenkins;
-
-
 cat <<EOM >/etc/yum.repos.d/mrepo.repo
 [mrepo-epel-x86_64]
 name=mrepo-epel-x86_64
