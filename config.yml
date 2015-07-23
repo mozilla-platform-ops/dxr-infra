@@ -96,6 +96,7 @@ trees:
     quiet_period: 14400
     job_weight: 4
     disabled_plugins: 'rust'
+    ignore_patterns: 'all-tests.json'
     build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
