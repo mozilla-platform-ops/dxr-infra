@@ -43,6 +43,7 @@ yum install -y                      \
   nano                              \
   tar                               \
   wget                              \
+  which                             \
   ;
 
 # Install software from this decade for DXR
@@ -57,11 +58,13 @@ yum install -y                      \
   yum-plugin-replace                \
   ;
 
-
 # Sadly not available via EPEL or IUS
 wget -O /tmp/mercurial.rpm http://mercurial.selenic.com/release/centos6/RPMS/x86_64/mercurial-3.4.1-0.x86_64.rpm
 rpm -Uvh /tmp/mercurial.rpm
 rm /tmp/mercurial.rpm
+
+# Awful hack for GTK3 on Centos6; this is why we should be emulating Releng builds
+curl -L http://tooltool.pvt.build.mozilla.org/build/sha512/68fc56b0fb0cdba629b95683d6649ff76b00dccf97af90960c3d7716f6108b2162ffd5ffcd5c3a60a21b28674df688fe4dabc67345e2da35ec5abeae3d48c8e3 | tar -xJ
 
 # Then let's install all firefox build dependencies, these are extracted from
 # mozboot. See python/mozboot/bin/bootstrap.py in mozilla-central.
@@ -75,19 +78,26 @@ yum install -y                      \
   gstreamer-devel                   \
   gstreamer-plugins-base-devel      \
   gtk2-devel                        \
+  gtk3-devel                        \
   libstdc++-static                  \
   libXt-devel                       \
   mesa-libGL-devel                  \
   pulseaudio-libs-devel             \
   wireless-tools-devel              \
   yasm                              \
-  which                             \
   ;
 
-yum groupinstall -y                 \
-  "Development Tools"               \
-  "Development Libraries"           \
-  "GNOME Software Development"      \
+# groupinstall is broken for non-mrepo-RHEL repos, so get the missing Dev Tools by hand
+#yum groupinstall -y                 \
+#  "Development Tools"               \
+#  "Development Libraries"           \
+#  "GNOME Software Development"      \
+#  ;
+yum install -y                      \
+  freetype                          \
+  bison                             \
+  flex                              \
+  gettext                           \
   ;
 
 # Replace git with a recent version
