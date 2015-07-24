@@ -58,6 +58,7 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._*'
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
