@@ -82,10 +82,6 @@ trees:
   - name: 'hgcustom_version-control-tools'
     url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
 
-  - name: 'test-hgcustom_version-control-tools'
-    url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
-    subpath: 'hgcustom/version-control-tools-test'
-
   - name: 'rust'
     url: 'https://github.com/rust-lang/rust.git'
     schedule: 'H H/6 * * *'
@@ -97,20 +93,6 @@ trees:
         name: 'github'
         url: 'https://github.com/mozilla/rust/issues/%s'
         regex: '#([0-9]+)'
-
-  - name: 'test-mozilla-central'
-    url: 'https://hg.mozilla.org/mozilla-central'
-    subpath: 'mozilla-central-test'
-    schedule: 'H H/6 * * *'
-    quiet_period: 14400
-    job_weight: 4
-    disabled_plugins: 'rust'
-    ignore_patterns: 'all-tests.json'
-    build_command: 'cd $source_folder && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
-    mozconfig:
-      - 'mk_add_options AUTOCLOBBER=1'
-      - 'ac_add_options --enable-debug'
-      - 'ac_add_options --disable-elf-hack'
 
   - name: 'build_ash-mozharness'
     url: 'https://hg.mozilla.org/build/ash-mozharness'
