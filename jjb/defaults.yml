@@ -33,7 +33,7 @@
       - timestamps
       - inject:
           script-content: |
-              test -n "{mozconfig}" || exit 0
+              test -n '{mozconfig}' || exit 0
               /bin/echo -e "{mozconfig}" > {repo_dir}/{subpath}/.mozconfig
     scm:
       - "{scm}":
