@@ -40,15 +40,11 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.2.0'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._*'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
-      - 'mk_add_options "export PATH=/gtk3/usr/local/bin:$PATH"'
-      - 'mk_add_options "export LD_LIBRARY_PATH=/gtk3/usr/local/lib:$LD_LIBRARY_PATH"'
-      - 'mk_add_options "export LDFLAGS=-L/gtk3/usr/local/lib"'
-      - 'mk_add_options "export PKG_CONFIG_SYSROOT_DIR=/gtk3"'
-      - 'mk_add_options "export PKG_CONFIG_PATH=/gtk3/usr/local/lib/pkgconfig:/usr/lib64/pkgconfig"'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
@@ -58,15 +54,11 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.2.0'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._*'
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
-      - 'mk_add_options "export PATH=/gtk3/usr/local/bin:$PATH"'
-      - 'mk_add_options "export LD_LIBRARY_PATH=/gtk3/usr/local/lib:$LD_LIBRARY_PATH"'
-      - 'mk_add_options "export LDFLAGS=-L/gtk3/usr/local/lib"'
-      - 'mk_add_options "export PKG_CONFIG_SYSROOT_DIR=/gtk3"'
-      - 'mk_add_options "export PKG_CONFIG_PATH=/gtk3/usr/local/lib/pkgconfig:/usr/lib64/pkgconfig"'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --enable-application=mail'
       - 'ac_add_options --disable-optimize'
@@ -88,6 +80,7 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    docker_img: 'quay.io/fubar/ubuntu-indexer:0.2.0'
     build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j{workers}'
     plugins:
       - plugin: 'buglink'
