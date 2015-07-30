@@ -23,7 +23,7 @@ defaults:
   job_weight: 1
   build_command: ''   # DXR's default is 'make ...'
   mail_rcpts: fubar@mozilla.com
-  docker_img: 'quay.io/fubar/centos-indexer:0.0.9'
+  docker_img: 'quay.io/fubar/ubuntu-indexer:0.2.1'
   docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
   cross_tree: false
   dxr_plugins:
@@ -40,7 +40,6 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.2.0'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._*'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
@@ -54,7 +53,6 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.2.0'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._*'
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
@@ -80,8 +78,7 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
-    docker_img: 'quay.io/fubar/ubuntu-indexer:0.2.0'
-    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j{workers}'
+    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j4'
     plugins:
       - plugin: 'buglink'
         name: 'github'
