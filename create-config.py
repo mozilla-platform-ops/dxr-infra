@@ -11,7 +11,6 @@ import tempfile
 import yaml
 
 from jinja2 import Environment, FileSystemLoader
-# from pprint import pprint
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 config_file = os.path.join(HERE, 'config.yml')
@@ -71,7 +70,6 @@ if __name__ == '__main__':
     dxr_config = cfg['dxr']
     for i in dxr_config:
         dxr_config[i] = envget(dxr_config, i)
-    # pprint(dxr_config)
 
     name_re = re.compile('[/:]')
     trees = []
@@ -97,11 +95,8 @@ if __name__ == '__main__':
 
         # merge dicts, with tree dict taking precedence
         trees.append(dict(cfg['defaults'], **t))
-    # pprint(trees)
 
     for t in templates:
-        # print template_env.get_template(t).render(trees=trees,
-        #                                           dxr=dxr_config)
         with tempfile.NamedTemporaryFile('w',
                                          dir=os.path.dirname(templates[t]),
                                          delete=False) as tf:
