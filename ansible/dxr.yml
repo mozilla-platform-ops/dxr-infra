@@ -5,9 +5,9 @@
     jenkins_key: /root/.ssh/jenkins_rsa
     environ:
       prod:
-        branch: rust
+        branch: master
       stage:
-        branch: rust
+        branch: master
   roles:
     - admin
     - jenkins-master
