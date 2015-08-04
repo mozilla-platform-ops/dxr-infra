@@ -21,7 +21,7 @@ unified = 8
 EOM
 chown jenkins:jenkins /home/jenkins/.hgrc
 
-git clone --recursive -b es https://github.com/mozilla/dxr
+git clone --recursive https://github.com/mozilla/dxr
 
 env CC=clang CXX=clang++ make -C dxr
 

@@ -41,7 +41,7 @@ cd /builds/dxr-build-env
 curl -L https://s3-us-west-2.amazonaws.com/moz-dxr/clang-3.3.tar.bz2 | tar -xj
 
 # Install DXR
-git clone --recursive -b es https://github.com/mozilla/dxr
+git clone --recursive https://github.com/mozilla/dxr
 
 /bin/env CC=clang CXX=clang++ make -C dxr
 
