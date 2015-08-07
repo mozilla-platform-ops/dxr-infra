@@ -226,42 +226,6 @@
 
 
 - project:
-    name: 'build_fork-hg-git'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/fork-hg-git'
-    subpath: 'build/fork-hg-git'
-    scm: 'hg'
-    hg_revision_type: 'tag'
-    hg_revision: 'tip'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_mapper'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/mapper'
-    subpath: 'build/mapper'
-    scm: 'hg'
-    hg_revision_type: 'tag'
-    hg_revision: 'tip'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
     name: 'build_mozharness'
     is_disabled: False
     url: 'https://hg.mozilla.org/build/mozharness'
@@ -507,24 +471,6 @@
     url: 'https://hg.mozilla.org/build/tools'
     subpath: 'build/tools'
     scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_tooltool'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/tooltool'
-    subpath: 'build/tooltool'
-    scm: 'hg'
-    hg_revision_type: 'tag'
-    hg_revision: 'tip'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'

@@ -112,16 +112,6 @@ trees:
   - name: 'build_compare-locales'
     url: 'https://hg.mozilla.org/build/compare-locales'
 
-  - name: 'build_fork-hg-git'
-    url: 'https://hg.mozilla.org/build/fork-hg-git'
-    hg_revision_type: "tag"
-    hg_revision: "tip"
-
-  - name: 'build_mapper'
-    url: 'https://hg.mozilla.org/build/mapper'
-    hg_revision_type: "tag"
-    hg_revision: "tip"
-
   - name: 'build_mozharness'
     url: 'https://hg.mozilla.org/build/mozharness'
 
@@ -169,11 +159,6 @@ trees:
 
   - name: 'build_tools'
     url: 'https://hg.mozilla.org/build/tools'
-
-  - name: 'build_tooltool'
-    url: 'https://hg.mozilla.org/build/tooltool'
-    hg_revision_type: "tag"
-    hg_revision: "tip"
 
   - name: 'build_tupperware'
     url: 'https://hg.mozilla.org/build/tupperware'
