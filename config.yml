@@ -3,7 +3,7 @@ dxr:
   www_root: '/'
   workers: 4
   default_tree: 'mozilla-central'
-  disabled_plugins: ''
+  disabled_plugins: 'xpidl'
   enabled_plugins: '*'
   es_hosts:
     - http://node47.bunker.scl3.mozilla.com:9200/
