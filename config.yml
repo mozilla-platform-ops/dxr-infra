@@ -155,6 +155,7 @@ trees:
     url: 'https://hg.mozilla.org/build/slave_health'
 
   - name: 'build_talos'
+    ignore_patterns: '*.svg .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     url: 'https://hg.mozilla.org/build/talos'
 
   - name: 'build_tools'
