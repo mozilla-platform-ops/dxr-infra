@@ -2,6 +2,11 @@
 # cf https://github.com/geerlingguy/ansible-role-jenkins
 # or https://github.com/ICTO/ansible-jenkins (for Ubuntu)
 
+- name: create directories
+  file: path={{ item }} state=directory owner=root group=root mode=0755
+  with_items:
+    - /data
+
 - name: ensure curl is installed
   yum: pkg=curl state=installed
 
@@ -35,7 +40,10 @@
   register: jarfile_get
   until: "'OK' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
   retries: 5
-  delay: 10
+  delay: 15
+
+# Credentials used by plugin install need to be managed some how, but
+# secrets in credentials.xml are encrypted with a master secret
 
 # Update Jenkins and install configured plugins.
 - include: plugins.yml
