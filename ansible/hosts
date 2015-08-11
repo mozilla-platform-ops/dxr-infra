@@ -1,4 +1,5 @@
 dxradm.private.scl3.mozilla.com ansible_sudo=true
+dxr-jenkins1.webapp.scl3.mozilla.com ansible_sudo=true
 dxr1.stage.webapp.scl3.mozilla.com ansible_sudo=true
 
 [dxr-builders]
