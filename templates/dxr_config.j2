@@ -16,6 +16,9 @@ es_refresh_interval = {{ dxr.es_refresh_interval }}
 [{{ t.name }}]
 source_folder = {{ t.source_folder }}
 object_folder = {{ t.object_folder }}
+{%- if t.es_index %}
+es_index = {{ t.es_index }}
+{%- endif %}
 {%- if t.disabled_plugins %}
 disabled_plugins = {{ t.disabled_plugins }}
 {%- endif %}

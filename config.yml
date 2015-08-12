@@ -11,7 +11,7 @@ dxr:
     - http://node49.bunker.scl3.mozilla.com:9200/
   es_catalog_replicas: 4
   es_catalog_index: 'dxr_catalog'
-  es_index: 'dxr_hot_{format}_{tree}_{unique}'
+  es_index: 'dxr_cold_{format}_{tree}_{unique}'
   es_alias: 'dxr_{format}_{tree}'
   es_indexing_timeout: 120
   es_refresh_interval: 30
@@ -40,6 +40,7 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
@@ -53,6 +54,7 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
@@ -78,6 +80,7 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    es_index: 'dxr_hot_{format}_{tree}_{unique}'
     build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j4'
     plugins:
       - plugin: 'buglink'
