@@ -42,7 +42,7 @@ trees:
     job_weight: 4
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach mercurial-setup -u && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -56,7 +56,7 @@ trees:
     job_weight: 4
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && python client.py checkout && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    build_command: 'cd $source_folder && python client.py checkout && make clean && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -81,7 +81,7 @@ trees:
     quiet_period: 14400
     job_weight: 4
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
-    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make -j4'
+    build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make clean && make -j4'
     plugins:
       - plugin: 'buglink'
         name: 'github'
