@@ -88,12 +88,6 @@ trees:
         url: 'https://github.com/mozilla/rust/issues/%s'
         regex: '#([0-9]+)'
 
-  - name: 'build_ash-mozharness'
-    url: 'https://hg.mozilla.org/build/ash-mozharness'
-
-  - name: 'build_autoland'
-    url: 'https://hg.mozilla.org/build/autoland'
-
   - name: 'build_braindump'
     url: 'https://hg.mozilla.org/build/braindump'
 
@@ -110,7 +104,7 @@ trees:
     url: 'https://hg.mozilla.org/build/buildbotcustom'
 
   - name: 'build_cloud-tools'
-    url: 'https://hg.mozilla.org/build/cloud-tools'
+    url: 'https://github.com/mozilla/build-cloud-tools'
 
   - name: 'build_compare-locales'
     url: 'https://hg.mozilla.org/build/compare-locales'
@@ -124,29 +118,17 @@ trees:
   - name: 'build_nagios-tools'
     url: 'https://hg.mozilla.org/build/nagios-tools'
 
-  - name: 'build_opsi-package-sources'
-    url: 'https://hg.mozilla.org/build/opsi-package-sources'
-
   - name: 'build_partner-repacks'
     url: 'https://hg.mozilla.org/build/partner-repacks'
 
-  - name: 'build_preproduction'
-    url: 'https://hg.mozilla.org/build/preproduction'
-
   - name: 'build_puppet'
     url: 'https://hg.mozilla.org/build/puppet'
-
-  - name: 'build_puppet-manifests'
-    url: 'https://hg.mozilla.org/build/puppet-manifests'
 
   - name: 'build_relabs-puppet'
     url: 'https://hg.mozilla.org/build/relabs-puppet'
 
   - name: 'build_relengapi'
     url: 'https://hg.mozilla.org/build/relengapi'
-
-  - name: 'build_rpm-sources'
-    url: 'https://hg.mozilla.org/build/rpm-sources'
 
   - name: 'build_serves3'
     url: 'https://hg.mozilla.org/build/serveS3'

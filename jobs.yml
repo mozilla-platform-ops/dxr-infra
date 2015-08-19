@@ -82,38 +82,6 @@
 
 
 - project:
-    name: 'build_ash-mozharness'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/ash-mozharness'
-    subpath: 'build/ash-mozharness'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_autoland'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/autoland'
-    subpath: 'build/autoland'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
     name: 'build_braindump'
     is_disabled: False
     url: 'https://hg.mozilla.org/build/braindump'
@@ -196,9 +164,9 @@
 - project:
     name: 'build_cloud-tools'
     is_disabled: False
-    url: 'https://hg.mozilla.org/build/cloud-tools'
-    subpath: 'build/cloud-tools'
-    scm: 'hg'
+    url: 'https://github.com/mozilla/build-cloud-tools'
+    subpath: 'mozilla/build-cloud-tools'
+    scm: 'git'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -274,22 +242,6 @@
 
 
 - project:
-    name: 'build_opsi-package-sources'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/opsi-package-sources'
-    subpath: 'build/opsi-package-sources'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
     name: 'build_partner-repacks'
     is_disabled: False
     url: 'https://hg.mozilla.org/build/partner-repacks'
@@ -306,42 +258,10 @@
 
 
 - project:
-    name: 'build_preproduction'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/preproduction'
-    subpath: 'build/preproduction'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
     name: 'build_puppet'
     is_disabled: False
     url: 'https://hg.mozilla.org/build/puppet'
     subpath: 'build/puppet'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_puppet-manifests'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/puppet-manifests'
-    subpath: 'build/puppet-manifests'
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
@@ -374,22 +294,6 @@
     is_disabled: False
     url: 'https://hg.mozilla.org/build/relengapi'
     subpath: 'build/relengapi'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_rpm-sources'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/rpm-sources'
-    subpath: 'build/rpm-sources'
     scm: 'hg'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
