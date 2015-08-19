@@ -105,6 +105,7 @@ trees:
 
   - name: 'build_cloud-tools'
     url: 'https://github.com/mozilla/build-cloud-tools'
+    subpath: 'build'
 
   - name: 'build_compare-locales'
     url: 'https://hg.mozilla.org/build/compare-locales'
