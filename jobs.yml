@@ -165,7 +165,7 @@
     name: 'build_cloud-tools'
     is_disabled: False
     url: 'https://github.com/mozilla/build-cloud-tools'
-    subpath: 'build'
+    subpath: 'build/cloud-tools'
     scm: 'git'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
