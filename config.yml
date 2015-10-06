@@ -22,7 +22,7 @@ defaults:
   quiet_period: 3600
   job_weight: 1
   build_command: ''   # DXR's default is 'make ...'
-  mail_rcpts: fubar@mozilla.com
+  mail_rcpts: fubar@mozilla.com erose@mozilla.com
   docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
   docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
   cross_tree: false
