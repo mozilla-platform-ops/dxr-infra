@@ -42,6 +42,7 @@
           revision: "{hg_revision}"             # hg
           revision-type: "{hg_revision_type}"   # hg
           subdir: "{repo_dir}/{subpath}"        # hg
+          disable-changelog: true               # hg
           basedir: "{repo_dir}/{subpath}"       # git
           skip-tag: true                        # git
     builders:
