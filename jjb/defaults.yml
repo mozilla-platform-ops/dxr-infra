@@ -22,7 +22,8 @@
     disabled: "{obj:is_disabled}"
     quiet-period: "{quiet_period}"
     triggers:
-      - pollscm: "{schedule}"
+      - pollscm:
+          cron: "{schedule}"
     properties:
       - heavy-job:
           weight: "{job_weight}"
