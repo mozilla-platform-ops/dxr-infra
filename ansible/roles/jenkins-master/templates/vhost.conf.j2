@@ -1,0 +1,64 @@
+# UserAgents we will normally want to ignore (internal & monitoring) (bug 1010323)
+BrowserMatch ^HTTP-Monitor/ dontlog
+BrowserMatch ^collectd/     dontlog
+
+# Don't log connections from localhost either
+SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
+SetEnvIf Remote_Addr "::1" dontlog
+
+SetEnvIf X-Forwarded-For ^63\.245\.214\.162      infra
+SetEnvIf X-Forwarded-For ^10\.22\.81\.20[89]     infra
+SetEnvIf X-Forwarded-For ^10\.22\.81\.21[0123]   infra
+
+<VirtualHost *:80>
+  ServerName {{ domain }}
+  CustomLog /var/log/httpd/{{ domain }}/access_log proxy env=!dontlog
+  ErrorLog /var/log/httpd/{{ domain }}/error_log
+
+  SetEnvIf SSLSessionID .+ HTTPS=on
+  ProxyRequests Off
+  # needs apache >= 2.2.18
+  #AllowEncodedSlashes NoDecode
+  AllowEncodedSlashes On
+
+  <Location "/jenkins/computer/*/slave-agent.jnlp">
+        Order Deny,Allow
+        Deny from all
+        Allow from env=infra
+  </Location>
+
+  <LocationMatch /{{ jenkins_prefix }}/computer/.*/executors/(.*)>
+        AuthType Basic
+        AuthName "stopping builds requires a Valid User, see #it if you need it"
+        AuthUserFile "/etc/httpd/jenkins-build-user"
+        Require valid-user
+        RequestHeader unset Authorization
+  </LocationMatch>
+
+  <LocationMatch /{{ jenkins_prefix }}/job/.*/build$>
+        AuthType Basic
+        AuthName "/build/ requires a Valid User, see #it if you need it"
+        AuthUserFile "/etc/httpd/jenkins-build-user"
+        Require valid-user
+        RequestHeader unset Authorization
+  </LocationMatch>
+
+  <LocationMatch /{{ jenkins_prefix }}/job/.*/buildWithParameters$>
+        AuthType Basic
+        AuthName "/build/ requires a Valid User, see #it if you need it"
+        AuthUserFile "/etc/httpd/jenkins-build-user"
+        Require valid-user
+        RequestHeader unset Authorization
+  </LocationMatch>
+
+  Header edit Location ^http://{{ ansible_fqdn }}:8080/ https://{{ domain }}/{{ jenkins_prefix }}
+
+  # needs apache >= 2.2.18
+  #ProxyPass /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }} nocanon
+  ProxyPass /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }}
+  ProxyPassReverse /{{ jenkins_prefix }} http://{{ domain }}/{{ jenkins_prefix }}
+  ProxyTimeout 600
+  RequestHeader set X-Forwarded-Proto "https"
+
+</VirtualHost>
+

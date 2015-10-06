@@ -1,0 +1,32 @@
+---
+# java -jar jenkins-cli.jar -i /root/.ssh/jenkins_rsa -s http://localhost:8080/ get-node dxr-processor1.private.scl3.mozilla.com
+#
+# java -jar jenkins-cli.jar -s [JENKINS_URL] create-node [NewNodeName] < xml
+#
+# ansible_hostname
+# ansible_fqdn
+# inventory_hostname
+# inventory_hostname_short
+
+- name: Verify slave nodes
+  command: >
+    java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -i {{jenkins_key }} get-node {{ hostvars[item]['inventory_hostname_short'] }}
+  with_items: groups['dxr-builders']
+  register: get_node
+  ignore_errors: True
+  tags:
+    - debug
+
+- name: debug
+  when: get_node|failed
+  debug: msg="{{ item.item }}"
+  with_items: get_node.results
+  tags:
+    - debug
+
+- name: Create missing slave nodes
+  shell: "echo {{ item.delta }}"
+  when: get_node|failed
+  with_items: get_node.results
+  tags:
+    - debug

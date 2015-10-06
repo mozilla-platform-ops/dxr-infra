@@ -3,15 +3,21 @@
 # or https://github.com/ICTO/ansible-jenkins (for Ubuntu)
 
 - name: create directories
-  file: path={{ item }} state=directory owner=root group=root mode=0755
+  file: path={{ item }}
+        state=directory
+        owner=root
+        group=root
+        mode=0755
   with_items:
     - /data
 
 - name: ensure curl is installed
-  yum: pkg=curl state=installed
+  yum: pkg=curl
+       state=installed
 
 - name: add jenkins yum repo
-  get_url: url="{{ jenkins_repo_url }}" dest=/etc/yum.repos.d/jenkins.repo
+  get_url: url="{{ jenkins_repo_url }}"
+           dest=/etc/yum.repos.d/jenkins.repo
 
 - name: add jenkins key
   rpm_key: key="{{ jenkins_repo_key_url }}" state=present
@@ -19,14 +25,66 @@
 - name: install packages
   yum: pkg={{ item }} state=present
   with_items:
+    - httpd
     - jenkins
     - java-1.8.0-openjdk
+    - logrotate
+
+- name: install httpd.conf file
+  template: src=httpd.conf.j2
+            dest=/etc/httpd/conf/httpd.conf
+  notify: restart httpd
+
+- name: install vhost config
+  template: src=vhost.conf.j2
+            dest=/etc/httpd/conf.d/vhost.conf
+  notify: restart httpd
+
+- name: install welcome.conf
+  template: src=welcome.conf.j2
+            dest=/etc/httpd/conf.d/welcome.conf
+  notify: restart httpd
+
+# Either webdev or sercurity requested that all of our servers have this
+- name: install hostname.conf
+  copy: content="Header always set X-Backend-Server {{ ansible_fqdn }}"
+        dest=/etc/httpd/conf.d/hostname.conf
+
+- name: make apache logdir
+  file: path=/var/log/httpd/{{ domain }}
+        state=directory
+        owner=apache
+        group=root
+        mode=0755
+
+- name: add logrotate config
+  copy: src=logrotate.conf dest=/etc/logrotate.d/httpd
+
+- name: manage httpd service
+  service: name=httpd
+           enabled=yes
+           state=started
+
+- name: make jenkins logdir
+  file: path=/var/log/jenkins
+        state=directory
+        owner=jenkins
+        group=jenkins
+        mode=0755
+
+- name: change jenkins config
+  lineinfile: dest=/etc/sysconfig/jenkins
+              regexp="{{ item.regexp }}"
+              line="{{ item.line }}"
+  with_items:
+    - { regexp: '^JENKINS_ARGS=', line: 'JENKINS_ARGS=--prefix=/{{ jenkins_prefix }}' }
+  notify: restart jenkins
 
 - name: enable jenkins service
   service: name=jenkins state=started enabled=yes
 
 - name: wait for jenkins to start
-  shell: curl --head --silent http://{{ jenkins_hostname }}:8080/cli/
+  shell: curl --head --silent http://localhost:8080/{{ jenkins_prefix }}/cli/
   register: result
   until: result.stdout.find("200 OK") != -1
   retries: "{{ jenkins_connection_retries }}"
@@ -35,8 +93,9 @@
 
 - name: Get the jenkins-cli jarfile from the Jenkins server.
   get_url:
-    url: "http://{{ jenkins_hostname }}:8080/jnlpJars/jenkins-cli.jar"
+    url: "http://localhost:8080/{{ jenkins_prefix }}/jnlpJars/jenkins-cli.jar"
     dest: "{{ jenkins_jar_location }}"
+    force: yes
   register: jarfile_get
   until: "'OK' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
   retries: 5
@@ -47,3 +106,6 @@
 
 # Update Jenkins and install configured plugins.
 - include: plugins.yml
+
+# Configure slave nodes
+- include: slaves.yml

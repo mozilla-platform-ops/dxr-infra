@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slave>
+  <name>{{ ansible_hostname }}</name>
+  <description></description>
+  <remoteFS>{{ jenkins_dir }}</remoteFS>
+  <numExecutors>{{ executors }}</numExecutors>
+  <mode>NORMAL</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.9">
+    <host>{{ ansible_fqdn }}</host>
+    <port>22</port>
+    <credentialsId>{{ jenkins_slave_cred_id }}</credentialsId>
+    <maxNumRetries>0</maxNumRetries>
+    <retryWaitTime>0</retryWaitTime>
+  </launcher>
+  <label></label>
+  <nodeProperties/>
+  <userId>jenkins</userId>
+</slave>
+

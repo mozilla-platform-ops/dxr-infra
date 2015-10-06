@@ -1,0 +1,8 @@
+---
+sshd_port: 22
+jenkins_dir: /data/jenkins
+jenkins_url_prefix: jenkins   # get from jenkins-master
+jenkins_jar_location: /data/jenkins-cli.jar
+executors: 4
+#   jenkins_slave_cred_id 
+#   jenkins_key
