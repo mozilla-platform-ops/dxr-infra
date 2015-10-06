@@ -44,6 +44,7 @@ yum install -y                      \
   tar                               \
   wget                              \
   which                             \
+  jq                                \
   ;
 
 # Install software from this decade for DXR

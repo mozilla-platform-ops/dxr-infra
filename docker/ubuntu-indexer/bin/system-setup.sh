@@ -6,6 +6,7 @@ test `whoami` == 'root';
 # Install deps for DXR and rust
 apt-get update -y
 apt-get install -y      \
+    jq                  \
     clang               \
     libclang-dev        \
     llvm                \

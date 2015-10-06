@@ -21,7 +21,14 @@ unified = 8
 EOM
 chown jenkins:jenkins /home/jenkins/.hgrc
 
-git clone --recursive https://github.com/mozilla/dxr
+# Get current blessed rev
+REV=$(curl -s https://ci.mozilla.org/job/dxr/lastSuccessfulBuild/git/api/json | jq -r '.buildsByBranchName["refs/remotes/origin/master"].revision.SHA1')
+if [[ ${REV} =~ ^[![:xdigit:]{32,40}]$ ]]; then
+    echo "bad dxr rev $REV"
+    exit 1
+fi
+git clone --recursive https://github.com/mozilla/dxr && \
+    (cd dxr && git checkout $REV)
 
 env CC=clang CXX=clang++ make -C dxr
 
