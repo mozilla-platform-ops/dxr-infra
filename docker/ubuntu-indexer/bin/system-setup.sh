@@ -24,6 +24,7 @@ apt-get install -y      \
     libxmu6             \
     libxmu-dev          \
     libgtk-3-dev        \
+    lib32z1-dev         \
     ;
 apt-get build-dep -y clang llvm
 
