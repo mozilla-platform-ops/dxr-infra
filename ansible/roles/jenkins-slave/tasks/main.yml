@@ -28,6 +28,3 @@
            dest={{ jenkins_dir }}/slave.jar
            force=yes
   
-#- name: start slave
-#  command: /usr/bin/java -jar slave.jar chdir=/data/jenkins 
-#  shell: "cd "/data/jenkins" && java -jar slave.jar"
