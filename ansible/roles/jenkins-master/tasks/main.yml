@@ -107,6 +107,3 @@
 
 # Update Jenkins and install configured plugins.
 - include: plugins.yml
-
-# Configure slave nodes
-- include: slaves.yml

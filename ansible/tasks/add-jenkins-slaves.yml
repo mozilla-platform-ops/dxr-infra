@@ -5,13 +5,14 @@
 #   else add_node
 # cannot remove nodes, must do manually
 - name: Create slave config files
-  template: src=slave.j2
+  template: src=jenkins-slave.j2
             dest=/data/slaves/{{ hostvars[item]['inventory_hostname_short'] }}
             owner=root
             group=root
             mode=0600
   with_items: groups['dxr-builders']
   register: slave_configs
+  tags: ['add-slaves']
 
 - name: Verify slave nodes
   shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -i {{jenkins_key }} get-node {{ hostvars[item.item]['inventory_hostname_short'] }} >> /dev/null"
@@ -19,19 +20,16 @@
   with_items: slave_configs.results
   register: get_node
   ignore_errors: True
+  tags: ['add-slaves']
 
 - name: Update missing slave nodes
   shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -i {{jenkins_key }} update-node {{ hostvars[item.item.item]['inventory_hostname_short'] }} < /data/slaves/{{ hostvars[item.item.item]['inventory_hostname_short'] }}"
   when: item.changed and not item.rc != 0
   with_items: get_node.results
+  tags: ['add-slaves']
 
 - name: Create missing slave nodes
   shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -i {{jenkins_key }} create-node {{ hostvars[item.item.item]['inventory_hostname_short'] }} < /data/slaves/{{ hostvars[item.item.item]['inventory_hostname_short'] }}"
   when: item.changed and (item.stderr.find('No such node') != -1)
   with_items: get_node.results
-
-#- name: debug output
-#  debug: msg="{{ item }}"
-#  with_items: get_node.results
-#  tags:
-#    - debug
+  tags: ['add-slaves']

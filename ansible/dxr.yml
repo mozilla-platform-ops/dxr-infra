@@ -25,6 +25,10 @@
     - indexer
     - jenkins-slave
 
+- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+  tasks:
+    - include: tasks/add-jenkins-slaves.yml
+
 - hosts: dxr1.stage.webapp.scl3.mozilla.com
   vars:
     domain: dxr.allizom.org
