@@ -21,9 +21,39 @@
     group: jenkins
     mode: 0755
 
+- name: Read jenkins config
+  shell: cat /var/lib/jenkins/config.xml
+  register: jenkins_config
+  changed_when: False
+  tags:
+    - debug
+
+- name: Login to jenkins with ssh key
+  shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -i {{ jenkins_key }} login"
+  when: '"HudsonPrivateSecurityRealm" in jenkins_config.stdout'
+
+- name: Create temporary password file
+  copy:
+    dest="{{ user_pw_file }}"
+    content="{{ password }}"
+    mode=0600
+  when: '"LDAPSecurityRealm" in jenkins_config.stdout'
+
+- name: Login to jenkins with LDAP
+  shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -noKeyAuth login --username {{ username | mandatory }} --password-file {{ user_pw_file }}"
+  when: '"LDAPSecurityRealm" in jenkins_config.stdout'
+
+- name: Remove temporary password file
+  file: 
+    path="{{ user_pw_file }}"
+    state=absent
+
 - name: Install Jenkins plugins.
   command: >
-    java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -i {{jenkins_key }} install-plugin {{ item }}
+    java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} install-plugin {{ item }}
     creates=/var/lib/jenkins/plugins/{{ item }}.jpi
   with_items: jenkins_plugins
   notify: restart jenkins
+
+- name: Logout of jenkins
+  shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} logout"

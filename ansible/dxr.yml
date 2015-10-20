@@ -1,5 +1,20 @@
 ---
 - hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+  gather_facts: no
+  vars_prompt:
+    - name: "my_username"
+      prompt: "what is your MoCo email address?"
+      private: no
+    - name: "my_password"
+      prompt: "What is your MoCo email password?"
+      private: yes
+  tasks:
+    - set_fact:
+        username: "{{ my_username }}"
+    - set_fact:
+        password: "{{ my_password }}"
+
+- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
   vars:
     domain: dxr.mozilla.org
     jenkins_key: /root/.ssh/jenkins_rsa
