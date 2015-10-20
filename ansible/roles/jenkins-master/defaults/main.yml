@@ -8,10 +8,12 @@ jenkins_connection_retries: 60
 jenkins_prefix: jenkins
 jenkins_jar_location: /data/jenkins-cli.jar
 jenkins_plugins:
+  - audit-trail
+  - envinject
   - docker-build-step
   - git
-  - mercurial
-  - timestamper
   - heavy-job
-  - envinject
   - ldap
+  - mercurial
+  - thinBackup
+  - timestamper
