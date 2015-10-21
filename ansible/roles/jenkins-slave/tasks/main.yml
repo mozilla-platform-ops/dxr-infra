@@ -28,3 +28,9 @@
            dest={{ jenkins_dir }}/slave.jar
            force=yes
   
+- name: Prevent puppet firewall NAT purging
+  copy: dest=/etc/facter/facts.d/local_firewall_purge_disable.yaml
+        src=local_firewall_purge_disable.yaml
+        owner=root
+        group=root
+        mode=0644
