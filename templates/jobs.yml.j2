@@ -1,16 +1,9 @@
-{% for t in trees %}
+---
+{%- for t in trees %}
 - project:
     name: '{{ t.name }}'
     is_disabled: {{ t.disable }}
-    url: '{{ t.url }}'
-    subpath: '{{ t.subpath }}'
-    scm: '{{ t.scm }}'
-{%- if t.hg_revision_type %}
-    hg_revision_type: '{{ t.hg_revision_type }}'
-{%- endif %}
-{%- if t.hg_revision %}
-    hg_revision: '{{ t.hg_revision }}'
-{%- endif %}
+    proj_dir: '{{ t.proj_dir }}'
     schedule: '{{ t.schedule }}'
     quiet_period: {{ t.quiet_period }}
     docker_img: '{{ t.docker_img }}'
@@ -19,13 +12,30 @@
     job_weight: {{ t.job_weight }}
 {%- if t.mozconfig %}
     mozconfig: '{% for m in t.mozconfig %}{{ m }}\n{% endfor %}'
-{%- endif -%}
-{%+ if t.cross_tree %}
-    jobs:
-        - '{name}_tree'
-{%- else %}
-    jobs:
-        - '{name}_index'
 {%- endif %}
+    jobs:
+        - "{name}_index"
 
+- scm:
+    name: '{{ t.name }}_scm'
+    scm:
+{%- for r in t.repos %}
+      - {{ r.name }}
+{%- endfor %}
+{% for r in t.repos %}
+- scm:
+    name: '{{ r.name }}'
+    scm:
+      - {{ r.type }}:
+          url: '{{ r.url }}'
+{%- if r.type == 'hg' %}
+          subdir: '{{ r.subdir }}'
+          revision_type: '{{ r.revision_type }}'
+          revision: '{{ r.revision }}'
+{%- endif %}
+{%- if r.type == 'git' %}
+          basedir: '{{ r.basedir }}'
+          skip-tag: true
+{%- endif %}
 {% endfor %}
+{%- endfor %}

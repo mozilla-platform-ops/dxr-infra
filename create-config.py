@@ -33,6 +33,36 @@ def cleanup_url(url):
     return url
 
 
+def normalize_repo_vars(repo, repo_dir):
+    repo['url'] = cleanup_url(repo['url'])
+    u = urlparse.urlsplit(repo['url'])
+
+    if 'type' not in repo:
+        try:
+            repo['type'] = scm_hosts[u.netloc]
+        except KeyError:
+            print 'Unknown host/SCM type'
+            raise
+
+    if 'dirname' not in repo:
+        repo['dirname'] = u.path.strip('/').split('/')[-1]
+
+    if 'name' not in repo:
+        repo['name'] = "{0}-{1}".format(repo['type'], repo['dirname'])
+
+    if repo['type'] is 'hg':
+        if 'revision' not in repo:
+            repo['revision'] = 'default'
+        if 'revision_type' not in repo:
+            repo['revision_type'] = 'branch'
+        repo['subdir'] = os.path.join(repo_dir, repo['dirname'])
+
+    if repo['type'] is 'git':
+        repo['basedir'] = os.path.join(repo_dir, repo['dirname'])
+
+    return(repo)
+
+
 def envget(dict, key):
     try:
         return os.environ['DXR_' + key.upper()]
@@ -76,22 +106,34 @@ if __name__ == '__main__':
     for t in cfg['trees']:
         if name_re.search(t['name']) is not None:
             raise Exception("Invalid characters ('/:') in name.", t['name'])
-        t['url'] = cleanup_url(t['url'])
-        u = urlparse.urlsplit(t['url'])
-        if 'subpath' not in t:
-            t['subpath'] = u.path.lstrip('/')
 
-        try:
-            t['scm'] = scm_hosts[u.netloc]
-        except KeyError:
-            print 'Unknown host/SCM type'
-            raise
+        if 'proj_dir' not in t:
+            if len(t['repos']) > 1:
+                raise Exception("proj_dir must be set if using multiple repos",
+                                t)
+            else:
+                t['path'] = cfg['defaults']['repo_dir']
+        else:
+            t['path'] = os.path.join(cfg['defaults']['repo_dir'],
+                                     t['proj_dir'])
+
+        for r in t['repos']:
+            if 'url' not in r:
+                raise Exception("Missing or malformed repo URL entry.", r)
+            r = normalize_repo_vars(r, t['path'])
+
+        # awful hack because dirname isn't available before
+        # normalize_repo_vars()
+        if len(t['repos']) == 1:
+            if 'proj_dir' not in t:
+                t['proj_dir'] = t['repos'][0]['dirname']
+            else:
+                t['proj_dir'] = os.path.join(t['proj_dir'],
+                                             t['repos'][0]['dirname'])
 
         # obj_folder deprecated? bug 842547
-        t['object_folder'] = os.path.join('obj', t['subpath'])
-
-        if 'source_folder' not in t:
-            t['source_folder'] = os.path.join('src', t['subpath'])
+        t['object_folder'] = os.path.join('obj', t['proj_dir'])
+        t['source_folder'] = os.path.join('src', t['proj_dir'])
 
         # merge dicts, with tree dict taking precedence
         trees.append(dict(cfg['defaults'], **t))
