@@ -2,13 +2,10 @@
     name: indexer
     description: 'Do not edit this job through the web!'
     repo_dir: '../../../dxr_data'
-    subpath: ''
     is_disabled: false
     concurrent: false
     retry-count: 3
     mozconfig: ''
-    hg_revision: 'default'
-    hg_revision_type: 'branch'
     logrotate:
        daysToKeep: 3
        numToKeep: 20
@@ -16,7 +13,7 @@
        artifactNumToKeep: -1
 
 - job-template:
-    name: '{name}_index'
+    name: "{name}_index"
     project-type: freestyle
     defaults: indexer
     disabled: "{obj:is_disabled}"
@@ -34,36 +31,9 @@
       - inject:
           script-content: |
               test -n '{mozconfig}' || exit 0
-              /bin/echo -e "{mozconfig}" > {repo_dir}/{subpath}/.mozconfig
+              /bin/echo -e "{mozconfig}" > {repo_dir}/{proj_dir}/.mozconfig
     scm:
-      - "{scm}":
-          url: '{url}'
-          revision: "{hg_revision}"             # hg
-          revision-type: "{hg_revision_type}"   # hg
-          subdir: "{repo_dir}/{subpath}"        # hg
-          basedir: "{repo_dir}/{subpath}"       # git
-          skip-tag: true                        # git
-    builders:
-      - docker-run:
-          name: "{name}"
-          docker_img: "{docker_img}"
-          docker_vol: "{docker_vol}"
-
-- job-template:
-    name: '{name}_tree'
-    defaults: indexer
-    disabled: "{obj:is_disabled}"
-    quiet-period: "{quiet_period}"
-    triggers:
-      - timed: "{schedule}"
-    properties:
-      - heavy-job:
-          weight: "{job_weight}"
-    publishers:
-      - email:
-          recipients: "{mail_rcpts}"
-    wrappers:
-      - timestamps
+      - "{name}_scm"
     builders:
       - docker-run:
           name: "{name}"
