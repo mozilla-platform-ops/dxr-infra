@@ -1,14 +1,21 @@
 ---
 - name: create jenkins user
-  user: name=jenkins uid=5507 groups=docker append=yes
+  user: name=jenkins
+        uid=5507
+        groups=docker
+        append=yes
 
 - name: add authorized_keys for jenkins user
   authorized_key: user=jenkins
-                  key_options='from="10.22.75.78"'
+                  key_options='from="10.22.74.155"'
                   key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA4H+yA2xlG0uCqmFOf5KKoEK/W82o6AbhnVixD4LI5Yi/vDi6TjXcZqgMFIQ5JAGiWrPnan2W6SqVapm8Iv1Zzvezr+8s0y3WoKDCKQSM+g3vuwrAZODt8xpOXn3bluHxNdBTwH97itzoHhyhw2C1gEbpxUMKt5Y/2mSU54WhmleXoTl9GtdJTdEQ+76p2b6E6GODIFrRhXBCcnEy3fwSimHxgKAoU6YqrSThqaFYdjIFJr62frQfwPkVN/bGu683lkZIR7x7cMsU11GR8WRHA1oOKpP4zMyhkuEXxI6VTGOu87kC9xKbjTxkbJOk9ZYmXOPOOCtMdDZE9X5o1jNVTQ=="
 
 - name: ensure jenkins directory exists
-  file: path=/data/jenkins state=directory owner=jenkins group=root mode=0755
+  file: path={{ jenkins_dir }}
+        state=directory
+        owner=jenkins
+        group=root
+        mode=0755
 
 - name: install packages
   yum: pkg={{ item }} state=present
@@ -17,8 +24,13 @@
     - curl
 
 - name: download slave.jar
-  get_url: url="http://{{ jenkins_master }}/jnlpJars/slave.jar" dest=/data/jenkins/slave.jar
+  get_url: url="http://{{ jenkins_master }}/{{ jenkins_url_prefix }}/jnlpJars/slave.jar"
+           dest={{ jenkins_dir }}/slave.jar
+           force=yes
   
-#- name: start slave
-#  command: /usr/bin/java -jar slave.jar chdir=/data/jenkins 
-#  shell: "cd "/data/jenkins" && java -jar slave.jar"
+- name: Prevent puppet firewall NAT purging
+  copy: dest=/etc/facter/facts.d/local_firewall_purge_disable.yaml
+        src=local_firewall_purge_disable.yaml
+        owner=root
+        group=root
+        mode=0644

@@ -1,6 +1,22 @@
 ---
-- hosts: dxr-jenkins1.webapp.scl3.mozilla.com
+- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+  gather_facts: no
+  vars_prompt:
+    - name: "my_username"
+      prompt: "what is your MoCo email address?"
+      private: no
+    - name: "my_password"
+      prompt: "What is your MoCo email password?"
+      private: yes
+  tasks:
+    - set_fact:
+        username: "{{ my_username }}"
+    - set_fact:
+        password: "{{ my_password }}"
+
+- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
   vars:
+    domain: dxr.mozilla.org
     jenkins_key: /root/.ssh/jenkins_rsa
   roles:
     - jenkins-master
@@ -16,14 +32,17 @@
         branch: master
   roles:
     - admin
-    - jenkins-master
 
 - hosts: dxr-builders
   vars:
-    jenkins_master: dxradm.private.scl3.mozilla.com:8080
+    jenkins_master: dxr-jenkins1.dmz.scl3.mozilla.com
   roles:
     - indexer
     - jenkins-slave
+
+- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+  tasks:
+    - include: tasks/add-jenkins-slaves.yml
 
 - hosts: dxr1.stage.webapp.scl3.mozilla.com
   vars:

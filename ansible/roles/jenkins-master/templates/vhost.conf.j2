@@ -1,0 +1,30 @@
+# UserAgents we will normally want to ignore (internal & monitoring) (bug 1010323)
+BrowserMatch ^HTTP-Monitor/ dontlog
+BrowserMatch ^collectd/     dontlog
+
+# Don't log connections from localhost either
+SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
+SetEnvIf Remote_Addr "::1" dontlog
+
+<VirtualHost *:80>
+  ServerName {{ domain }}
+  ServerAlias {{ ansible_fqdn }}
+  CustomLog /var/log/httpd/{{ domain }}/access_log proxy env=!dontlog
+  ErrorLog /var/log/httpd/{{ domain }}/error_log
+
+  SetEnvIf SSLSessionID .+ HTTPS=on
+  ProxyRequests Off
+  # needs apache >= 2.2.18
+  #AllowEncodedSlashes NoDecode
+  AllowEncodedSlashes On
+
+  Header edit Location ^http://{{ ansible_fqdn }}:8080/ https://{{ domain }}/{{ jenkins_prefix }}
+
+  # needs apache >= 2.2.18
+  #ProxyPass /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }} nocanon
+  ProxyPass /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }}
+  ProxyPassReverse /{{ jenkins_prefix }} http://{{ domain }}/{{ jenkins_prefix }}
+  ProxyTimeout 600
+  RequestHeader set X-Forwarded-Proto "https"
+
+</VirtualHost>

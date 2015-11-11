@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slave>
+  <name>{{ hostvars[item]['inventory_hostname_short'] }}</name>
+  <description>DXR indexing slave</description>
+  <remoteFS>{{ jenkins_dir }}</remoteFS>
+  <numExecutors>4</numExecutors>
+  <mode>NORMAL</mode>
+  <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.9">
+    <host>{{ hostvars[item]['inventory_hostname'] }}</host>
+    <port>22</port>
+    <credentialsId>{{ jenkins_cred_id }}</credentialsId>
+    <maxNumRetries>0</maxNumRetries>
+    <retryWaitTime>0</retryWaitTime>
+  </launcher>
+  <label></label>
+  <nodeProperties/>
+  <userId>ansible</userId>
+</slave>
