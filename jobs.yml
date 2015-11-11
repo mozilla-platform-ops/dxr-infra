@@ -1,10 +1,8 @@
-
+---
 - project:
     name: 'mozilla-central'
     is_disabled: False
-    url: 'https://hg.mozilla.org/mozilla-central'
-    subpath: 'mozilla-central'
-    scm: 'hg'
+    proj_dir: 'mozilla-central'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -13,15 +11,26 @@
     job_weight: 4
     mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
     jobs:
-        - '{name}_index'
+        - "{name}_index"
 
+- scm:
+    name: 'mozilla-central_scm'
+    scm:
+      - hg-mozilla-central
+
+- scm:
+    name: 'hg-mozilla-central'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/mozilla-central'
+          subdir: '../../../dxr_data/mozilla-central'
+          revision_type: 'branch'
+          revision: 'default'
 
 - project:
     name: 'comm-central'
     is_disabled: False
-    url: 'https://hg.mozilla.org/comm-central'
-    subpath: 'comm-central'
-    scm: 'hg'
+    proj_dir: 'comm-central'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -30,15 +39,26 @@
     job_weight: 4
     mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --enable-application=mail\nac_add_options --disable-optimize\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
     jobs:
-        - '{name}_index'
+        - "{name}_index"
 
+- scm:
+    name: 'comm-central_scm'
+    scm:
+      - hg-comm-central
+
+- scm:
+    name: 'hg-comm-central'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/comm-central'
+          subdir: '../../../dxr_data/comm-central'
+          revision_type: 'branch'
+          revision: 'default'
 
 - project:
     name: 'build-central'
     is_disabled: False
-    url: 'https://hg.mozilla.org/build/'
-    subpath: 'build'
-    scm: 'hg'
+    proj_dir: 'build'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -46,15 +66,225 @@
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
     jobs:
-        - '{name}_tree'
+        - "{name}_index"
 
+- scm:
+    name: 'build-central_scm'
+    scm:
+      - hg-braindump
+      - hg-buildapi
+      - hg-buildbot
+      - hg-buildbot-configs
+      - hg-buildbotcustom
+      - git-cloud-tools
+      - hg-compare-locales
+      - hg-mozharness
+      - hg-mozpool
+      - hg-nagios-tools
+      - hg-partner-repacks
+      - hg-puppet
+      - hg-relabs-puppet
+      - hg-relengapi
+      - hg-serveS3
+      - hg-slaveapi
+      - hg-slave_health
+      - hg-talos
+      - hg-tools
+      - hg-tupperware
+      - hg-twisted
+
+- scm:
+    name: 'hg-braindump'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/braindump'
+          subdir: '../../../dxr_data/build/braindump'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-buildapi'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/buildapi'
+          subdir: '../../../dxr_data/build/buildapi'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-buildbot'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/buildbot'
+          subdir: '../../../dxr_data/build/buildbot'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-buildbot-configs'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/buildbot-configs'
+          subdir: '../../../dxr_data/build/buildbot-configs'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-buildbotcustom'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/buildbotcustom'
+          subdir: '../../../dxr_data/build/buildbotcustom'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'git-cloud-tools'
+    scm:
+      - git:
+          url: 'https://github.com/mozilla/build-cloud-tools'
+          basedir: '../../../dxr_data/build/cloud-tools'
+          skip-tag: true
+
+- scm:
+    name: 'hg-compare-locales'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/compare-locales'
+          subdir: '../../../dxr_data/build/compare-locales'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-mozharness'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/mozharness'
+          subdir: '../../../dxr_data/build/mozharness'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-mozpool'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/mozpool'
+          subdir: '../../../dxr_data/build/mozpool'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-nagios-tools'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/nagios-tools'
+          subdir: '../../../dxr_data/build/nagios-tools'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-partner-repacks'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/partner-repacks'
+          subdir: '../../../dxr_data/build/partner-repacks'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-puppet'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/puppet'
+          subdir: '../../../dxr_data/build/puppet'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-relabs-puppet'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/relabs-puppet'
+          subdir: '../../../dxr_data/build/relabs-puppet'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-relengapi'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/relengapi'
+          subdir: '../../../dxr_data/build/relengapi'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-serveS3'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/serveS3'
+          subdir: '../../../dxr_data/build/serveS3'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-slaveapi'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/slaveapi'
+          subdir: '../../../dxr_data/build/slaveapi'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-slave_health'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/slave_health'
+          subdir: '../../../dxr_data/build/slave_health'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-talos'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/talos'
+          subdir: '../../../dxr_data/build/talos'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-tools'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/tools'
+          subdir: '../../../dxr_data/build/tools'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-tupperware'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/tupperware'
+          subdir: '../../../dxr_data/build/tupperware'
+          revision_type: 'branch'
+          revision: 'default'
+
+- scm:
+    name: 'hg-twisted'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/build/twisted'
+          subdir: '../../../dxr_data/build/twisted'
+          revision_type: 'branch'
+          revision: 'default'
 
 - project:
     name: 'hgcustom_version-control-tools'
     is_disabled: False
-    url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
-    subpath: 'hgcustom/version-control-tools'
-    scm: 'hg'
+    proj_dir: 'hgcustom/version-control-tools'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -62,15 +292,26 @@
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
     jobs:
-        - '{name}_index'
+        - "{name}_index"
 
+- scm:
+    name: 'hgcustom_version-control-tools_scm'
+    scm:
+      - hg-version-control-tools
+
+- scm:
+    name: 'hg-version-control-tools'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
+          subdir: '../../../dxr_data/hgcustom/version-control-tools'
+          revision_type: 'branch'
+          revision: 'default'
 
 - project:
     name: 'rust'
     is_disabled: False
-    url: 'https://github.com/rust-lang/rust'
-    subpath: 'rust-lang/rust'
-    scm: 'git'
+    proj_dir: 'rust-lang/rust'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -78,342 +319,55 @@
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
     jobs:
-        - '{name}_index'
+        - "{name}_index"
 
+- scm:
+    name: 'rust_scm'
+    scm:
+      - git-rust
+
+- scm:
+    name: 'git-rust'
+    scm:
+      - git:
+          url: 'https://github.com/rust-lang/rust'
+          basedir: '../../../dxr_data/rust-lang/rust'
+          skip-tag: true
 
 - project:
-    name: 'build_braindump'
+    name: 'nss'
     is_disabled: False
-    url: 'https://hg.mozilla.org/build/braindump'
-    subpath: 'build/braindump'
-    scm: 'hg'
+    proj_dir: 'nss'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     jobs:
-        - '{name}_index'
+        - "{name}_index"
 
+- scm:
+    name: 'nss_scm'
+    scm:
+      - hg-nss
+      - hg-nspr
 
-- project:
-    name: 'build_buildapi'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/buildapi'
-    subpath: 'build/buildapi'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
+- scm:
+    name: 'hg-nss'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/projects/nss'
+          subdir: '../../../dxr_data/nss/nss'
+          revision_type: 'branch'
+          revision: 'default'
 
-
-- project:
-    name: 'build_buildbot'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/buildbot'
-    subpath: 'build/buildbot'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_buildbot-configs'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/buildbot-configs'
-    subpath: 'build/buildbot-configs'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_buildbotcustom'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/buildbotcustom'
-    subpath: 'build/buildbotcustom'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_cloud-tools'
-    is_disabled: False
-    url: 'https://github.com/mozilla/build-cloud-tools'
-    subpath: 'build/cloud-tools'
-    scm: 'git'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_compare-locales'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/compare-locales'
-    subpath: 'build/compare-locales'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_mozharness'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/mozharness'
-    subpath: 'build/mozharness'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_mozpool'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/mozpool'
-    subpath: 'build/mozpool'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_nagios-tools'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/nagios-tools'
-    subpath: 'build/nagios-tools'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_partner-repacks'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/partner-repacks'
-    subpath: 'build/partner-repacks'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_puppet'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/puppet'
-    subpath: 'build/puppet'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_relabs-puppet'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/relabs-puppet'
-    subpath: 'build/relabs-puppet'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_relengapi'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/relengapi'
-    subpath: 'build/relengapi'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_serves3'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/serveS3'
-    subpath: 'build/serveS3'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_slaveapi'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/slaveapi'
-    subpath: 'build/slaveapi'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_slave_health'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/slave_health'
-    subpath: 'build/slave_health'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_talos'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/talos'
-    subpath: 'build/talos'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_tools'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/tools'
-    subpath: 'build/tools'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_tupperware'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/tupperware'
-    subpath: 'build/tupperware'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
-
-- project:
-    name: 'build_twisted'
-    is_disabled: False
-    url: 'https://hg.mozilla.org/build/twisted'
-    subpath: 'build/twisted'
-    scm: 'hg'
-    schedule: 'H H/4 * * *'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - '{name}_index'
-
+- scm:
+    name: 'hg-nspr'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/projects/nspr'
+          subdir: '../../../dxr_data/nss/nspr'
+          revision_type: 'branch'
+          revision: 'default'
 

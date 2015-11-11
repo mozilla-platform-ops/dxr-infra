@@ -25,7 +25,7 @@ defaults:
   mail_rcpts: fubar@mozilla.com erose@mozilla.com
   docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
   docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-  cross_tree: false
+  repo_dir: '../../../dxr_data'
   dxr_plugins:
     - plugin: 'python'
       python_path: '/builds/dxr-build-env/venv/lib/python2.7/site-packages'
@@ -36,7 +36,8 @@ defaults:
 
 trees:
   - name: 'mozilla-central'
-    url: 'https://hg.mozilla.org/mozilla-central'
+    repos:
+      - url: 'https://hg.mozilla.org/mozilla-central'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
@@ -50,7 +51,8 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'comm-central'
-    url: 'https://hg.mozilla.org/comm-central'
+    repos:
+      - url: 'https://hg.mozilla.org/comm-central'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
@@ -66,17 +68,43 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'build-central'
-    url: 'https://hg.mozilla.org/build/'
-    subpath: 'build'
+    proj_dir: 'build'
     job_weight: 2
     build_command: ''
-    cross_tree: true
+    ignore_patterns: '*.svg .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
+    repos:
+      - url: 'https://hg.mozilla.org/build/braindump'
+      - url: 'https://hg.mozilla.org/build/buildapi'
+      - url: 'https://hg.mozilla.org/build/buildbot'
+      - url: 'https://hg.mozilla.org/build/buildbot-configs'
+      - url: 'https://hg.mozilla.org/build/buildbotcustom'
+      - url: 'https://github.com/mozilla/build-cloud-tools.git'
+        dirname: 'cloud-tools'
+      - url: 'https://hg.mozilla.org/build/compare-locales'
+      - url: 'https://hg.mozilla.org/build/mozharness'
+      - url: 'https://hg.mozilla.org/build/mozpool'
+      - url: 'https://hg.mozilla.org/build/nagios-tools'
+      - url: 'https://hg.mozilla.org/build/partner-repacks'
+      - url: 'https://hg.mozilla.org/build/puppet'
+      - url: 'https://hg.mozilla.org/build/relabs-puppet'
+      - url: 'https://hg.mozilla.org/build/relengapi'
+      - url: 'https://hg.mozilla.org/build/serveS3'
+      - url: 'https://hg.mozilla.org/build/slaveapi'
+      - url: 'https://hg.mozilla.org/build/slave_health'
+      - url: 'https://hg.mozilla.org/build/talos'
+      - url: 'https://hg.mozilla.org/build/tools'
+      - url: 'https://hg.mozilla.org/build/tupperware'
+      - url: 'https://hg.mozilla.org/build/twisted'
 
   - name: 'hgcustom_version-control-tools'
-    url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
+    proj_dir: 'hgcustom'
+    repos:
+      - url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
 
   - name: 'rust'
-    url: 'https://github.com/rust-lang/rust.git'
+    proj_dir: 'rust-lang'
+    repos:
+      - url: 'https://github.com/rust-lang/rust.git'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
@@ -89,68 +117,11 @@ trees:
         url: 'https://github.com/mozilla/rust/issues/%s'
         regex: '#([0-9]+)'
 
-  - name: 'build_braindump'
-    url: 'https://hg.mozilla.org/build/braindump'
-
-  - name: 'build_buildapi'
-    url: 'https://hg.mozilla.org/build/buildapi'
-
-  - name: 'build_buildbot'
-    url: 'https://hg.mozilla.org/build/buildbot'
-
-  - name: 'build_buildbot-configs'
-    url: 'https://hg.mozilla.org/build/buildbot-configs'
-
-  - name: 'build_buildbotcustom'
-    url: 'https://hg.mozilla.org/build/buildbotcustom'
-
-  - name: 'build_cloud-tools'
-    url: 'https://github.com/mozilla/build-cloud-tools'
-    subpath: 'build/cloud-tools'
-
-  - name: 'build_compare-locales'
-    url: 'https://hg.mozilla.org/build/compare-locales'
-
-  - name: 'build_mozharness'
-    url: 'https://hg.mozilla.org/build/mozharness'
-
-  - name: 'build_mozpool'
-    url: 'https://hg.mozilla.org/build/mozpool'
-
-  - name: 'build_nagios-tools'
-    url: 'https://hg.mozilla.org/build/nagios-tools'
-
-  - name: 'build_partner-repacks'
-    url: 'https://hg.mozilla.org/build/partner-repacks'
-
-  - name: 'build_puppet'
-    url: 'https://hg.mozilla.org/build/puppet'
-
-  - name: 'build_relabs-puppet'
-    url: 'https://hg.mozilla.org/build/relabs-puppet'
-
-  - name: 'build_relengapi'
-    url: 'https://hg.mozilla.org/build/relengapi'
-
-  - name: 'build_serves3'
-    url: 'https://hg.mozilla.org/build/serveS3'
-
-  - name: 'build_slaveapi'
-    url: 'https://hg.mozilla.org/build/slaveapi'
-
-  - name: 'build_slave_health'
-    url: 'https://hg.mozilla.org/build/slave_health'
-
-  - name: 'build_talos'
-    ignore_patterns: '*.svg .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    url: 'https://hg.mozilla.org/build/talos'
-
-  - name: 'build_tools'
-    url: 'https://hg.mozilla.org/build/tools'
-
-  - name: 'build_tupperware'
-    url: 'https://hg.mozilla.org/build/tupperware'
-
-  - name: 'build_twisted'
-    url: 'https://hg.mozilla.org/build/twisted'
+  - name: 'nss'
+    proj_dir: 'nss'
+    repos:
+      - url: 'https://hg.mozilla.org/projects/nss'
+      - url: 'https://hg.mozilla.org/projects/nspr'
+    job_weight: 2
+    build_command: 'cd $source_folder && make nss_build_all'
 
