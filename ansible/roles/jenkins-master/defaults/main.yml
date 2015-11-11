@@ -15,5 +15,6 @@ jenkins_plugins:
   - heavy-job
   - ldap
   - mercurial
+  - multiple-scms
   - thinBackup
   - timestamper
