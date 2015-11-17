@@ -32,7 +32,6 @@ defaults:
     - plugin: 'buglink'
       name: 'bugzilla'
       url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=%s'
-      regex: '"(?i)bug\s+#?([0-9]+)"'
 
 trees:
   - name: 'mozilla-central'
