@@ -1,4 +1,6 @@
-#!/bin/bash -ve
+#!/bin/bash
+
+set -ve
 
 ### Check that we are running as root
 test `whoami` == 'root';

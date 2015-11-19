@@ -1,4 +1,4 @@
-FROM quay.io/djmitche/ubuntu-build:0.0.2
+FROM ubuntu:14.04
 MAINTAINER Kendall Libby <klibby@mozilla.com>
 
 # Declare default working folder (override ubuntu-build)

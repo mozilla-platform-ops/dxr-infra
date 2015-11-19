@@ -1,32 +1,46 @@
-#!/bin/bash -ve
+#!/bin/bash
+
+set -ve
 
 ### Check that we are running as root
 test `whoami` == 'root';
 
-# Install deps for DXR and rust
+apt_packages=()
+
+# Dependencies for setup
+apt_packages+=('wget')
+apt_packages+=('python2.7-dev')
+apt_packages+=('python-pip')
+apt_packages+=('python-virtualenv')
+apt_packages+=('curl')
+apt_packages+=('git')
+apt_packages+=('jq')
+
+# Dependencies for DXR
+apt_packages+=('clang')
+apt_packages+=('libclang-dev')
+apt_packages+=('llvm')
+apt_packages+=('llvm-dev')
+apt_packages+=('npm')
+apt_packages+=('nodejs')
+apt_packages+=('nodejs-dev')
+apt_packages+=('nodejs-legacy')
+
+# Dependencies for rust
+apt_packages+=('ccache')
+apt_packages+=('gperf')
+
+# Dependencies for NSS/NSPR
+apt_packages+=('gcc-multilib')
+
 apt-get update -y
-apt-get install -y      \
-    jq                  \
-    clang               \
-    libclang-dev        \
-    llvm                \
-    llvm-dev            \
-    libxslt1-dev        \
-    libyaml-dev         \
-    libz-dev            \
-    freeglut3-dev       \
-    xorg-dev            \
-    gperf               \
-    cmake               \
-    libssl-dev          \
-    libbz2-dev          \
-    libosmesa6-dev      \
-    libxmu6             \
-    libxmu-dev          \
-    libgtk-3-dev        \
-    lib32z1-dev         \
-    ;
+apt-get install -y --force-yes ${apt_packages[@]}
 apt-get build-dep -y clang llvm
+
+# Install deps for mozilla-central
+wget -O bootstrap.py https://hg.mozilla.org/mozilla-central/raw-file/tip/python/mozboot/bin/bootstrap.py
+python2.7 bootstrap.py --application-choice=desktop --no-interactive
+rm -f bootstrap.py
 
 # Install bundleclone extension
 mkdir /builds/dxr-build-env/hgext
