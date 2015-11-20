@@ -33,6 +33,7 @@ apt_packages+=('gperf')
 # Dependencies for NSS/NSPR
 apt_packages+=('gcc-multilib')
 apt_packages+=('zlib1g-dev')
+apt_packages+=('lib32z1-dev')
 
 apt-get update -y
 apt-get install -y --force-yes ${apt_packages[@]}
