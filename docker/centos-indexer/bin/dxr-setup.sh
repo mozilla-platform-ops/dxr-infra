@@ -26,7 +26,7 @@ EOM
 chown jenkins:jenkins /home/jenkins/.hgrc
 
 # Install DXR
-REV=$(curl -s https://ci.mozilla.org/job/dxr/lastSuccessfulBuild/git/api/json | jq -r '.buildsByBranchName["refs/remotes/origin/master"].revision.SHA1')
+REV=$(curl -s https://api.github.com/repos/mozilla/dxr/git/refs/heads/ci | jq -r '.object.sha')
 if [[ ${REV} =~ ^[![:xdigit:]{32,40}]$ ]]; then
     echo "bad dxr rev $REV"
     exit 1

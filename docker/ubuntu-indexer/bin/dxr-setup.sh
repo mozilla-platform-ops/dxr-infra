@@ -24,7 +24,7 @@ EOM
 chown jenkins:jenkins /home/jenkins/.hgrc
 
 # Get current blessed rev
-REV=$(curl -s https://ci.mozilla.org/job/dxr/lastSuccessfulBuild/git/api/json | jq -r '.buildsByBranchName["refs/remotes/origin/master"].revision.SHA1')
+REV=$(curl -s https://api.github.com/repos/mozilla/dxr/git/refs/heads/ci | jq -r '.object.sha')
 if [[ ${REV} =~ ^[![:xdigit:]{32,40}]$ ]]; then
     echo "bad dxr rev $REV"
     exit 1
@@ -32,8 +32,6 @@ fi
 git clone --recursive https://github.com/mozilla/dxr && \
     (cd dxr && git checkout $REV)
 
-#curl -L https://bitbucket.org/pypy/pypy/downloads/pypy-2.6.0-linux64.tar.bz2 | tar -xj
-#virtualenv -p pypy-2.6.0-linux64/bin/pypy venv
 virtualenv venv
 . venv/bin/activate
 
