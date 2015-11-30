@@ -10,11 +10,10 @@ test `whoami` == 'root';
 ### Add jenkins user
 useradd -u 5507 -d /home/jenkins -s /bin/bash -m jenkins;
 
-
 mkdir -p /builds/dxr-build-env/src
 chown -R jenkins:jenkins /builds
 
-# Make mach happy
+# Configure mercurial
 mkdir /home/jenkins/.mozbuild && chown jenkins:jenkins /home/jenkins/.mozbuild
 cat <<EOM > /home/jenkins/.hgrc
 [ui]
@@ -26,20 +25,6 @@ unified = 8
 EOM
 chown jenkins:jenkins /home/jenkins/.hgrc
 
-mkdir -p /etc/mercurial
-cat <<EOF > /etc/mercurial/hgrc
-[trusted]
-users = root, jenkins
-
-[web]
-cacerts = /etc/pki/tls/certs/ca-bundle.crt
-EOF
-
-cd /builds/dxr-build-env
-
-# Hack to install a useful, if old, version of Clang
-curl -L https://s3-us-west-2.amazonaws.com/moz-dxr/clang-3.3.tar.bz2 | tar -xj
-
 # Install DXR
 REV=$(curl -s https://ci.mozilla.org/job/dxr/lastSuccessfulBuild/git/api/json | jq -r '.buildsByBranchName["refs/remotes/origin/master"].revision.SHA1')
 if [[ ${REV} =~ ^[![:xdigit:]{32,40}]$ ]]; then
@@ -49,12 +34,15 @@ fi
 git clone --recursive https://github.com/mozilla/dxr && \
     (cd dxr && git checkout $REV)
 
-/bin/env CC=clang CXX=clang++ make -C dxr
-
 virtualenv-2.7 venv
 . venv/bin/activate
-pip install -r dxr/requirements.txt && \
-    cd dxr && \
+
+# work around until peep functionality rolled into pip, or supports wheels
+pip install -U pip==6.0.8
+
+/bin/env CC=clang CXX=clang++ make -C dxr
+
+cd dxr && \
     python setup.py install && \
     cd - && \
     deactivate

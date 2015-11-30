@@ -1,112 +1,75 @@
 #!/bin/bash -ve
 
-################################### setup.sh ###################################
-
 ### Check that we are running as root
 test `whoami` == 'root';
 
-cat <<EOM >/etc/yum.repos.d/mrepo.repo
-[mrepo-epel-x86_64]
-name=mrepo-epel-x86_64
-baseurl=https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.epel
-
-[mrepo-centos6-x86_64-base]
-name=mrepo-centos6-x86_64-base
-baseurl=https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.centos-base
-
-[mrepo-centos6-x86_64-updates]
-name=mrepo-centos6-x86_64-updates
-baseurl=https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.centos-updates
-
-[mrepo-centos6-x86_64-mozilla]
-name=Mozilla Package Repo - $basearch
-baseurl=https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.mozilla
-EOM
-
 # Install IUS repo for packages from this decade
-#wget -O /tmp/ius-release.rpm http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-14.ius.centos6.noarch.rpm
-#rpm -Uvh /tmp/ius-release.rpm
-#rm /tmp/ius-release.rpm
-#cat /etc/yum.repos.d/*
+yum install -y https://centos6.iuscommunity.org/ius-release.rpm
+rpm --import /etc/pki/rpm-gpg/IUS-COMMUNITY-GPG-KEY
 
-### Install Useful Packages
-# First we update and upgrade to latest versions.
-#yum update -y
+yum_packages=()
 
-# Let's install some goodies, ca-certificates is needed for https with hg.
-# sudo will be required anyway, but let's make it explicit. It nice to have
-# sudo around. We'll also install nano, this is pure bloat I know, but it's
-# useful a text editor.
-yum install -y                      \
-  ca-certificates                   \
-  sudo                              \
-  nano                              \
-  tar                               \
-  wget                              \
-  which                             \
-  jq                                \
-  ;
+# Dependencies for setup
+yum_packages+=('wget')
+yum_packages+=('python27-devel')
+yum_packages+=('python27-pip')
+yum_packages+=('python27-virtualenv')
+yum_packages+=('python27-backports')
+yum_packages+=('curl')
+yum_packages+=('git2u')
+yum_packages+=('jq')
 
-# Install software from this decade for DXR
-yum install -y                      \
-  python27                          \
-  python27-virtualenv               \
-  python27-pip                      \
-  python27-devel                    \
-  python27-backports-ssl_match_hostname \
-  npm                               \
-  ncurses-devel                     \
-  yum-plugin-replace                \
-  ;
+# Dependencies for DXR
+yum_packages+=('clang')
+yum_packages+=('clang-devel')
+yum_packages+=('llvm')
+yum_packages+=('llvm-devel')
+yum_packages+=('npm')
+yum_packages+=('nodejs')
+yum_packages+=('nodejs-devel')
+
+# Dependencies for rust
+yum_packages+=('ccache')
+yum_packages+=('gperf')
+
+# Dependencies for NSS/NSPR
+yum_packages+=('zlib-devel')
+
+yum update -y
+yum install -y ${yum_packages[@]}
 
 # Sadly not available via EPEL or IUS
-wget -O /tmp/mercurial.rpm http://mercurial.selenic.com/release/centos6/RPMS/x86_64/mercurial-3.4.1-0.x86_64.rpm
-rpm -Uvh /tmp/mercurial.rpm
-rm /tmp/mercurial.rpm
+wget -O /tmp/mercurial.rpm https://www.mercurial-scm.org/release/centos6/RPMS/x86_64/mercurial-3.6.1-1.x86_64.rpm
+yum install -y /tmp/mercurial.rpm
+rm -f /tmp/mercurial.rpm
+
+# Install deps for mozilla-central
+wget -O bootstrap.py https://hg.mozilla.org/mozilla-central/raw-file/tip/python/mozboot/bin/bootstrap.py
+python2.7 bootstrap.py --application-choice=desktop --no-interactive
+rm -f bootstrap.py
+
+# Install bundleclone extension
+mkdir /builds/dxr-build-env/hgext
+wget -O /builds/dxr-build-env/hgext/bundleclone.py \
+        https://hg.mozilla.org/hgcustom/version-control-tools/raw-file/default/hgext/bundleclone/__init__.py
+
+mkdir -p /etc/mercurial
+cat <<EOF > /etc/mercurial/hgrc
+[trusted]
+users = root, jenkins
+
+[web]
+cacerts = /etc/ssl/certs/ca-bundle.crt
+
+[extensions]
+bundleclone  = /builds/dxr-build-env/hgext/bundleclone.py
+#prefers = ec2region=us-west-2, stream=revlogv1
+EOF
 
 # Awful hack for GTK3 on Centos6; this is why we should be emulating Releng builds
 curl -L http://tooltool.pvt.build.mozilla.org/build/sha512/68fc56b0fb0cdba629b95683d6649ff76b00dccf97af90960c3d7716f6108b2162ffd5ffcd5c3a60a21b28674df688fe4dabc67345e2da35ec5abeae3d48c8e3 | tar -xJ
 
-# Then let's install all firefox build dependencies, these are extracted from
-# mozboot. See python/mozboot/bin/bootstrap.py in mozilla-central.
-yum install -y                      \
-  autoconf213                       \
-  curl-devel                        \
-  alsa-lib-devel                    \
-  dbus-glib-devel                   \
-  GConf2-devel                      \
-  glibc-static                      \
-  gstreamer-devel                   \
-  gstreamer-plugins-base-devel      \
-  gtk2-devel                        \
-  gtk3-devel                        \
-  libstdc++-static                  \
-  libXt-devel                       \
-  mesa-libGL-devel                  \
-  pulseaudio-libs-devel             \
-  wireless-tools-devel              \
-  yasm                              \
-  ;
-
-# groupinstall is broken for non-mrepo-RHEL repos, so get the missing Dev Tools by hand
-#yum groupinstall -y                 \
-#  "Development Tools"               \
-#  "Development Libraries"           \
-#  "GNOME Software Development"      \
-#  ;
-yum install -y                      \
-  freetype                          \
-  bison                             \
-  flex                              \
-  gettext                           \
-  ;
-
-# Replace git with a recent version
-#yum replace -y git --replace-with git2u
-
 ### Clean up from setup
-# Remove cached packages. Cached package takes up a lot of space and
-# distributing them to workers is wasteful.
 yum clean all
 
 # Remove the setup.sh setup, we don't really need this script anymore, deleting

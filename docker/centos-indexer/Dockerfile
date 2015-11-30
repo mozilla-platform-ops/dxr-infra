@@ -1,11 +1,18 @@
-FROM mrrrgn/releng_base_linux_64_builds
-#FROM            quay.io/mozilla/b2g-build:0.2.9
-#FROM            centos:centos6
+FROM taskcluster/builder
 MAINTAINER      Kendall Libby <klibby@mozilla.com>
+
+# Declare default working folder (override ubuntu-build)
+WORKDIR     /builds/dxr-build-env
 
 # Install system dependencies in a single layer
 ADD         bin                 /builds/dxr-build-env/bin
 RUN         ["/builds/dxr-build-env/bin/system-setup.sh"]
+
+# So that the compilers can find necessary libraries
+# gcc
+ENV         LIBRARY_PATH  /usr/lib/x86_64-linux-gnu
+# clang
+ENV         CPLUS_INCLUDE_PATH /usr/include/c++/4.8:/usr/include/c++/4.8/backward:/usr/include/x86_64-linux-gnu/c++/4.8
 
 ENV         PATH        /builds/dxr-build-env/bin:/builds/dxr-build-env/venv/bin:/builds/dxr-build-env/clang/bin:/tools/gcc-4.7.3-0moz1/bin:$PATH
 env         LD_LIBRARY_PATH=/builds/dxr-build-env/dxr/trilite:/tools/gcc-4.7.3-0moz1/lib64:$LD_LIBRARY_PATH
