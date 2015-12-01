@@ -54,7 +54,6 @@
   cron: name="dxr prod deploy"
         minute="*/5"
         job="/data/prod/dxr-prod/virtualenv/bin/dxr deploy -c /data/prod/dxr.config -b /data/prod -h master -k prod 1>>/var/log/dxr-prod.log"
-        state=absent
 
 - name: create staging deploy cron job
   cron: name="dxr staging deploy"
