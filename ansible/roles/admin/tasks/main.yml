@@ -53,7 +53,7 @@
 - name: create prod deploy cron job
   cron: name="dxr prod deploy"
         minute="*/5"
-        job="/data/prod/dxr-prod/virtualenv/bin/dxr deploy -c /data/prod/dxr.config -b /data/prod -h master -k prod 1>>/var/log/dxr-prod.log"
+        job="/data/prod/dxr-prod/virtualenv/bin/dxr deploy -c /data/prod/dxr.config -b /data/prod -k prod 1>>/var/log/dxr-prod.log"
 
 - name: create staging deploy cron job
   cron: name="dxr staging deploy"
