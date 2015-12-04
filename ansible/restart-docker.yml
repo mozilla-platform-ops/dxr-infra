@@ -1,0 +1,20 @@
+---
+- hosts: dxr-builders
+  tasks:
+    - name: Stop docker
+      service: name=docker
+               state=stopped
+
+    - name: Flush NAT iptables
+      shell: iptables -t nat -F
+
+    - name: Turn down docker0 interface
+      shell: ifconfig docker0 down
+
+    - name: Delete docker0 bridge
+      shell: brctl delbr docker0
+
+    - name: Start docker
+      service: name=docker
+               state=started
+
