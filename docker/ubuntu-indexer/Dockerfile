@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM library/ubuntu@sha256:0ca448cb174259ddb2ae6e213ebebe7590862d522fe38971e1175faedf0b6823
 MAINTAINER Kendall Libby <klibby@mozilla.com>
 
 # Declare default working folder (override ubuntu-build)
