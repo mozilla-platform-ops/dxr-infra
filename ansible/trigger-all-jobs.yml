@@ -1,0 +1,49 @@
+---
+- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+  vars:
+    jenkins_key: /root/.ssh/jenkins_rsa
+  vars_prompt:
+    - name: "ldap_username"
+      prompt: "what is your MoCo email address?"
+      private: no
+    - name: "ldap_password"
+      prompt: "What is your MoCo email password?"
+      private: yes
+
+  tasks:
+    - name: Read jenkins config
+      shell: cat /var/lib/jenkins/config.xml
+      register: jenkins_config
+      changed_when: False
+
+    - name: Login to jenkins with ssh key
+      shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -i {{ jenkins_key }} login"
+      when: '"HudsonPrivateSecurityRealm" in jenkins_config.stdout'
+
+    - name: Create temporary password file
+      copy:
+        dest="{{ user_pw_file }}"
+        content="{{ ldap_password }}"
+        mode=0600
+      when: '"LDAPSecurityRealm" in jenkins_config.stdout'
+
+    - name: Login to jenkins with LDAP
+      shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} -noKeyAuth login --username {{ ldap_username | mandatory }} --password-file {{ user_pw_file }}"
+      when: '"LDAPSecurityRealm" in jenkins_config.stdout'
+
+    - name: Remove temporary password file
+      file:
+        path="{{ user_pw_file }}"
+        state=absent
+
+    - name: List jenkins jobs
+      shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} list-jobs"
+      register: job_list
+
+    - name: Trigger build
+      shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} build {{ item }}"
+      with_items: "{{ job_list.stdout_lines }}"
+
+    - name: Logout of jenkins
+      shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} logout"
+
