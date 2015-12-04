@@ -62,7 +62,7 @@ trees:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --enable-application=mail'
-      - 'ac_add_options --enable-application=calendar'
+      - 'ac_add_options --enable-calendar'
       - 'ac_add_options --disable-optimize'
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
