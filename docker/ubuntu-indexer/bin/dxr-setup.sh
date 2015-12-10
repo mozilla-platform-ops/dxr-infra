@@ -33,14 +33,7 @@ git clone --recursive https://github.com/mozilla/dxr && \
     (cd dxr && git checkout $REV)
 
 virtualenv venv
-. venv/bin/activate
-
-env CC=clang CXX=clang++ make -C dxr
-
-cd dxr && \
-    python setup.py install && \
-    cd - && \
-    deactivate
+env VIRTUAL_ENV=`pwd`/venv CC=clang CXX=clang++ make -C dxr
 
 # Remove this script
 rm $0; echo "Deleted $0";
