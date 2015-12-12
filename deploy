@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import os
+import sys
+
+HERE = os.path.abspath(os.path.dirname(__file__))
+
+CATEGORIES = {
+    'deploy': {
+        'short': 'Deployment',
+        'long': 'Deploy changes to remote servers',
+        'priority': 80,
+    },
+    'jenkins': {
+        'short': 'Jenkins commands',
+        'long': 'Common actions involving Jenkins',
+        'priority': 60,
+    },
+    'docker': {
+        'short': 'Docker commands',
+        'long': 'Common actions involving Docker',
+        'priority': 50,
+    }
+}
+
+
+def main(args):
+    if 'VIRTUAL_ENV' not in os.environ:
+        activate = os.path.join(HERE, 'venv', 'bin', 'activate_this.py')
+        execfile(activate, dict(__file__=activate))
+        sys.executable = os.path.join(HERE, 'venv', 'bin', 'python')
+
+    import imp
+    from mach.main import Mach
+
+    m = Mach(os.getcwd())
+
+    for category, meta in CATEGORIES.items():
+        m.define_category(category, meta['short'], meta['long'],
+                          meta['priority'])
+
+    sys.path.append(os.path.join(HERE, 'lib'))
+    f, fn, desc = imp.find_module('deploy_mach_commands')
+    imp.load_module('deploy_mach_commands', f, fn, desc)
+
+    return m.run(args)
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))
