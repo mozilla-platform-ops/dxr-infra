@@ -67,5 +67,4 @@ def deploy_trigger_build(jobs, verbosity=0):
 
 def deploy_trigger_all(verbosity=0):
     """Schedule all Jenkins jobs to run."""
-    # return run_playbook('trigger-all-jobs', verbosity=verbosity)
-    print "trigger all!"
+    return run_playbook('trigger-all-jobs', verbosity=verbosity)
