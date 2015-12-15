@@ -10,7 +10,8 @@ import os
 from pipes import quote
 import subprocess
 
-ROOT = os.path.abspath(os.path.dirname(__file__))
+HERE = os.path.abspath(os.path.dirname(__file__))
+ROOT = os.path.join(HERE, '..')
 ANSIBLE = os.path.join(ROOT, 'ansible')
 DOCKER = os.path.join(ROOT, 'docker')
 
