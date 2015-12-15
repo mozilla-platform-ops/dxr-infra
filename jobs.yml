@@ -11,7 +11,7 @@
     job_weight: 4
     mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
     jobs:
-        - "{name}_index"
+        - "{name}"
 
 - scm:
     name: 'mozilla-central_scm'
@@ -39,7 +39,7 @@
     job_weight: 4
     mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --enable-application=mail\nac_add_options --enable-calendar\nac_add_options --disable-optimize\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
     jobs:
-        - "{name}_index"
+        - "{name}"
 
 - scm:
     name: 'comm-central_scm'
@@ -66,7 +66,7 @@
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
     jobs:
-        - "{name}_index"
+        - "{name}"
 
 - scm:
     name: 'build-central_scm'
@@ -292,7 +292,7 @@
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
     jobs:
-        - "{name}_index"
+        - "{name}"
 
 - scm:
     name: 'hgcustom_version-control-tools_scm'
@@ -319,7 +319,7 @@
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
     jobs:
-        - "{name}_index"
+        - "{name}"
 
 - scm:
     name: 'rust_scm'
@@ -345,7 +345,7 @@
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
     jobs:
-        - "{name}_index"
+        - "{name}"
 
 - scm:
     name: 'nss_scm'
