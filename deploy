@@ -43,8 +43,8 @@ def main(args):
                           meta['priority'])
 
     sys.path.append(os.path.join(HERE, 'lib'))
-    f, fn, desc = imp.find_module('deploy_mach_commands')
-    imp.load_module('deploy_mach_commands', f, fn, desc)
+    f, fn, desc = imp.find_module('mach_commands')
+    imp.load_module('mach_commands', f, fn, desc)
 
     return m.run(args)
 
