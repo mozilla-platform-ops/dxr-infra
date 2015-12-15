@@ -67,7 +67,7 @@ class DeployCommands(object):
                      help='How verbose to be with output (default: INFO)')
     @CommandArgument('jobs', nargs='*',
                      help='Job configuration(s) to test')
-    def test_config(self, jobs, log_level):
+    def test_job(self, jobs, log_level):
         from jjb import jjb_test_job_config as test_job_config
         return test_job_config(jobs, log_level=log_level)
 
