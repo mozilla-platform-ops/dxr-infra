@@ -1,3 +1,4 @@
 notes.txt
 venv
 credentials
+*.pyc

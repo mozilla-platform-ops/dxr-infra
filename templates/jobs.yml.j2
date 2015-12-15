@@ -14,7 +14,7 @@
     mozconfig: '{% for m in t.mozconfig %}{{ m }}\n{% endfor %}'
 {%- endif %}
     jobs:
-        - "{name}_index"
+        - "{name}"
 
 - scm:
     name: '{{ t.name }}_scm'

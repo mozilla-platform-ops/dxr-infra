@@ -13,10 +13,16 @@ import yaml
 from jinja2 import Environment, FileSystemLoader
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-config_file = os.path.join(HERE, 'config.yml')
+ROOT = os.path.join(HERE, '..')
+TEMPLATE_DIR = os.path.join(ROOT, 'templates')
+config_file = os.path.join(ROOT, 'config.yml')
 
+TEMPLATES = {
+    'dxr_config.j2': os.path.join(ROOT, 'dxr.config'),
+    'jobs.yml.j2': os.path.join(ROOT, 'jobs.yml'),
+}
 
-scm_hosts = {
+SCM_HOSTS = {
     'hg.mozilla.org': 'hg',
     'git.mozilla.org': 'git',
     'github.com': 'git',
@@ -39,7 +45,7 @@ def normalize_repo_vars(repo, repo_dir):
 
     if 'type' not in repo:
         try:
-            repo['type'] = scm_hosts[u.netloc]
+            repo['type'] = SCM_HOSTS[u.netloc]
         except KeyError:
             print 'Unknown host/SCM type'
             raise
@@ -70,42 +76,57 @@ def envget(dict, key):
         return dict[key]
 
 
-if __name__ == '__main__':
+def read_config(file):
+    try:
+        f = open(file, 'r')
+        config = yaml.safe_load(f)
+    except IOError as e:
+        print "I/O error({0}): {1}".format(e.errno, e.strerror)
+    finally:
+        f.close()
+    return(config)
+
+
+def write_config_files(trees, dxr_config):
+    template_env = Environment(
+        loader=FileSystemLoader(TEMPLATE_DIR),
+        keep_trailing_newline=True,
+        lstrip_blocks=True,
+        trim_blocks=False,
+    )
+
+    for t in TEMPLATES:
+        print "Writing {0}".format(os.path.basename(TEMPLATES[t]))
+        with tempfile.NamedTemporaryFile('w', dir=ROOT, delete=False) as tf:
+            tf.write(template_env.get_template(t).render(trees=trees,
+                                                         dxr=dxr_config))
+            tempname = tf.name
+        os.rename(tempname, TEMPLATES[t])
+
+
+def check_tree_name(tree):
+    name_re = re.compile('[/:]')
+    if name_re.search(tree['name']) is not None:
+        raise Exception("Invalid characters ('/:') in name.", tree['name'])
+
+
+def main():
     if 'VIRTUAL_ENV' not in os.environ:
         activate = os.path.join(HERE, 'venv', 'bin', 'activate_this.py')
         execfile(activate, dict(__file__=activate))
         sys.executable = os.path.join(HERE, 'venv', 'bin', 'python2.7')
         os.environ['VIRTUAL_ENV'] = os.path.join(HERE, 'venv')
 
-    template_env = Environment(
-        loader=FileSystemLoader(os.path.join(HERE, 'templates')),
-        keep_trailing_newline=True,
-        lstrip_blocks=True,
-        trim_blocks=False,
-    )
-    templates = {
-        'dxr_config.j2': os.path.join(HERE, 'dxr.config'),
-        'jobs.yml.j2': os.path.join(HERE, 'jobs.yml'),
-    }
-
-    try:
-        f = open(config_file, 'r')
-        cfg = yaml.safe_load(f)
-    except IOError as e:
-        print "I/O error({0}): {1}".format(e.errno, e.strerror)
-    finally:
-        f.close()
+    cfg = read_config(config_file)
 
     # override defaults with ENV
     dxr_config = cfg['dxr']
     for i in dxr_config:
         dxr_config[i] = envget(dxr_config, i)
 
-    name_re = re.compile('[/:]')
     trees = []
     for t in cfg['trees']:
-        if name_re.search(t['name']) is not None:
-            raise Exception("Invalid characters ('/:') in name.", t['name'])
+        check_tree_name(t)
 
         if 'proj_dir' not in t:
             if len(t['repos']) > 1:
@@ -138,11 +159,7 @@ if __name__ == '__main__':
         # merge dicts, with tree dict taking precedence
         trees.append(dict(cfg['defaults'], **t))
 
-    for t in templates:
-        with tempfile.NamedTemporaryFile('w',
-                                         dir=os.path.dirname(templates[t]),
-                                         delete=False) as tf:
-            tf.write(template_env.get_template(t).render(trees=trees,
-                                                         dxr=dxr_config))
-            tempname = tf.name
-        os.rename(tempname, templates[t])
+    write_config_files(trees, dxr_config)
+
+if __name__ == '__main__':
+    sys.exit(main())

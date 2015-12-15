@@ -1,5 +1,6 @@
 ---
 - hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+  gather_facts: no
   vars:
     jenkins_key: /root/.ssh/jenkins_rsa
   vars_prompt:
@@ -39,10 +40,16 @@
     - name: List jenkins jobs
       shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} list-jobs"
       register: job_list
+      when: job_provided is undefined
 
     - name: Trigger build
+      shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} build {{ job_provided }}"
+      when: job_provided is defined
+
+    # Hack: if job_list isn't set, supply an empty default to skip the task
+    - name: Trigger all jobs
       shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} build {{ item }}"
-      with_items: "{{ job_list.stdout_lines }}"
+      with_items: "{{ job_list.stdout_lines | default([])}}"
 
     - name: Logout of jenkins
       shell: "java -jar {{ jenkins_jar_location }} -s http://localhost:8080/{{jenkins_prefix }} logout"
