@@ -59,3 +59,36 @@ class DeployCommands(object):
     def trigger_all(self, verbosity=None):
         from deploy import deploy_trigger_all as trigger_all
         return trigger_all(verbosity=verbosity)
+
+    @Command('test-job', category='jenkins',
+             description='Test Jenkins job(s) config')
+    @CommandArgument('--log_level', nargs='?', type=str, default='INFO',
+                     choices=['INFO', 'WARNING', 'ERROR', 'CRITICAL', 'DEBUG'],
+                     help='How verbose to be with output (default: INFO)')
+    @CommandArgument('jobs', nargs='*',
+                     help='Job configuration(s) to test')
+    def test_config(self, jobs, log_level):
+        from jjb import jjb_test_job_config as test_job_config
+        return test_job_config(jobs, log_level=log_level)
+
+    @Command('update-job', category='jenkins',
+             description='Update Jenkins job(s)')
+    @CommandArgument('--log_level', nargs='?', type=str, default='INFO',
+                     choices=['INFO', 'WARNING', 'ERROR', 'CRITICAL', 'DEBUG'],
+                     help='How verbose to be with output (default: INFO)')
+    @CommandArgument('jobs', nargs='*',
+                     help='Job(s) to update')
+    def update_job(self, jobs, log_level):
+        from jjb import jjb_update_job_config as update_job_config
+        return update_job_config(jobs, log_level=log_level)
+
+    @Command('delete-job', category='jenkins',
+             description='Delete Jenkins job')
+    @CommandArgument('--log_level', nargs='?', type=str, default='INFO',
+                     choices=['INFO', 'WARNING', 'ERROR', 'CRITICAL', 'DEBUG'],
+                     help='How verbose to be with output (default: INFO)')
+    @CommandArgument('jobs', nargs='*',
+                     help='Job(s) to delete')
+    def delete_job(self, jobs, log_level):
+        from jjb import jjb_delete_job_config as delete_job_config
+        return delete_job_config(jobs, log_level=log_level)
