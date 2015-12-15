@@ -56,14 +56,13 @@ def deploy_restart_builder(node, verbosity=0):
                         verbosity=verbosity)
 
 
-def deploy_trigger_build(jobs, verbosity=0):
-    """Schedule indexing jobs on Jenkins."""
-    extra = {'jobs': jobs}
-    # return run_playbook('trigger-jobs', extra_vars=extra,
-    #                     verbosity=verbosity)
-    print "trigger jobs: {0}".format(extra['jobs'])
+def deploy_trigger_job(job, verbosity=0):
+    """Schedule an indexing job on Jenkins."""
+    extra = {'job_provided': job}
+    return run_playbook('trigger-jobs', extra_vars=extra,
+                        verbosity=verbosity)
 
 
-def deploy_trigger_all(verbosity=0):
+def deploy_trigger_all_jobs(verbosity=0):
     """Schedule all Jenkins jobs to run."""
-    return run_playbook('trigger-all-jobs', verbosity=verbosity)
+    return run_playbook('trigger-jobs', verbosity=verbosity)

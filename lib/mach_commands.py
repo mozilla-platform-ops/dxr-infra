@@ -42,23 +42,23 @@ class DeployCommands(object):
         from deploy import deploy_restart_builder as restart_builder
         return restart_builder(node, verbosity=verbosity)
 
-#    @Command('trigger-build', category='deploy',
-#             description='Schedule jenkins index run')
-#    @CommandArgument('jobs', nargs='*',
-#                     help='Jobs to schedule')
-#    @CommandArgument('--verbosity', type=int,
-#                     help='How verbose to be with output')
-#    def trigger_build(self, jobs, verbosity=None):
-#        from deploy import deploy_trigger_build as trigger_build
-#        return trigger_build(jobs, verbosity=verbosity)
+    @Command('trigger-job', category='jenkins',
+             description='Schedule a Jenkins job to run')
+    @CommandArgument('job',
+                     help='Jenkins job to schedule')
+    @CommandArgument('--verbosity', type=int,
+                     help='How verbose to be with output')
+    def trigger_job(self, job, verbosity=None):
+        from deploy import deploy_trigger_job as trigger_job
+        return trigger_job(job, verbosity=verbosity)
 
-    @Command('trigger-all', category='deploy',
+    @Command('trigger-all-jobs', category='jenkins',
              description='Schedule all Jenkins jobs to run')
     @CommandArgument('--verbosity', type=int,
                      help='How verbose to be with output')
-    def trigger_all(self, verbosity=None):
-        from deploy import deploy_trigger_all as trigger_all
-        return trigger_all(verbosity=verbosity)
+    def trigger_all_jobs(self, verbosity=None):
+        from deploy import deploy_trigger_all_jobs as trigger_all_jobs
+        return trigger_all_jobs(verbosity=verbosity)
 
     @Command('test-job', category='jenkins',
              description='Test Jenkins job(s) config')
