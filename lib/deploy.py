@@ -25,7 +25,6 @@ def run_playbook(name, limit_vars=None, extra_vars=None, verbosity=0):
     args = [
         'ansible-playbook',
         '-i', os.path.join(ANSIBLE, 'hosts'),
-        '-f', '20',
         '%s.yml' % name,
     ]
     if limit_vars:
