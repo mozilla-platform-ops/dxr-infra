@@ -17,7 +17,8 @@ DOCKER = os.path.join(ROOT, 'docker')
 logger = logging.getLogger(__name__)
 
 
-def run_playbook(name, extra_vars=None, verbosity=0):
+def run_playbook(name, limit_vars=None, extra_vars=None, verbosity=0):
+    limit_vars = limit_vars or {}
     extra_vars = extra_vars or {}
 
     args = [
@@ -25,8 +26,11 @@ def run_playbook(name, extra_vars=None, verbosity=0):
         '-i', os.path.join(ANSIBLE, 'hosts'),
         '-f', '20',
         '%s.yml' % name,
-        '--extra-vars', json.dumps(extra_vars),
     ]
+    if limit_vars:
+        args.extend(['-l', limit_vars])
+    if extra_vars:
+        args.extend(['--extra-vars', json.dumps(extra_vars)])
     if verbosity:
         args.append('-%s' % ('v' * verbosity))
 
@@ -47,10 +51,9 @@ def deploy_update_config(verbosity=0):
 
 def deploy_restart_builder(node, verbosity=0):
     """Restart docker on a builder node."""
-    extra = {'node': node}
-    # return run_playbook('restart-builder', extra_vars=extra,
-    #                     verbosity=verbosity)
-    print "restart builder on {0}".format(extra['node'])
+    limit = node
+    return run_playbook('restart-builder', limit_vars=limit,
+                        verbosity=verbosity)
 
 
 def deploy_trigger_build(jobs, verbosity=0):
