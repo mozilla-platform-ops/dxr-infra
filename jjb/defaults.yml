@@ -13,7 +13,7 @@
        artifactNumToKeep: -1
 
 - job-template:
-    name: "{name}_index"
+    name: "{name}"
     project-type: freestyle
     defaults: indexer
     disabled: "{obj:is_disabled}"
