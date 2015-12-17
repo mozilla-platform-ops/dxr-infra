@@ -5,7 +5,7 @@ jenkins_repo_url: http://pkg.jenkins-ci.org/redhat/jenkins.repo
 jenkins_repo_key_url: http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 jenkins_connection_delay: 5
 jenkins_connection_retries: 60
-jenkins_prefix: jenkins
+jenkins_prefix: ""
 jenkins_jar_location: /data/jenkins-cli.jar
 jenkins_plugins:
   - audit-trail

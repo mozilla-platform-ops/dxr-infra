@@ -16,7 +16,7 @@
 
 - hosts: dxr-jenkins1.dmz.scl3.mozilla.com
   vars:
-    domain: dxr.mozilla.org
+    domain: jenkins-dxr.mozilla.org
     jenkins_key: /root/.ssh/jenkins_rsa
   roles:
     - jenkins-master
