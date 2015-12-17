@@ -13,18 +13,18 @@ SetEnvIf Remote_Addr "::1" dontlog
   ErrorLog /var/log/httpd/{{ domain }}/error_log
 
   SetEnvIf SSLSessionID .+ HTTPS=on
-  ProxyRequests Off
+
   # needs apache >= 2.2.18
   #AllowEncodedSlashes NoDecode
   AllowEncodedSlashes On
 
-  Header edit Location ^http://{{ ansible_fqdn }}:8080/ https://{{ domain }}/{{ jenkins_prefix }}
-
-  # needs apache >= 2.2.18
-  #ProxyPass /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }} nocanon
-  ProxyPass /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }}
-  ProxyPassReverse /{{ jenkins_prefix }} http://{{ domain }}/{{ jenkins_prefix }}
-  ProxyTimeout 600
+  ProxyPass /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }} nocanon
+  ProxyPassReverse /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }}
+  ProxyRequests Off
   RequestHeader set X-Forwarded-Proto "https"
 
+  <Proxy http://localhost:8080/*>
+    Order deny,allow
+    Allow from all
+  </Proxy>
 </VirtualHost>
