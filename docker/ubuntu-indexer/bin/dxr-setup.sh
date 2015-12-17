@@ -32,6 +32,7 @@ fi
 git clone --recursive https://github.com/mozilla/dxr && \
     (cd dxr && git checkout $REV)
 
+#export PATH=/usr/lib/llvm-3.5/bin/:${PATH}
 virtualenv venv
 env VIRTUAL_ENV=`pwd`/venv CC=clang CXX=clang++ make -C dxr
 
