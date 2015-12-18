@@ -111,12 +111,6 @@ def check_tree_name(tree):
 
 
 def main():
-    if 'VIRTUAL_ENV' not in os.environ:
-        activate = os.path.join(HERE, 'venv', 'bin', 'activate_this.py')
-        execfile(activate, dict(__file__=activate))
-        sys.executable = os.path.join(HERE, 'venv', 'bin', 'python2.7')
-        os.environ['VIRTUAL_ENV'] = os.path.join(HERE, 'venv')
-
     cfg = read_config(config_file)
 
     # override defaults with ENV
