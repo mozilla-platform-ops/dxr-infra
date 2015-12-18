@@ -44,6 +44,11 @@ wget -O bootstrap.py https://hg.mozilla.org/mozilla-central/raw-file/tip/python/
 python2.7 bootstrap.py --application-choice=desktop --no-interactive
 rm -f bootstrap.py
 
+# Dependencies for rust crates
+wget -O rustup.sh https://static.rust-lang.org/rustup.sh
+bash rustup.sh --yes
+rm -f rustup.sh
+
 # Install bundleclone extension
 mkdir /builds/dxr-build-env/hgext
 wget -O /builds/dxr-build-env/hgext/bundleclone.py \
