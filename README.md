@@ -10,58 +10,60 @@ This repo contains:
  - Tools to generate the running environment and configurations for the above
 
 ## Prerequisites and setup
-- docker/boot2docker config change to increase disk space / image size - TBD if still required
-- credentials for JJB and docker
+- Docker-toolbox or equiv for testing and updating Docker images
+- MoCo LDAP account and SSH access for deploys
+- Jenkins credentials for managing jobs
 
-## Usage
+## `deploy` Usage
+The `deploy` script is the main entry point for updating configuration files, managing jobs, and deploying changes to the infrastructure.  
 
-### Using the Docker images to test builds
-**TODO: Review and update**
+### Regenerate DXR and Jenkins jobs configs
+Running `deploy update-config` will read in `config.yml` and output new versions of `dxr.config` and `jobs.xml`. 
 
-- fork repo
-- add tree to config.yml
-    - restrictions: tree names can't contain "[:/]" due to Elasticsearch and jenkins-job-builder internals
-- run `create-config.py` to generate new `dxr.config` and `jobs.yml` files
-- build and run docker image
--- edit `dxr.config` in running image and add tree entry from above
--- change Elasticsearch settings to point at local instance
-- index the new tree
-- commit any changes and submit a PR
+
+### Deploy infrastructure changes
+Running `deploy dxrmo` will run the `deploy-dxrmo.yml` Ansible playbook, which manages the web servers, Jenkins server, build nodes, and the admin node. It also updates the `dxr.config` file used by the webheads.
+
+> Deploying requires a MoCo LDAP account and SSH access to the nodes.
+
+### Managing Jenkins build jobs
+The deploy script has four commands for managing build jobs:
+
+ - `deploy test-job [job ...]` will check for errors and output the Jenkins job XML for the given jobs (or all jobs if none specified).
+ - `deploy update-job [job ...]` will update the named jobs (or all if none specified) in Jenkins
+ - `deploy trigger-job <job>` will schedule a build of the specified job
+ - `deploy trigger-all-jobs` will schedule a build of all jobs
+ - `deploy delete-job <job>` will remove the specified job from Jenkins (but will not remove an existing index on dxr.m.o)
+
+> Managing Jenkins jobs requires a MoCo LDAP account, SSH access to the nodes, and Jenkins access.
 
 ### Managing Docker images
 
- - Add a new image: TBA
  - Building or updating and image: `cd docker && ./build <image>`
  - Publishing an image: `docker push $(cat REGISTRY)/<image>/$(cat <image>/VERSION)`
 
-### Using Ansible to manage the infrastructure
-- Update `dxr.config` on production and staging web heads: `cd ansible && ansible-playbook dxr.yml -i hosts -l dxradm*`
+## Adding a new tree
+**TODO: Review and update**
 
-### Using jenkins-job-builder to manage Jenkins
+- fork repo
+- add tree to `config.yml`
+>restrictions: tree names can't contain "[:/]" due to Elasticsearch and jenkins-job-builder internals
 
- - Run jenkins-job in test mode to verify output, supplying the tree to test:
-`jenkins-jobs --conf credentials/jjb.ini test jjb/defaults.yml:jjb/jobs.yml newtree_index`
-
-
- - Update Jenkins with the new job: `jenkins-jobs --conf credentials/jjb.ini update jjb/defaults.yml:jjb/jobs.yml newtree_index`
-
- - Update all jobs: `jenkins-jobs --conf credentials/jjb.ini update jjb/defaults.yml:jjb/jobs.yml`
-
- - Delete a Jenkins job: `jenkins-jobs --conf credentials/jjb.ini delete jjb/defaults.yml:jjb/jobs.yml newtree_index`
+- run `deploy update-config` to generate new `dxr.config` and `jobs.yml` files
+- build and run docker image
+- copy `dxr.config` into running image
+- change Elasticsearch settings to point at local instance
+- run `./bin/index.sh <tree>` in the running image to build the tree
+- commit any changes and submit a PR
 
 
 
 ## Troubleshooting
+TBD!
 
-TODO: 
+Feel free to ask for help in **#vcs** on irc.mozilla.org!
 
-## Contributing
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
 
 ## License
 
