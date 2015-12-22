@@ -39,6 +39,7 @@ The deploy script has four commands for managing build jobs:
 
 ### Managing Docker images
 
+ - Initiating a docker build on quay.io: `deploy build-remote`
  - Building or updating and image: `cd docker && ./build <image>`
  - Publishing an image: `docker push $(cat REGISTRY)/<image>/$(cat <image>/VERSION)`
 
