@@ -92,3 +92,10 @@ class DeployCommands(object):
     def delete_job(self, jobs, log_level):
         from jjb import jjb_delete_job_config as delete_job_config
         return delete_job_config(jobs, log_level=log_level)
+
+    @Command('build-remote', category='docker',
+             description='Initiate quay.io docker build')
+    def build_remote(self):
+        from docker import docker_build_remote as build_remote
+        # future: add support for other images
+        return build_remote()

@@ -11,6 +11,7 @@ pbr==1.8.0
 pycrypto==2.6.1
 python-jenkins==0.4.8
 PyYAML==3.11
+requests==2.9.0
 six==1.10.0
 stevedore==1.8.0
 virtualenv-clone==0.2.6
