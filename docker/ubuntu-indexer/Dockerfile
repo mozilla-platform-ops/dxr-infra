@@ -14,7 +14,7 @@ ENV         LIBRARY_PATH  /usr/lib/x86_64-linux-gnu
 # clang
 ENV         CPLUS_INCLUDE_PATH /usr/include/c++/4.8:/usr/include/c++/4.8/backward:/usr/include/x86_64-linux-gnu/c++/4.8
 
-ENV         PATH                /builds/dxr-build-env/bin:/builds/dxr-build-env/venv/bin:/usr/lib/llvm-3.5/bin:/usr/lib64/ccache:$PATH
+ENV         PATH                /builds/dxr-build-env/bin:/builds/dxr-build-env/venv/bin:/usr/lib/llvm-3.4/bin:/usr/lib64/ccache:$PATH
 
 # Install DXR in a single layer
 RUN         ["/builds/dxr-build-env/bin/dxr-setup.sh"]
