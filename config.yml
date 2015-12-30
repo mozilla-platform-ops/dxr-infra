@@ -109,12 +109,25 @@ trees:
     quiet_period: 14400
     job_weight: 4
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
+    enabled_plugins: 'pygmentize rust buglink omniglot'
     ignore_patterns: '/compiletest/ /doc/ /etc/ /gyp/ .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./configure --disable-libcpp --enable-ccache --enable-clang && make clean && make -j4'
     plugins:
       - plugin: 'buglink'
         name: 'github'
-        url: 'https://github.com/mozilla/rust/issues/%s'
+        url: 'https://github.com/rust-lang/rust/issues/%s'
+        regex: '#([0-9]+)'
+
+  - name: 'rustfmt'
+    repos:
+      - url: 'https://github.com/rust-lang-nursery/rustfmt.git'
+    enabled_plugins: 'pygmentize rust buglink'
+    ignore_patterns: '/target/ /tests/ /data/ .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
+    build_command: 'cd $source_folder && RUSTC=/builds/dxr-build-env/dxr/dxr/plugins/rust/dxr-rustc.sh cargo build --verbose'
+    plugins:
+      - plugin: 'buglink'
+        name: 'github'
+        url: 'https://github.com/rust-lang-nursery/rustfmt/issues/%s'
         regex: '#([0-9]+)'
 
   - name: 'nss'
