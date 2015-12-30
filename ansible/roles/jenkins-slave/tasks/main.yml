@@ -24,7 +24,7 @@
     - curl
 
 - name: download slave.jar
-  get_url: url="http://{{ jenkins_master }}/{{ jenkins_url_prefix }}/jnlpJars/slave.jar"
+  get_url: url="https://{{ jenkins_master }}/{{ jenkins_url_prefix }}/jnlpJars/slave.jar"
            dest={{ jenkins_dir }}/slave.jar
            force=yes
   

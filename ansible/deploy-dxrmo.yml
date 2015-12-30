@@ -35,7 +35,7 @@
 
 - hosts: dxr-builders
   vars:
-    jenkins_master: dxr-jenkins1.dmz.scl3.mozilla.com
+    jenkins_master: jenkins-dxr.mozilla.org
   roles:
     - indexer
     - jenkins-slave
