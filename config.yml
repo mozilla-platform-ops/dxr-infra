@@ -123,7 +123,7 @@ trees:
       - url: 'https://github.com/rust-lang-nursery/rustfmt.git'
     enabled_plugins: 'pygmentize rust buglink'
     ignore_patterns: '/target/ /tests/ /data/ .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && RUSTC=/builds/dxr-build-env/dxr/dxr/plugins/rust/dxr-rustc.sh cargo build --verbose'
+    build_command: 'cd $source_folder/src && RUSTC=/builds/dxr-build-env/dxr/dxr/plugins/rust/dxr-rustc.sh cargo build --verbose'
     plugins:
       - plugin: 'buglink'
         name: 'github'
