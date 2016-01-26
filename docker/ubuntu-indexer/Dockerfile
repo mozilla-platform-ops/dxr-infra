@@ -4,6 +4,9 @@ MAINTAINER Kendall Libby <klibby@mozilla.com>
 # Declare default working folder (override ubuntu-build)
 WORKDIR     /builds/dxr-build-env
 
+# Cache buster
+ADD https://api.github.com/repos/mozilla/dxr/git/refs/heads/ci /builds/dxr-build-env/dxr-version
+
 # Install system dependencies in a single layer
 ADD         bin                 /builds/dxr-build-env/bin
 RUN         ["/builds/dxr-build-env/bin/system-setup.sh"]
