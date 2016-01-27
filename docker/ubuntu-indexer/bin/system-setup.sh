@@ -35,6 +35,9 @@ apt_packages+=('gcc-multilib')
 apt_packages+=('zlib1g-dev')
 apt_packages+=('lib32z1-dev')
 
+# Missing dependenciess for m-c/c-c ?
+apt_packages+=('libnspr4')
+
 apt-get update -y
 apt-get install -y --force-yes ${apt_packages[@]}
 apt-get build-dep -y clang llvm
