@@ -50,6 +50,7 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'mozilla-aurora'
+    proj_dir: 'releases'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-aurora'
     schedule: 'H H/6 * * *'
@@ -64,6 +65,7 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'mozilla-beta'
+    proj_dir: 'releases'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-beta'
     schedule: 'H H/6 * * *'
@@ -78,6 +80,7 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'mozilla-release'
+    proj_dir: 'releases'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-release'
     schedule: 'H H/6 * * *'
@@ -92,6 +95,7 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'mozilla-esr45'
+    proj_dir: 'releases'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr45'
     schedule: 'H H/6 * * *'

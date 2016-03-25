@@ -30,7 +30,7 @@
 - project:
     name: 'mozilla-aurora'
     is_disabled: False
-    proj_dir: 'mozilla-aurora'
+    proj_dir: 'releases/mozilla-aurora'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -51,14 +51,14 @@
     scm:
       - hg:
           url: 'https://hg.mozilla.org/releases/mozilla-aurora'
-          subdir: '../../../dxr_data/mozilla-aurora'
+          subdir: '../../../dxr_data/releases/mozilla-aurora'
           revision_type: 'branch'
           revision: 'default'
 
 - project:
     name: 'mozilla-beta'
     is_disabled: False
-    proj_dir: 'mozilla-beta'
+    proj_dir: 'releases/mozilla-beta'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -79,14 +79,14 @@
     scm:
       - hg:
           url: 'https://hg.mozilla.org/releases/mozilla-beta'
-          subdir: '../../../dxr_data/mozilla-beta'
+          subdir: '../../../dxr_data/releases/mozilla-beta'
           revision_type: 'branch'
           revision: 'default'
 
 - project:
     name: 'mozilla-release'
     is_disabled: False
-    proj_dir: 'mozilla-release'
+    proj_dir: 'releases/mozilla-release'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -107,14 +107,14 @@
     scm:
       - hg:
           url: 'https://hg.mozilla.org/releases/mozilla-release'
-          subdir: '../../../dxr_data/mozilla-release'
+          subdir: '../../../dxr_data/releases/mozilla-release'
           revision_type: 'branch'
           revision: 'default'
 
 - project:
     name: 'mozilla-esr45'
     is_disabled: False
-    proj_dir: 'mozilla-esr45'
+    proj_dir: 'releases/mozilla-esr45'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -135,7 +135,7 @@
     scm:
       - hg:
           url: 'https://hg.mozilla.org/releases/mozilla-esr45'
-          subdir: '../../../dxr_data/mozilla-esr45'
+          subdir: '../../../dxr_data/releases/mozilla-esr45'
           revision_type: 'branch'
           revision: 'default'
 
