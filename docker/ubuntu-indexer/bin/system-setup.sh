@@ -44,7 +44,7 @@ apt-get build-dep -y clang llvm
 
 # Install deps for mozilla-central
 wget -O bootstrap.py https://hg.mozilla.org/mozilla-central/raw-file/tip/python/mozboot/bin/bootstrap.py
-python2.7 bootstrap.py --application-choice=desktop --no-interactive
+python2.7 bootstrap.py --application-choice=browser --no-interactive
 rm -f bootstrap.py
 
 # Dependencies for rust crates
