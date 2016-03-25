@@ -37,6 +37,9 @@ apt_packages+=('lib32z1-dev')
 
 # Missing dependenciess for m-c/c-c ?
 apt_packages+=('libnspr4')
+apt_packages+=('gstreamer0.10')
+apt_packages+=('gstreamer0.10-plugins-base')
+apt_packages+=('libgstreamer-plugins-base0.10-dev')
 
 apt-get update -y
 apt-get install -y --force-yes ${apt_packages[@]}
