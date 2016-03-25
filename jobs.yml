@@ -28,6 +28,118 @@
           revision: 'default'
 
 - project:
+    name: 'mozilla-aurora'
+    is_disabled: False
+    proj_dir: 'mozilla-aurora'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 4
+    mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-aurora_scm'
+    scm:
+      - hg-mozilla-aurora
+
+- scm:
+    name: 'hg-mozilla-aurora'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-aurora'
+          subdir: '../../../dxr_data/mozilla-aurora'
+          revision_type: 'branch'
+          revision: 'default'
+
+- project:
+    name: 'mozilla-beta'
+    is_disabled: False
+    proj_dir: 'mozilla-beta'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 4
+    mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-beta_scm'
+    scm:
+      - hg-mozilla-beta
+
+- scm:
+    name: 'hg-mozilla-beta'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-beta'
+          subdir: '../../../dxr_data/mozilla-beta'
+          revision_type: 'branch'
+          revision: 'default'
+
+- project:
+    name: 'mozilla-release'
+    is_disabled: False
+    proj_dir: 'mozilla-release'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 4
+    mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-release_scm'
+    scm:
+      - hg-mozilla-release
+
+- scm:
+    name: 'hg-mozilla-release'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-release'
+          subdir: '../../../dxr_data/mozilla-release'
+          revision_type: 'branch'
+          revision: 'default'
+
+- project:
+    name: 'mozilla-esr45'
+    is_disabled: False
+    proj_dir: 'mozilla-esr45'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 4
+    mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-esr45_scm'
+    scm:
+      - hg-mozilla-esr45
+
+- scm:
+    name: 'hg-mozilla-esr45'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-esr45'
+          subdir: '../../../dxr_data/mozilla-esr45'
+          revision_type: 'branch'
+          revision: 'default'
+
+- project:
     name: 'comm-central'
     is_disabled: False
     proj_dir: 'comm-central'

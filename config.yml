@@ -49,6 +49,62 @@ trees:
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
+  - name: 'mozilla-aurora'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-aurora'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    job_weight: 4
+    ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
+    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    mozconfig:
+      - 'mk_add_options AUTOCLOBBER=1'
+      - 'ac_add_options --enable-debug'
+      - 'ac_add_options --disable-elf-hack'
+      - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+
+  - name: 'mozilla-beta'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-beta'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    job_weight: 4
+    ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
+    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    mozconfig:
+      - 'mk_add_options AUTOCLOBBER=1'
+      - 'ac_add_options --enable-debug'
+      - 'ac_add_options --disable-elf-hack'
+      - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+
+  - name: 'mozilla-release'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-release'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    job_weight: 4
+    ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
+    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    mozconfig:
+      - 'mk_add_options AUTOCLOBBER=1'
+      - 'ac_add_options --enable-debug'
+      - 'ac_add_options --disable-elf-hack'
+      - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+
+  - name: 'mozilla-esr45'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr45'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    job_weight: 4
+    ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
+    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    mozconfig:
+      - 'mk_add_options AUTOCLOBBER=1'
+      - 'ac_add_options --enable-debug'
+      - 'ac_add_options --disable-elf-hack'
+      - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+
   - name: 'comm-central'
     repos:
       - url: 'https://hg.mozilla.org/comm-central'
