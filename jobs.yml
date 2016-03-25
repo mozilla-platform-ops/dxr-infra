@@ -26,6 +26,7 @@
           subdir: '../../../dxr_data/mozilla-central'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - project:
     name: 'mozilla-aurora'
@@ -54,6 +55,7 @@
           subdir: '../../../dxr_data/releases/mozilla-aurora'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - project:
     name: 'mozilla-beta'
@@ -82,6 +84,7 @@
           subdir: '../../../dxr_data/releases/mozilla-beta'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - project:
     name: 'mozilla-release'
@@ -110,6 +113,7 @@
           subdir: '../../../dxr_data/releases/mozilla-release'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - project:
     name: 'mozilla-esr45'
@@ -138,6 +142,7 @@
           subdir: '../../../dxr_data/releases/mozilla-esr45'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - project:
     name: 'comm-central'
@@ -166,6 +171,7 @@
           subdir: '../../../dxr_data/comm-central'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - project:
     name: 'build-central'
@@ -213,6 +219,7 @@
           subdir: '../../../dxr_data/build/braindump'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-buildapi'
@@ -222,6 +229,7 @@
           subdir: '../../../dxr_data/build/buildapi'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-buildbot'
@@ -231,6 +239,7 @@
           subdir: '../../../dxr_data/build/buildbot'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-buildbot-configs'
@@ -240,6 +249,7 @@
           subdir: '../../../dxr_data/build/buildbot-configs'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-buildbotcustom'
@@ -249,6 +259,7 @@
           subdir: '../../../dxr_data/build/buildbotcustom'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'git-cloud-tools'
@@ -266,6 +277,7 @@
           subdir: '../../../dxr_data/build/compare-locales'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-mozharness'
@@ -275,6 +287,7 @@
           subdir: '../../../dxr_data/build/mozharness'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-mozpool'
@@ -284,6 +297,7 @@
           subdir: '../../../dxr_data/build/mozpool'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-nagios-tools'
@@ -293,6 +307,7 @@
           subdir: '../../../dxr_data/build/nagios-tools'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-partner-repacks'
@@ -302,6 +317,7 @@
           subdir: '../../../dxr_data/build/partner-repacks'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-puppet'
@@ -311,6 +327,7 @@
           subdir: '../../../dxr_data/build/puppet'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-relabs-puppet'
@@ -320,6 +337,7 @@
           subdir: '../../../dxr_data/build/relabs-puppet'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-relengapi'
@@ -329,6 +347,7 @@
           subdir: '../../../dxr_data/build/relengapi'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-serveS3'
@@ -338,6 +357,7 @@
           subdir: '../../../dxr_data/build/serveS3'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-slaveapi'
@@ -347,6 +367,7 @@
           subdir: '../../../dxr_data/build/slaveapi'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-slave_health'
@@ -356,6 +377,7 @@
           subdir: '../../../dxr_data/build/slave_health'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-talos'
@@ -365,6 +387,7 @@
           subdir: '../../../dxr_data/build/talos'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-tools'
@@ -374,6 +397,7 @@
           subdir: '../../../dxr_data/build/tools'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-tupperware'
@@ -383,6 +407,7 @@
           subdir: '../../../dxr_data/build/tupperware'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-twisted'
@@ -392,6 +417,7 @@
           subdir: '../../../dxr_data/build/twisted'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - project:
     name: 'hgcustom_version-control-tools'
@@ -419,6 +445,7 @@
           subdir: '../../../dxr_data/hgcustom/version-control-tools'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - project:
     name: 'rust'
@@ -499,6 +526,7 @@
           subdir: '../../../dxr_data/nss/nss'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 
 - scm:
     name: 'hg-nspr'
@@ -508,4 +536,5 @@
           subdir: '../../../dxr_data/nss/nspr'
           revision_type: 'branch'
           revision: 'default'
+          disable-changelog: true
 

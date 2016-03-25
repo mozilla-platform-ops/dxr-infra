@@ -32,6 +32,7 @@
           subdir: '{{ r.subdir }}'
           revision_type: '{{ r.revision_type }}'
           revision: '{{ r.revision }}'
+          disable-changelog: true
 {%- endif %}
 {%- if r.type == 'git' %}
           basedir: '{{ r.basedir }}'
