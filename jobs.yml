@@ -202,9 +202,9 @@
       - hg-partner-repacks
       - hg-puppet
       - hg-relabs-puppet
-      - hg-relengapi
+      - git-build-relengapi
       - hg-serveS3
-      - hg-slaveapi
+      - git-slaveapi
       - hg-slave_health
       - hg-talos
       - hg-tools
@@ -340,14 +340,12 @@
           disable-changelog: true
 
 - scm:
-    name: 'hg-relengapi'
+    name: 'git-build-relengapi'
     scm:
-      - hg:
-          url: 'https://hg.mozilla.org/build/relengapi'
-          subdir: '../../../dxr_data/build/relengapi'
-          revision_type: 'branch'
-          revision: 'default'
-          disable-changelog: true
+      - git:
+          url: 'https://github.com/mozilla/build-relengapi'
+          basedir: '../../../dxr_data/build/build-relengapi'
+          skip-tag: true
 
 - scm:
     name: 'hg-serveS3'
@@ -360,14 +358,12 @@
           disable-changelog: true
 
 - scm:
-    name: 'hg-slaveapi'
+    name: 'git-slaveapi'
     scm:
-      - hg:
-          url: 'https://hg.mozilla.org/build/slaveapi'
-          subdir: '../../../dxr_data/build/slaveapi'
-          revision_type: 'branch'
-          revision: 'default'
-          disable-changelog: true
+      - git:
+          url: 'https://git.mozilla.org/build/slaveapi'
+          basedir: '../../../dxr_data/build/slaveapi'
+          skip-tag: true
 
 - scm:
     name: 'hg-slave_health'
