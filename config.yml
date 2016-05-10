@@ -148,6 +148,7 @@ trees:
       - url: 'https://hg.mozilla.org/build/puppet'
       - url: 'https://hg.mozilla.org/build/relabs-puppet'
       - url: 'https://github.com/mozilla/build-relengapi'
+        dirname: 'relengapi'
       - url: 'https://hg.mozilla.org/build/serveS3'
       - url: 'https://git.mozilla.org/build/slaveapi'
       - url: 'https://hg.mozilla.org/build/slave_health'

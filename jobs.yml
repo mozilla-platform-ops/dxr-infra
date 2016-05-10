@@ -202,7 +202,7 @@
       - hg-partner-repacks
       - hg-puppet
       - hg-relabs-puppet
-      - git-build-relengapi
+      - git-relengapi
       - hg-serveS3
       - git-slaveapi
       - hg-slave_health
@@ -340,11 +340,11 @@
           disable-changelog: true
 
 - scm:
-    name: 'git-build-relengapi'
+    name: 'git-relengapi'
     scm:
       - git:
           url: 'https://github.com/mozilla/build-relengapi'
-          basedir: '../../../dxr_data/build/build-relengapi'
+          basedir: '../../../dxr_data/build/relengapi'
           skip-tag: true
 
 - scm:
