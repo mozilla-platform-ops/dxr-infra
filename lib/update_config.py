@@ -122,6 +122,9 @@ def main():
     for t in cfg['trees']:
         check_tree_name(t)
 
+        if 'plugins' not in t:
+            t['plugins'] = []
+
         if 'proj_dir' not in t:
             if len(t['repos']) > 1:
                 raise Exception("proj_dir must be set if using multiple repos",
@@ -149,6 +152,8 @@ def main():
         # obj_folder deprecated? bug 842547
         t['object_folder'] = os.path.join('obj', t['proj_dir'])
         t['source_folder'] = os.path.join('src', t['proj_dir'])
+        # merge default plugin conf with this one
+        t['plugins'].extend(cfg['defaults']['dxr_plugins'])
 
         # merge dicts, with tree dict taking precedence
         trees.append(dict(cfg['defaults'], **t))
