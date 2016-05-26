@@ -71,8 +71,8 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
     plugins:
       - plugin: 'xpidl'
-        header_path: 'src/mozilla-aurora/obj-x86_64-unknown-linux-gnu/dist/include'
-        include_folders: 'src/mozilla-aurora/obj-x86_64-unknown-linux-gnu/dist/idl'
+        header_path: 'src/releases/mozilla-aurora/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-aurora/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-beta'
     proj_dir: 'releases'
@@ -91,8 +91,8 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
     plugins:
       - plugin: 'xpidl'
-        header_path: 'src/mozilla-beta/obj-x86_64-unknown-linux-gnu/dist/include'
-        include_folders: 'src/mozilla-beta/obj-x86_64-unknown-linux-gnu/dist/idl'
+        header_path: 'src/releases/mozilla-beta/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-beta/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-release'
     proj_dir: 'releases'
@@ -111,8 +111,8 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
     plugins:
       - plugin: 'xpidl'
-        header_path: 'src/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/include'
-        include_folders: 'src/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/idl'
+        header_path: 'src/releases/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-esr45'
     proj_dir: 'releases'
@@ -131,8 +131,8 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
     plugins:
       - plugin: 'xpidl'
-        header_path: 'src/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/include'
-        include_folders: 'src/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/idl'
+        header_path: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'comm-central'
     repos:
