@@ -43,11 +43,16 @@ trees:
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+    plugins:
+      - plugin: 'xpidl'
+        header_path: 'src/mozilla-central/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/mozilla-central/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-aurora'
     proj_dir: 'releases'
@@ -58,11 +63,16 @@ trees:
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+    plugins:
+      - plugin: 'xpidl'
+        header_path: 'src/releases/mozilla-aurora/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-aurora/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-beta'
     proj_dir: 'releases'
@@ -73,11 +83,16 @@ trees:
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+    plugins:
+      - plugin: 'xpidl'
+        header_path: 'src/releases/mozilla-beta/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-beta/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-release'
     proj_dir: 'releases'
@@ -88,11 +103,16 @@ trees:
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+    plugins:
+      - plugin: 'xpidl'
+        header_path: 'src/releases/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-esr45'
     proj_dir: 'releases'
@@ -103,11 +123,16 @@ trees:
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+    plugins:
+      - plugin: 'xpidl'
+        header_path: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'comm-central'
     repos:
