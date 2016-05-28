@@ -153,7 +153,9 @@ def main():
         t['object_folder'] = os.path.join('obj', t['proj_dir'])
         t['source_folder'] = os.path.join('src', t['proj_dir'])
         # merge default plugin conf with this one
-        t['plugins'].extend(cfg['defaults']['dxr_plugins'])
+        plugin_keys = [conf['plugin'] for conf in t['plugins']]
+        t['plugins'].extend([conf for conf in cfg['defaults']['dxr_plugins']
+                             if conf['plugin'] not in plugin_keys])
 
         # merge dicts, with tree dict taking precedence
         trees.append(dict(cfg['defaults'], **t))
