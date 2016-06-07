@@ -3,7 +3,7 @@ dxr:
   www_root: '/'
   workers: 4
   default_tree: 'mozilla-central'
-  disabled_plugins: 'xpidl js'
+  disabled_plugins: 'xpidl'
   enabled_plugins: '*'
   es_hosts:
     - http://node47.bunker.scl3.mozilla.com:9200/
@@ -50,8 +50,8 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
     plugins:
       - plugin: 'xpidl'
-        header_path: 'src/mozilla-central/obj-x86_64-unknown-linux-gnu/dist/include'
-        include_folders: 'src/mozilla-central/obj-x86_64-unknown-linux-gnu/dist/idl'
+        header_path: 'src/mozilla-central/obj-x86_64-pc-linux-gnu/dist/include'
+        include_folders: 'src/mozilla-central/obj-x86_64-pc-linux-gnu/dist/idl'
 
   - name: 'mozilla-aurora'
     proj_dir: 'releases'
