@@ -43,6 +43,7 @@ trees:
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -62,6 +63,7 @@ trees:
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -69,8 +71,8 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
     plugins:
       - plugin: 'xpidl'
-        header_path: 'src/releases/mozilla-aurora/obj-x86_64-unknown-linux-gnu/dist/include'
-        include_folders: 'src/releases/mozilla-aurora/obj-x86_64-unknown-linux-gnu/dist/idl'
+        header_path: 'src/releases/mozilla-aurora/obj-x86_64-pc-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-aurora/obj-x86_64-pc-linux-gnu/dist/idl'
 
   - name: 'mozilla-beta'
     proj_dir: 'releases'
