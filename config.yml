@@ -82,7 +82,7 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    build_command: 'cd $source_folder && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -101,7 +101,7 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    build_command: 'cd $source_folder && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -120,7 +120,7 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    build_command: 'cd $source_folder && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
