@@ -3,7 +3,7 @@ dxr-jenkins1.dmz.scl3.mozilla.com ansible_sudo=true
 dxr1.stage.webapp.scl3.mozilla.com ansible_sudo=true
 
 [dxr-builders]
-dxr-processor[1:2].dmz.scl3.mozilla.com ansible_sudo=true
+dxr-processor[1:3].dmz.scl3.mozilla.com ansible_sudo=true
 
 [dxrweb-prod]
 dxr[1:2].webapp.scl3.mozilla.com ansible_sudo=true
