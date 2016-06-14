@@ -534,3 +534,29 @@
           revision: 'default'
           disable-changelog: true
 
+- project:
+    name: 'gaia'
+    is_disabled: False
+    proj_dir: 'gaia'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'gaia_scm'
+    scm:
+      - git-gaia
+
+- scm:
+    name: 'git-gaia'
+    scm:
+      - git:
+          url: 'https://github.com/mozilla-b2g/gaia'
+          basedir: '../../../dxr_data/gaia'
+          skip-tag: true
+
