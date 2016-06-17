@@ -3,7 +3,6 @@ dxr:
   www_root: '/'
   workers: 4
   default_tree: 'mozilla-central'
-  disabled_plugins: 'xpidl'
   enabled_plugins: '*'
   es_hosts:
     - http://node47.bunker.scl3.mozilla.com:9200/
@@ -43,7 +42,6 @@ trees:
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
-    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -63,7 +61,6 @@ trees:
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
-    disabled_plugins: ' '
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -75,6 +72,7 @@ trees:
         include_folders: 'src/releases/mozilla-aurora/obj-x86_64-pc-linux-gnu/dist/idl'
 
   - name: 'mozilla-beta'
+    disabled_plugins: 'xpidl'
     proj_dir: 'releases'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-beta'
@@ -94,6 +92,7 @@ trees:
         include_folders: 'src/releases/mozilla-beta/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-release'
+    disabled_plugins: 'xpidl'
     proj_dir: 'releases'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-release'
@@ -113,6 +112,7 @@ trees:
         include_folders: 'src/releases/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-esr45'
+    disabled_plugins: 'xpidl'
     proj_dir: 'releases'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr45'
@@ -132,6 +132,7 @@ trees:
         include_folders: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'comm-central'
+    disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/comm-central'
     schedule: 'H H/6 * * *'
@@ -150,6 +151,7 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'build-central'
+    disabled_plugins: 'xpidl'
     proj_dir: 'build'
     job_weight: 2
     build_command: ''
@@ -180,11 +182,13 @@ trees:
       - url: 'https://hg.mozilla.org/build/twisted'
 
   - name: 'hgcustom_version-control-tools'
+    disabled_plugins: 'xpidl'
     proj_dir: 'hgcustom'
     repos:
       - url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
 
   - name: 'rust'
+    disabled_plugins: 'xpidl'
     proj_dir: 'rust-lang'
     repos:
       - url: 'https://github.com/rust-lang/rust.git'
@@ -202,6 +206,7 @@ trees:
         regex: '#([0-9]+)'
 
   - name: 'rustfmt'
+    disabled_plugins: 'xpidl'
     repos:
       - url: 'https://github.com/rust-lang-nursery/rustfmt.git'
     enabled_plugins: 'pygmentize rust buglink'
@@ -214,6 +219,7 @@ trees:
         regex: '#([0-9]+)'
 
   - name: 'nss'
+    disabled_plugins: 'xpidl'
     proj_dir: 'nss'
     repos:
       - url: 'https://hg.mozilla.org/projects/nss'
