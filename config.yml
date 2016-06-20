@@ -228,6 +228,7 @@ trees:
     build_command: 'cd $source_folder/nss && env CPATH=/usr/include/x86_64-linux-gnu make NS_USE_GCC=0 CC=clang CXX=clang++ USE_64=1 NSS_DISABLE_GTESTS=1 nss_build_all'
 
   - name: 'gaia'
+    disabled_plugins: 'xpidl'
     build_command: ''
     repos:
       - url: 'https://github.com/mozilla-b2g/gaia'
