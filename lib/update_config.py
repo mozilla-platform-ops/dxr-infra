@@ -23,6 +23,7 @@ TEMPLATES = {
 }
 
 SCM_HOSTS = {
+    'cvs.mozilla.org': 'cvs',
     'hg.mozilla.org': 'hg',
     'git.mozilla.org': 'git',
     'github.com': 'git',
