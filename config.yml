@@ -205,7 +205,7 @@ trees:
         regex: '#([0-9]+)'
 
   - name: 'rustfmt'
-    disabled_plugins: 'xpidl'
+    disabled_plugins: 'xpidl buglink'
     repos:
       - url: 'https://github.com/rust-lang-nursery/rustfmt.git'
     enabled_plugins: 'pygmentize rust buglink'
