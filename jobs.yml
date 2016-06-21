@@ -560,3 +560,333 @@
           basedir: '../../../dxr_data/gaia'
           skip-tag: true
 
+- project:
+    name: 'classic'
+    is_disabled: False
+    proj_dir: 'cvs/classic'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'classic_scm'
+    scm:
+      - cvs-classic
+
+- scm:
+    name: 'cvs-classic'
+    scm: []
+
+- project:
+    name: 'js'
+    is_disabled: False
+    proj_dir: 'cvs/js'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'js_scm'
+    scm:
+      - cvs-js
+
+- scm:
+    name: 'cvs-js'
+    scm: []
+
+- project:
+    name: 'security'
+    is_disabled: False
+    proj_dir: 'cvs/security'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'security_scm'
+    scm:
+      - cvs-security
+
+- scm:
+    name: 'cvs-security'
+    scm: []
+
+- project:
+    name: 'webtools'
+    is_disabled: False
+    proj_dir: 'cvs/webtools'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'webtools_scm'
+    scm:
+      - cvs-webtools
+
+- scm:
+    name: 'cvs-webtools'
+    scm: []
+
+- project:
+    name: 'mozilla'
+    is_disabled: False
+    proj_dir: 'cvs/mozilla'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla_scm'
+    scm:
+      - cvs-mozilla
+
+- scm:
+    name: 'cvs-mozilla'
+    scm: []
+
+- project:
+    name: 'nspr-cvs'
+    is_disabled: False
+    proj_dir: 'cvs/nspr-cvs'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'nspr-cvs_scm'
+    scm:
+      - cvs-nspr-cvs
+
+- scm:
+    name: 'cvs-nspr-cvs'
+    scm: []
+
+- project:
+    name: 'mozilla1.7'
+    is_disabled: False
+    proj_dir: 'cvs/mozilla1.7'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla1.7_scm'
+    scm:
+      - cvs-mozilla1.7
+
+- scm:
+    name: 'cvs-mozilla1.7'
+    scm: []
+
+- project:
+    name: 'mozilla1.8'
+    is_disabled: False
+    proj_dir: 'cvs/mozilla1.8'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla1.8_scm'
+    scm:
+      - cvs-mozilla1.8
+
+- scm:
+    name: 'cvs-mozilla1.8'
+    scm: []
+
+- project:
+    name: 'mozilla1.8.0'
+    is_disabled: False
+    proj_dir: 'cvs/mozilla1.8.0'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla1.8.0_scm'
+    scm:
+      - cvs-mozilla1.8.0
+
+- scm:
+    name: 'cvs-mozilla1.8.0'
+    scm: []
+
+- project:
+    name: 'seamonkey'
+    is_disabled: False
+    proj_dir: 'cvs/seamonkey'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'seamonkey_scm'
+    scm:
+      - cvs-seamonkey
+
+- scm:
+    name: 'cvs-seamonkey'
+    scm: []
+
+- project:
+    name: 'aviarybranch'
+    is_disabled: False
+    proj_dir: 'cvs/aviarybranch'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'aviarybranch_scm'
+    scm:
+      - cvs-aviarybranch
+
+- scm:
+    name: 'cvs-aviarybranch'
+    scm: []
+
+- project:
+    name: 'aviary101branch'
+    is_disabled: False
+    proj_dir: 'cvs/aviary101branch'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'aviary101branch_scm'
+    scm:
+      - cvs-aviary101branch
+
+- scm:
+    name: 'cvs-aviary101branch'
+    scm: []
+
+- project:
+    name: 'firefox'
+    is_disabled: False
+    proj_dir: 'cvs/firefox'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'firefox_scm'
+    scm:
+      - cvs-firefox
+
+- scm:
+    name: 'cvs-firefox'
+    scm: []
+
+- project:
+    name: 'firefox2'
+    is_disabled: False
+    proj_dir: 'cvs/firefox2'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'firefox2_scm'
+    scm:
+      - cvs-firefox2
+
+- scm:
+    name: 'cvs-firefox2'
+    scm: []
+
+- project:
+    name: 'thunderbird'
+    is_disabled: False
+    proj_dir: 'cvs/thunderbird'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'thunderbird_scm'
+    scm:
+      - cvs-thunderbird
+
+- scm:
+    name: 'cvs-thunderbird'
+    scm: []
+
