@@ -25,6 +25,9 @@
 {% for r in t.repos %}
 - scm:
     name: '{{ r.name }}'
+{%- if r.type == 'cvs' %}
+    scm: []
+{%- else %}
     scm:
       - {{ r.type }}:
           url: '{{ r.url }}'
@@ -37,6 +40,7 @@
 {%- if r.type == 'git' %}
           basedir: '{{ r.basedir }}'
           skip-tag: true
+{%- endif %}
 {%- endif %}
 {% endfor %}
 {%- endfor %}

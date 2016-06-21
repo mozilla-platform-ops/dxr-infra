@@ -61,3 +61,23 @@
         job="/data/stage/dxr-stage/virtualenv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k stage 1>>/var/log/dxr-stage.log"
         state=absent
 
+# user is created by puppet
+- name: create addons_update directories
+  file: path={{ item }} state=directory owner=addons_update group=addons_update mode=0755
+  with_items:
+    - /home/addons_update/bin
+    - /home/addons_update/log
+
+- name: add addons_update script
+  copy: src=rsync-addons.sh dest=/home/addons_update/bin/rsync-addons.sh
+
+# need secure way to manage ssh private key!
+- name: create addons_update ssh config
+  copy: src=ssh_config dest=/home/addons_update/.ssh/config
+
+# remote data is updated by 0800Z
+- name: create addons_update cron job
+  cron: name="rsync addons"
+        user="addons_update"
+        hour="8"
+        job="/home/addons_update/bin/rsync-addons.sh"

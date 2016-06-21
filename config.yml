@@ -232,3 +232,108 @@ trees:
     build_command: ''
     repos:
       - url: 'https://github.com/mozilla-b2g/gaia'
+
+  - name: 'classic'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/classic'
+    schedule: '@monthly'
+
+  - name: 'js'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/js'
+    schedule: '@monthly'
+
+  - name: 'security'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/security'
+    schedule: '@monthly'
+
+  - name: 'webtools'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/webtools'
+    schedule: '@monthly'
+
+  - name: 'mozilla'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/mozilla'
+    schedule: '@monthly'
+
+  - name: 'nspr-cvs'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/nspr-cvs'
+    schedule: '@monthly'
+
+  - name: 'mozilla1.7'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/mozilla1.7'
+    schedule: '@monthly'
+
+  - name: 'mozilla1.8'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/mozilla1.8'
+    schedule: '@monthly'
+
+  - name: 'mozilla1.8.0'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/mozilla1.8.0'
+    schedule: '@monthly'
+
+  - name: 'seamonkey'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/seamonkey'
+    schedule: '@monthly'
+
+  - name: 'aviarybranch'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/aviarybranch'
+    schedule: '@monthly'
+
+  - name: 'aviary101branch'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/aviary101branch'
+    schedule: '@monthly'
+
+  - name: 'firefox'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/firefox'
+    schedule: '@monthly'
+
+  - name: 'firefox2'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/firefox2'
+    schedule: '@monthly'
+
+  - name: 'thunderbird'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/thunderbird'
+    schedule: '@monthly'
