@@ -217,6 +217,22 @@ trees:
         url: 'https://github.com/rust-lang-nursery/rustfmt/issues/%s'
         regex: '#([0-9]+)'
 
+  - name: 'servo'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://github.com/servo/servo'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    job_weight: 4
+    es_index: 'dxr_hot_{format}_{tree}_{unique}'
+    enabled_plugins: 'pygmentize rust buglink omniglot'
+    build_command: 'cd $source_folder/src && ./mach build --release'
+    plugins:
+      - plugin: 'buglink'
+        name: 'github'
+        url: 'https://github.com/servo/servo/issues/%s'
+        regex: '#([0-9]+)'
+
   - name: 'nss'
     disabled_plugins: 'xpidl'
     proj_dir: 'nss'
