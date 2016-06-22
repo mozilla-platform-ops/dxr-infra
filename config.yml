@@ -14,6 +14,7 @@ dxr:
   es_alias: 'dxr_{format}_{tree}'
   es_indexing_timeout: 120
   es_refresh_interval: 30
+  es_indexing_retries: 2
 
 defaults:
   disable: false
@@ -202,7 +203,7 @@ trees:
       - plugin: 'buglink'
         name: 'github'
         url: 'https://github.com/rust-lang/rust/issues/%s'
-        regex: '#([0-9]+)'
+        regex: '"""#([0-9]+)"""'
 
   - name: 'rustfmt'
     disabled_plugins: 'xpidl buglink'
@@ -215,7 +216,7 @@ trees:
       - plugin: 'buglink'
         name: 'github'
         url: 'https://github.com/rust-lang-nursery/rustfmt/issues/%s'
-        regex: '#([0-9]+)'
+        regex: '"""#([0-9]+)"""'
 
   - name: 'servo'
     proj_dir: 'servo'
@@ -232,7 +233,7 @@ trees:
       - plugin: 'buglink'
         name: 'github'
         url: 'https://github.com/servo/servo/issues/%s'
-        regex: '#([0-9]+)'
+        regex: '"""#([0-9]+)"""'
 
   - name: 'nss'
     disabled_plugins: 'xpidl'
