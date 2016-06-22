@@ -25,6 +25,9 @@
 - name: install hostname.conf
   copy: content="Header always set X-Backend-Server {{ ansible_fqdn }}" dest=/etc/httpd/conf.d/hostname.conf
 
+- name: create mellon directory
+  file: path=/etc/httpd/mellon state=directory owner=root group=apache mode=0750
+
 - name: make logdir
   file: path=/var/log/httpd/{{ domain }} state=directory owner=apache group=vpn_dxr mode=0755
 
