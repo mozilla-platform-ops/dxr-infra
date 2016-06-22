@@ -188,7 +188,7 @@ trees:
       - url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
 
   - name: 'rust'
-    disabled_plugins: 'xpidl clang rust'
+    disabled_plugins: 'xpidl clang rust buglink'
     proj_dir: 'rust-lang'
     repos:
       - url: 'https://github.com/rust-lang/rust.git'
