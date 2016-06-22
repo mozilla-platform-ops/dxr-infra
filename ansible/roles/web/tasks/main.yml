@@ -11,6 +11,7 @@
     - python27-mod_wsgi
     - logrotate
     - httpd
+    - mod_auth_mellon
 
 - name: install httpd.conf file
   template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
