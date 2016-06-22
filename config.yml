@@ -219,7 +219,7 @@ trees:
 
   - name: 'servo'
     proj_dir: 'servo'
-    disabled_plugins: 'xpidl'
+    disabled_plugins: 'xpidl buglink'
     repos:
       - url: 'https://github.com/servo/servo'
     schedule: 'H H/6 * * *'
