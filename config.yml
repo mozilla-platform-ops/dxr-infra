@@ -218,6 +218,7 @@ trees:
         regex: '#([0-9]+)'
 
   - name: 'servo'
+    proj_dir: 'servo'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://github.com/servo/servo'
@@ -226,7 +227,7 @@ trees:
     job_weight: 4
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     enabled_plugins: 'pygmentize rust buglink omniglot'
-    build_command: 'cd $source_folder/src && ./mach build --release'
+    build_command: 'cd $source_folder && ./mach build --release'
     plugins:
       - plugin: 'buglink'
         name: 'github'

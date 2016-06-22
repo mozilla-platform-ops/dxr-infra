@@ -498,7 +498,7 @@
 - project:
     name: 'servo'
     is_disabled: False
-    proj_dir: 'servo'
+    proj_dir: 'servo/servo'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -518,7 +518,7 @@
     scm:
       - git:
           url: 'https://github.com/servo/servo'
-          basedir: '../../../dxr_data/servo'
+          basedir: '../../../dxr_data/servo/servo'
           skip-tag: true
 
 - project:
