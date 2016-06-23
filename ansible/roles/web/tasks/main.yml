@@ -11,6 +11,7 @@
     - python27-mod_wsgi
     - logrotate
     - httpd
+    - mod_auth_mellon
 
 - name: install httpd.conf file
   template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
@@ -24,6 +25,9 @@
 # Either webdev or sercurity requested that all of our servers have this
 - name: install hostname.conf
   copy: content="Header always set X-Backend-Server {{ ansible_fqdn }}" dest=/etc/httpd/conf.d/hostname.conf
+
+- name: create mellon directory
+  file: path=/etc/httpd/mellon state=directory owner=root group=apache mode=0750
 
 - name: make logdir
   file: path=/var/log/httpd/{{ domain }} state=directory owner=apache group=vpn_dxr mode=0755
