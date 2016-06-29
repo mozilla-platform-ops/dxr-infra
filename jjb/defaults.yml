@@ -40,10 +40,41 @@
           docker_img: "{docker_img}"
           docker_vol: "{docker_vol}"
 
+- job-template:
+    name: "{name}-tree"
+    project-type: freestyle
+    defaults: indexer
+    disabled: "{obj:is_disabled}"
+    quiet-period: "{quiet_period}"
+    triggers:
+      - timed: "{schedule}"
+    properties:
+      - heavy-job:
+          weight: "{job_weight}"
+    publishers:
+      - email:
+          recipients: "{mail_rcpts}"
+    wrappers:
+      - timestamps
+    builders:
+      - docker-run-env:
+          name: "{name}"
+          tree_root: "{proj_dir}"
+          tree_url: "{tree_url}"
+          docker_img: "{docker_img}"
+          docker_vol: "{docker_vol}"
+
 - builder:
     name: docker-run
     builders:
       - shell: |
           docker pull {docker_img}
           docker run --rm -u jenkins -v {docker_vol} {docker_img} index.sh {name}
+
+- builder:
+    name: docker-run-env
+    builders:
+      - shell: |
+          docker pull {docker_img}
+          docker run --rm -u jenkins -v {docker_vol} --env TREE_ROOT={tree_root} --env TREE_URL={tree_url} {docker_img} index.sh {name}
 

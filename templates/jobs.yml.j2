@@ -13,6 +13,11 @@
 {%- if t.mozconfig %}
     mozconfig: '{% for m in t.mozconfig %}{{ m }}\n{% endfor %}'
 {%- endif %}
+{%- if t.type == 'tree' %}
+    tree_url: '{{ t.repos.0.url }}'
+    jobs:
+        - "{name}-tree"
+{%- else %}
     jobs:
         - "{name}"
 
@@ -43,4 +48,5 @@
 {%- endif %}
 {%- endif %}
 {% endfor %}
+{%- endif %}
 {%- endfor %}

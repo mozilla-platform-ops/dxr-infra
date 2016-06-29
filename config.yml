@@ -354,3 +354,31 @@ trees:
     repos:
       - url: 'https://cvs.mozilla.org/thunderbird'
     schedule: '@monthly'
+
+  - name: 'l10n-central'
+    type: 'tree'
+    proj_dir: 'l10n'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/l10n-central'
+
+  - name: 'l10n-mozilla-aurora'
+    type: 'tree'
+    proj_dir: 'l10n'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/l10n/mozilla-aurora'
+
+  - name: 'l10n-mozilla-beta'
+    type: 'tree'
+    proj_dir: 'l10n'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/l10n/mozilla-beta'
+
+  - name: 'l10n-mozilla-release'
+    type: 'tree'
+    proj_dir: 'l10n'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/l10n/mozilla-release'
