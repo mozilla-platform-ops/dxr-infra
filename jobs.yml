@@ -916,3 +916,55 @@
     name: 'cvs-thunderbird'
     scm: []
 
+- project:
+    name: 'l10n-central'
+    is_disabled: False
+    proj_dir: 'l10n/l10n-central'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    tree_url: 'https://hg.mozilla.org/l10n-central'
+    jobs:
+        - "{name}-tree"
+- project:
+    name: 'l10n-mozilla-aurora'
+    is_disabled: False
+    proj_dir: 'l10n/mozilla-aurora'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    tree_url: 'https://hg.mozilla.org/releases/l10n/mozilla-aurora'
+    jobs:
+        - "{name}-tree"
+- project:
+    name: 'l10n-mozilla-beta'
+    is_disabled: False
+    proj_dir: 'l10n/mozilla-beta'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    tree_url: 'https://hg.mozilla.org/releases/l10n/mozilla-beta'
+    jobs:
+        - "{name}-tree"
+- project:
+    name: 'l10n-mozilla-release'
+    is_disabled: False
+    proj_dir: 'l10n/mozilla-release'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    tree_url: 'https://hg.mozilla.org/releases/l10n/mozilla-release'
+    jobs:
+        - "{name}-tree"
