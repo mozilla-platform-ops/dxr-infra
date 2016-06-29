@@ -16,6 +16,7 @@ apt_packages+=('python-virtualenv')
 apt_packages+=('curl')
 apt_packages+=('git')
 apt_packages+=('jq')
+apt_packages+=('gawk')
 
 # Dependencies for DXR
 apt_packages+=('clang')
