@@ -152,11 +152,9 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'build-central'
-    disabled_plugins: 'xpidl'
+    type: 'tree'
     proj_dir: 'build'
-    job_weight: 2
-    build_command: ''
-    ignore_patterns: '*.svg .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
+    disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/build/braindump'
       - url: 'https://hg.mozilla.org/build/buildapi'
@@ -236,17 +234,16 @@ trees:
         regex: '"""#([0-9]+)"""'
 
   - name: 'nss'
-    disabled_plugins: 'xpidl'
+    type: 'tree'
     proj_dir: 'nss'
+    disabled_plugins: 'xpidl'
+    build_command: 'cd $source_folder/nss && env CPATH=/usr/include/x86_64-linux-gnu make NS_USE_GCC=0 CC=clang CXX=clang++ USE_64=1 NSS_DISABLE_GTESTS=1 nss_build_all'
     repos:
       - url: 'https://hg.mozilla.org/projects/nss'
       - url: 'https://hg.mozilla.org/projects/nspr'
-    job_weight: 2
-    build_command: 'cd $source_folder/nss && env CPATH=/usr/include/x86_64-linux-gnu make NS_USE_GCC=0 CC=clang CXX=clang++ USE_64=1 NSS_DISABLE_GTESTS=1 nss_build_all'
 
   - name: 'gaia'
     disabled_plugins: 'xpidl'
-    build_command: ''
     repos:
       - url: 'https://github.com/mozilla-b2g/gaia'
 
