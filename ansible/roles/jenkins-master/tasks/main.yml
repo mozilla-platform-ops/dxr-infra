@@ -2,6 +2,9 @@
 # cf https://github.com/geerlingguy/ansible-role-jenkins
 # or https://github.com/ICTO/ansible-jenkins (for Ubuntu)
 
+- name: configure DC proxies in /etc/environment
+  copy: src=environment dest=/etc/environment mode=0644 owner=root group=root
+
 - name: create directories
   file: path={{ item }}
         state=directory

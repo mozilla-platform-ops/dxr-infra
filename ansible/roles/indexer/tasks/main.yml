@@ -9,6 +9,9 @@
     - docker-io
     - python-setuptools
 
+- name: configure DC proxies in /etc/environment
+  copy: src=environment dest=/etc/environment mode=0644 owner=root group=root
+
 - name: copy requirements.txt
   copy: src=requirements.txt dest=/data/requirements.txt mode=0644 owner=root group=root
 
