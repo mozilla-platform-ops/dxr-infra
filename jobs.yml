@@ -670,7 +670,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     tree_url: 'https://hg.mozilla.org/l10n-central'
     jobs:
         - "{name}-tree"
@@ -683,7 +683,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     tree_url: 'https://hg.mozilla.org/releases/l10n/mozilla-aurora'
     jobs:
         - "{name}-tree"
@@ -696,7 +696,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     tree_url: 'https://hg.mozilla.org/releases/l10n/mozilla-beta'
     jobs:
         - "{name}-tree"
@@ -709,7 +709,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     tree_url: 'https://hg.mozilla.org/releases/l10n/mozilla-release'
     jobs:
         - "{name}-tree"

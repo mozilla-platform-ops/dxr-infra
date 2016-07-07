@@ -356,6 +356,7 @@ trees:
   - name: 'l10n-central'
     type: 'tree'
     proj_dir: 'l10n'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/l10n-central'
@@ -363,6 +364,7 @@ trees:
   - name: 'l10n-mozilla-aurora'
     type: 'tree'
     proj_dir: 'l10n'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/l10n/mozilla-aurora'
@@ -370,6 +372,7 @@ trees:
   - name: 'l10n-mozilla-beta'
     type: 'tree'
     proj_dir: 'l10n'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/l10n/mozilla-beta'
@@ -377,6 +380,7 @@ trees:
   - name: 'l10n-mozilla-release'
     type: 'tree'
     proj_dir: 'l10n'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/l10n/mozilla-release'
