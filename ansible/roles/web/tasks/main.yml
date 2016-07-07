@@ -36,7 +36,7 @@
   copy: src=logrotate.conf dest=/etc/logrotate.d/httpd
 
 - name: add data dir and NFS mount point(s)
-  file: path={{ item }} state=directory owner=root group=root mode=0755
+  file: path={{ item }} state=directory
   with_items:
     - /data/prod
     - /data/stage
