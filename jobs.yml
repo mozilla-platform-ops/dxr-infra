@@ -116,6 +116,34 @@
           disable-changelog: true
 
 - project:
+    name: 'mozilla-b2g44_v2_5'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-b2g44_v2_5'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-b2g44_v2_5_scm'
+    scm:
+      - hg-mozilla-b2g44_v2_5
+
+- scm:
+    name: 'hg-mozilla-b2g44_v2_5'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g44_v2_5'
+          subdir: '../../../dxr_data/releases/mozilla-b2g44_v2_5'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
     name: 'mozilla-esr45'
     is_disabled: False
     proj_dir: 'releases/mozilla-esr45'

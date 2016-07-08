@@ -113,6 +113,13 @@ trees:
         header_path: 'src/releases/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/include'
         include_folders: 'src/releases/mozilla-release/obj-x86_64-unknown-linux-gnu/dist/idl'
 
+  - name: 'mozilla-b2g44_v2_5'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-b2g44_v2_5'
+
   - name: 'mozilla-esr45'
     disabled_plugins: 'xpidl'
     proj_dir: 'releases'
