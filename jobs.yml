@@ -144,9 +144,9 @@
           disable-changelog: true
 
 - project:
-    name: 'mozilla-b2g26_v1_@'
+    name: 'mozilla-b2g26_v1_2'
     is_disabled: False
-    proj_dir: 'releases/mozilla-b2g26_v1_@'
+    proj_dir: 'releases/mozilla-b2g26_v1_2'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -157,16 +157,16 @@
         - "{name}"
 
 - scm:
-    name: 'mozilla-b2g26_v1_@_scm'
+    name: 'mozilla-b2g26_v1_2_scm'
     scm:
-      - hg-mozilla-b2g26_v1_@
+      - hg-mozilla-b2g26_v1_2
 
 - scm:
-    name: 'hg-mozilla-b2g26_v1_@'
+    name: 'hg-mozilla-b2g26_v1_2'
     scm:
       - hg:
-          url: 'https://hg.mozilla.org/releases/mozilla-b2g26_v1_@'
-          subdir: '../../../dxr_data/releases/mozilla-b2g26_v1_@'
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g26_v1_2'
+          subdir: '../../../dxr_data/releases/mozilla-b2g26_v1_2'
           revision_type: 'branch'
           revision: 'default'
           disable-changelog: true

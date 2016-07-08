@@ -120,12 +120,12 @@ trees:
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g18'
 
-  - name: 'mozilla-b2g26_v1_@'
+  - name: 'mozilla-b2g26_v1_2'
     proj_dir: 'releases'
     job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
-      - url: 'https://hg.mozilla.org/releases/mozilla-b2g26_v1_@'
+      - url: 'https://hg.mozilla.org/releases/mozilla-b2g26_v1_2'
 
   - name: 'mozilla-b2g28_v1_3'
     proj_dir: 'releases'
