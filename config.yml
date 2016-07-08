@@ -169,6 +169,41 @@ trees:
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g44_v2_5'
 
+  - name: 'mozilla-esr10'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr10'
+
+  - name: 'mozilla-esr17'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr17'
+
+  - name: 'mozilla-esr24'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr24'
+
+  - name: 'mozilla-esr31'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr31'
+
+  - name: 'mozilla-esr38'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr38'
+
   - name: 'mozilla-esr45'
     disabled_plugins: 'xpidl'
     proj_dir: 'releases'
@@ -264,6 +299,41 @@ trees:
       - 'ac_add_options --disable-optimize'
       - 'ac_add_options --disable-elf-hack'
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+
+  - name: 'comm-esr10'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-esr10'
+
+  - name: 'comm-esr17'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-esr17'
+
+  - name: 'comm-esr24'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-esr24'
+
+  - name: 'comm-esr31'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-esr31'
+
+  - name: 'comm-esr38'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-esr38'
 
   - name: 'comm-esr45'
     proj_dir: 'releases'

@@ -340,6 +340,146 @@
           disable-changelog: true
 
 - project:
+    name: 'mozilla-esr10'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-esr10'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-esr10_scm'
+    scm:
+      - hg-mozilla-esr10
+
+- scm:
+    name: 'hg-mozilla-esr10'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-esr10'
+          subdir: '../../../dxr_data/releases/mozilla-esr10'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-esr17'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-esr17'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-esr17_scm'
+    scm:
+      - hg-mozilla-esr17
+
+- scm:
+    name: 'hg-mozilla-esr17'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-esr17'
+          subdir: '../../../dxr_data/releases/mozilla-esr17'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-esr24'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-esr24'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-esr24_scm'
+    scm:
+      - hg-mozilla-esr24
+
+- scm:
+    name: 'hg-mozilla-esr24'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-esr24'
+          subdir: '../../../dxr_data/releases/mozilla-esr24'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-esr31'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-esr31'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-esr31_scm'
+    scm:
+      - hg-mozilla-esr31
+
+- scm:
+    name: 'hg-mozilla-esr31'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-esr31'
+          subdir: '../../../dxr_data/releases/mozilla-esr31'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-esr38'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-esr38'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-esr38_scm'
+    scm:
+      - hg-mozilla-esr38
+
+- scm:
+    name: 'hg-mozilla-esr38'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-esr38'
+          subdir: '../../../dxr_data/releases/mozilla-esr38'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
     name: 'mozilla-esr45'
     is_disabled: False
     proj_dir: 'releases/mozilla-esr45'
@@ -480,6 +620,146 @@
       - hg:
           url: 'https://hg.mozilla.org/releases/comm-release'
           subdir: '../../../dxr_data/releases/comm-release'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'comm-esr10'
+    is_disabled: False
+    proj_dir: 'releases/comm-esr10'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-esr10_scm'
+    scm:
+      - hg-comm-esr10
+
+- scm:
+    name: 'hg-comm-esr10'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/comm-esr10'
+          subdir: '../../../dxr_data/releases/comm-esr10'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'comm-esr17'
+    is_disabled: False
+    proj_dir: 'releases/comm-esr17'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-esr17_scm'
+    scm:
+      - hg-comm-esr17
+
+- scm:
+    name: 'hg-comm-esr17'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/comm-esr17'
+          subdir: '../../../dxr_data/releases/comm-esr17'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'comm-esr24'
+    is_disabled: False
+    proj_dir: 'releases/comm-esr24'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-esr24_scm'
+    scm:
+      - hg-comm-esr24
+
+- scm:
+    name: 'hg-comm-esr24'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/comm-esr24'
+          subdir: '../../../dxr_data/releases/comm-esr24'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'comm-esr31'
+    is_disabled: False
+    proj_dir: 'releases/comm-esr31'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-esr31_scm'
+    scm:
+      - hg-comm-esr31
+
+- scm:
+    name: 'hg-comm-esr31'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/comm-esr31'
+          subdir: '../../../dxr_data/releases/comm-esr31'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'comm-esr38'
+    is_disabled: False
+    proj_dir: 'releases/comm-esr38'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-esr38_scm'
+    scm:
+      - hg-comm-esr38
+
+- scm:
+    name: 'hg-comm-esr38'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/comm-esr38'
+          subdir: '../../../dxr_data/releases/comm-esr38'
           revision_type: 'branch'
           revision: 'default'
           disable-changelog: true
