@@ -116,6 +116,202 @@
           disable-changelog: true
 
 - project:
+    name: 'mozilla-b2g18'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-b2g18'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-b2g18_scm'
+    scm:
+      - hg-mozilla-b2g18
+
+- scm:
+    name: 'hg-mozilla-b2g18'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g18'
+          subdir: '../../../dxr_data/releases/mozilla-b2g18'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-b2g26_v1_@'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-b2g26_v1_@'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-b2g26_v1_@_scm'
+    scm:
+      - hg-mozilla-b2g26_v1_@
+
+- scm:
+    name: 'hg-mozilla-b2g26_v1_@'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g26_v1_@'
+          subdir: '../../../dxr_data/releases/mozilla-b2g26_v1_@'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-b2g28_v1_3'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-b2g28_v1_3'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-b2g28_v1_3_scm'
+    scm:
+      - hg-mozilla-b2g28_v1_3
+
+- scm:
+    name: 'hg-mozilla-b2g28_v1_3'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g28_v1_3'
+          subdir: '../../../dxr_data/releases/mozilla-b2g28_v1_3'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-b2g30_v1_4'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-b2g30_v1_4'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-b2g30_v1_4_scm'
+    scm:
+      - hg-mozilla-b2g30_v1_4
+
+- scm:
+    name: 'hg-mozilla-b2g30_v1_4'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g30_v1_4'
+          subdir: '../../../dxr_data/releases/mozilla-b2g30_v1_4'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-b2g32_v2_0'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-b2g32_v2_0'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-b2g32_v2_0_scm'
+    scm:
+      - hg-mozilla-b2g32_v2_0
+
+- scm:
+    name: 'hg-mozilla-b2g32_v2_0'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g32_v2_0'
+          subdir: '../../../dxr_data/releases/mozilla-b2g32_v2_0'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-b2g34_v2_1'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-b2g34_v2_1'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-b2g34_v2_1_scm'
+    scm:
+      - hg-mozilla-b2g34_v2_1
+
+- scm:
+    name: 'hg-mozilla-b2g34_v2_1'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g34_v2_1'
+          subdir: '../../../dxr_data/releases/mozilla-b2g34_v2_1'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozilla-b2g37_v2_2'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-b2g37_v2_2'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-b2g37_v2_2_scm'
+    scm:
+      - hg-mozilla-b2g37_v2_2
+
+- scm:
+    name: 'hg-mozilla-b2g37_v2_2'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-b2g37_v2_2'
+          subdir: '../../../dxr_data/releases/mozilla-b2g37_v2_2'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
     name: 'mozilla-b2g44_v2_5'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g44_v2_5'
