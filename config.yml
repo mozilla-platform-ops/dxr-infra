@@ -586,3 +586,45 @@ trees:
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/l10n/mozilla-release'
+
+  - name: 'mozilla1.9.1'
+    proj_dir: 'releases'
+    job_weight: 1
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla1.9.1'
+
+  - name: 'mozilla1.9.2'
+    proj_dir: 'releases'
+    job_weight: 1
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla1.9.2'
+
+  - name: 'mozilla2.0'
+    proj_dir: 'releases'
+    job_weight: 1
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla2.0'
+
+  - name: 'comm-1.9.1'
+    proj_dir: 'releases'
+    job_weight: 1
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-1.9.1'
+
+  - name: 'comm-1.9.2'
+    proj_dir: 'releases'
+    job_weight: 1
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-1.9.2'
+
+  - name: 'comm-2.0'
+    proj_dir: 'releases'
+    job_weight: 1
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-2.0'
