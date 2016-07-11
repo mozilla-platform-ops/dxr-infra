@@ -608,27 +608,6 @@ trees:
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-2.0'
 
-  - name: 'comm-1.9.1'
-    proj_dir: 'releases'
-    job_weight: 1
-    disabled_plugins: 'xpidl'
-    repos:
-      - url: 'https://hg.mozilla.org/releases/comm-1.9.1'
-
-  - name: 'comm-1.9.2'
-    proj_dir: 'releases'
-    job_weight: 1
-    disabled_plugins: 'xpidl'
-    repos:
-      - url: 'https://hg.mozilla.org/releases/comm-1.9.2'
-
-  - name: 'comm-2.0'
-    proj_dir: 'releases'
-    job_weight: 1
-    disabled_plugins: 'xpidl'
-    repos:
-      - url: 'https://hg.mozilla.org/releases/comm-2.0'
-
   - name: 'addons'
     disabled_plugins: 'xpidl buglink clang extmatch rust python'
     es_shards: 50
