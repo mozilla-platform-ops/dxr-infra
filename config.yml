@@ -628,3 +628,10 @@ trees:
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/comm-2.0'
+
+  - name: 'addons'
+    disabled_plugins: 'xpidl buglink clang extmatch rust python'
+    es_shards: 50
+    repos:
+      - url: 'https://cvs.mozilla.org/addons'
+    schedule: 'H 10 * * 0,2,4'
