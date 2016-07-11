@@ -1336,7 +1336,7 @@
 - project:
     name: 'mozilla1.9.1'
     is_disabled: False
-    proj_dir: 'releases/mozilla1.9.1'
+    proj_dir: 'releases/mozilla-1.9.1'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -1349,14 +1349,14 @@
 - scm:
     name: 'mozilla1.9.1_scm'
     scm:
-      - hg-mozilla1.9.1
+      - hg-mozilla-1.9.1
 
 - scm:
-    name: 'hg-mozilla1.9.1'
+    name: 'hg-mozilla-1.9.1'
     scm:
       - hg:
-          url: 'https://hg.mozilla.org/releases/mozilla1.9.1'
-          subdir: '../../../dxr_data/releases/mozilla1.9.1'
+          url: 'https://hg.mozilla.org/releases/mozilla-1.9.1'
+          subdir: '../../../dxr_data/releases/mozilla-1.9.1'
           revision_type: 'branch'
           revision: 'default'
           disable-changelog: true
@@ -1364,7 +1364,7 @@
 - project:
     name: 'mozilla1.9.2'
     is_disabled: False
-    proj_dir: 'releases/mozilla1.9.2'
+    proj_dir: 'releases/mozilla-1.9.2'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -1377,14 +1377,14 @@
 - scm:
     name: 'mozilla1.9.2_scm'
     scm:
-      - hg-mozilla1.9.2
+      - hg-mozilla-1.9.2
 
 - scm:
-    name: 'hg-mozilla1.9.2'
+    name: 'hg-mozilla-1.9.2'
     scm:
       - hg:
-          url: 'https://hg.mozilla.org/releases/mozilla1.9.2'
-          subdir: '../../../dxr_data/releases/mozilla1.9.2'
+          url: 'https://hg.mozilla.org/releases/mozilla-1.9.2'
+          subdir: '../../../dxr_data/releases/mozilla-1.9.2'
           revision_type: 'branch'
           revision: 'default'
           disable-changelog: true
@@ -1392,7 +1392,7 @@
 - project:
     name: 'mozilla2.0'
     is_disabled: False
-    proj_dir: 'releases/mozilla2.0'
+    proj_dir: 'releases/mozilla-2.0'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -1405,14 +1405,14 @@
 - scm:
     name: 'mozilla2.0_scm'
     scm:
-      - hg-mozilla2.0
+      - hg-mozilla-2.0
 
 - scm:
-    name: 'hg-mozilla2.0'
+    name: 'hg-mozilla-2.0'
     scm:
       - hg:
-          url: 'https://hg.mozilla.org/releases/mozilla2.0'
-          subdir: '../../../dxr_data/releases/mozilla2.0'
+          url: 'https://hg.mozilla.org/releases/mozilla-2.0'
+          subdir: '../../../dxr_data/releases/mozilla-2.0'
           revision_type: 'branch'
           revision: 'default'
           disable-changelog: true
