@@ -603,21 +603,18 @@ trees:
 
   - name: 'mozilla1.9.1'
     proj_dir: 'releases'
-    job_weight: 1
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-1.9.1'
 
   - name: 'mozilla1.9.2'
     proj_dir: 'releases'
-    job_weight: 1
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-1.9.2'
 
   - name: 'mozilla2.0'
     proj_dir: 'releases'
-    job_weight: 1
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-2.0'
@@ -671,34 +668,29 @@ trees:
       - url: 'https://hg.mozilla.org/services'
 
   - name: 'camino'
-    job_weight: 1
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/camino'
 
   - name: 'mobile-browser'
-    job_weight: 1
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/mobile-browser'
 
   - name: 'jss'
     proj_dir: 'projects'
-    job_weight: 1
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/projects/jss'
 
   - name: 'python-nss'
     proj_dir: 'projects'
-    job_weight: 1
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/projects/python-nss'
 
   - name: 'mozmill-tests'
     proj_dir: 'qa'
-    job_weight: 1
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/qa/mozmill-tests'
@@ -712,6 +704,7 @@ trees:
 
   - name: 'mozillasvn-all'
     proj_dir: 'mozillasvn-all'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozillasvn-all'
