@@ -1732,3 +1732,91 @@
     name: 'cvs-mozillasvn-all'
     scm: []
 
+- project:
+    name: 'tamarin-central'
+    is_disabled: False
+    proj_dir: 'tamarin-central'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'tamarin-central_scm'
+    scm:
+      - cvs-tamarin-central
+
+- scm:
+    name: 'cvs-tamarin-central'
+    scm: []
+
+- project:
+    name: 'comm-1.9.1'
+    is_disabled: False
+    proj_dir: 'releases/comm-1.9.1'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-1.9.1_scm'
+    scm:
+      - cvs-comm-1.9.1
+
+- scm:
+    name: 'cvs-comm-1.9.1'
+    scm: []
+
+- project:
+    name: 'comm-1.9.2'
+    is_disabled: False
+    proj_dir: 'releases/comm-1.9.2'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-1.9.2_scm'
+    scm:
+      - cvs-comm-1.9.2
+
+- scm:
+    name: 'cvs-comm-1.9.2'
+    scm: []
+
+- project:
+    name: 'comm-2.0'
+    is_disabled: False
+    proj_dir: 'releases/comm-2.0'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-2.0_scm'
+    scm:
+      - cvs-comm-2.0
+
+- scm:
+    name: 'cvs-comm-2.0'
+    scm: []
+

@@ -710,3 +710,26 @@ trees:
       - url: 'https://cvs.mozilla.org/mozillasvn-all'
     schedule: '@monthly'
 
+  - name: 'tamarin-central'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/tamarin-central'
+
+  - name: 'comm-1.9.1'
+    proj_dir: 'releases'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/comm-1.9.1'
+
+  - name: 'comm-1.9.2'
+    proj_dir: 'releases'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/comm-1.9.2'
+
+  - name: 'comm-2.0'
+    proj_dir: 'releases'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/comm-2.0'
+
