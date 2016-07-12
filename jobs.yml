@@ -1282,6 +1282,50 @@
     scm: []
 
 - project:
+    name: 'fuel'
+    is_disabled: False
+    proj_dir: 'cvs/fuel'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'fuel_scm'
+    scm:
+      - cvs-fuel
+
+- scm:
+    name: 'cvs-fuel'
+    scm: []
+
+- project:
+    name: 'mozilla-org'
+    is_disabled: False
+    proj_dir: 'cvs/mozilla-org'
+    schedule: '@monthly'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-org_scm'
+    scm:
+      - cvs-mozilla-org
+
+- scm:
+    name: 'cvs-mozilla-org'
+    scm: []
+
+- project:
     name: 'l10n-central'
     is_disabled: False
     proj_dir: 'l10n/l10n-central'

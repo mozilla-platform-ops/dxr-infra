@@ -555,6 +555,20 @@ trees:
       - url: 'https://cvs.mozilla.org/thunderbird'
     schedule: '@monthly'
 
+  - name: 'fuel'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/fuel'
+    schedule: '@monthly'
+
+  - name: 'mozilla-org'
+    proj_dir: 'cvs'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/mozilla-org'
+    schedule: '@monthly'
+
   - name: 'l10n-central'
     type: 'tree'
     proj_dir: 'l10n'
