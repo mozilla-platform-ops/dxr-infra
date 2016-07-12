@@ -1504,3 +1504,143 @@
     tree_url: 'https://hg.mozilla.org/services'
     jobs:
         - "{name}-tree"
+- project:
+    name: 'camino'
+    is_disabled: False
+    proj_dir: 'camino'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'camino_scm'
+    scm:
+      - hg-camino
+
+- scm:
+    name: 'hg-camino'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/camino'
+          subdir: '../../../dxr_data/camino'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mobile-browser'
+    is_disabled: False
+    proj_dir: 'mobile-browser'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mobile-browser_scm'
+    scm:
+      - hg-mobile-browser
+
+- scm:
+    name: 'hg-mobile-browser'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/mobile-browser'
+          subdir: '../../../dxr_data/mobile-browser'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'jss'
+    is_disabled: False
+    proj_dir: 'projects/jss'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'jss_scm'
+    scm:
+      - hg-jss
+
+- scm:
+    name: 'hg-jss'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/projects/jss'
+          subdir: '../../../dxr_data/projects/jss'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'python-nss'
+    is_disabled: False
+    proj_dir: 'projects/python-nss'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'python-nss_scm'
+    scm:
+      - hg-python-nss
+
+- scm:
+    name: 'hg-python-nss'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/projects/python-nss'
+          subdir: '../../../dxr_data/projects/python-nss'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
+    name: 'mozmill-tests'
+    is_disabled: False
+    proj_dir: 'qa/mozmill-tests'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 1
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozmill-tests_scm'
+    scm:
+      - hg-mozmill-tests
+
+- scm:
+    name: 'hg-mozmill-tests'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/qa/mozmill-tests'
+          subdir: '../../../dxr_data/qa/mozmill-tests'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
