@@ -615,3 +615,43 @@ trees:
     repos:
       - url: 'https://cvs.mozilla.org/addons'
     schedule: 'H 10 * * 0,2,4'
+
+  - name: 'projects-central'
+    type: 'tree'
+    proj_dir: 'projects'
+    job_weight: 4
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/projects'
+
+  - name: 'webtools-central'
+    type: 'tree'
+    proj_dir: 'webtools'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/webtools'
+
+  - name: 'incubator-central'
+    type: 'tree'
+    proj_dir: 'incubator'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/incubator'
+
+  - name: 'labs-central'
+    type: 'tree'
+    proj_dir: 'labs'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/labs'
+
+  - name: 'services-central'
+    type: 'tree'
+    proj_dir: 'services'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/services'

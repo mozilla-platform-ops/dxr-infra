@@ -1439,3 +1439,68 @@
     name: 'cvs-addons'
     scm: []
 
+- project:
+    name: 'projects-central'
+    is_disabled: False
+    proj_dir: 'projects/projects'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 4
+    tree_url: 'https://hg.mozilla.org/projects'
+    jobs:
+        - "{name}-tree"
+- project:
+    name: 'webtools-central'
+    is_disabled: False
+    proj_dir: 'webtools/webtools'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    tree_url: 'https://hg.mozilla.org/webtools'
+    jobs:
+        - "{name}-tree"
+- project:
+    name: 'incubator-central'
+    is_disabled: False
+    proj_dir: 'incubator/incubator'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    tree_url: 'https://hg.mozilla.org/incubator'
+    jobs:
+        - "{name}-tree"
+- project:
+    name: 'labs-central'
+    is_disabled: False
+    proj_dir: 'labs/labs'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    tree_url: 'https://hg.mozilla.org/labs'
+    jobs:
+        - "{name}-tree"
+- project:
+    name: 'services-central'
+    is_disabled: False
+    proj_dir: 'services/services'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    tree_url: 'https://hg.mozilla.org/services'
+    jobs:
+        - "{name}-tree"
