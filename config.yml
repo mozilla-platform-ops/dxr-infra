@@ -704,7 +704,7 @@ trees:
 
   - name: 'mozillasvn-all'
     proj_dir: 'mozillasvn-all'
-    job_weight: 2
+    job_weight: 4
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozillasvn-all'
