@@ -703,3 +703,17 @@ trees:
     repos:
       - url: 'https://hg.mozilla.org/qa/mozmill-tests'
 
+  - name: 'mozillasvn'
+    proj_dir: 'mozillasvn'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/mozillasvn'
+    schedule: '@monthly'
+
+  - name: 'mozillasvn-all'
+    proj_dir: 'mozillasvn-all'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://cvs.mozilla.org/mozillasvn-all'
+    schedule: '@monthly'
+
