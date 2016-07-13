@@ -515,6 +515,7 @@ trees:
 
   - name: 'seamonkey'
     proj_dir: 'cvs'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/seamonkey'
@@ -550,6 +551,7 @@ trees:
 
   - name: 'thunderbird'
     proj_dir: 'cvs'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/thunderbird'
@@ -603,12 +605,14 @@ trees:
 
   - name: 'mozilla1.9.1'
     proj_dir: 'releases'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-1.9.1'
 
   - name: 'mozilla1.9.2'
     proj_dir: 'releases'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-1.9.2'
@@ -638,7 +642,6 @@ trees:
   - name: 'webtools-central'
     type: 'tree'
     proj_dir: 'webtools'
-    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/webtools'
@@ -654,7 +657,6 @@ trees:
   - name: 'labs-central'
     type: 'tree'
     proj_dir: 'labs'
-    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/labs'

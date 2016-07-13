@@ -1158,7 +1158,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     jobs:
         - "{name}"
 
@@ -1268,7 +1268,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     jobs:
         - "{name}"
 
@@ -1386,7 +1386,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     jobs:
         - "{name}"
 
@@ -1414,7 +1414,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
+    job_weight: 2
     jobs:
         - "{name}"
 
@@ -1505,7 +1505,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 2
+    job_weight: 1
     tree_url: 'https://hg.mozilla.org/webtools'
     jobs:
         - "{name}-tree"
@@ -1531,7 +1531,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 2
+    job_weight: 1
     tree_url: 'https://hg.mozilla.org/labs'
     jobs:
         - "{name}-tree"
