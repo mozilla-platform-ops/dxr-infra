@@ -649,7 +649,7 @@ trees:
   - name: 'incubator-central'
     type: 'tree'
     proj_dir: 'incubator'
-    job_weight: 2
+    job_weight: 3
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/incubator'

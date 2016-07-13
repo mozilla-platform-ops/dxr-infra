@@ -1518,7 +1518,7 @@
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 2
+    job_weight: 3
     tree_url: 'https://hg.mozilla.org/incubator'
     jobs:
         - "{name}-tree"
