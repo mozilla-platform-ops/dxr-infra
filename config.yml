@@ -729,14 +729,12 @@ trees:
       - url: 'https://hg.mozilla.org/qa/mozmill-tests'
 
   - name: 'mozillasvn'
-    proj_dir: 'mozillasvn'
     schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozillasvn'
 
   - name: 'mozillasvn-all'
-    proj_dir: 'mozillasvn-all'
     job_weight: 4
     schedule: '@weekly'
     disabled_plugins: 'xpidl'

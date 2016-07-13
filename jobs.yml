@@ -1691,7 +1691,7 @@
 - project:
     name: 'mozillasvn'
     is_disabled: False
-    proj_dir: 'mozillasvn/mozillasvn'
+    proj_dir: 'mozillasvn'
     schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
@@ -1713,7 +1713,7 @@
 - project:
     name: 'mozillasvn-all'
     is_disabled: False
-    proj_dir: 'mozillasvn-all/mozillasvn-all'
+    proj_dir: 'mozillasvn-all'
     schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
