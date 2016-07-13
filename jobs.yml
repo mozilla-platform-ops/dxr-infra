@@ -119,7 +119,7 @@
     name: 'mozilla-b2g18'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g18'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -147,7 +147,7 @@
     name: 'mozilla-b2g26_v1_2'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g26_v1_2'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -175,7 +175,7 @@
     name: 'mozilla-b2g28_v1_3'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g28_v1_3'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -203,7 +203,7 @@
     name: 'mozilla-b2g30_v1_4'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g30_v1_4'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -231,7 +231,7 @@
     name: 'mozilla-b2g32_v2_0'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g32_v2_0'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -259,7 +259,7 @@
     name: 'mozilla-b2g34_v2_1'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g34_v2_1'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -287,7 +287,7 @@
     name: 'mozilla-b2g37_v2_2'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g37_v2_2'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -315,7 +315,7 @@
     name: 'mozilla-b2g44_v2_5'
     is_disabled: False
     proj_dir: 'releases/mozilla-b2g44_v2_5'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -343,7 +343,7 @@
     name: 'mozilla-esr10'
     is_disabled: False
     proj_dir: 'releases/mozilla-esr10'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -371,7 +371,7 @@
     name: 'mozilla-esr17'
     is_disabled: False
     proj_dir: 'releases/mozilla-esr17'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -399,7 +399,7 @@
     name: 'mozilla-esr24'
     is_disabled: False
     proj_dir: 'releases/mozilla-esr24'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -427,7 +427,7 @@
     name: 'mozilla-esr31'
     is_disabled: False
     proj_dir: 'releases/mozilla-esr31'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -455,7 +455,7 @@
     name: 'mozilla-esr38'
     is_disabled: False
     proj_dir: 'releases/mozilla-esr38'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -628,7 +628,7 @@
     name: 'comm-esr10'
     is_disabled: False
     proj_dir: 'releases/comm-esr10'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -656,7 +656,7 @@
     name: 'comm-esr17'
     is_disabled: False
     proj_dir: 'releases/comm-esr17'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -684,7 +684,7 @@
     name: 'comm-esr24'
     is_disabled: False
     proj_dir: 'releases/comm-esr24'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -712,7 +712,7 @@
     name: 'comm-esr31'
     is_disabled: False
     proj_dir: 'releases/comm-esr31'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -740,7 +740,7 @@
     name: 'comm-esr38'
     is_disabled: False
     proj_dir: 'releases/comm-esr38'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -955,7 +955,7 @@
     name: 'classic'
     is_disabled: False
     proj_dir: 'cvs/classic'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -977,7 +977,7 @@
     name: 'js'
     is_disabled: False
     proj_dir: 'cvs/js'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -999,7 +999,7 @@
     name: 'security'
     is_disabled: False
     proj_dir: 'cvs/security'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1021,7 +1021,7 @@
     name: 'webtools'
     is_disabled: False
     proj_dir: 'cvs/webtools'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1043,7 +1043,7 @@
     name: 'mozilla'
     is_disabled: False
     proj_dir: 'cvs/mozilla'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1065,7 +1065,7 @@
     name: 'nspr-cvs'
     is_disabled: False
     proj_dir: 'cvs/nspr-cvs'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1087,7 +1087,7 @@
     name: 'mozilla1.7'
     is_disabled: False
     proj_dir: 'cvs/mozilla1.7'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1109,7 +1109,7 @@
     name: 'mozilla1.8'
     is_disabled: False
     proj_dir: 'cvs/mozilla1.8'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1131,7 +1131,7 @@
     name: 'mozilla1.8.0'
     is_disabled: False
     proj_dir: 'cvs/mozilla1.8.0'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1153,7 +1153,7 @@
     name: 'seamonkey'
     is_disabled: False
     proj_dir: 'cvs/seamonkey'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1175,7 +1175,7 @@
     name: 'aviarybranch'
     is_disabled: False
     proj_dir: 'cvs/aviarybranch'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1197,7 +1197,7 @@
     name: 'aviary101branch'
     is_disabled: False
     proj_dir: 'cvs/aviary101branch'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1219,7 +1219,7 @@
     name: 'firefox'
     is_disabled: False
     proj_dir: 'cvs/firefox'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1241,7 +1241,7 @@
     name: 'firefox2'
     is_disabled: False
     proj_dir: 'cvs/firefox2'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1263,7 +1263,7 @@
     name: 'thunderbird'
     is_disabled: False
     proj_dir: 'cvs/thunderbird'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1285,7 +1285,7 @@
     name: 'fuel'
     is_disabled: False
     proj_dir: 'cvs/fuel'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1307,7 +1307,7 @@
     name: 'mozilla-org'
     is_disabled: False
     proj_dir: 'cvs/mozilla-org'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1381,7 +1381,7 @@
     name: 'mozilla1.9.1'
     is_disabled: False
     proj_dir: 'releases/mozilla-1.9.1'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1409,7 +1409,7 @@
     name: 'mozilla1.9.2'
     is_disabled: False
     proj_dir: 'releases/mozilla-1.9.2'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1437,7 +1437,7 @@
     name: 'mozilla2.0'
     is_disabled: False
     proj_dir: 'releases/mozilla-2.0'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1487,7 +1487,7 @@
     name: 'projects-central'
     is_disabled: False
     proj_dir: 'projects/projects'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1500,7 +1500,7 @@
     name: 'webtools-central'
     is_disabled: False
     proj_dir: 'webtools/webtools'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1513,7 +1513,7 @@
     name: 'incubator-central'
     is_disabled: False
     proj_dir: 'incubator/incubator'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1526,7 +1526,7 @@
     name: 'labs-central'
     is_disabled: False
     proj_dir: 'labs/labs'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1539,7 +1539,7 @@
     name: 'services-central'
     is_disabled: False
     proj_dir: 'services/services'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1552,7 +1552,7 @@
     name: 'camino'
     is_disabled: False
     proj_dir: 'camino'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1580,7 +1580,7 @@
     name: 'mobile-browser'
     is_disabled: False
     proj_dir: 'mobile-browser'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1608,7 +1608,7 @@
     name: 'jss'
     is_disabled: False
     proj_dir: 'projects/jss'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1636,7 +1636,7 @@
     name: 'python-nss'
     is_disabled: False
     proj_dir: 'projects/python-nss'
-    schedule: 'H H/4 * * *'
+    schedule: '@daily'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1664,7 +1664,7 @@
     name: 'mozmill-tests'
     is_disabled: False
     proj_dir: 'qa/mozmill-tests'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1692,7 +1692,7 @@
     name: 'mozillasvn'
     is_disabled: False
     proj_dir: 'mozillasvn/mozillasvn'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1714,7 +1714,7 @@
     name: 'mozillasvn-all'
     is_disabled: False
     proj_dir: 'mozillasvn-all/mozillasvn-all'
-    schedule: '@monthly'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1736,7 +1736,7 @@
     name: 'tamarin-central'
     is_disabled: False
     proj_dir: 'tamarin-central'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1758,7 +1758,7 @@
     name: 'comm-1.9.1'
     is_disabled: False
     proj_dir: 'releases/comm-1.9.1'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1780,7 +1780,7 @@
     name: 'comm-1.9.2'
     is_disabled: False
     proj_dir: 'releases/comm-1.9.2'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
@@ -1802,7 +1802,7 @@
     name: 'comm-2.0'
     is_disabled: False
     proj_dir: 'releases/comm-2.0'
-    schedule: 'H H/4 * * *'
+    schedule: '@weekly'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'

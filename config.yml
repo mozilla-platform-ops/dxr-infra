@@ -116,6 +116,7 @@ trees:
   - name: 'mozilla-b2g18'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g18'
@@ -123,6 +124,7 @@ trees:
   - name: 'mozilla-b2g26_v1_2'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g26_v1_2'
@@ -130,6 +132,7 @@ trees:
   - name: 'mozilla-b2g28_v1_3'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g28_v1_3'
@@ -137,6 +140,7 @@ trees:
   - name: 'mozilla-b2g30_v1_4'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g30_v1_4'
@@ -144,6 +148,7 @@ trees:
   - name: 'mozilla-b2g32_v2_0'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g32_v2_0'
@@ -151,6 +156,7 @@ trees:
   - name: 'mozilla-b2g34_v2_1'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g34_v2_1'
@@ -158,6 +164,7 @@ trees:
   - name: 'mozilla-b2g37_v2_2'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g37_v2_2'
@@ -165,6 +172,7 @@ trees:
   - name: 'mozilla-b2g44_v2_5'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-b2g44_v2_5'
@@ -172,6 +180,7 @@ trees:
   - name: 'mozilla-esr10'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr10'
@@ -179,6 +188,7 @@ trees:
   - name: 'mozilla-esr17'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr17'
@@ -186,6 +196,7 @@ trees:
   - name: 'mozilla-esr24'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr24'
@@ -193,6 +204,7 @@ trees:
   - name: 'mozilla-esr31'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr31'
@@ -200,6 +212,7 @@ trees:
   - name: 'mozilla-esr38'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr38'
@@ -303,6 +316,7 @@ trees:
   - name: 'comm-esr10'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/comm-esr10'
@@ -310,6 +324,7 @@ trees:
   - name: 'comm-esr17'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/comm-esr17'
@@ -317,6 +332,7 @@ trees:
   - name: 'comm-esr24'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/comm-esr24'
@@ -324,6 +340,7 @@ trees:
   - name: 'comm-esr31'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/comm-esr31'
@@ -331,6 +348,7 @@ trees:
   - name: 'comm-esr38'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/comm-esr38'
@@ -452,124 +470,124 @@ trees:
 
   - name: 'classic'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/classic'
-    schedule: '@monthly'
 
   - name: 'js'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/js'
-    schedule: '@monthly'
 
   - name: 'security'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/security'
-    schedule: '@monthly'
 
   - name: 'webtools'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/webtools'
-    schedule: '@monthly'
 
   - name: 'mozilla'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozilla'
-    schedule: '@monthly'
 
   - name: 'nspr-cvs'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/nspr-cvs'
-    schedule: '@monthly'
 
   - name: 'mozilla1.7'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozilla1.7'
-    schedule: '@monthly'
 
   - name: 'mozilla1.8'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozilla1.8'
-    schedule: '@monthly'
 
   - name: 'mozilla1.8.0'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozilla1.8.0'
-    schedule: '@monthly'
 
   - name: 'seamonkey'
     proj_dir: 'cvs'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/seamonkey'
-    schedule: '@monthly'
 
   - name: 'aviarybranch'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/aviarybranch'
-    schedule: '@monthly'
 
   - name: 'aviary101branch'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/aviary101branch'
-    schedule: '@monthly'
 
   - name: 'firefox'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/firefox'
-    schedule: '@monthly'
 
   - name: 'firefox2'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/firefox2'
-    schedule: '@monthly'
 
   - name: 'thunderbird'
     proj_dir: 'cvs'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/thunderbird'
-    schedule: '@monthly'
 
   - name: 'fuel'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/fuel'
-    schedule: '@monthly'
 
   - name: 'mozilla-org'
     proj_dir: 'cvs'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozilla-org'
-    schedule: '@monthly'
 
   - name: 'l10n-central'
     type: 'tree'
@@ -606,6 +624,7 @@ trees:
   - name: 'mozilla1.9.1'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-1.9.1'
@@ -613,12 +632,14 @@ trees:
   - name: 'mozilla1.9.2'
     proj_dir: 'releases'
     job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-1.9.2'
 
   - name: 'mozilla2.0'
     proj_dir: 'releases'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-2.0'
@@ -635,6 +656,7 @@ trees:
     type: 'tree'
     proj_dir: 'projects'
     job_weight: 4
+    schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/projects'
@@ -642,6 +664,7 @@ trees:
   - name: 'webtools-central'
     type: 'tree'
     proj_dir: 'webtools'
+    schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/webtools'
@@ -649,6 +672,7 @@ trees:
   - name: 'incubator-central'
     type: 'tree'
     proj_dir: 'incubator'
+    schedule: '@daily'
     job_weight: 3
     disabled_plugins: 'xpidl'
     repos:
@@ -657,6 +681,7 @@ trees:
   - name: 'labs-central'
     type: 'tree'
     proj_dir: 'labs'
+    schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/labs'
@@ -665,73 +690,82 @@ trees:
     type: 'tree'
     proj_dir: 'services'
     job_weight: 2
+    schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/services'
 
   - name: 'camino'
+    schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/camino'
 
   - name: 'mobile-browser'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/mobile-browser'
 
   - name: 'jss'
     proj_dir: 'projects'
+    schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/projects/jss'
 
   - name: 'python-nss'
     proj_dir: 'projects'
+    schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/projects/python-nss'
 
   - name: 'mozmill-tests'
     proj_dir: 'qa'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/qa/mozmill-tests'
 
   - name: 'mozillasvn'
     proj_dir: 'mozillasvn'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozillasvn'
-    schedule: '@monthly'
 
   - name: 'mozillasvn-all'
     proj_dir: 'mozillasvn-all'
     job_weight: 4
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/mozillasvn-all'
-    schedule: '@monthly'
 
   - name: 'tamarin-central'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/tamarin-central'
 
   - name: 'comm-1.9.1'
     proj_dir: 'releases'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/comm-1.9.1'
 
   - name: 'comm-1.9.2'
     proj_dir: 'releases'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/comm-1.9.2'
 
   - name: 'comm-2.0'
     proj_dir: 'releases'
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://cvs.mozilla.org/comm-2.0'
-
