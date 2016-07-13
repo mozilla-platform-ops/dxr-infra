@@ -15,7 +15,7 @@ dxr:
   es_alias: 'dxr_{format}_{tree}'
   es_indexing_timeout: 120
   es_refresh_interval: 30
-  es_indexing_retries: 2
+  es_indexing_retries: 5
 
 defaults:
   disable: false
