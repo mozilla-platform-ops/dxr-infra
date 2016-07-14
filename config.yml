@@ -687,7 +687,7 @@ trees:
   - name: 'services-central'
     type: 'tree'
     proj_dir: 'services'
-    job_weight: 2
+    job_weight: 4
     schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
