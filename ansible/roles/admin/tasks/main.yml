@@ -23,6 +23,7 @@
     - python27-mod_wsgi
     - nodejs
     - npm
+    - jq
 
 - name: create data dirs and NFS mount point
   file: path={{ item }} state=directory owner=root group=root mode=0755
