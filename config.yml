@@ -598,7 +598,7 @@ trees:
   - name: 'l10n-mozilla-aurora'
     type: 'tree'
     proj_dir: 'l10n'
-    job_weight: 2
+    job_weight: 3
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/l10n/mozilla-aurora'
@@ -606,7 +606,7 @@ trees:
   - name: 'l10n-mozilla-beta'
     type: 'tree'
     proj_dir: 'l10n'
-    job_weight: 2
+    job_weight: 3
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/l10n/mozilla-beta'
