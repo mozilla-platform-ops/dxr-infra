@@ -15,9 +15,11 @@
 
 - name: install httpd.conf file
   template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
+  notify: reload apache
 
-- name: install vhost config
+- name: install dxr vhost config
   template: src=vhost.conf.j2 dest=/etc/httpd/conf.d/dxr-vhost.conf
+  notify: reload apache
 
 - name: install wsgi config
   copy: content="LoadModule wsgi_module modules/mod_wsgi.so" dest=/etc/httpd/conf.d/wsgi.conf
