@@ -32,6 +32,10 @@
         branch: master
   roles:
     - admin
+    - { role: mxrtodxr,
+        approot: '/data/prod/mxr',
+        repo: 'https://github.com/anarute/mxrtodxr',
+      }
 
 - hosts: dxr-builders
   vars:
@@ -45,18 +49,22 @@
     - include: tasks/add-jenkins-slaves.yml
 
 - hosts: dxr1.stage.webapp.scl3.mozilla.com
-  vars:
-    domain: dxr.allizom.org
-    sitehome: /data/stage
-    approot: /data/stage/dxr-stage
   roles:
-    - web
+    - { role: web,
+        domain: 'dxr.allizom.org',
+        sitehome: '/data/stage',
+        approot: '/data/stage/dxr-stage'
+      }
 
 - hosts: dxrweb-prod
-  vars:
-    domain: dxr.mozilla.org
-    sitehome: /data/prod
-    approot: /data/prod/dxr-prod
   roles:
-    - web
-
+    - { role: web,
+        domain: 'dxr.mozilla.org',
+        sitehome: '/data/prod',
+        approot: '/data/prod/dxr-prod'
+      }
+    - { role: altweb,
+        domain: 'mxr.mozilla.org',
+        alias: 'lxr.mozilla.org',
+        approot: '/data/prod/mxr',
+      }

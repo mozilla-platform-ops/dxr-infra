@@ -1,0 +1,20 @@
+# UserAgents we will normally want to ignore (internal & monitoring) (bug 1010323)
+BrowserMatch ^HTTP-Monitor/ dontlog
+BrowserMatch ^collectd/     dontlog
+
+# Don't log connections from localhost either
+SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
+SetEnvIf Remote_Addr "::1" dontlog
+
+<VirtualHost *:81>
+  ServerName {{ domain }}
+  ServerAlias {{ alias }}
+  CustomLog /var/log/httpd/{{ domain }}/access_log proxy env=!dontlog
+  ErrorLog /var/log/httpd/{{ domain }}/error_log
+
+  <Directory {{ approot }}>
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+</VirtualHost>

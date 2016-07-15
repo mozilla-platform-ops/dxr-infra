@@ -1,0 +1,4 @@
+---
+- name: git clone app
+  git: repo={{ repo }} dest={{ approot }} force=yes
+
