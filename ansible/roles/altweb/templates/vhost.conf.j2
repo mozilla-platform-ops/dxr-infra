@@ -14,9 +14,13 @@ Listen 81
   CustomLog /var/log/httpd/{{ domain }}/access_log proxy env=!dontlog
   ErrorLog /var/log/httpd/{{ domain }}/error_log
 
-  <Directory {{ approot }}>
+  DocumentRoot {{ approot }}
+  <Directory "{{ approot }}">
     Order allow,deny
     Allow from all
   </Directory>
+
+  #RewriteEngine on
+  #RewriteRule ^(.*)$ index.html [L,QSA]
 
 </VirtualHost>
