@@ -6,6 +6,8 @@ BrowserMatch ^collectd/     dontlog
 SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
 SetEnvIf Remote_Addr "::1" dontlog
 
+Listen 81
+
 <VirtualHost *:81>
   ServerName {{ domain }}
   ServerAlias {{ alias }}
