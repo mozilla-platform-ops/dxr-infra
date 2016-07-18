@@ -1661,34 +1661,6 @@
           disable-changelog: true
 
 - project:
-    name: 'mozmill-tests'
-    is_disabled: False
-    proj_dir: 'qa/mozmill-tests'
-    schedule: '@weekly'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - "{name}"
-
-- scm:
-    name: 'mozmill-tests_scm'
-    scm:
-      - hg-mozmill-tests
-
-- scm:
-    name: 'hg-mozmill-tests'
-    scm:
-      - hg:
-          url: 'https://hg.mozilla.org/qa/mozmill-tests'
-          subdir: '../../../dxr_data/qa/mozmill-tests'
-          revision_type: 'branch'
-          revision: 'default'
-          disable-changelog: true
-
-- project:
     name: 'mozillasvn'
     is_disabled: False
     proj_dir: 'mozillasvn'

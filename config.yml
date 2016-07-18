@@ -719,13 +719,6 @@ trees:
     repos:
       - url: 'https://hg.mozilla.org/projects/python-nss'
 
-  - name: 'mozmill-tests'
-    proj_dir: 'qa'
-    schedule: '@weekly'
-    disabled_plugins: 'xpidl'
-    repos:
-      - url: 'https://hg.mozilla.org/qa/mozmill-tests'
-
   - name: 'mozillasvn'
     schedule: '@weekly'
     disabled_plugins: 'xpidl'
