@@ -1,7 +1,7 @@
 ---
 dxr:
   www_root: '/'
-  workers: 2
+  workers: 4
   default_tree: 'mozilla-central'
   enabled_plugins: '*'
   es_hosts:
