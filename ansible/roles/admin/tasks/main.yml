@@ -25,12 +25,14 @@
     - npm
     - jq
 
-- name: create data dirs and NFS mount point
+- name: create data dirs
   file: path={{ item }} state=directory owner=root group=root mode=0755
   with_items:
     - /data/prod/builds
     - /data/stage/builds
-    - /data/dxr_data
+
+- name: create NFS mount point
+  file: path=/data/dxr_data state=directory owner=5507 group=root mode=0755
 
 - name: create src symlinks
   file: src=/data/dxr_data dest=/data/{{ item }}/src state=link
