@@ -42,7 +42,6 @@
     jenkins_master: jenkins-dxr.mozilla.org
   roles:
     - indexer
-    - jenkins-slave
 
 - hosts: dxr-jenkins1.dmz.scl3.mozilla.com
   tasks:
