@@ -382,7 +382,7 @@ trees:
       - url: 'https://hg.mozilla.org/build/buildbot'
       - url: 'https://hg.mozilla.org/build/buildbot-configs'
       - url: 'https://hg.mozilla.org/build/buildbotcustom'
-      - url: 'https://github.com/mozilla/build-cloud-tools.git'
+      - url: 'https://github.com/mozilla-releng/build-cloud-tools.git'
         dirname: 'cloud-tools'
       - url: 'https://hg.mozilla.org/build/compare-locales'
       - url: 'https://hg.mozilla.org/build/mozharness'
