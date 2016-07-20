@@ -16,11 +16,9 @@ Listen 81
 
   DocumentRoot {{ approot }}
   <Directory "{{ approot }}">
+    AllowOverride All
     Order allow,deny
     Allow from all
   </Directory>
-
-  #RewriteEngine on
-  #RewriteRule ^(.*)$ index.html [L,QSA]
-
+  # Rewrite rules are handled by .htaccess file in mxrtodxr repo
 </VirtualHost>
