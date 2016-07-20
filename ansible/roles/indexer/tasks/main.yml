@@ -13,8 +13,11 @@
 
 - name: create jenkins user
   user: name=jenkins
+        comment="DXR Jenkins user"
         uid=5507
+        group=vpn_dxr
         groups=docker
+        shell="/bin/bash"
         append=yes
 
 - name: add authorized_keys for jenkins user
