@@ -15,6 +15,7 @@ MaxRequestsPerChild  4000
 
 Listen 80
 
+LoadModule authz_user_module modules/mod_authz_user.so
 LoadModule authz_host_module modules/mod_authz_host.so
 LoadModule log_config_module modules/mod_log_config.so
 LoadModule logio_module modules/mod_logio.so
