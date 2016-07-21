@@ -375,6 +375,7 @@ trees:
   - name: 'build-central'
     type: 'tree'
     proj_dir: 'build'
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/build/braindump'
@@ -643,6 +644,7 @@ trees:
       - url: 'https://hg.mozilla.org/releases/mozilla-2.0'
 
   - name: 'addons'
+    type: 'tree'
     disabled_plugins: 'xpidl buglink clang extmatch rust python'
     job_weight: 4
     es_shards: 50
@@ -679,6 +681,7 @@ trees:
   - name: 'labs-central'
     type: 'tree'
     proj_dir: 'labs'
+    job_weight: 2
     schedule: '@daily'
     disabled_plugins: 'xpidl'
     repos:
