@@ -1,11 +1,3 @@
-# UserAgents we will normally want to ignore (internal & monitoring) (bug 1010323)
-BrowserMatch ^HTTP-Monitor/ dontlog
-BrowserMatch ^collectd/     dontlog
-
-# Don't log connections from localhost either
-SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
-SetEnvIf Remote_Addr "::1" dontlog
-
 Listen 81
 
 <VirtualHost *:81>
