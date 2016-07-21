@@ -34,7 +34,7 @@
     - admin
     - { role: mxrtodxr,
         approot: '/data/prod/mxr',
-        repo: 'https://github.com/anarute/mxrtodxr',
+        repo: 'https://github.com/mozilla-platform-ops/mxrtodxr',
       }
 
 - hosts: dxr-builders
