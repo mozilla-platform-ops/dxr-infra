@@ -657,7 +657,7 @@ trees:
     proj_dir: 'projects'
     job_weight: 4
     schedule: '@daily'
-    disabled_plugins: 'xpidl'
+    disabled_plugins: 'xpidl buglink clang extmatch rust python'
     repos:
       - url: 'https://hg.mozilla.org/projects'
 
@@ -665,7 +665,7 @@ trees:
     type: 'tree'
     proj_dir: 'webtools'
     schedule: '@daily'
-    disabled_plugins: 'xpidl'
+    disabled_plugins: 'xpidl buglink clang extmatch rust python'
     repos:
       - url: 'https://hg.mozilla.org/webtools'
 
@@ -674,7 +674,7 @@ trees:
     proj_dir: 'incubator'
     schedule: '@daily'
     job_weight: 3
-    disabled_plugins: 'xpidl'
+    disabled_plugins: 'xpidl buglink clang extmatch rust python'
     repos:
       - url: 'https://hg.mozilla.org/incubator'
 
@@ -683,7 +683,7 @@ trees:
     proj_dir: 'labs'
     job_weight: 2
     schedule: '@daily'
-    disabled_plugins: 'xpidl'
+    disabled_plugins: 'xpidl buglink clang extmatch rust python'
     repos:
       - url: 'https://hg.mozilla.org/labs'
 
@@ -692,7 +692,7 @@ trees:
     proj_dir: 'services'
     job_weight: 4
     schedule: '@daily'
-    disabled_plugins: 'xpidl'
+    disabled_plugins: 'xpidl buglink clang extmatch rust python'
     repos:
       - url: 'https://hg.mozilla.org/services'
 
