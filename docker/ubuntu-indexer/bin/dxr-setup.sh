@@ -7,9 +7,7 @@ test `whoami` == 'root';
 
 ### Add jenkins user
 useradd -u 5507 -d /home/jenkins -s /bin/bash -m jenkins;
-chown jenkins:jenkins /home/jenkins
 
-su - jenkins
 mkdir /home/jenkins/src
 
 # Configure mercurial
@@ -35,6 +33,8 @@ git clone --recursive https://github.com/mozilla/dxr && \
 
 export PATH=/usr/lib/llvm-3.7/bin/:${PATH}
 env VIRTUAL_ENV=`pwd`/venv CC=clang CXX=clang++ make -C dxr
+
+chown -R jenkins:jenkins /home/jenkins
 
 # Remove this script
 rm $0; echo "Deleted $0";
