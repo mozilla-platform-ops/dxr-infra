@@ -20,7 +20,10 @@ apt_packages+=('git')
 apt_packages+=('jq')
 apt_packages+=('gawk')
 apt_packages+=('sudo')
+
+# Dependencies for debugging
 apt_packages+=('vim')
+apt_packages+=('strace')
 
 # Dependencies for DXR
 apt_packages+=('clang-3.6')
