@@ -17,12 +17,13 @@ apt_packages+=('curl')
 apt_packages+=('git')
 apt_packages+=('jq')
 apt_packages+=('gawk')
+apt_packages+=('sudo')
 
 # Dependencies for DXR
-apt_packages+=('clang')
-apt_packages+=('libclang-dev')
-apt_packages+=('llvm')
-apt_packages+=('llvm-dev')
+apt_packages+=('clang-3.7')
+apt_packages+=('libclang-3.7-dev')
+apt_packages+=('llvm-3.7')
+apt_packages+=('llvm-3.7-dev')
 apt_packages+=('npm')
 
 # Dependency for nodejs
@@ -46,7 +47,7 @@ apt_packages+=('libgstreamer-plugins-base0.10-dev')
 apt-get update -y
 
 apt-get install -y --force-yes ${apt_packages[@]}
-apt-get build-dep -y clang llvm
+apt-get build-dep -y clang-3.7 llvm-3.7
 
 # Add a newer version of node that supports ES6.
 curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
