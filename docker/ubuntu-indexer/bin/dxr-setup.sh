@@ -7,9 +7,10 @@ test `whoami` == 'root';
 
 ### Add jenkins user
 useradd -u 5507 -d /home/jenkins -s /bin/bash -m jenkins;
+chown jenkins:jenkins /home/jenkins
 
-mkdir -p /builds/dxr-build-env/src
-chown -R jenkins:jenkins /builds
+su - jenkins
+mkdir /home/jenkins/src
 
 # Configure mercurial
 mkdir /home/jenkins/.mozbuild && chown jenkins:jenkins /home/jenkins/.mozbuild

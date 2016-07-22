@@ -70,8 +70,8 @@ bash rustup.sh --yes
 rm -f rustup.sh
 
 # Install bundleclone extension
-mkdir /builds/dxr-build-env/hgext
-wget -O /builds/dxr-build-env/hgext/bundleclone.py \
+mkdir /home/jenkins/hgext
+wget -O /home/jenkins/hgext/bundleclone.py \
     https://hg.mozilla.org/hgcustom/version-control-tools/raw-file/default/hgext/bundleclone/__init__.py
 
 mkdir -p /etc/mercurial
@@ -83,7 +83,7 @@ users = root, jenkins
 cacerts = /etc/ssl/certs/ca-certificates.crt
 
 [extensions]
-bundleclone  = /builds/dxr-build-env/hgext/bundleclone.py
+bundleclone  = /home/jenkins/hgext/bundleclone.py
 #prefers = ec2region=us-west-2, stream=revlogv1
 EOF
 
