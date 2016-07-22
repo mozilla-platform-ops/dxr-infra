@@ -25,11 +25,11 @@ defaults:
   build_command: ''   # DXR's default is 'make ...'
   mail_rcpts: fubar@mozilla.com erose@mozilla.com
   docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-  docker_vol: '/data/dxr_data:/builds/dxr-build-env/src'
+  docker_vol: '/data/dxr_data:/home/jenkins/src'
   repo_dir: '../../../dxr_data'
   dxr_plugins:
     - plugin: 'python'
-      python_path: '/builds/dxr-build-env/venv/lib/python2.7/site-packages'
+      python_path: '/home/jenkins/venv/lib/python2.7/site-packages'
     - plugin: 'buglink'
       name: 'bugzilla'
       url: 'https://bugzilla.mozilla.org/show_bug.cgi?id=%s'
@@ -430,7 +430,7 @@ trees:
       - url: 'https://github.com/rust-lang-nursery/rustfmt.git'
     enabled_plugins: 'pygmentize rust buglink'
     ignore_patterns: '/target/ /tests/ /data/ .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder/src && RUSTC=/builds/dxr-build-env/dxr/dxr/plugins/rust/dxr-rustc.sh cargo build --verbose'
+    build_command: 'cd $source_folder/src && RUSTC=/home/jenkins/dxr/dxr/plugins/rust/dxr-rustc.sh cargo build --verbose'
     plugins:
       - plugin: 'buglink'
         name: 'github'
