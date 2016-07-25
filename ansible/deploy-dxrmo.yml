@@ -19,6 +19,7 @@
     domain: jenkins-dxr.mozilla.org
     jenkins_key: /root/.ssh/jenkins_rsa
   roles:
+    - common
     - jenkins-master
 
 - hosts: dxradm.private.scl3.mozilla.com
@@ -31,6 +32,7 @@
       stage:
         branch: master
   roles:
+    - common
     - admin
     - { role: mxrtodxr,
         approot: '/data/prod/mxr',
@@ -41,6 +43,7 @@
   vars:
     jenkins_master: jenkins-dxr.mozilla.org
   roles:
+    - common
     - indexer
 
 - hosts: dxr-jenkins1.dmz.scl3.mozilla.com
@@ -49,6 +52,7 @@
 
 - hosts: dxr1.stage.webapp.scl3.mozilla.com
   roles:
+    - common
     - { role: web,
         domain: 'dxr.allizom.org',
         sitehome: '/data/stage',
@@ -57,6 +61,7 @@
 
 - hosts: dxrweb-prod
   roles:
+    - common
     - { role: web,
         domain: 'dxr.mozilla.org',
         sitehome: '/data/prod',

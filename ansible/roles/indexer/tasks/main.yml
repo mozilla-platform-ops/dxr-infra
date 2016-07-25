@@ -2,14 +2,10 @@
 - name: install packages
   yum: pkg={{item}} state=installed
   with_items:
-    - git
-    - mercurial
     - lxc
     - lxc-libs
     - docker-io
-    - python-setuptools
     - java-1.8.0-openjdk
-    - curl
 
 - name: create jenkins user
   user: name=jenkins
@@ -24,13 +20,6 @@
   authorized_key: user=jenkins
                   key_options='from="10.22.74.155"'
                   key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA4H+yA2xlG0uCqmFOf5KKoEK/W82o6AbhnVixD4LI5Yi/vDi6TjXcZqgMFIQ5JAGiWrPnan2W6SqVapm8Iv1Zzvezr+8s0y3WoKDCKQSM+g3vuwrAZODt8xpOXn3bluHxNdBTwH97itzoHhyhw2C1gEbpxUMKt5Y/2mSU54WhmleXoTl9GtdJTdEQ+76p2b6E6GODIFrRhXBCcnEy3fwSimHxgKAoU6YqrSThqaFYdjIFJr62frQfwPkVN/bGu683lkZIR7x7cMsU11GR8WRHA1oOKpP4zMyhkuEXxI6VTGOu87kC9xKbjTxkbJOk9ZYmXOPOOCtMdDZE9X5o1jNVTQ=="
-
-- name: configure DC proxies in /etc/environment
-  copy: dest=/etc/environment
-        src=environment
-        owner=root
-        group=root
-        mode=0644
 
 - name: Prevent puppet firewall NAT purging
   copy: dest=/etc/facter/facts.d/local_firewall_purge_disable.yaml
@@ -85,13 +74,6 @@
   service: name=docker
            state=started
            enabled=yes
-
-- name: ensure data directory exists
-  file: path=/data/dxr_data
-        state=directory
-        owner=jenkins
-        group=root
-        mode=0755
 
 - name: ensure jenkins directory exists
   file: path={{ jenkins_dir }}

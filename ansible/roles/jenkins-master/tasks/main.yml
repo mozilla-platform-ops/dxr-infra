@@ -2,22 +2,12 @@
 # cf https://github.com/geerlingguy/ansible-role-jenkins
 # or https://github.com/ICTO/ansible-jenkins (for Ubuntu)
 
-- name: configure DC proxies in /etc/environment
-  copy: src=environment dest=/etc/environment mode=0644 owner=root group=root
-
-- name: create directories
-  file: path={{ item }}
+- name: create slave directory
+  file: path=/data/slaves
         state=directory
         owner=root
         group=root
         mode=0755
-  with_items:
-    - /data
-    - /data/slaves
-
-- name: ensure curl is installed
-  yum: pkg=curl
-       state=installed
 
 - name: add jenkins yum repo
   get_url: url="{{ jenkins_repo_url }}"
@@ -29,11 +19,9 @@
 - name: install packages
   yum: pkg={{ item }} state=present
   with_items:
-    - git
     - httpd
     - jenkins
     - java-1.8.0-openjdk
-    - logrotate
 
 - name: install httpd.conf file
   template: src=httpd.conf.j2

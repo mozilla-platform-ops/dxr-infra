@@ -1,0 +1,33 @@
+---
+- name: install system packages
+  yum: pkg={{ item }} state=present
+  with_items:
+    - curl
+    - git
+    - logrotate
+    - mercurial
+    - python27
+    - python27-devel
+    - python27-setuptools
+    - python27-virtualenv
+
+- name: create /data directory
+  file: path=/data
+        state=directory
+        owner=root
+        group=root
+        mode=0755
+
+- name: create NFS mount point
+  file: path=/data/dxr_data
+        state=directory
+        owner=5507
+        group=root
+        mode=0755
+
+#- name: configure DC proxies in /etc/environment
+#  copy: dest=/etc/environment
+#        src=environment
+#        owner=root
+#        group=root
+#        mode=0644

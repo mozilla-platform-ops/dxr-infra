@@ -2,14 +2,7 @@
 - name: install system packages
   yum: pkg={{ item }} state=present
   with_items:
-    - git
-    - mercurial
-    - python27
-    - python27-devel
-    - python27-setuptools
-    - python27-virtualenv
     - python27-mod_wsgi
-    - logrotate
     - httpd
     - mod_auth_mellon
 
@@ -34,12 +27,11 @@
 - name: add logrotate config
   copy: src=logrotate.conf dest=/etc/logrotate.d/httpd
 
-- name: add data dir and NFS mount point(s)
+- name: add deploy directories
   file: path={{ item }} state=directory
   with_items:
     - /data/prod
     - /data/stage
-    - /data/dxr_data
 
 - name: manage httpd service
   service: name=httpd enabled=yes state=started
