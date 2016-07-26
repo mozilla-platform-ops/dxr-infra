@@ -4,6 +4,7 @@ dxr:
   workers: 4
   default_tree: 'mozilla-central'
   enabled_plugins: '*'
+  disabled_plugins: 'descriptor'
   es_hosts:
     - http://node46.bunker.scl3.mozilla.com:9200/
     - http://node47.bunker.scl3.mozilla.com:9200/
