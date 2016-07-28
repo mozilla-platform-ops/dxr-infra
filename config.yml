@@ -410,6 +410,7 @@ trees:
       - url: 'https://hg.mozilla.org/hgcustom/version-control-tools'
 
   - name: 'rust'
+    workers: 2
     disabled_plugins: 'xpidl clang rust buglink'
     proj_dir: 'rust-lang'
     repos:
@@ -600,7 +601,7 @@ trees:
   - name: 'l10n-mozilla-aurora'
     type: 'tree'
     proj_dir: 'l10n'
-    job_weight: 3
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/l10n/mozilla-aurora'
@@ -608,7 +609,7 @@ trees:
   - name: 'l10n-mozilla-beta'
     type: 'tree'
     proj_dir: 'l10n'
-    job_weight: 3
+    job_weight: 2
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/l10n/mozilla-beta'
@@ -654,6 +655,7 @@ trees:
     schedule: 'H 10 * * 0,2,4'
 
   - name: 'projects-central'
+    workers: 2
     type: 'tree'
     proj_dir: 'projects'
     job_weight: 4
@@ -674,7 +676,7 @@ trees:
     type: 'tree'
     proj_dir: 'incubator'
     schedule: '@daily'
-    job_weight: 3
+    job_weight: 2
     disabled_plugins: 'xpidl buglink clang extmatch rust python'
     repos:
       - url: 'https://hg.mozilla.org/incubator'
@@ -691,7 +693,7 @@ trees:
   - name: 'services-central'
     type: 'tree'
     proj_dir: 'services'
-    job_weight: 4
+    job_weight: 2
     schedule: '@daily'
     disabled_plugins: 'xpidl buglink clang extmatch rust python'
     repos:
