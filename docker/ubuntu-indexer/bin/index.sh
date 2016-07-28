@@ -4,11 +4,6 @@
 # Grab the latest config
 wget -q -O dxr.config https://github.com/mozilla-platform-ops/dxr-infra/raw/master/dxr.config
 
-# hack: rust indexing is crazy memory intensive
-if [ 'rust' == "$1" ]; then
-    sed -i -e 's/^workers = ./workers = 1/' dxr.config
-fi
-
 update_hg_repo() {
     local url=$1
     local repo=$2
