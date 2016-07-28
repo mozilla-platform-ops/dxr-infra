@@ -15,6 +15,9 @@ es_refresh_interval = {{ dxr.es_refresh_interval }}
 
 {% for t in trees %}
 [{{ t.name }}]
+{%- if t.workers %}
+workers = {{ t.workers }}
+{%- endif %}
 source_folder = {{ t.source_folder }}
 object_folder = {{ t.object_folder }}
 {%- if t.es_index %}
