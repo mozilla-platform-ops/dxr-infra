@@ -1,6 +1,5 @@
 # https://github.com/docker-library/docs/blob/master/ubuntu/tag-details.md
-FROM library/ubuntu@sha256:b2c8a4d46473ab082200880391ddf8c06f2a67da4fa905ce2747dcd95d8d7af7
-#FROM library/ubuntu@sha256:7ce82491d6e35d3aa7458a56e470a821baecee651fba76957111402591d20fc1
+FROM ubuntu@trusty
 MAINTAINER Kendall Libby <klibby@mozilla.com>
 
 # Declare default working folder (override ubuntu-build)
