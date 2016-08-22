@@ -69,12 +69,12 @@
     builders:
       - shell: |
           docker pull {docker_img}
-          docker run --rm -u jenkins -v {docker_vol} {docker_img} index.sh {name}
+          docker run --rm -u jenkins -v {docker_vol} --env-file=/etc/environment {docker_img} index.sh {name}
 
 - builder:
     name: docker-run-env
     builders:
       - shell: |
           docker pull {docker_img}
-          docker run --rm -u jenkins -v {docker_vol} --env TREE_ROOT={tree_root} --env TREE_URL={tree_url} {docker_img} index.sh {name}
+          docker run --rm -u jenkins -v {docker_vol} --env-file=/etc/environment --env TREE_ROOT={tree_root} --env TREE_URL={tree_url} {docker_img} index.sh {name}
 
