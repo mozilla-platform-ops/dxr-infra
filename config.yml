@@ -5,6 +5,10 @@ dxr:
   default_tree: 'mozilla-central'
   enabled_plugins: '*'
   es_hosts:
+    - http://node74.bunker.scl3.mozilla.com:9200/
+    - http://node75.bunker.scl3.mozilla.com:9200/
+    - http://node76.bunker.scl3.mozilla.com:9200/
+    - http://node77.bunker.scl3.mozilla.com:9200/
     - http://node46.bunker.scl3.mozilla.com:9200/
     - http://node47.bunker.scl3.mozilla.com:9200/
     - http://node48.bunker.scl3.mozilla.com:9200/
