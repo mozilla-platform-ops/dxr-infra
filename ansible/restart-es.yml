@@ -1,0 +1,26 @@
+---
+- hosts: es-all
+  gather_facts: no
+  serial: 15
+  tasks:
+    - include: tasks/run-puppet.yml
+
+- hosts: dxradm.private.scl3.mozilla.com
+  gather_facts: no
+  tasks:
+    - name: Prevent shard allocation
+      command: curl -s -XPUT 'http://{{ groups['es-clients'] | random }}:9200/_cluster/settings' -d '{"transient":{"cluster.routing.allocation.enable":"none"}}'
+      run_once: true
+
+- hosts: es-all
+  gather_facts: no
+  serial: 1
+  tasks:
+    - include: tasks/restart-es.yml
+
+- hosts: dxradm.private.scl3.mozilla.com
+  gather_facts: no
+  tasks:
+    - name: Re-enable shard allocation
+      command: curl -s -XPUT 'http://{{ groups['es-clients'] | random }}:9200/_cluster/settings' -d '{"transient":{"cluster.routing.allocation.enable":"all"}}'
+      run_once: true

@@ -1,0 +1,6 @@
+---
+- name: Run puppet agent
+  command: puppet agent -t creates=/var/lib/puppet/state/agent_catalog_run.lock
+  register: puppet_result
+  changed_when: puppet_result.rc == 2
+  failed_when: puppet_result.rc == 1
