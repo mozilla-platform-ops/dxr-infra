@@ -7,3 +7,34 @@ dxr-processor[1:4].dmz.scl3.mozilla.com ansible_sudo=true
 
 [dxrweb-prod]
 dxr[1:2].webapp.scl3.mozilla.com ansible_sudo=true
+
+[es-all:children]
+es-data
+es-clients
+es-masters
+
+[es-data:children]
+es-data-combined
+es-data-hot
+es-data-cold
+
+[es-data-combined]
+node[64:72].bunker.scl3.mozilla.com ansible_sudo=true
+
+[es-data-hot]
+node[50:63].bunker.scl3.mozilla.com ansible_sudo=true
+
+[es-data-cold]
+node[0:6].bunker.scl3.mozilla.com ansible_sudo=true
+#node7.bunkcer.scl3.mozilla.com, dead (bug 1293959)
+node[8:29].bunker.scl3.mozilla.com ansible_sudo=true
+#node30.bunkcer.scl3.mozilla.com, dead (bug 1293959)
+node[31:39].bunker.scl3.mozilla.com ansible_sudo=true
+
+[es-clients]
+node[46:49].bunker.scl3.mozilla.com ansible_sudo=true
+node[74:77].bunker.scl3.mozilla.com ansible_sudo=true
+
+[es-masters]
+node[40:45].bunker.scl3.mozilla.com ansible_sudo=true
+node73.bunker.scl3.mozilla.com ansible_sudo=true
