@@ -650,6 +650,7 @@ trees:
 
   - name: 'addons'
     type: 'tree'
+    es_shards: 10
     disabled_plugins: 'xpidl buglink clang extmatch rust python js'
     ignore_patterns: 'enamdict.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     job_weight: 4
