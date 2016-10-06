@@ -25,6 +25,10 @@
         group=root
         mode=0755
 
+## https://github.com/ansible/ansible/issues/10941
+# Ansible supports NEITHER https_proxy NOR a proxy host entry without http(s)://
+# and lots of software obeys the loose proxy spec their own way
+## until the above is fixed, manage proxies via puppet
 #- name: configure DC proxies in /etc/environment
 #  copy: dest=/etc/environment
 #        src=environment
