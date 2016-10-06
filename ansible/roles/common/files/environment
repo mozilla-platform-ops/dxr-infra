@@ -1,6 +1,6 @@
 http_proxy=http://proxy.dmz.scl3.mozilla.com:3128/
-https_proxy=http://proxy.dmz.scl3.mozilla.com:3128/
+https_proxy=https://proxy.dmz.scl3.mozilla.com:3128/
 no_proxy="localhost,127.0.0.1,.localdomain,10.0.0.0/8,.scl3.mozilla.com"
 HTTP_PROXY=http://proxy.dmz.scl3.mozilla.com:3128/
-HTTPS_PROXY=http://proxy.dmz.scl3.mozilla.com:3128/
+HTTPS_PROXY=https://proxy.dmz.scl3.mozilla.com:3128/
 NO_PROXY="localhost,127.0.0.1,.localdomain,10.0.0.0/8,.scl3.mozilla.com"
