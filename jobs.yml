@@ -1465,7 +1465,7 @@
     name: 'addons'
     is_disabled: False
     proj_dir: 'addons'
-    schedule: 'H 10 * * 0,2,4'
+    schedule: 'H 10 * * 1,3,6'
     quiet_period: 3600
     docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
