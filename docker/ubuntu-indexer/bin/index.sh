@@ -3,6 +3,11 @@
 
 # Grab the latest config
 wget -q -O dxr.config https://github.com/mozilla-platform-ops/dxr-infra/raw/master/dxr.config
+ret=$?
+if [ "$ret" != 0 ];then
+    echo "wget encounterd an error pulling dxr.config: $ret"
+    exit $ret
+fi
 
 update_hg_repo() {
     local url=$1
