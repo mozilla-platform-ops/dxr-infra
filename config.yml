@@ -9,10 +9,6 @@ dxr:
     - http://node75.bunker.scl3.mozilla.com:9200/
     - http://node76.bunker.scl3.mozilla.com:9200/
     - http://node77.bunker.scl3.mozilla.com:9200/
-    - http://node46.bunker.scl3.mozilla.com:9200/
-    - http://node47.bunker.scl3.mozilla.com:9200/
-    - http://node48.bunker.scl3.mozilla.com:9200/
-    - http://node49.bunker.scl3.mozilla.com:9200/
   es_catalog_replicas: 4
   es_catalog_index: 'dxr_catalog'
   es_index: 'dxr_cold_{format}_{tree}_{unique}'
