@@ -858,6 +858,8 @@
       - git:
           url: 'https://github.com/rust-lang/rust'
           basedir: '../../../dxr_data/rust-lang/rust'
+          branches:
+            - master
           skip-tag: true
           wipe-workspace: false
 
@@ -885,6 +887,8 @@
       - git:
           url: 'https://github.com/rust-lang-nursery/rustfmt'
           basedir: '../../../dxr_data/rustfmt'
+          branches:
+            - master
           skip-tag: true
           wipe-workspace: false
 
@@ -912,6 +916,8 @@
       - git:
           url: 'https://github.com/servo/servo'
           basedir: '../../../dxr_data/servo/servo'
+          branches:
+            - master
           skip-tag: true
           wipe-workspace: false
 
@@ -952,6 +958,8 @@
       - git:
           url: 'https://github.com/mozilla-b2g/gaia'
           basedir: '../../../dxr_data/gaia'
+          branches:
+            - master
           skip-tag: true
           wipe-workspace: false
 

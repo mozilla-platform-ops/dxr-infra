@@ -44,6 +44,8 @@
 {%- endif %}
 {%- if r.type == 'git' %}
           basedir: '{{ r.basedir }}'
+          branches:
+            - master
           skip-tag: true
           wipe-workspace: false
 {%- endif %}
