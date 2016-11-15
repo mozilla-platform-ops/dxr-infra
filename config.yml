@@ -655,16 +655,6 @@ trees:
       - url: 'https://cvs.mozilla.org/addons'
     schedule: 'H 10 * * 1,3,6'
 
-  - name: 'projects-central'
-    workers: 2
-    type: 'tree'
-    proj_dir: 'projects'
-    job_weight: 4
-    schedule: '@daily'
-    disabled_plugins: 'xpidl buglink clang extmatch rust python'
-    repos:
-      - url: 'https://hg.mozilla.org/projects'
-
   - name: 'webtools-central'
     type: 'tree'
     proj_dir: 'webtools'
