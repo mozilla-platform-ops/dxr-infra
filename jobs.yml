@@ -859,6 +859,7 @@
           url: 'https://github.com/rust-lang/rust'
           basedir: '../../../dxr_data/rust-lang/rust'
           skip-tag: true
+          wipe-workspace: false
 
 - project:
     name: 'rustfmt'
@@ -885,6 +886,7 @@
           url: 'https://github.com/rust-lang-nursery/rustfmt'
           basedir: '../../../dxr_data/rustfmt'
           skip-tag: true
+          wipe-workspace: false
 
 - project:
     name: 'servo'
@@ -911,6 +913,7 @@
           url: 'https://github.com/servo/servo'
           basedir: '../../../dxr_data/servo/servo'
           skip-tag: true
+          wipe-workspace: false
 
 - project:
     name: 'nss'
@@ -950,6 +953,7 @@
           url: 'https://github.com/mozilla-b2g/gaia'
           basedir: '../../../dxr_data/gaia'
           skip-tag: true
+          wipe-workspace: false
 
 - project:
     name: 'classic'
