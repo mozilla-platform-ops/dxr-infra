@@ -645,7 +645,6 @@ trees:
       - url: 'https://hg.mozilla.org/releases/mozilla-2.0'
 
   - name: 'addons'
-    proj_dir: 'addons'
     type: 'tree'
     es_shards: 10
     disabled_plugins: 'xpidl buglink clang extmatch rust python js pygmentize'
