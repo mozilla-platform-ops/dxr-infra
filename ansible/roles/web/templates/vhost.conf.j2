@@ -11,6 +11,7 @@ WSGISocketPrefix run/wsgi
   AddOutputFilterByType DEFLATE application/json
   AddOutputFilterByType DEFLATE application/x-javascript
 
+  Alias /contribute.json /var/www/html/contribute.json
   Alias /static/ {{ approot }}/dxr/dxr/static/
 
   SetEnv DXR_CONFIG {{ sitehome }}/dxr.config

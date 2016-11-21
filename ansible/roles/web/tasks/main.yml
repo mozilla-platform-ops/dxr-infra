@@ -14,9 +14,13 @@
   template: src=vhost.conf.j2 dest=/etc/httpd/conf.d/dxr-vhost.conf
   notify: reload apache
 
-# Either webdev or sercurity requested that all of our servers have this
+# Infrasec has requested that all of our servers have this
 - name: install hostname.conf
   copy: content="Header always set X-Backend-Server {{ ansible_fqdn }}" dest=/etc/httpd/conf.d/hostname.conf
+
+- name: install contribute.json
+  copy: src=contribute.json
+        dest=/var/www/html/contribute.json
 
 - name: create mellon directory
   file: path=/etc/httpd/mellon state=directory owner=root group=apache mode=0750

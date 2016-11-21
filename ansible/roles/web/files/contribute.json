@@ -1,0 +1,29 @@
+{
+  "name": "DXR",
+  "description": "DXR is a code search and navigation tool aimed at making sense of large projects like Firefox.",
+  "repository": {
+    "url": "https://github.com/mozilla-platform-ops/dxr-infra",
+    "license": "MPL2",
+    "tests": "https://travis-ci.org/mozilla/dxr/"
+  },
+  "participate": {
+    "home": "https://wiki.mozilla.org/DXR",
+    "docs": "https://dxr.readthedocs.io/",
+    "irc": "irc://irc.mozilla.org/#static",
+    "irc-contacts": [
+        "erikrose"
+    ]
+  },
+  "bugs": {
+    "list": "https://bugzilla.mozilla.org/buglist.cgi?product=Webtools&component=DXR&resolution=---",
+    "report": "https://bugzilla.mozilla.org/enter_bug.cgi?product=Webtools&component=DXR"
+  },
+  "urls": {
+    "prod": "https://dxr.mozilla.org/",
+    "stage": "https://dxr.allizom.org/"
+  },
+  "keywords": [
+    "elasticsearch",
+    "python"
+  ]
+}
