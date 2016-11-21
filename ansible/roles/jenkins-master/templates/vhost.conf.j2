@@ -18,7 +18,7 @@ SetEnv proxy-nokeepalive 1
   SetEnvIf SSLSessionID .+ HTTPS=on
 
   # 1310198
-  Header add Strict-Transport-Security "max-age=600; includeSubDomains"
+  Header always set Strict-Transport-Security "max-age=600; includeSubDomains"
 
   # needs apache >= 2.2.18
   #AllowEncodedSlashes NoDecode
