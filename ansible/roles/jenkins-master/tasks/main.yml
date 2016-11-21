@@ -38,7 +38,7 @@
             dest=/etc/httpd/conf.d/welcome.conf
   notify: restart httpd
 
-# Either webdev or sercurity requested that all of our servers have this
+# Infrasec has requested that all of our servers have this
 - name: install hostname.conf
   copy: content="Header always set X-Backend-Server {{ ansible_fqdn }}"
         dest=/etc/httpd/conf.d/hostname.conf
