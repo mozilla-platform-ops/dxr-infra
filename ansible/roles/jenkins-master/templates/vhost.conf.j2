@@ -17,10 +17,14 @@ SetEnv proxy-nokeepalive 1
 
   SetEnvIf SSLSessionID .+ HTTPS=on
 
+  # 1310198
+  Header add Strict-Transport-Security "max-age=600; includeSubDomains"
+
   # needs apache >= 2.2.18
   #AllowEncodedSlashes NoDecode
   AllowEncodedSlashes On
 
+  ProxyPass /contribute.json "!"
   ProxyPass /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }} nocanon Keepalive=On
   ProxyPassReverse /{{ jenkins_prefix }} http://{{ ansible_fqdn }}:8080/{{ jenkins_prefix }}
   ProxyRequests Off

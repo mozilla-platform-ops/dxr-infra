@@ -43,6 +43,10 @@
   copy: content="Header always set X-Backend-Server {{ ansible_fqdn }}"
         dest=/etc/httpd/conf.d/hostname.conf
 
+- name: install contribute.json
+  template: src=contribute.json.j2
+            dest=/var/www/html/contribute.json
+
 - name: make apache logdir
   file: path=/var/log/httpd/{{ domain }}
         state=directory
