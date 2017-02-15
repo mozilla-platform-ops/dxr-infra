@@ -10,7 +10,6 @@ jenkins_jar_location: /data/jenkins-cli.jar
 jenkins_plugins:
   - audit-trail
   - envinject
-  - docker-build-step
   - git
   - heavy-job
   - ldap
