@@ -237,6 +237,26 @@ trees:
         header_path: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/include'
         include_folders: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/idl'
 
+  - name: 'mozilla-esr52'
+    disabled_plugins: 'xpidl'
+    proj_dir: 'releases'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr52'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    job_weight: 4
+    ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
+    build_command: 'cd $source_folder && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    mozconfig:
+      - 'mk_add_options AUTOCLOBBER=1'
+      - 'ac_add_options --enable-debug'
+      - 'ac_add_options --disable-elf-hack'
+      - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
+    plugins:
+      - plugin: 'xpidl'
+        header_path: 'src/releases/mozilla-esr52/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-esr52/obj-x86_64-unknown-linux-gnu/dist/idl'
+
   - name: 'comm-central'
     disabled_plugins: 'xpidl'
     repos:
