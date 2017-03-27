@@ -49,6 +49,8 @@ apt_packages+=('libnspr4')
 apt_packages+=('gstreamer0.10')
 apt_packages+=('gstreamer0.10-plugins-base')
 apt_packages+=('libgstreamer-plugins-base0.10-dev')
+apt_packages+=('libgl1-mesa-dev')
+apt_packages+=('libgl1-mesa-glx')
 
 apt-get update -y
 
