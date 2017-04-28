@@ -1,6 +1,5 @@
 ---
-server_limit: "{{ ansible_processor_cores * 10 }}"
-max_clients: "{{ ansible_processor_cores * 10 }}"
+worker_processes: "{{ ansible_processor_cores }}"
 nginx_repo_url: https://nginx.org/packages/rhel/6/noarch/RPMS/nginx-release-rhel-6-0.el6.ngx.noarch.rpm
 jenkins_repo_url: https://pkg.jenkins.io/redhat/jenkins.repo
 jenkins_repo_key_url: https://pkg.jenkins.io/redhat/jenkins-ci.org.key

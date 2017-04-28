@@ -24,46 +24,41 @@
   yum: pkg={{ item }} state=present
   with_items:
     - nginx
-    - httpd
     - jenkins
     - java-1.8.0-openjdk
 
-- name: install httpd.conf file
-  template: src=httpd.conf.j2
-            dest=/etc/httpd/conf/httpd.conf
-  notify: restart httpd
+- name: install nginx.conf file
+  template: src=nginx.conf.j2
+            dest=/etc/nginx/nginx.conf
+  notify: restart nginx
+
+- name: remove nginx default.conf
+  file:
+    path=/etc/nginx/conf.d/default.conf
+    state=absent
+  notify: restart nginx
 
 - name: install vhost config
-  template: src=vhost.conf.j2
-            dest=/etc/httpd/conf.d/vhost.conf
-  notify: restart httpd
-
-- name: install welcome.conf
-  template: src=welcome.conf.j2
-            dest=/etc/httpd/conf.d/welcome.conf
-  notify: restart httpd
-
-# Infrasec has requested that all of our servers have this
-- name: install hostname.conf
-  copy: content="Header always set X-Backend-Server {{ ansible_fqdn }}"
-        dest=/etc/httpd/conf.d/hostname.conf
+  template: src=nginx-vhost.conf.j2
+            dest="/etc/nginx/conf.d/{{ domain }}.conf"
+  notify: restart nginx
 
 - name: install contribute.json
   template: src=contribute.json.j2
-            dest=/var/www/html/contribute.json
-
-- name: make apache logdir
-  file: path=/var/log/httpd/{{ domain }}
-        state=directory
-        owner=apache
-        group=root
-        mode=0755
+            dest=/usr/share/nginx/html/contribute.json
 
 - name: add logrotate config
-  copy: src=logrotate.conf dest=/etc/logrotate.d/httpd
+  copy: src=logrotate.conf dest=/etc/logrotate.d/nginx
 
-- name: manage httpd service
-  service: name=httpd
+- name: make nginx vhost logdir
+  file: path="/var/log/nginx/{{ domain }}"
+        state=directory
+        owner=nginx
+        group=wheel
+        mode=0750
+
+- name: manage nginx service
+  service: name=nginx
            enabled=yes
            state=started
 
