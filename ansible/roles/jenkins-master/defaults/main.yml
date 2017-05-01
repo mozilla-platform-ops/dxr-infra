@@ -1,6 +1,8 @@
 ---
 worker_processes: "{{ ansible_processor_cores }}"
-nginx_repo_url: https://nginx.org/packages/rhel/6/noarch/RPMS/nginx-release-rhel-6-0.el6.ngx.noarch.rpm
+openresty_repo_url: https://openresty.org/yum/rhel-6/OpenResty.repo
+openresty_repo_key_url: https://copr-be.cloud.fedoraproject.org/results/openresty/openresty/pubkey.gpg
+openidc_url: https://github.com/mozilla-iam/lua-resty-openidc/blob/master/lib/resty/openidc.lua
 jenkins_repo_url: https://pkg.jenkins.io/redhat/jenkins.repo
 jenkins_repo_key_url: https://pkg.jenkins.io/redhat/jenkins-ci.org.key
 jenkins_connection_delay: 5
@@ -15,5 +17,6 @@ jenkins_plugins:
   - ldap
   - mercurial
   - multiple-scms
+  - saml
   - thinBackup
   - timestamper

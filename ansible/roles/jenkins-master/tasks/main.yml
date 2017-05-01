@@ -9,9 +9,12 @@
         group=root
         mode=0755
 
-- name: add nginx yum repo
-  yum:
-    name: "{{ nginx_repo_url }}"
+- name: add openresty yum repo
+  get_url: url="{{ openresty_repo_url }}"
+           dest=/etc/yum.repos.d/OpenResty.repo
+
+- name: add openrest key
+  rpm_key: key="{{ openresty_repo_key_url }}" state=present
 
 - name: add jenkins yum repo
   get_url: url="{{ jenkins_repo_url }}"
@@ -23,7 +26,7 @@
 - name: install packages
   yum: pkg={{ item }} state=present
   with_items:
-    - nginx
+    - openresty
     - jenkins
     - java-1.8.0-openjdk
 
