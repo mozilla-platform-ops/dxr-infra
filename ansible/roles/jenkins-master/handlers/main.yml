@@ -2,18 +2,18 @@
 - name: restart jenkins
   service: name=jenkins state=restarted
 
-- name: restart nginx
+- name: restart openresty
   debug: msg="checking config first"
   changed_when: True
   notify:
-    - check nginx configuration
-    - restart nginx - after config check
+    - check openresty configuration
+    - restart openresty - after config check
 
-- name: check nginx configuration
-  shell: "nginx -t"
+- name: check openresty configuration
+  shell: "openresty -t"
   register: result
   changed_when: "result.rc != 0"
   always_run: yes
 
-- name: restart nginx - after config check
-  service: name=nginx state=restarted
+- name: restart openresty - after config check
+  service: name=openresty state=restarted

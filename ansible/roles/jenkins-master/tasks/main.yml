@@ -32,23 +32,21 @@
 
 - name: install nginx.conf file
   template: src=nginx.conf.j2
-            dest=/etc/nginx/nginx.conf
-  notify: restart nginx
+            dest=/usr/local/openresty/nginx/conf/nginx.conf
+  notify: restart openresty
 
-- name: remove nginx default.conf
-  file:
-    path=/etc/nginx/conf.d/default.conf
-    state=absent
-  notify: restart nginx
+- name: create conf.d directory
+  file: path="/usr/local/openresty/nginx/conf/conf.d"
+        state=directory
 
 - name: install vhost config
   template: src=nginx-vhost.conf.j2
-            dest="/etc/nginx/conf.d/{{ domain }}.conf"
-  notify: restart nginx
+            dest="/usr/local/openresty/nginx/conf/conf.d/{{ domain }}.conf"
+  notify: restart openresty
 
 - name: install contribute.json
   template: src=contribute.json.j2
-            dest=/usr/share/nginx/html/contribute.json
+            dest=/var/www/html/contribute.json
 
 - name: add logrotate config
   copy: src=logrotate.conf dest=/etc/logrotate.d/nginx
@@ -60,8 +58,8 @@
         group=wheel
         mode=0750
 
-- name: manage nginx service
-  service: name=nginx
+- name: manage openresty service
+  service: name=openresty
            enabled=yes
            state=started
 
