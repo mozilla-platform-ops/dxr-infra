@@ -18,9 +18,10 @@ DOCKER = os.path.join(ROOT, 'docker')
 logger = logging.getLogger(__name__)
 
 
-def run_playbook(name, limit_vars=None, extra_vars=None, verbosity=0):
+def run_playbook(name, limit_vars=None, extra_vars=None, use_vault=None, verbosity=0):
     limit_vars = limit_vars or {}
     extra_vars = extra_vars or {}
+    use_vault = use_vault or {}
 
     args = [
         'ansible-playbook',
@@ -31,6 +32,8 @@ def run_playbook(name, limit_vars=None, extra_vars=None, verbosity=0):
         args.extend(['-l', limit_vars])
     if extra_vars:
         args.extend(['--extra-vars', json.dumps(extra_vars)])
+    if use_vault:
+        args.extend(['--ask-vault-pass'])
     if verbosity:
         args.append('-%s' % ('v' * verbosity))
 
@@ -40,7 +43,7 @@ def run_playbook(name, limit_vars=None, extra_vars=None, verbosity=0):
 
 def deploy_dxrmo(verbosity=0):
     """Deploy to dxr.mozilla.org."""
-    return run_playbook('deploy-dxrmo', verbosity=verbosity)
+    return run_playbook('deploy-dxrmo', use_vault=True, verbosity=verbosity)
 
 
 def deploy_update_config(verbosity=0):

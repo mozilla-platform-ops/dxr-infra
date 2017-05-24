@@ -1,5 +1,4 @@
 dxradm.private.scl3.mozilla.com ansible_sudo=true
-dxr-jenkins1.dmz.scl3.mozilla.com ansible_sudo=true
 dxr1.stage.webapp.scl3.mozilla.com ansible_sudo=true
 
 [dxr-builders]
@@ -7,6 +6,9 @@ dxr-processor[1:4].dmz.scl3.mozilla.com ansible_sudo=true
 
 [dxrweb-prod]
 dxr[1:2].webapp.scl3.mozilla.com ansible_sudo=true
+
+[jenkins-master]
+dxr-jenkins1.dmz.scl3.mozilla.com ansible_sudo=true
 
 [es-all:children]
 es-data

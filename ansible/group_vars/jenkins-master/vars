@@ -6,3 +6,8 @@ jenkins_jar_location: /data/jenkins-cli.jar
 jenkins_cred_id: d94c0f16-40f1-452d-b398-0abcc04cc587
 # should match jenkins-slave:
 jenkins_dir: /data/jenkins
+#
+openidc_domain: auth.mozilla.auth0.com
+openidc_client_id: "{{ vault_openidc_client_id }}"
+openidc_client_secret: "{{ vault_openidc_client_secret }}"
+session_secret: "{{ vault_session_secret }}"

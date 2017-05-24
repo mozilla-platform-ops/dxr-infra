@@ -2,5 +2,18 @@
 - name: restart jenkins
   service: name=jenkins state=restarted
 
-- name: restart httpd
-  service: name=httpd state=restarted
+- name: restart openresty
+  debug: msg="checking config first"
+  changed_when: True
+  notify:
+    - check openresty configuration
+    - restart openresty - after config check
+
+- name: check openresty configuration
+  shell: "openresty -t"
+  register: result
+  changed_when: "result.rc != 0"
+  always_run: yes
+
+- name: restart openresty - after config check
+  service: name=openresty state=restarted

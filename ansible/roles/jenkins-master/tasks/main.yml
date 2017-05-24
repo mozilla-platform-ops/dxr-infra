@@ -9,6 +9,13 @@
         group=root
         mode=0755
 
+- name: add openresty yum repo
+  get_url: url="{{ openresty_repo_url }}"
+           dest=/etc/yum.repos.d/OpenResty.repo
+
+- name: add openresty key
+  rpm_key: key="{{ openresty_repo_key_url }}" state=present
+
 - name: add jenkins yum repo
   get_url: url="{{ jenkins_repo_url }}"
            dest=/etc/yum.repos.d/jenkins.repo
@@ -16,49 +23,70 @@
 - name: add jenkins key
   rpm_key: key="{{ jenkins_repo_key_url }}" state=present
 
+- name: add epel-release yum repo
+  yum:
+    name: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+    state: present
+
 - name: install packages
   yum: pkg={{ item }} state=present
   with_items:
-    - httpd
     - jenkins
     - java-1.8.0-openjdk
+    - openresty
+    - openssl-devel
+    - lua-devel
+    - luarocks
 
-- name: install httpd.conf file
-  template: src=httpd.conf.j2
-            dest=/etc/httpd/conf/httpd.conf
-  notify: restart httpd
+- name: install lua-resty-openidc module
+  command: luarocks install lua-resty-openidc
+  notify: restart openresty
+
+- name: fix openidc module (temp)
+  get_url: url="{{ lua_resty_openidc_url }}"
+           dest=/usr/share/lua/5.1/resty/
+  notify: restart openresty
+
+- name: install openidc_layer shim
+  get_url: url="{{ openidc_layer_shim_url }}"
+           dest=/usr/local/openresty/nginx/conf/
+  notify: restart openresty
+
+- name: install nginx.conf file
+  template: src=nginx.conf.j2
+            dest=/usr/local/openresty/nginx/conf/nginx.conf
+  notify: restart openresty
+
+- name: create conf.d directory
+  file: path="/usr/local/openresty/nginx/conf/conf.d"
+        state=directory
 
 - name: install vhost config
-  template: src=vhost.conf.j2
-            dest=/etc/httpd/conf.d/vhost.conf
-  notify: restart httpd
+  template: src=nginx-vhost.conf.j2
+            dest="/usr/local/openresty/nginx/conf/conf.d/{{ domain }}.conf"
+  notify: restart openresty
 
-- name: install welcome.conf
-  template: src=welcome.conf.j2
-            dest=/etc/httpd/conf.d/welcome.conf
-  notify: restart httpd
-
-# Infrasec has requested that all of our servers have this
-- name: install hostname.conf
-  copy: content="Header always set X-Backend-Server {{ ansible_fqdn }}"
-        dest=/etc/httpd/conf.d/hostname.conf
+- name: install OIDC config loader
+  template: src=ldap_pwless.lua.j2
+            dest="/usr/local/openresty/nginx/conf/conf.d/ldap_pwless.lua"
+  notify: restart openresty
 
 - name: install contribute.json
   template: src=contribute.json.j2
             dest=/var/www/html/contribute.json
 
-- name: make apache logdir
-  file: path=/var/log/httpd/{{ domain }}
-        state=directory
-        owner=apache
-        group=root
-        mode=0755
-
 - name: add logrotate config
-  copy: src=logrotate.conf dest=/etc/logrotate.d/httpd
+  copy: src=logrotate.conf dest=/etc/logrotate.d/nginx
 
-- name: manage httpd service
-  service: name=httpd
+- name: make nginx vhost logdir
+  file: path="/var/log/nginx/{{ domain }}"
+        state=directory
+        owner=nginx
+        group=wheel
+        mode=0750
+
+- name: manage openresty service
+  service: name=openresty
            enabled=yes
            state=started
 
@@ -81,7 +109,7 @@
   service: name=jenkins state=started enabled=yes
 
 - name: wait for jenkins to start
-  shell: curl --head --silent http://localhost:8080/{{ jenkins_prefix }}/cli/
+  shell: curl --head --silent http://localhost:8080/{{ jenkins_prefix }}/whoAmI/
   register: result
   until: result.stdout.find("200 OK") != -1
   retries: "{{ jenkins_connection_retries }}"

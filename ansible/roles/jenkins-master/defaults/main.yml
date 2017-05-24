@@ -1,6 +1,9 @@
 ---
-server_limit: "{{ ansible_processor_cores * 10 }}"
-max_clients: "{{ ansible_processor_cores * 10 }}"
+worker_processes: "{{ ansible_processor_cores }}"
+openresty_repo_url: https://openresty.org/yum/rhel-6/OpenResty.repo
+openresty_repo_key_url: https://copr-be.cloud.fedoraproject.org/results/openresty/openresty/pubkey.gpg
+openidc_layer_shim_url: https://raw.githubusercontent.com/mozilla-iam/testrp.security.allizom.org/master/webserver_configurations/OpenID_Connect/Nginx/conf.d/openidc_layer.lua
+lua_resty_openidc_url: https://raw.githubusercontent.com/pingidentity/lua-resty-openidc/master/lib/resty/openidc.lua
 jenkins_repo_url: https://pkg.jenkins.io/redhat/jenkins.repo
 jenkins_repo_key_url: https://pkg.jenkins.io/redhat/jenkins-ci.org.key
 jenkins_connection_delay: 5
@@ -15,5 +18,6 @@ jenkins_plugins:
   - ldap
   - mercurial
   - multiple-scms
+  - reverse-proxy-auth-plugin
   - thinBackup
   - timestamper

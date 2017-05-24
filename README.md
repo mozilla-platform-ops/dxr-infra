@@ -13,6 +13,7 @@ This repo contains:
 - Docker-toolbox or equiv for testing and updating Docker images
 - MoCo LDAP account and SSH access for deploys
 - Jenkins credentials for managing jobs
+- Ansible-vault password for dxr-vault
 
 ## `deploy` Usage
 The `deploy` script is the main entry point for updating configuration files, managing jobs, and deploying changes to the infrastructure.  
@@ -24,7 +25,7 @@ Running `deploy update-config` will read in `config.yml` and output new versions
 ### Deploy infrastructure changes
 Running `deploy dxrmo` will run the `deploy-dxrmo.yml` Ansible playbook, which manages the web servers, Jenkins server, build nodes, and the admin node. It also updates the `dxr.config` file used by the webheads.
 
-> Deploying requires a MoCo LDAP account and SSH access to the nodes.
+> Deploying requires the [dxr-vault repo](ssh://gitolite3@git-internal.mozilla.org/relops/dxr-vault.git) and ansible-vault password, a MoCo LDAP account, and SSH access to the nodes.
 
 ### Managing Jenkins build jobs
 The deploy script has four commands for managing build jobs:
