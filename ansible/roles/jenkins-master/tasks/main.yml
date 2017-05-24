@@ -13,7 +13,7 @@
   get_url: url="{{ openresty_repo_url }}"
            dest=/etc/yum.repos.d/OpenResty.repo
 
-- name: add openrest key
+- name: add openresty key
   rpm_key: key="{{ openresty_repo_key_url }}" state=present
 
 - name: add jenkins yum repo
@@ -23,12 +23,34 @@
 - name: add jenkins key
   rpm_key: key="{{ jenkins_repo_key_url }}" state=present
 
+- name: add epel-release yum repo
+  yum:
+    name: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+    state: present
+
 - name: install packages
   yum: pkg={{ item }} state=present
   with_items:
-    - openresty
     - jenkins
     - java-1.8.0-openjdk
+    - openresty
+    - openssl-devel
+    - lua-devel
+    - luarocks
+
+- name: install lua-resty-openidc module
+  command: luarocks install lua-resty-openidc
+  notify: restart openresty
+
+- name: fix openidc module (temp)
+  get_url: url="{{ lua_resty_openidc_url }}"
+           dest=/usr/share/lua/5.1/resty/
+  notify: restart openresty
+
+- name: install openidc_layer shim
+  get_url: url="{{ openidc_layer_shim_url }}"
+           dest=/usr/local/openresty/nginx/conf/
+  notify: restart openresty
 
 - name: install nginx.conf file
   template: src=nginx.conf.j2
@@ -42,6 +64,11 @@
 - name: install vhost config
   template: src=nginx-vhost.conf.j2
             dest="/usr/local/openresty/nginx/conf/conf.d/{{ domain }}.conf"
+  notify: restart openresty
+
+- name: install OIDC config loader
+  template: src=ldap_pwless.lua.j2
+            dest="/usr/local/openresty/nginx/conf/conf.d/ldap_pwless.lua"
   notify: restart openresty
 
 - name: install contribute.json
