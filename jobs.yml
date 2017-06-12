@@ -823,6 +823,35 @@
           disable-changelog: true
 
 - project:
+    name: 'comm-esr52'
+    is_disabled: False
+    proj_dir: 'releases/comm-esr52'
+    schedule: 'H H/6 * * *'
+    quiet_period: 14400
+    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/home/jenkins/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 4
+    mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --enable-application=mail\nac_add_options --enable-calendar\nac_add_options --disable-optimize\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'comm-esr52_scm'
+    scm:
+      - hg-comm-esr52
+
+- scm:
+    name: 'hg-comm-esr52'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/comm-esr52'
+          subdir: '../../../dxr_data/releases/comm-esr52'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
     name: 'build-central'
     is_disabled: False
     proj_dir: 'build'
