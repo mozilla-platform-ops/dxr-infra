@@ -8,6 +8,7 @@ test `whoami` == 'root';
 apt_packages=()
 
 # Dependencies for setup
+apt_packages+=('software-properties-common')
 apt_packages+=('wget')
 apt_packages+=('lsb-release')
 apt_packages+=('python2.7-dev')
@@ -15,7 +16,6 @@ apt_packages+=('python-pip')
 apt_packages+=('python-virtualenv')
 apt_packages+=('pypy')
 apt_packages+=('curl')
-apt_packages+=('mercurial')
 apt_packages+=('git')
 apt_packages+=('jq')
 apt_packages+=('gawk')
@@ -58,6 +58,11 @@ apt-get install -y --force-yes ${apt_packages[@]}
 apt-get build-dep -y clang-3.8 llvm-3.8
 apt-get autoremove
 
+# Ubuntu lags well behind on mercurial updates
+add-apt-repository ppa:mercurial-ppa/releases
+apt-get update -y
+apt-get install -y --force-yes mercurial=4.1.3~trusty1 mercurial-common=4.1.3~trusty1
+
 # Add a newer version of node that supports ES6.
 curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 DISTRO=$(lsb_release -c -s)
@@ -76,11 +81,6 @@ wget -O rustup.sh https://static.rust-lang.org/rustup.sh
 bash rustup.sh --yes
 rm -f rustup.sh
 
-# Install bundleclone extension
-mkdir /home/jenkins/hgext
-wget -O /home/jenkins/hgext/bundleclone.py \
-    https://hg.mozilla.org/hgcustom/version-control-tools/raw-file/default/hgext/bundleclone/__init__.py
-
 mkdir -p /etc/mercurial
 cat <<EOF > /etc/mercurial/hgrc
 [trusted]
@@ -90,7 +90,7 @@ users = root, jenkins
 cacerts = /etc/ssl/certs/ca-certificates.crt
 
 [extensions]
-bundleclone  = /home/jenkins/hgext/bundleclone.py
+clonebundles = true
 #prefers = ec2region=us-west-2, stream=revlogv1
 EOF
 
