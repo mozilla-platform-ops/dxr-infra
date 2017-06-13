@@ -90,7 +90,7 @@ users = root, jenkins
 cacerts = /etc/ssl/certs/ca-certificates.crt
 
 [extensions]
-clonebundles = true
+clonebundles = 
 #prefers = ec2region=us-west-2, stream=revlogv1
 EOF
 

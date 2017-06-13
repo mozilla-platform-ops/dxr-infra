@@ -15,10 +15,10 @@ update_hg_repo() {
     local root=$3
     if [ -d "${root}/${repo}/.hg" ]; then
         echo "Updating ${root}/$repo..."
-        (cd ${root}/${repo} && hg pull -u)
+        (cd ${root}/${repo} && /usr/bin/hg pull -u)
     else
         echo "Cloning $url/$repo to ${root}/${repo}"
-        hg clone ${url}/${repo} ${root}/${repo}
+        /usr/bin/hg clone ${url}/${repo} ${root}/${repo}
     fi
 }
 
@@ -27,11 +27,11 @@ update_hg_repo() {
 # only hg.mozilla.org repo "collections" are handled currently
 if [ 'build-central' == "$1" ]; then
     for i in $(ls -d src/build/*); do
-        (cd $i; hg pull -u || git pull)
+        (cd $i; /usr/bin/hg pull -u || git pull)
     done
 elif [ 'nss' == "$1" ]; then
     for i in $(ls -d src/nss/*); do
-        (cd $i && hg pull -u)
+        (cd $i && /usr/bin/hg pull -u)
     done
 elif [[ -v TREE_URL && -v TREE_ROOT ]]; then
     repolist=( $(curl -s -f $TREE_URL | gawk -F\" 'match($0, /class="list" href="[^"]*\/([^"\/]+)\/"/, arr) {print arr[1]}') )
