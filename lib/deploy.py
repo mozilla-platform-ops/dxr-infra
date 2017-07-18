@@ -62,7 +62,7 @@ def deploy_restart_builder(node, verbosity=0):
 def deploy_trigger_job(job, verbosity=0):
     """Schedule an indexing job on Jenkins."""
     extra = {'job_provided': job}
-    return run_playbook('trigger-jobs', extra_vars=extra,
+    return run_playbook('trigger-jobs', use_vault=True, extra_vars=extra,
                         verbosity=verbosity)
 
 
