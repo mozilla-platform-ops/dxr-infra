@@ -126,6 +126,13 @@
   retries: 5
   delay: 15
 
+- name: Create /etc/ssh/ssh_known_hosts
+  copy: src=ssh_known_hosts
+        dest=/etc/ssh/ssh_known_hosts
+        owner=root
+        group=root
+        mode=0644
+
 # Credentials used by plugin install need to be managed some how, but
 # secrets in credentials.xml are encrypted with a master secret
 
