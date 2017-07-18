@@ -1,15 +1,10 @@
 ---
 - hosts: dxr-jenkins1.dmz.scl3.mozilla.com
   gather_facts: no
-  vars:
-    jenkins_key: /root/.ssh/jenkins_rsa
   vars_prompt:
-    - name: "ldap_username"
+    - name: "username"
       prompt: "what is your MoCo email address?"
       private: no
-    - name: "ldap_password"
-      prompt: "What is your MoCo email password?"
-      private: yes
 
   tasks:
     - name: Find jenkins ssh port number
