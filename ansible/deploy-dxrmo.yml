@@ -12,15 +12,12 @@
 - hosts: dxr-jenkins1.dmz.scl3.mozilla.com
   vars:
     domain: jenkins-dxr.mozilla.org
-    jenkins_key: /root/.ssh/jenkins_rsa
   roles:
     - common
     - jenkins-master
 
 - hosts: dxradm.private.scl3.mozilla.com
   vars:
-    # need to handle secrets, currently managed by hand. boo.
-    jenkins_key: /root/.ssh/jenkins_rsa
     environ:
       prod:
         branch: master
