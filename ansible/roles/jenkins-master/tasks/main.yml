@@ -48,8 +48,8 @@
   notify: restart openresty
 
 - name: install openidc_layer shim
-  get_url: url="{{ openidc_layer_shim_url }}"
-           dest=/usr/local/openresty/nginx/conf/
+  copy: src=openidc_layer.lua
+        dest=/usr/local/openresty/nginx/conf/openidc_layer.lua
   notify: restart openresty
 
 - name: install nginx.conf file
