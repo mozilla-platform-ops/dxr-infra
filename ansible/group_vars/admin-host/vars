@@ -1,0 +1,3 @@
+---
+addon_sync_private_key: "{{ vault_addon_sync_private_key }}"
+addon_sync_public_key: "{{ vault_addon_sync_public_key }}"
