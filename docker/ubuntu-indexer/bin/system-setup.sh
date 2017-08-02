@@ -26,10 +26,10 @@ apt_packages+=('vim')
 apt_packages+=('strace')
 
 # Dependencies for DXR
-apt_packages+=('clang-3.8')
-apt_packages+=('libclang-3.8-dev')
-apt_packages+=('llvm-3.8')
-apt_packages+=('llvm-3.8-dev')
+apt_packages+=('clang-3.9')
+apt_packages+=('libclang-3.9-dev')
+apt_packages+=('llvm-3.9')
+apt_packages+=('llvm-3.9-dev')
 apt_packages+=('npm')
 
 # Dependency for nodejs
@@ -55,13 +55,16 @@ apt_packages+=('libgl1-mesa-glx')
 apt-get update -y
 
 apt-get install -y --force-yes ${apt_packages[@]}
-apt-get build-dep -y clang-3.8 llvm-3.8
+apt-get build-dep -y clang-3.9 llvm-3.9
 apt-get autoremove
+
+# Workaround for llvm-config not existing in non-default versions
+update-alternatives --force --install /usr/local/bin/llvm-config llvm-config /usr/bin/llvm-config-3.9 0
 
 # Ubuntu lags well behind on mercurial updates
 add-apt-repository ppa:mercurial-ppa/releases
 apt-get update -y
-apt-get install -y --force-yes mercurial=4.1.3~trusty1 mercurial-common=4.1.3~trusty1
+apt-get install -y --force-yes mercurial mercurial-common
 
 # Add a newer version of node that supports ES6.
 curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -

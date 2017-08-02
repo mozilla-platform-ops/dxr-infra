@@ -1,5 +1,5 @@
-# https://github.com/docker-library/docs/blob/master/ubuntu/tag-details.md
-FROM ubuntu:trusty
+# https://github.com/docker-library/docs/tree/master/ubuntu
+FROM ubuntu:xenial
 MAINTAINER Kendall Libby <klibby@mozilla.com>
 
 # Declare default working folder (override ubuntu-build)
@@ -15,7 +15,7 @@ RUN         ["/home/jenkins/bin/system-setup.sh"]
 # So that the compilers can find necessary libraries
 # gcc
 ENV         LIBRARY_PATH        /usr/lib/x86_64-linux-gnu
-ENV         PATH                /home/jenkins/bin:/home/jenkins/venv/bin:/usr/lib/llvm-3.8/bin:$PATH
+ENV         PATH                /home/jenkins/bin:/home/jenkins/venv/bin:/usr/lib/llvm-3.9/bin:$PATH
 
 # Install DXR in a single layer
 RUN         ["/home/jenkins/bin/dxr-setup.sh"]
