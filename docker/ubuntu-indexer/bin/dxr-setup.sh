@@ -31,7 +31,7 @@ fi
 git clone --recursive https://github.com/mozilla/dxr && \
     (cd dxr && git checkout $REV)
 
-export PATH=/usr/lib/llvm-3.8/bin/:${PATH}
+export PATH=/usr/lib/llvm-3.9/bin/:${PATH}
 env VIRTUAL_ENV=`pwd`/venv CC=clang CXX=clang++ make -C dxr
 
 chown -R jenkins:jenkins /home/jenkins
