@@ -42,11 +42,6 @@
   command: luarocks install lua-resty-openidc
   notify: restart openresty
 
-- name: fix openidc module (temp)
-  get_url: url="{{ lua_resty_openidc_url }}"
-           dest=/usr/share/lua/5.1/resty/
-  notify: restart openresty
-
 - name: install openidc_layer shim
   copy: src=openidc_layer.lua
         dest=/usr/local/openresty/nginx/conf/openidc_layer.lua
