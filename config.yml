@@ -102,6 +102,7 @@ trees:
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
+    workers: 3
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
     build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && ./mach build -j {workers}'
     mozconfig:
