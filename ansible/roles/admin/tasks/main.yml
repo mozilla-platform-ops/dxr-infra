@@ -54,35 +54,3 @@
         job="/data/stage/dxr-stage/virtualenv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k stage 1>>/var/log/dxr-stage.log"
         state=absent
 
-# user is created by puppet
-- name: create addons_update directories
-  file: path={{ item }} state=directory owner=addons_update group=addons_update mode=0755
-  with_items:
-    - /home/addons_update/bin
-    - /home/addons_update/log
-
-- name: add addons_update script
-  copy: src=rsync-addons.sh dest=/home/addons_update/bin/rsync-addons.sh
-
-- name: create addons_update ssh private key file
-  copy: dest=/home/addons_update/.ssh/id_addon_sync
-        content="{{ addon_sync_private_key }}"
-        mode=0600
-        owner=addons_update
-
-- name: create addons_update ssh public key file
-  copy: dest=/home/addons_update/.ssh/id_addon_sync.pub
-        content="{{ addon_sync_public_key }}"
-        mode=0600
-        owner=addons_update
-
-- name: create addons_update ssh config
-  copy: src=ssh_config dest=/home/addons_update/.ssh/config
-
-# remote data is updated by 0800Z; must match jenkins schedule to prevent "missing" files
-- name: create addons_update cron job
-  cron: name="rsync addons"
-        user="addons_update"
-        hour="8"
-        day="1,3,6"
-        job="/home/addons_update/bin/rsync-addons.sh"
