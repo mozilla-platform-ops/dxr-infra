@@ -14,6 +14,8 @@ RUN         ["/home/jenkins/bin/system-setup.sh"]
 
 # So that the compilers can find necessary libraries
 # gcc
+ENV         CARGO_HOME          /home/jenkins/.cargo
+ENV         RUSTUP_HOME         /home/jenkins/.rustup
 ENV         LIBRARY_PATH        /usr/lib/x86_64-linux-gnu
 ENV         PATH                /home/jenkins/bin:/home/jenkins/venv/bin:/usr/lib/llvm-3.9/bin:/home/jenkins/.cargo/bin:$PATH
 
