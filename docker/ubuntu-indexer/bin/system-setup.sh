@@ -80,8 +80,8 @@ python2.7 bootstrap.py --application-choice=browser --no-interactive
 rm -f bootstrap.py
 
 # Dependencies for rust crates
-wget -O rustup.sh https://static.rust-lang.org/rustup.sh
-bash rustup.sh --yes
+NO_PROXY="sh.rustup.rs" wget -O rustup.sh https://sh.rustup.rs
+bash rustup.sh -y --default-toolchain nightly
 rm -f rustup.sh
 
 mkdir -p /etc/mercurial
