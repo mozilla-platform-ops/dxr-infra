@@ -80,6 +80,8 @@ python2.7 bootstrap.py --application-choice=browser --no-interactive
 rm -f bootstrap.py
 
 # Dependencies for rust crates
+export CARGO_HOME="/home/jenkins/.cargo"
+export RUSTUP_HOME="/home/jenkins/.rustup"
 NO_PROXY="sh.rustup.rs" wget -O rustup.sh https://sh.rustup.rs
 bash rustup.sh -y --default-toolchain nightly
 rm -f rustup.sh
