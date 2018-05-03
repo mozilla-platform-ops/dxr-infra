@@ -219,35 +219,31 @@ trees:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr38'
 
   - name: 'mozilla-esr45'
-    disabled_plugins: 'xpidl'
     proj_dir: 'releases'
+    job_weight: 2
+    schedule: '@weekly'
+    disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr45'
-    schedule: 'H H/6 * * *'
-    quiet_period: 14400
-    job_weight: 4
-    ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
-    mozconfig:
-      - 'mk_add_options AUTOCLOBBER=1'
-      - 'ac_add_options --enable-debug'
-      - 'ac_add_options --disable-elf-hack'
-      - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
-    plugins:
-      - plugin: 'xpidl'
-        header_path: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/include'
-        include_folders: 'src/releases/mozilla-esr45/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'mozilla-esr52'
+    proj_dir: 'releases'
+    job_weight: 2
+    schedule: '@weekly'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr52'
+
+  - name: 'mozilla-esr60'
     disabled_plugins: 'xpidl'
     proj_dir: 'releases'
     repos:
-      - url: 'https://hg.mozilla.org/releases/mozilla-esr52'
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr60'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach clobber && make -f client.mk build MOZ_MAKE_FLAGS="-s -j{workers}"'
+    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && ./mach build -j {workers}'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -255,8 +251,8 @@ trees:
       - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
     plugins:
       - plugin: 'xpidl'
-        header_path: 'src/releases/mozilla-esr52/obj-x86_64-unknown-linux-gnu/dist/include'
-        include_folders: 'src/releases/mozilla-esr52/obj-x86_64-unknown-linux-gnu/dist/idl'
+        header_path: 'src/releases/mozilla-esr60/obj-x86_64-unknown-linux-gnu/dist/include'
+        include_folders: 'src/releases/mozilla-esr60/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'comm-central'
     disabled_plugins: 'xpidl'
@@ -377,28 +373,25 @@ trees:
 
   - name: 'comm-esr45'
     proj_dir: 'releases'
+    job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/comm-esr45'
-    schedule: 'H H/6 * * *'
-    quiet_period: 14400
-    job_weight: 4
-    ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && python client.py checkout && ./mozilla/mach clobber && ./mozilla/mach build'
-    mozconfig:
-      - 'mk_add_options AUTOCLOBBER=1'
-      - 'ac_add_options --enable-debug'
-      - 'ac_add_options --enable-application=mail'
-      - 'ac_add_options --enable-calendar'
-      - 'ac_add_options --disable-optimize'
-      - 'ac_add_options --disable-elf-hack'
-      - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
 
   - name: 'comm-esr52'
     proj_dir: 'releases'
+    job_weight: 2
+    schedule: '@weekly'
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/comm-esr52'
+
+  - name: 'comm-esr60'
+    proj_dir: 'releases'
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/comm-esr60'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     job_weight: 4
