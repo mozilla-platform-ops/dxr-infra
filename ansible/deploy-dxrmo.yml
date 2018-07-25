@@ -1,5 +1,5 @@
 ---
-- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+- hosts: dxr-jenkins1.dmz.mdc1.mozilla.com
   gather_facts: no
   vars_prompt:
     - name: "my_username"
@@ -9,14 +9,14 @@
     - set_fact:
         username: "{{ my_username }}"
 
-- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+- hosts: dxr-jenkins1.dmz.mdc1.mozilla.com
   vars:
     domain: jenkins-dxr.mozilla.org
   roles:
     - common
     - jenkins-master
 
-- hosts: dxradm.private.scl3.mozilla.com
+- hosts: dxradm.private.mdc1.mozilla.com
   vars:
     environ:
       prod:
@@ -38,11 +38,11 @@
     - common
     - indexer
 
-- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+- hosts: dxr-jenkins1.dmz.mdc1.mozilla.com
   tasks:
     - include: tasks/add-jenkins-slaves.yml
 
-- hosts: dxr1.stage.webapp.scl3.mozilla.com
+- hosts: dxr1.stage.webapp.mdc1.mozilla.com
   roles:
     - common
     - { role: web,

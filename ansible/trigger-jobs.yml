@@ -1,5 +1,5 @@
 ---
-- hosts: dxr-jenkins1.dmz.scl3.mozilla.com
+- hosts: dxr-jenkins1.dmz.mdc1.mozilla.com
   gather_facts: no
   vars_prompt:
     - name: "username"
