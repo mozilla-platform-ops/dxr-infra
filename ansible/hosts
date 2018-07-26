@@ -1,5 +1,3 @@
-dxr1.stage.webapp.mdc1.mozilla.com ansible_sudo=true
-
 [admin-host]
 dxradm.private.mdc1.mozilla.com ansible_sudo=true
 
@@ -8,6 +6,9 @@ dxr-processor[1:3].dmz.mdc1.mozilla.com ansible_sudo=true
 
 [dxrweb-prod]
 dxr[1:2].webapp.mdc1.mozilla.com ansible_sudo=true
+
+[dxrweb-stage]
+dxr1.stage.webapp.mdc1.mozilla.com ansible_sudo=true
 
 [jenkins-master]
 dxr-jenkins1.dmz.mdc1.mozilla.com ansible_sudo=true
