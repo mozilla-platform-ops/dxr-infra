@@ -18,7 +18,7 @@
 {% for host in es_masters %}
         - {{ host }}
 {% endfor %}
-      minimum_master_nodes: 2
+      minimum_master_nodes: {{ min_masters }}
       ping.multicast.enabled: false
   action:
     disable_shutdown: true
