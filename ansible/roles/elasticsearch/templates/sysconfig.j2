@@ -1,0 +1,17 @@
+# THIS FILE MANAGED BY ANSIBLE
+DATA_DIR={{ es_lib_dir }}
+LOG_DIR={{ es_log_dir }}
+ES_HEAP_SIZE={{ es_max_mem }}
+WORK_DIR={{ es_tmp_dir }}
+CONF_DIR={{ es_conf_dir }}
+ES_MAX_MEM={{ es_max_mem }}
+ES_USER={{ es_user }}
+
+# START DEFAULT BLOCK FROM RHEL PACKAGE
+ES_PATH_LOG={{ es_log_dir }}
+ES_PATH_DATA={{ es_lib_dir }}
+ES_PATH_WORK={{ es_tmp_dir }}
+ES_PATH_CONF={{ es_conf_dir }}
+ES_CONFIG={{ es_conf_dir }}/elasticsearch.yml
+ES_INCLUDE=/usr/share/java/elasticsearch/bin/elasticsearch.in.sh
+# END DEFAULT BLOCK FROM RHEL PACKAGE

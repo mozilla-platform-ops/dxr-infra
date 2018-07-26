@@ -1,0 +1,53 @@
+---
+# elasticsearch and java package versions locked via puppet
+- name: install system packages
+  yum: pkg={{ item }} state=present
+  with_items:
+    - java-1.7.0-openjdk-1.7.0.181-2.6.14.8.el6_9.x86_64
+    - elasticsearch-1.4.4-1.noarch
+    - elasticsearch-plugin-lang-javascript-2.4.1-1.noarch
+    - elasticsearch-plugin-site-bigdesk-2.5.0-1.noarch
+    - elasticsearch-plugin-site-head-2015032600-f3a85b2536.noarch
+    - elasticsearch-plugin-site-paramedic-2015032600-7482067dfb.noarch
+
+- name: enable ntpdate 
+  systemd: name=ntpdate state=started enabled=yes
+
+# ensure {{ es_user }} ?
+
+- name: create ES directories
+  file: path={{ item }} state=directory mode=-755 owner=elsrch
+  with_items:
+    - {{ es_log_dir }}
+    - {{ es_lib_dir }}
+    - {{ es_run_dir }}
+    - {{ es_template_dir }}
+
+- name: create ES sysconfig file
+  template: src=sysconfig.j2
+            dest=/etc/sysconfig/elasticsearch
+            owner=root
+            group=root
+            mode=0644
+
+- name: increase ulimits
+  template: src=ulimit.j2
+            dest=/etc/security/limits.d/90-elasticsearch.conf
+            owner=root
+            group=root
+            mode=0644
+
+- name: create logging.yml config file
+  copy: src=logging.yml
+        dest="{{ es_conf_dir}}/logging.yml"
+        owner="{{ es_user }}"
+        group=root
+        mode=0644
+
+- name: create elasticsearch.yml config file
+  template: src=elasticsearch.yml.j2
+            dest="{{ es_conf_dir }}/elasticsearch.yml"
+            owner="{{ es_user }}"
+            group=root
+            mode=0644
+
