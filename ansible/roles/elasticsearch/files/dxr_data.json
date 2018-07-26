@@ -1,0 +1,10 @@
+{
+    "dxr_data" : {
+        "template" : "dxr_*",
+        "order" : 0,
+        "settings" : {
+            "index.routing.allocation.include.profile" : "data",
+            "index.routing.allocation.exclude.profile" : "master, client"
+        }
+    }
+}k
