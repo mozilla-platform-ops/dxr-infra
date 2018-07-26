@@ -23,14 +23,10 @@
 - name: add jenkins key
   rpm_key: key="{{ jenkins_repo_key_url }}" state=present
 
-- name: add epel-release yum repo
-  yum:
-    name: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
-    state: present
-
 - name: install packages
   yum: pkg={{ item }} state=present
   with_items:
+    - epel-release
     - jenkins
     - java-1.8.0-openjdk
     - openresty
