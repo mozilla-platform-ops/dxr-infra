@@ -1,4 +1,6 @@
 # THIS FILE MANAGED BY ANSIBLE
+ES_HOME={{ es_home }}
+ES_CLASSPATH=/usr/share/elasticsearch/lib/elasticsearch-1.6.2.jar:/usr/share/elasticsearch/lib/*:/usr/share/elasticsearch/lib/sigar/*
 DATA_DIR={{ es_lib_dir }}
 LOG_DIR={{ es_log_dir }}
 ES_HEAP_SIZE={{ es_max_mem }}
