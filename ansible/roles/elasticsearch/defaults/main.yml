@@ -2,6 +2,7 @@
 proxy_host: proxy.dmz.mdc1.mozilla.com
 proxy_port: 3128
 es_user: elasticsearch
+es_home: /usr/share/elasticsearch
 es_bin_dir: /usr/share/elasticsearch/bin
 es_log_dir: /var/log/elasticsearch
 es_lib_dir: /var/lib/elasticsearch
@@ -11,8 +12,8 @@ es_template_dir: /etc/elasticsearch/templates
 es_tmp_dir: /tmp/elasticsearch
 es_max_mem: "{{ (ansible_memory_mb.real.total / 1.5)|round|int }}"
 nofile_limit: 65535
-elasticsearch_plugins:
-  - mobz/elasticsearch-head/1.x
-  - lukas-vlcek/bigdesk
-  - karmi/elasticsearch-paramedic/1.0 
-  - elasticsearch/elasticsearch-lang-javascript/2.6.0
+es_plugins:
+  - { plugin: mobz/elasticsearch-head/1.x, path: head }
+  - { plugin: lukas-vlcek/bigdesk, path: bigdesk }
+  - { plugin: karmi/elasticsearch-paramedic/1.0, path: paramedic }
+  - { plugin: elasticsearch/elasticsearch-lang-javascript/2.6.0, path: lang-javascript }

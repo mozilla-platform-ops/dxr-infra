@@ -80,7 +80,12 @@
   systemd: name=elasticsearch state=started enabled=yes
 
 - name: install elasticsearch plugins
-  command: "{{es_bin_dir}}/plugin --install {{ item }} --silent -DproxyHost={{ proxy_host }} -DproxyPort={{ proxy_port }}"
-  with_items: "{{ elasticsearch_plugins }}"
+  command: "{{es_bin_dir}}/plugin --install {{ item.plugin }} --silent -DproxyHost={{ proxy_host }} -DproxyPort={{ proxy_port }}"
+  args:
+      creates: "{{ es_home }}/plugins/{{ item.path }}"
+  with_items: "{{ es_plugins }}"
   notify: restart elasticsearch
+  register: plugin_installed
+  failed_when: "'ERROR' in plugin_installed.stdout"
+  changed_when: plugin_installed.rc == 0
 
