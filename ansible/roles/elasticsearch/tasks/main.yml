@@ -23,14 +23,6 @@
 - name: lock java package
    shell: yum versionlock delete 1:java* ; yum versionlock add java-1.8.0-openjdk-1.8.0.181
 
-- name: install elasticsearch plugins
-  command: "{{es_bin_dir}}/plugin install {{ item.plugin }} --batch --silent -DproxyHost={{ proxy_host }} -DproxyPort={{ proxy_port }}"
-  with_items: "{{ elasticsearch_plugins }}"
-  notify: restart elasticsearch
-
-- name: enable ntpdate 
-  systemd: name=ntpdate state=started enabled=yes
-
 # ensure {{ es_user }} ?
 
 - name: create ES directories
@@ -83,4 +75,15 @@
 		owner=root
 		group=root
 		mode-0644
+
+- name: enable elasticsearch 
+  systemd: name=elasticsearch state=started enabled=yes
+
+- name: install elasticsearch plugins
+  command: "{{es_bin_dir}}/plugin install {{ item.plugin }} --batch --silent -DproxyHost={{ proxy_host }} -DproxyPort={{ proxy_port }}"
+  with_items: "{{ elasticsearch_plugins }}"
+  notify: restart elasticsearch
+
+- name: enable ntpdate 
+  systemd: name=ntpdate state=started enabled=yes
 

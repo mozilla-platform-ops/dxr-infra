@@ -1,5 +1,8 @@
 ---
+proxy_host: proxy.dmz.mdc1.mozilla.com
+proxy_port: 3128
 es_user: elasticsearch
+es_bin_dir: /usr/share/elasticsearch/bin
 es_log_dir: /var/log/elasticsearch
 es_lib_dir: /var/lib/elasticsearch
 es_run_dir: /var/run/elasticsearch
