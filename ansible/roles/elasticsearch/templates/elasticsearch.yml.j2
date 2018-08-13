@@ -4,11 +4,11 @@
   cluster:
     name: "{{ es_cluster_name }}"
   node:
-    profile: "{{ es_profile }}"
-    master: "{{ es_is_master }}"
-    data: "{{ es_is_data }}"
+    profile: "{{ es_profile|lower }}"
+    master: "{{ es_is_master|lower }}"
+    data: "{{ es_is_data|lower }}"
   http:
-    enabled: "{{ es_http_enabled }}"
+    enabled: "{{ es_http_enabled|lower }}"
 {% if es_http_enabled is defined %}
     max_content_length: "{{ es_http_max_content_length }}"
 {% endif %}
