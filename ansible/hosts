@@ -14,9 +14,9 @@ dxr1.stage.webapp.mdc1.mozilla.com ansible_sudo=true
 dxr-jenkins1.dmz.mdc1.mozilla.com ansible_sudo=true
 
 [elasticsearch:children]
-es-data
-es-clients
 es-masters
+es-clients
+es-data
 
 [es-data]
 dxr-es-data[1:3].private.mdc1.mozilla.com ansible_sudo=true
