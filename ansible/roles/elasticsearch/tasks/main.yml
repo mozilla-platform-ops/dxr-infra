@@ -84,6 +84,3 @@
   with_items: "{{ elasticsearch_plugins }}"
   notify: restart elasticsearch
 
-- name: enable ntpdate 
-  systemd: name=ntpdate state=started enabled=yes
-
