@@ -3,10 +3,11 @@
 - name: install system packages
   yum: pkg={{ item }} state=present
   with_items:
+    - epel-release
     - jq
-    - python27-mod_wsgi
-    - nodejs
-    - npm
+    - mod_wsgi
+#    - nodejs
+#    - npm
 
 - name: create data dirs
   file: path={{ item }} state=directory owner=root group=root mode=0755

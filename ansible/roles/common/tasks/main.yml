@@ -6,10 +6,10 @@
     - git
     - logrotate
     - mercurial
-    - python27
-    - python27-devel
-    - python27-setuptools
-    - python27-virtualenv
+    - python
+    - python-devel
+    - python-setuptools
+    - python-virtualenv
 
 - name: create /data directory
   file: path=/data

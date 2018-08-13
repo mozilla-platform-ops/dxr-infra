@@ -2,7 +2,7 @@
 - name: install system packages
   yum: pkg={{ item }} state=present
   with_items:
-    - python27-mod_wsgi
+    - mod_wsgi
     - httpd
     - mod_auth_mellon
 
