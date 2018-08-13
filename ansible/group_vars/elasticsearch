@@ -4,4 +4,4 @@ es_masters:
   - master1.private.mdc1.mozilla.com
   - master2.private.mdc1.mozilla.com
   - master3.private.mdc1.mozilla.com
-min_masters: "{{ (es_masters|length) / 2 + 1 }}"
+min_masters: "{{ ((es_masters|length) / 2 + 1)|int }}"
