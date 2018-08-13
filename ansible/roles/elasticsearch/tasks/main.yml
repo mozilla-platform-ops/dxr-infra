@@ -19,18 +19,18 @@
   notify: reload systemd configuration
 
 - name: lock elasticsearch package
-   shell: yum versionlock delete 0:elasticsearch* ; yum versionlock add elasticsearch-1.6.2
+  shell: yum versionlock delete 0:elasticsearch* ; yum versionlock add elasticsearch-1.6.2
 
 - name: lock java package
-   shell: yum versionlock delete 1:java* ; yum versionlock add java-1.8.0-openjdk-1.8.0.181
+  shell: yum versionlock delete 1:java* ; yum versionlock add java-1.8.0-openjdk-1.8.0.181
 
 - name: create ES directories
-  file: path={{ item }} state=directory mode=-755 owner=elasticsearch
+  file: path={{ item }} state=directory mode=755 owner=elasticsearch
   with_items:
-    - {{ es_log_dir }}
-    - {{ es_lib_dir }}
-    - {{ es_run_dir }}
-    - {{ es_template_dir }}
+    - "{{ es_log_dir }}"
+    - "{{ es_lib_dir }}"
+    - "{{ es_run_dir }}"
+    - "{{ es_template_dir }}"
 
 - name: create ES sysconfig file
   template: src=sysconfig.j2
@@ -70,10 +70,10 @@
 
 - name: enable log rotation
   template: src=logrotate.j2
-		dest=/etc/logrotate.d/elasticsearch
-		owner=root
-		group=root
-		mode-0644
+            dest=/etc/logrotate.d/elasticsearch
+            owner=root
+            group=root
+            mode=0644
 
 - name: enable elasticsearch 
   systemd: name=elasticsearch state=started enabled=yes
