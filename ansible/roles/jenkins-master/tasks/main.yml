@@ -9,12 +9,8 @@
         group=root
         mode=0755
 
-- name: add openresty yum repo
-  get_url: url="{{ openresty_repo_url }}"
-           dest=/etc/yum.repos.d/OpenResty.repo
-
-- name: add openresty key
-  rpm_key: key="{{ openresty_repo_key_url }}" state=present
+# Previously we installed the openresty repo here; in MDC1 we're adding it via
+# puppet from mrepo
 
 - name: add jenkins yum repo
   get_url: url="{{ jenkins_repo_url }}"
