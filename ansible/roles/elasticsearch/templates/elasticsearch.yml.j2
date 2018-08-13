@@ -9,7 +9,7 @@
 	data: {{ es_is_data }}
   http:
     enabled: {{ es_http_enabled }}
-{% if es_http_enabled is true %}
+{% if es_http_enabled is defined %}
     max_content_length: {{ es_http_max_content_length }}
 {% endif %}
   discovery:
