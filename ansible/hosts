@@ -19,7 +19,7 @@ es-clients
 es-masters
 
 [es-data]
-dxr-es-data1.private.mdc1.mozilla.com ansible_sudo=true
+dxr-es-data[1:3].private.mdc1.mozilla.com ansible_sudo=true
 #dxr-es-data[1:9].private.mdc1.mozilla.com ansible_sudo=true
 
 [es-clients]
