@@ -10,16 +10,23 @@
         group=root
         mode=0644
 
-# elasticsearch and java package versions locked via puppet
 - name: install system packages
   yum: pkg={{ item }} state=present
   with_items:
+    - yum-plugin-versionlock
     - java-1.8.0-openjdk-1.8.0.181
-    - elasticsearch-1.6.0
-#    - elasticsearch-plugin-lang-javascript-2.4.1-1.noarch
-#    - elasticsearch-plugin-site-bigdesk-2.5.0-1.noarch
-#    - elasticsearch-plugin-site-head-2015032600-f3a85b2536.noarch
-#    - elasticsearch-plugin-site-paramedic-2015032600-7482067dfb.noarch
+    - elasticsearch-1.6.2
+
+- name: lock elasticsearch package
+   shell: yum versionlock delete 0:elasticsearch* ; yum versionlock add elasticsearch-1.6.2
+
+- name: lock java package
+   shell: yum versionlock delete 1:java* ; yum versionlock add java-1.8.0-openjdk-1.8.0.181
+
+- name: install elasticsearch plugins
+  command: "{{es_bin_dir}}/plugin install {{ item.plugin }} --batch --silent -DproxyHost={{ proxy_host }} -DproxyPort={{ proxy_port }}"
+  with_items: "{{ elasticsearch_plugins }}"
+  notify: restart elasticsearch
 
 - name: enable ntpdate 
   systemd: name=ntpdate state=started enabled=yes

@@ -8,3 +8,8 @@ es_template_dir: /etc/elasticsearch/templates
 es_tmp_dir: /tmp/elasticsearch
 es_max_mem: "{{ (ansible_memory_mb.real.total / 1.5)|round|int }}"
 nofile_limit: 65535
+elasticsearch_plugins:
+  - mobz/elasticsearch-head/1.x
+  - lukas-vlcek/bigdesk
+  - karmi/elasticsearch-paramedic/1.0 
+  - elasticsearch/elasticsearch-lang-javascript/2.6.0
