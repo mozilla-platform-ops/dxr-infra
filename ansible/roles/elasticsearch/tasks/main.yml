@@ -20,6 +20,7 @@
 
 - name: lock elasticsearch package
   shell: yum versionlock delete 0:elasticsearch* ; yum versionlock add elasticsearch-1.6.2
+  warn: False
 
 - name: lock java package
   shell: yum versionlock delete 1:java* ; yum versionlock add java-1.8.0-openjdk-1.8.0.181
