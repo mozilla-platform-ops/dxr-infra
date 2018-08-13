@@ -23,10 +23,8 @@
 - name: lock java package
    shell: yum versionlock delete 1:java* ; yum versionlock add java-1.8.0-openjdk-1.8.0.181
 
-# ensure {{ es_user }} ?
-
 - name: create ES directories
-  file: path={{ item }} state=directory mode=-755 owner=elsrch
+  file: path={{ item }} state=directory mode=-755 owner=elasticsearch
   with_items:
     - {{ es_log_dir }}
     - {{ es_lib_dir }}
