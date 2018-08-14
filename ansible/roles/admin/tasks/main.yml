@@ -21,9 +21,6 @@
     - prod
     - stage
 
-- name: fix virtualenv link
-  file: src=/usr/bin/virtualenv-2.7 dest=/usr/bin/virtualenv state=link
-
 - name: create DXR configs
   get_url: url=https://github.com/mozilla-platform-ops/dxr-infra/raw/{{ item.value.branch }}/dxr.config dest=/data/{{ item.key }}/dxr.config mode=0644 owner=root group=apache force=yes
   with_dict: "{{ environ }}"
