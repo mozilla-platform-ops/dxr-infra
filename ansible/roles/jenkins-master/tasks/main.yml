@@ -9,6 +9,11 @@
         group=root
         mode=0755
 
+- name: create nginx user
+  user: name=nginx
+        comment="nginx user"
+        create_home=no
+
 # Previously we installed the openresty and jenkins repo here; in MDC1 we're adding it via
 # puppet from mrepo
 
@@ -68,7 +73,7 @@
 - name: make nginx vhost logdir
   file: path="/var/log/nginx/{{ domain }}"
         state=directory
-        owner=root
+        owner=nginx
         group=root
         mode=0755
 
