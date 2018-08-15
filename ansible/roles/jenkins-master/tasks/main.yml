@@ -51,6 +51,13 @@
             dest="/usr/local/openresty/nginx/conf/conf.d/ldap_pwless.lua"
   notify: restart openresty
 
+- name: create html directory
+  file: path=/var/www/html
+        state=directory
+        owner=root
+        group=root
+        mode=0755
+
 - name: install contribute.json
   template: src=contribute.json.j2
             dest=/var/www/html/contribute.json
@@ -61,9 +68,9 @@
 - name: make nginx vhost logdir
   file: path="/var/log/nginx/{{ domain }}"
         state=directory
-        owner=nginx
-        group=wheel
-        mode=0750
+        owner=root
+        group=root
+        mode=0755
 
 - name: manage openresty service
   service: name=openresty
