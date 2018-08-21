@@ -8,7 +8,7 @@
 
 - name: update jenkins user groups
   user: name=jenkins
-        groups="vpn_dxr,docker"
+        groups="vpn_dxr,dockerroot"
         append=yes
 
 - name: add authorized_keys for jenkins user
