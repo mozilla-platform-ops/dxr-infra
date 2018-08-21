@@ -32,6 +32,7 @@
 
 - name: install requirements
   pip: requirements=/data/requirements.txt
+  extra_args: "--proxy http://proxy.dmz.mdc1.mozilla.com/"
 
 - name: configure mercurial
   copy: dest=/etc/mercurial/hgrc
