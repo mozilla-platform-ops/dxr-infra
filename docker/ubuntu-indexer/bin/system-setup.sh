@@ -86,6 +86,8 @@ NO_PROXY="sh.rustup.rs" wget -O rustup.sh https://sh.rustup.rs
 bash rustup.sh -y --default-toolchain nightly
 rm -f rustup.sh
 
+cargo install --force cbindgen
+
 mkdir -p /etc/mercurial
 cat <<EOF > /etc/mercurial/hgrc
 [trusted]
