@@ -6,13 +6,9 @@
     - java-1.8.0-openjdk
     - python2-pip
 
-- name: create jenkins user
+- name: update jenkins user groups
   user: name=jenkins
-        comment="DXR Jenkins user"
-        uid=5507
-        group=vpn_dxr
-        groups=docker
-        shell="/bin/bash"
+        groups="vpn_dxr,docker"
         append=yes
 
 - name: add authorized_keys for jenkins user
@@ -20,12 +16,12 @@
                   key_options='from="10.48.74.150"'
                   key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA4H+yA2xlG0uCqmFOf5KKoEK/W82o6AbhnVixD4LI5Yi/vDi6TjXcZqgMFIQ5JAGiWrPnan2W6SqVapm8Iv1Zzvezr+8s0y3WoKDCKQSM+g3vuwrAZODt8xpOXn3bluHxNdBTwH97itzoHhyhw2C1gEbpxUMKt5Y/2mSU54WhmleXoTl9GtdJTdEQ+76p2b6E6GODIFrRhXBCcnEy3fwSimHxgKAoU6YqrSThqaFYdjIFJr62frQfwPkVN/bGu683lkZIR7x7cMsU11GR8WRHA1oOKpP4zMyhkuEXxI6VTGOu87kC9xKbjTxkbJOk9ZYmXOPOOCtMdDZE9X5o1jNVTQ=="
 
-- name: Prevent puppet firewall NAT purging
-  copy: dest=/etc/facter/facts.d/local_firewall_purge_disable.yaml
-        src=local_firewall_purge_disable.yaml
-        owner=root
-        group=root
-        mode=0644
+#- name: Prevent puppet firewall NAT purging
+#  copy: dest=/etc/facter/facts.d/local_firewall_purge_disable.yaml
+#        src=local_firewall_purge_disable.yaml
+#        owner=root
+#        group=root
+#        mode=0644
 
 - name: copy requirements.txt
   copy: dest=/data/requirements.txt
