@@ -6,9 +6,12 @@
     - java-1.8.0-openjdk
     - python2-pip
 
+- name: create docker group
+  group: name=docker state=present
+
 - name: update jenkins user groups
   user: name=jenkins
-        groups="vpn_dxr,dockerroot"
+        groups="vpn_dxr,docker"
         append=yes
 
 - name: add authorized_keys for jenkins user
@@ -32,7 +35,7 @@
 
 - name: install requirements
   pip: requirements=/data/requirements.txt
-  extra_args: "--proxy http://proxy.dmz.mdc1.mozilla.com/"
+    extra_args="--proxy http://proxy.dmz.mdc1.mozilla.com/"
 
 - name: configure mercurial
   copy: dest=/etc/mercurial/hgrc
