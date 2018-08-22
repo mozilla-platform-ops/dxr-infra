@@ -15,7 +15,7 @@ EnvironmentFile=-/etc/sysconfig/docker-network
 Environment=GOTRACEBACK=crash
 Environment=DOCKER_HTTP_HOST_COMPAT=1
 Environment=PATH=/usr/libexec/docker:/usr/bin:/usr/sbin
-Environment=HTTP_PROXY=http://{{ proxy_host }}:{{ proxy_port }}/
+EnvironmentFile=-/etc/environment
 ExecStart=/usr/bin/dockerd-current \
           --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current \
           --default-runtime=docker-runc \
