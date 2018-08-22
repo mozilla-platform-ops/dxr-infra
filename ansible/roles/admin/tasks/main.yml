@@ -36,9 +36,9 @@
         minute="*/5"
         job="/data/prod/dxr-prod/virtualenv/bin/dxr deploy -c /data/prod/dxr.config -b /data/prod -k prod 1>>/var/log/dxr-prod.log"
 
-- name: create staging deploy cron job
-  cron: name="dxr staging deploy"
-        minute="*/5"
-        job="/data/stage/dxr-stage/virtualenv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k stage 1>>/var/log/dxr-stage.log"
-        state=absent
+#- name: create staging deploy cron job
+#  cron: name="dxr staging deploy"
+#        minute="*/5"
+#        job="/data/stage/dxr-stage/virtualenv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k stage 1>>/var/log/dxr-stage.log"
+#        state=absent
 
