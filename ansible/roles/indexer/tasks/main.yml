@@ -44,18 +44,15 @@
         group=root
         mode=0664
 
+- name: replace docker.service systemd config
+  template: src=docker.service.j2
+			dest=/usr/lib/systemd/system/docker.service
+  notify: restart docker
+
 - name: configure docker options
   lineinfile: dest=/etc/sysconfig/docker
               regexp="^other_args="
-              line='other_args="--dns=10.22.75.40 --dns=10.22.75.41 --host=tcp://0.0.0.0:6666 --host=unix:///var/run/docker.sock"'
-  notify: restart docker
-
-- name: configure docker storage options
-  copy: dest=/etc/sysconfig/docker-storage
-        src=docker-storage
-        owner=root
-        group=root
-        mode=0644
+              line='other_args="--host=tcp://0.0.0.0:6666 --host=unix:///var/run/docker.sock"'
   notify: restart docker
 
 - name: ensure docker is running
