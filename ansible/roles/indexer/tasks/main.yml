@@ -46,7 +46,7 @@
 
 - name: replace docker.service systemd config
   copy: dest=/usr/lib/systemd/system/docker.service
-        src=docker.service.j2
+        src=docker.service
         owner=root
         group=root
         mode=0644
