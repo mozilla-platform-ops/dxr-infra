@@ -10,7 +10,7 @@
             owner=root
             group=root
             mode=0600
-  with_items: groups['dxr-builders']
+  with_items: "{{ groups['dxr-builders'] }}"
   register: slave_configs
   tags: ['add-slaves']
 
@@ -24,7 +24,7 @@
   sudo: no
   shell: "ssh -l {{ username | mandatory }} -p {{ jenkins_ssh_port.stdout }} localhost get-node {{ hostvars[item.item]['inventory_hostname_short'] }} >> /dev/null"
   when: slave_configs.changed
-  with_items: slave_configs.results
+  with_items: "{{ slave_configs.results }}"
   register: get_node
   ignore_errors: True
   tags: ['add-slaves']
@@ -33,12 +33,12 @@
   sudo: no
   shell: "ssh -l {{ username | mandatory }} -p {{ jenkins_ssh_port.stdout }} localhost update-node {{ hostvars[item.item.item]['inventory_hostname_short'] }} < /data/slaves/{{ hostvars[item.item.item]['inventory_hostname_short'] }}"
   when: item.changed and not item.rc != 0
-  with_items: get_node.results
+  with_items: "{{ get_node.results }}"
   tags: ['add-slaves']
 
 - name: Create missing slave nodes
   sudo: no
   shell: "ssh -l {{ username | mandatory }} -p {{ jenkins_ssh_port.stdout }} localhost create-node {{ hostvars[item.item.item]['inventory_hostname_short'] }} < /data/slaves/{{ hostvars[item.item.item]['inventory_hostname_short'] }}"
   when: item.changed and (item.stderr.find('No such node') != -1)
-  with_items: get_node.results
+  with_items: "{{ get_node.results }}"
   tags: ['add-slaves']
