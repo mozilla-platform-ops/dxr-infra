@@ -86,6 +86,8 @@ NO_PROXY="sh.rustup.rs" wget -O rustup.sh https://sh.rustup.rs
 bash rustup.sh -y --default-toolchain nightly
 rm -f rustup.sh
 
+# Add Cargo to PATH
+. /home/jenkins/.cargo/env
 cargo install --force cbindgen
 
 mkdir -p /etc/mercurial
