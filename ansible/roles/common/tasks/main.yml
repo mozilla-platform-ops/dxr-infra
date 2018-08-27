@@ -21,7 +21,7 @@
 - name: create NFS mount point
   file: path=/data/dxr_data
         state=directory
-        owner=5507
+        owner=2352
         group=root
         mode=0755
 
