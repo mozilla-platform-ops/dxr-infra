@@ -69,8 +69,8 @@ apt-get install -y --force-yes mercurial mercurial-common
 # Add a newer version of node that supports ES6.
 curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 DISTRO=$(lsb_release -c -s)
-echo "deb https://deb.nodesource.com/node_6.x ${DISTRO} main" > /etc/apt/sources.list.d/nodesource.list
-echo "deb-src https://deb.nodesource.com/node_6.x ${DISTRO} main" >> /etc/apt/sources.list.d/nodesource.list
+echo "deb https://deb.nodesource.com/node_8.x ${DISTRO} main" > /etc/apt/sources.list.d/nodesource.list
+echo "deb-src https://deb.nodesource.com/node_8.x ${DISTRO} main" >> /etc/apt/sources.list.d/nodesource.list
 apt-get update -y
 apt-get install -y nodejs
 
@@ -85,6 +85,10 @@ export RUSTUP_HOME="/home/jenkins/.rustup"
 NO_PROXY="sh.rustup.rs" wget -O rustup.sh https://sh.rustup.rs
 bash rustup.sh -y --default-toolchain nightly
 rm -f rustup.sh
+
+# Add Cargo to PATH
+. /home/jenkins/.cargo/env
+cargo install --force cbindgen
 
 mkdir -p /etc/mercurial
 cat <<EOF > /etc/mercurial/hgrc
