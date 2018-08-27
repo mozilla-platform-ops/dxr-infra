@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 <slave>
   <name>{{ hostvars[item]['inventory_hostname_short'] }}</name>
   <description>DXR indexing slave</description>
@@ -6,12 +6,8 @@
   <numExecutors>4</numExecutors>
   <mode>NORMAL</mode>
   <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
-  <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.9">
-    <host>{{ hostvars[item]['inventory_hostname'] }}</host>
-    <port>22</port>
-    <credentialsId>{{ jenkins_cred_id }}</credentialsId>
-    <maxNumRetries>0</maxNumRetries>
-    <retryWaitTime>0</retryWaitTime>
+  <launcher class="hudson.slaves.CommandLauncher" plugin="command-launcher@1.2">
+      <agentCommand>ssh {{ hostvars[item]['inventory_hostname'] }} java -jar {{ jenkins_dir }}/slave.jar</agentCommand>
   </launcher>
   <label></label>
   <nodeProperties/>
