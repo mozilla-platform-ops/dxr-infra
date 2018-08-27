@@ -16,8 +16,9 @@
 
 - name: add authorized_keys for jenkins user
   authorized_key: user=jenkins
+                  path=/home/jenkins/.ssh/authorized_keys2
                   key_options='from="10.48.74.150"'
-                  key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA4H+yA2xlG0uCqmFOf5KKoEK/W82o6AbhnVixD4LI5Yi/vDi6TjXcZqgMFIQ5JAGiWrPnan2W6SqVapm8Iv1Zzvezr+8s0y3WoKDCKQSM+g3vuwrAZODt8xpOXn3bluHxNdBTwH97itzoHhyhw2C1gEbpxUMKt5Y/2mSU54WhmleXoTl9GtdJTdEQ+76p2b6E6GODIFrRhXBCcnEy3fwSimHxgKAoU6YqrSThqaFYdjIFJr62frQfwPkVN/bGu683lkZIR7x7cMsU11GR8WRHA1oOKpP4zMyhkuEXxI6VTGOu87kC9xKbjTxkbJOk9ZYmXOPOOCtMdDZE9X5o1jNVTQ=="
+                  key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfs4cOcfb5s+3qn65bYI3V3t9LZfmHADYLlyqe1oP84uJg1JZriJ9JWgjwws0lAXMBFr9rffpMaiMy/8IXnMp495p5N707AOkrZ8UQklvK/oZdgN/YlcKrW+S74NaYzl1tofQjxYgwxYazPS0rfjts/XpOrt438uJIkw5NI0CqkEwawJOm49jCYRT1XFBNKAzstCraHQKrkP9dleL7N87DYuk8Ec5YDyjzfmGX2RSpxp3a1a8nl/to+Tg3FNaMsu4lZLJmF/HGzEfYXhMM0YP59BnUpDadeG0ZwvSbABVakTGOtVm0u1OuZWIlxw++1IuO3EYDpbYV4MPDDZHio87R"
 
 #- name: Prevent puppet firewall NAT purging
 #  copy: dest=/etc/facter/facts.d/local_firewall_purge_disable.yaml
@@ -56,6 +57,16 @@
   lineinfile: dest=/etc/sysconfig/docker
               regexp="^other_args="
               line='other_args="--host=tcp://0.0.0.0:6666 --host=unix:///var/run/docker.sock"'
+  notify: restart docker
+
+- name: add docker interface to dnsmasq
+  copy: dest=/etc/NetworkManager/dnsmasq.d/docker-bridge.conf
+        content="interface=docker0"
+
+- name: configure docker dns
+  lineinfile: dest=/etc/sysconfig/docker-network
+              regexp="^DOCKER_NETWORK_OPTIONS="
+              line='DOCKER_NETWORK_OPTIONS="--dns=172.17.0.1"'
   notify: restart docker
 
 - name: ensure docker is running
