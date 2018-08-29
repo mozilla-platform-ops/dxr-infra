@@ -1750,28 +1750,6 @@
           disable-changelog: true
 
 - project:
-    name: 'mozillasvn'
-    is_disabled: False
-    proj_dir: 'mozillasvn'
-    schedule: '@weekly'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
-    docker_vol: '/data/dxr_data:/home/jenkins/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - "{name}"
-
-- scm:
-    name: 'mozillasvn_scm'
-    scm:
-      - cvs-mozillasvn
-
-- scm:
-    name: 'cvs-mozillasvn'
-    scm: []
-
-- project:
     name: 'tamarin-central'
     is_disabled: False
     proj_dir: 'tamarin-central'
