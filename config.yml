@@ -80,7 +80,7 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach mercurial-setup -u && ./mach clobber && ./mach build -j {workers}'
+    build_command: 'cd $source_folder && ./mach vcs-setup -u && ./mach clobber && ./mach build -j {workers}'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -262,7 +262,7 @@ trees:
     job_weight: 4
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && python client.py checkout && ./mozilla/mach mercurial-setup -u && ./mozilla/mach clobber && ./mozilla/mach build'
+    build_command: 'cd $source_folder && python client.py checkout && ./mozilla/mach vcs-setup -u && ./mozilla/mach clobber && ./mozilla/mach build'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
