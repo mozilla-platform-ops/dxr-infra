@@ -1,6 +1,6 @@
 Listen 81
 
-<VirtualHost *:81>
+<VirtualHost *:80>
   ServerName {{ domain }}
   ServerAlias {{ alias }}
   CustomLog /var/log/httpd/{{ domain }}/access_log proxy env=!dontlog
