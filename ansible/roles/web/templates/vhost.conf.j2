@@ -12,7 +12,7 @@ WSGISocketPrefix run/wsgi
   AddOutputFilterByType DEFLATE application/x-javascript
 
   Alias /contribute.json /var/www/html/contribute.json
-  Alias /static/ {{ approot }}/dxr/dxr/static/
+  Alias /static/ {{ approot }}/dxr/dxr/static_unhashed/
 
   SetEnv DXR_CONFIG {{ sitehome }}/dxr.config
   # threads=1 because I'm not sure if trilite is threadsafe
@@ -21,8 +21,7 @@ WSGISocketPrefix run/wsgi
   WSGIScriptAlias / {{ approot }}/dxr/dxr/wsgi.py
 
   <Directory {{ approot }}>
-    Order allow,deny
-    Allow from all
+    Require all granted
   </Directory>
 
 </VirtualHost>
