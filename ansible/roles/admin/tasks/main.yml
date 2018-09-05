@@ -6,8 +6,8 @@
     - epel-release
     - jq
     - mod_wsgi
-#    - nodejs
-#    - npm
+    - nodejs
+    - npm
 
 - name: create data dirs
   file: path={{ item }} state=directory owner=root group=root mode=0755
