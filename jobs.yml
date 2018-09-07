@@ -575,24 +575,9 @@
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
     mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --enable-application=mail\nac_add_options --enable-calendar\nac_add_options --disable-optimize\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
+    tree_url: 'https://hg.mozilla.org/mozilla-central'
     jobs:
-        - "{name}"
-
-- scm:
-    name: 'comm-central_scm'
-    scm:
-      - hg-comm-central
-
-- scm:
-    name: 'hg-comm-central'
-    scm:
-      - hg:
-          url: 'https://hg.mozilla.org/comm-central'
-          subdir: '../../../dxr_data/comm-central'
-          revision_type: 'branch'
-          revision: 'default'
-          disable-changelog: true
-
+        - "{name}-tree"
 - project:
     name: 'comm-aurora'
     is_disabled: False
