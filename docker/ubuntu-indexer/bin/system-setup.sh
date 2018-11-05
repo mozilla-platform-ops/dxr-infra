@@ -90,7 +90,7 @@ cargo install --force cbindgen
 
 # Install deps for mozilla-central
 wget -O bootstrap.py https://hg.mozilla.org/mozilla-central/raw-file/tip/python/mozboot/bin/bootstrap.py
-python2.7 bootstrap.py --application-choice=browser --no-interactive
+python2.7 bootstrap.py --application-choice=browser --no-interactive || true
 rm -f bootstrap.py
 
 mkdir -p /etc/mercurial
