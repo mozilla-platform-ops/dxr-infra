@@ -21,18 +21,43 @@
     group: jenkins
     mode: 0755
 
-- name: Find jenkins ssh port number
-  shell: "curl --head --silent http://localhost:8080/{{ jenkins_prefix }}/cli/ | awk -F: '/^X-SSH-Endpoint/ {print $3}'"
-  register: jenkins_ssh_port
-  changed_when: False
-  tags:
-    - debug
+- name: Install Jenkins plugins
+  jenkins_plugin:
+    name: "{{ item }}"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pass }}"
+  register: jenkins_plugin_installed
+  with_items: "{{ jenkins_plugins }}"
 
-- name: Install Jenkins plugins.
-  sudo: no
-  command: >
-    ssh -l {{ username | mandatory }} -p {{ jenkins_ssh_port.stdout }} localhost install-plugin {{ item }}
-    creates=/var/lib/jenkins/plugins/{{ item }}.jpi
-  with_items: jenkins_plugins
-  notify: restart jenkins
+- name: set restart fact
+  set_fact:
+    jenkins_restart_required: no
+
+- name: Check if restart required
+  set_fact:
+    jenkins_restart_required: yes
+  when: item.changed
+  with_items: "{{ jenkins_plugin_installed.results }}"
+
+- name: Restart Jenkins if required
+  service: name=jenkins state=restarted
+  when: jenkins_restart_required
+
+- nane: Wait for Jenkins to start
+  uri:
+    url: http://localhost:8080
+    status_code: 200
+    timeout: 5
+  register: jenkins_service_status
+  retries: 60
+  delay: 5
+  until: >
+    'status' in jenkins_service_status and
+    jenkins_service_status['status'] == 200
+  when: jenkins_restart_required
+
+- name: reset restart fact
+  set_fact:
+    jenkins_restart_required: no
+  when: jenkins_restart_required
 

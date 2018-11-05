@@ -1,0 +1,91 @@
+---
+- name: add elasticsearch yum repo key
+  rpm_key: key="https://packages.elastic.co/GPG-KEY-elasticsearch"
+           state=present
+
+- name: add elasticsearch yum repo
+  copy: src=elasticsearch.repo
+        dest=/etc/yum.repos.d/elasticsearch.repo
+        owner=root
+        group=root
+        mode=0644
+
+- name: install system packages
+  yum: pkg={{ item }} state=present
+  with_items:
+    - yum-plugin-versionlock
+    - java-1.8.0-openjdk-1.8.0.181
+    - elasticsearch-1.6.2
+  notify: reload systemd configuration
+
+- name: lock elasticsearch package
+  shell: yum versionlock delete 0:elasticsearch* ; yum versionlock add elasticsearch-1.6.2
+  warn: False
+
+- name: lock java package
+  shell: yum versionlock delete 1:java* ; yum versionlock add java-1.8.0-openjdk-1.8.0.181
+
+- name: create ES directories
+  file: path={{ item }} state=directory mode=755 owner=elasticsearch
+  with_items:
+    - "{{ es_log_dir }}"
+    - "{{ es_lib_dir }}"
+    - "{{ es_run_dir }}"
+    - "{{ es_template_dir }}"
+
+- name: create ES sysconfig file
+  template: src=sysconfig.j2
+            dest=/etc/sysconfig/elasticsearch
+            owner=root
+            group=root
+            mode=0644
+
+- name: increase ulimits
+  template: src=ulimit.j2
+            dest=/etc/security/limits.d/90-elasticsearch.conf
+            owner=root
+            group=root
+            mode=0644
+
+- name: create logging.yml config file
+  copy: src=logging.yml
+        dest="{{ es_conf_dir}}/logging.yml"
+        owner="{{ es_user }}"
+        group=root
+        mode=0644
+
+- name: create elasticsearch.yml config file
+  template: src=elasticsearch.yml.j2
+            dest="{{ es_conf_dir }}/elasticsearch.yml"
+            owner="{{ es_user }}"
+            group=root
+            mode=0644
+
+- name: create dxr_data es template file
+  copy: src=dxr_data.json
+        dest="{{ es_template_dir }}/dxr_data.json"
+        owner="{{ es_user }}"
+        group=root
+        mode=0644
+  when: inventory_hostname in es_masters
+
+- name: enable log rotation
+  template: src=logrotate.j2
+            dest=/etc/logrotate.d/elasticsearch
+            owner=root
+            group=root
+            mode=0644
+
+- name: enable elasticsearch 
+  systemd: name=elasticsearch state=started enabled=yes
+
+- name: install elasticsearch plugins
+  command: "{{es_bin_dir}}/plugin --install {{ item.plugin }} --silent -DproxyHost={{ proxy_host }} -DproxyPort={{ proxy_port }}"
+  args:
+      creates: "{{ es_home }}/plugins/{{ item.path }}"
+  with_items: "{{ es_plugins }}"
+  notify: restart elasticsearch
+  register: plugin_installed
+  failed_when: "'ERROR' in plugin_installed.stdout"
+  changed_when: plugin_installed.rc == 0
+

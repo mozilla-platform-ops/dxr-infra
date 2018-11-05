@@ -9,28 +9,18 @@
         group=root
         mode=0755
 
-- name: add openresty yum repo
-  get_url: url="{{ openresty_repo_url }}"
-           dest=/etc/yum.repos.d/OpenResty.repo
+- name: create nginx user
+  user: name=nginx
+        comment="nginx user"
+        create_home=no
 
-- name: add openresty key
-  rpm_key: key="{{ openresty_repo_key_url }}" state=present
-
-- name: add jenkins yum repo
-  get_url: url="{{ jenkins_repo_url }}"
-           dest=/etc/yum.repos.d/jenkins.repo
-
-- name: add jenkins key
-  rpm_key: key="{{ jenkins_repo_key_url }}" state=present
-
-- name: add epel-release yum repo
-  yum:
-    name: "http://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
-    state: present
+# Previously we installed the openresty and jenkins repo here; in MDC1 we're adding it via
+# puppet from mrepo
 
 - name: install packages
   yum: pkg={{ item }} state=present
   with_items:
+    - epel-release
     - jenkins
     - java-1.8.0-openjdk
     - openresty
@@ -66,6 +56,13 @@
             dest="/usr/local/openresty/nginx/conf/conf.d/ldap_pwless.lua"
   notify: restart openresty
 
+- name: create html directory
+  file: path=/var/www/html
+        state=directory
+        owner=root
+        group=root
+        mode=0755
+
 - name: install contribute.json
   template: src=contribute.json.j2
             dest=/var/www/html/contribute.json
@@ -77,8 +74,8 @@
   file: path="/var/log/nginx/{{ domain }}"
         state=directory
         owner=nginx
-        group=wheel
-        mode=0750
+        group=root
+        mode=0755
 
 - name: manage openresty service
   service: name=openresty

@@ -6,7 +6,7 @@ set -ve
 test `whoami` == 'root';
 
 ### Add jenkins user
-useradd -u 5507 -d /home/jenkins -s /bin/bash -m jenkins;
+useradd -u 2352 -d /home/jenkins -s /bin/bash -m jenkins;
 
 mkdir /home/jenkins/src
 

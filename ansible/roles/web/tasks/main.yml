@@ -2,7 +2,7 @@
 - name: install system packages
   yum: pkg={{ item }} state=present
   with_items:
-    - python27-mod_wsgi
+    - mod_wsgi
     - httpd
     - mod_auth_mellon
 
@@ -39,9 +39,6 @@
 
 - name: manage httpd service
   service: name=httpd enabled=yes state=started
-
-- name: fix virtualenv link
-  file: src=/usr/bin/virtualenv-2.7 dest=/usr/bin/virtualenv state=link
 
 - name: manage hgrc
   copy: src=hgrc dest=/etc/mercurial/hgrc

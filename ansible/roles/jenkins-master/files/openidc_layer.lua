@@ -22,8 +22,6 @@ if err then
     session:destroy()
   end
   ngx.redirect(opts.logout_path)
-else
-  ngx.log(ngx.ERR, "no error was returned but session is not set. A possible cause is that you're using lua-resty-openidc 1.3.1 or earlier which do not have the required features. If lua-resty-openidc 1.3.2 or newer is available, please upgrade. If lua-resty-openidc 1.3.2 has not yet been released, you can find the needed functionality in https://github.com/pingidentity/lua-resty-openidc/commit/7bafac883264ac4d33a8a83da7040a74024ca08f or newer.")
 end
 
 -- Access control: only allow specific users in (this is optional, without it all authenticated users are allowed in)

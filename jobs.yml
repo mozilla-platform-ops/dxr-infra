@@ -5,7 +5,7 @@
     proj_dir: 'mozilla-central'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -34,7 +34,7 @@
     proj_dir: 'releases/mozilla-aurora'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -63,7 +63,7 @@
     proj_dir: 'releases/mozilla-beta'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -92,7 +92,7 @@
     proj_dir: 'releases/mozilla-release'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -121,7 +121,7 @@
     proj_dir: 'releases/mozilla-b2g18'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -149,7 +149,7 @@
     proj_dir: 'releases/mozilla-b2g26_v1_2'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -177,7 +177,7 @@
     proj_dir: 'releases/mozilla-b2g28_v1_3'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -205,7 +205,7 @@
     proj_dir: 'releases/mozilla-b2g30_v1_4'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -233,7 +233,7 @@
     proj_dir: 'releases/mozilla-b2g32_v2_0'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -261,7 +261,7 @@
     proj_dir: 'releases/mozilla-b2g34_v2_1'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -289,7 +289,7 @@
     proj_dir: 'releases/mozilla-b2g37_v2_2'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -317,7 +317,7 @@
     proj_dir: 'releases/mozilla-b2g44_v2_5'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -345,7 +345,7 @@
     proj_dir: 'releases/mozilla-esr10'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -373,7 +373,7 @@
     proj_dir: 'releases/mozilla-esr17'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -401,7 +401,7 @@
     proj_dir: 'releases/mozilla-esr24'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -429,7 +429,7 @@
     proj_dir: 'releases/mozilla-esr31'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -457,7 +457,7 @@
     proj_dir: 'releases/mozilla-esr38'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -485,7 +485,7 @@
     proj_dir: 'releases/mozilla-esr45'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -513,7 +513,7 @@
     proj_dir: 'releases/mozilla-esr52'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -541,7 +541,7 @@
     proj_dir: 'releases/mozilla-esr60'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -570,36 +570,21 @@
     proj_dir: 'comm-central'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
     mozconfig: 'mk_add_options AUTOCLOBBER=1\nac_add_options --enable-debug\nac_add_options --enable-application=mail\nac_add_options --enable-calendar\nac_add_options --disable-optimize\nac_add_options --disable-elf-hack\nac_add_options --enable-default-toolkit=cairo-gtk3\n'
+    tree_url: 'https://hg.mozilla.org/mozilla-central'
     jobs:
-        - "{name}"
-
-- scm:
-    name: 'comm-central_scm'
-    scm:
-      - hg-comm-central
-
-- scm:
-    name: 'hg-comm-central'
-    scm:
-      - hg:
-          url: 'https://hg.mozilla.org/comm-central'
-          subdir: '../../../dxr_data/comm-central'
-          revision_type: 'branch'
-          revision: 'default'
-          disable-changelog: true
-
+        - "{name}-tree"
 - project:
     name: 'comm-aurora'
     is_disabled: False
     proj_dir: 'releases/comm-aurora'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -628,7 +613,7 @@
     proj_dir: 'releases/comm-beta'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -657,7 +642,7 @@
     proj_dir: 'releases/comm-release'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -686,7 +671,7 @@
     proj_dir: 'releases/comm-esr10'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -714,7 +699,7 @@
     proj_dir: 'releases/comm-esr17'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -742,7 +727,7 @@
     proj_dir: 'releases/comm-esr24'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -770,7 +755,7 @@
     proj_dir: 'releases/comm-esr31'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -798,7 +783,7 @@
     proj_dir: 'releases/comm-esr38'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -826,7 +811,7 @@
     proj_dir: 'releases/comm-esr45'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -854,7 +839,7 @@
     proj_dir: 'releases/comm-esr52'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -882,7 +867,7 @@
     proj_dir: 'releases/comm-esr60'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -911,7 +896,7 @@
     proj_dir: 'build'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -924,7 +909,7 @@
     proj_dir: 'hgcustom/version-control-tools'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -952,7 +937,7 @@
     proj_dir: 'rust-lang/rust'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -981,7 +966,7 @@
     proj_dir: 'rustfmt'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1010,7 +995,7 @@
     proj_dir: 'servo/servo'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -1039,7 +1024,7 @@
     proj_dir: 'nss'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1052,7 +1037,7 @@
     proj_dir: 'gaia'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1081,7 +1066,7 @@
     proj_dir: 'cvs/classic'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1103,7 +1088,7 @@
     proj_dir: 'cvs/js'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1125,7 +1110,7 @@
     proj_dir: 'cvs/security'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1147,7 +1132,7 @@
     proj_dir: 'cvs/webtools'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1169,7 +1154,7 @@
     proj_dir: 'cvs/mozilla'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1191,7 +1176,7 @@
     proj_dir: 'cvs/nspr-cvs'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1213,7 +1198,7 @@
     proj_dir: 'cvs/mozilla1.7'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1235,7 +1220,7 @@
     proj_dir: 'cvs/mozilla1.8'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1257,7 +1242,7 @@
     proj_dir: 'cvs/mozilla1.8.0'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1279,7 +1264,7 @@
     proj_dir: 'cvs/seamonkey'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1301,7 +1286,7 @@
     proj_dir: 'cvs/aviarybranch'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1323,7 +1308,7 @@
     proj_dir: 'cvs/aviary101branch'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1345,7 +1330,7 @@
     proj_dir: 'cvs/firefox'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1367,7 +1352,7 @@
     proj_dir: 'cvs/firefox2'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1389,7 +1374,7 @@
     proj_dir: 'cvs/thunderbird'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1411,7 +1396,7 @@
     proj_dir: 'cvs/fuel'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1433,7 +1418,7 @@
     proj_dir: 'cvs/mozilla-org'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1455,7 +1440,7 @@
     proj_dir: 'l10n/l10n-central'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1468,7 +1453,7 @@
     proj_dir: 'l10n/mozilla-aurora'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1481,7 +1466,7 @@
     proj_dir: 'l10n/mozilla-beta'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1494,7 +1479,7 @@
     proj_dir: 'l10n/mozilla-release'
     schedule: 'H H/4 * * *'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1507,7 +1492,7 @@
     proj_dir: 'releases/mozilla-1.9.1'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1535,7 +1520,7 @@
     proj_dir: 'releases/mozilla-1.9.2'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1563,7 +1548,7 @@
     proj_dir: 'releases/mozilla-2.0'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1591,7 +1576,7 @@
     proj_dir: 'webtools/webtools'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1604,7 +1589,7 @@
     proj_dir: 'incubator/incubator'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 4
@@ -1617,7 +1602,7 @@
     proj_dir: 'labs/labs'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1630,7 +1615,7 @@
     proj_dir: 'services/services'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 2
@@ -1643,7 +1628,7 @@
     proj_dir: 'camino'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1671,7 +1656,7 @@
     proj_dir: 'mobile-browser'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1699,7 +1684,7 @@
     proj_dir: 'projects/jss'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1727,7 +1712,7 @@
     proj_dir: 'projects/python-nss'
     schedule: '@daily'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1750,34 +1735,12 @@
           disable-changelog: true
 
 - project:
-    name: 'mozillasvn'
-    is_disabled: False
-    proj_dir: 'mozillasvn'
-    schedule: '@weekly'
-    quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
-    docker_vol: '/data/dxr_data:/home/jenkins/src'
-    mail_rcpts: fubar@mozilla.com erose@mozilla.com
-    job_weight: 1
-    jobs:
-        - "{name}"
-
-- scm:
-    name: 'mozillasvn_scm'
-    scm:
-      - cvs-mozillasvn
-
-- scm:
-    name: 'cvs-mozillasvn'
-    scm: []
-
-- project:
     name: 'tamarin-central'
     is_disabled: False
     proj_dir: 'tamarin-central'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1799,7 +1762,7 @@
     proj_dir: 'releases/comm-1.9.1'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1821,7 +1784,7 @@
     proj_dir: 'releases/comm-1.9.2'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1
@@ -1843,7 +1806,7 @@
     proj_dir: 'releases/comm-2.0'
     schedule: '@weekly'
     quiet_period: 3600
-    docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+    docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
     docker_vol: '/data/dxr_data:/home/jenkins/src'
     mail_rcpts: fubar@mozilla.com erose@mozilla.com
     job_weight: 1

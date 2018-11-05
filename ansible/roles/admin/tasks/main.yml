@@ -1,20 +1,11 @@
 ---
 
-#- name: add epel yum repo
-#  yum:
-#    name: "http://download.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
-#    state: present
-
-- name: Import EPEL GPG key.
-  rpm_key:
-    key: "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
-    state: present
-
 - name: install system packages
   yum: pkg={{ item }} state=present
   with_items:
+    - epel-release
     - jq
-    - python27-mod_wsgi
+    - mod_wsgi
     - nodejs
     - npm
 
@@ -29,9 +20,6 @@
   with_items:
     - prod
     - stage
-
-- name: fix virtualenv link
-  file: src=/usr/bin/virtualenv-2.7 dest=/usr/bin/virtualenv state=link
 
 - name: create DXR configs
   get_url: url=https://github.com/mozilla-platform-ops/dxr-infra/raw/{{ item.value.branch }}/dxr.config dest=/data/{{ item.key }}/dxr.config mode=0644 owner=root group=apache force=yes
@@ -48,9 +36,9 @@
         minute="*/5"
         job="/data/prod/dxr-prod/virtualenv/bin/dxr deploy -c /data/prod/dxr.config -b /data/prod -k prod 1>>/var/log/dxr-prod.log"
 
-- name: create staging deploy cron job
-  cron: name="dxr staging deploy"
-        minute="*/5"
-        job="/data/stage/dxr-stage/virtualenv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k stage 1>>/var/log/dxr-stage.log"
-        state=absent
+#- name: create staging deploy cron job
+#  cron: name="dxr staging deploy"
+#        minute="*/5"
+#        job="/data/stage/dxr-stage/virtualenv/bin/dxr deploy -c /data/stage/dxr.config -b /data/stage -h es -k stage 1>>/var/log/dxr-stage.log"
+#        state=absent
 

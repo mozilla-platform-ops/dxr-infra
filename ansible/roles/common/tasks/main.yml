@@ -3,13 +3,13 @@
   yum: pkg={{ item }} state=present
   with_items:
     - curl
+    - wget
     - git
     - logrotate
-    - mercurial
-    - python27
-    - python27-devel
-    - python27-setuptools
-    - python27-virtualenv
+    - python
+    - python-devel
+    - python-setuptools
+    - python-virtualenv
 
 - name: create /data directory
   file: path=/data
@@ -21,7 +21,7 @@
 - name: create NFS mount point
   file: path=/data/dxr_data
         state=directory
-        owner=5507
+        owner=2352
         group=root
         mode=0755
 
@@ -29,9 +29,9 @@
 # Ansible supports NEITHER https_proxy NOR a proxy host entry without http(s)://
 # and lots of software obeys the loose proxy spec their own way
 ## until the above is fixed, manage proxies via puppet
-#- name: configure DC proxies in /etc/environment
-#  copy: dest=/etc/environment
-#        src=environment
-#        owner=root
-#        group=root
-#        mode=0644
+- name: configure DC proxies in /etc/environment
+  template: src=environment.j2
+            dest=/etc/environment
+            owner=root
+            group=root
+            mode=0644

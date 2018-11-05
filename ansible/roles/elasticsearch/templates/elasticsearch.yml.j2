@@ -1,0 +1,47 @@
+# THIS FILE MANAGED BY ANSIBLE
+---
+  name: "{{ inventory_hostname_short }}"
+  cluster:
+    name: "{{ es_cluster_name }}"
+  node:
+    profile: "{{ es_profile|lower }}"
+    master: "{{ es_is_master|lower }}"
+    data: "{{ es_is_data|lower }}"
+  http:
+    enabled: "{{ es_http_enabled|lower }}"
+  discovery:
+    zen:
+      ping.unicast.hosts:
+{% for host in es_masters %}
+        - {{ host }}
+{% endfor %}
+      minimum_master_nodes: "{{ min_masters }}"
+      ping.multicast.enabled: "false"
+  action:
+    disable_shutdown: "true"
+    disable_delete_all_indices: "true"
+    data: "false"
+  indices:
+    fielddata.cache.size: "75%"
+    breaker.fielddata.limit: "85%"
+  logger:
+    index.search.slowlog: "INFO"
+    index.indexing.slowlog: "INFO"
+  script.inline: "on"
+  script.indexed: "on"
+  index:
+    number_of_replicas: "1"
+    indexing:
+      slowlog.threshold.index.warn: "10s"
+      slowlog.threshold.index.debug: "2s"
+      slowlog.threshold.index.trace: "500ms"
+      slowlog.threshold.index.info: "5s"
+    search:
+      slowlog.threshold.query.debug: "2s"
+      slowlog.threshold.query.warn: "10s"
+      slowlog.threshold.fetch.debug: "2s"
+      slowlog.threshold.fetch.info: "5s"
+      slowlog.threshold.query.trace: "500ms"
+      slowlog.threshold.fetch.warn: "10s"
+      slowlog.threshold.fetch.trace: "500ms"
+      slowlog.threshold.query.info: "5s"

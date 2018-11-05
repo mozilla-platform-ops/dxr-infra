@@ -1,0 +1,6 @@
+---
+es_profile: master
+es_is_master: true
+es_is_data: false
+es_http_enabled: false
+es_http_max_content_length: "200mb"

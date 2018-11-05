@@ -21,8 +21,7 @@ WSGISocketPrefix run/wsgi
   WSGIScriptAlias / {{ approot }}/dxr/dxr/wsgi.py
 
   <Directory {{ approot }}>
-    Order allow,deny
-    Allow from all
+    Require all granted
   </Directory>
 
 </VirtualHost>

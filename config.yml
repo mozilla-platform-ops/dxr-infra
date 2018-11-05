@@ -5,9 +5,7 @@ dxr:
   default_tree: 'mozilla-central'
   enabled_plugins: '*'
   es_hosts:
-    - http://node74.bunker.scl3.mozilla.com:9200/
-    - http://node75.bunker.scl3.mozilla.com:9200/
-    - http://dxr-es-client1.bunker.scl3.mozilla.com:9200/
+    - http://dxr-es-client1.private.mdc1.mozilla.com:9200/
   es_catalog_replicas: 4
   es_catalog_index: 'dxr_catalog'
   es_index: 'dxr_cold_{format}_{tree}_{unique}'
@@ -23,7 +21,7 @@ defaults:
   job_weight: 1
   build_command: ''   # DXR's default is 'make ...'
   mail_rcpts: fubar@mozilla.com erose@mozilla.com
-  docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+  docker_img: 'quay.io/fubar/ubuntu-indexer:mdc1'
   docker_vol: '/data/dxr_data:/home/jenkins/src'
   repo_dir: '../../../dxr_data'
   dxr_plugins:
@@ -82,7 +80,6 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach vcs-setup -u && ./mach clobber && ./mach build -j {workers}'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -103,7 +100,6 @@ trees:
     job_weight: 4
     workers: 3
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach vcs-setup -u && ./mach clobber && ./mach build -j {workers}'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -243,7 +239,6 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach vcs-setup -u && ./mach clobber && ./mach build -j {workers}'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -255,16 +250,20 @@ trees:
         include_folders: 'src/releases/mozilla-esr60/obj-x86_64-unknown-linux-gnu/dist/idl'
 
   - name: 'comm-central'
+    type: 'tree'
+    proj_dir: 'comm-central'
     disabled_plugins: 'xpidl'
     repos:
+      - url: 'https://hg.mozilla.org/mozilla-central'
+        dirname: 'comm-central'
       - url: 'https://hg.mozilla.org/comm-central'
+        dirname: 'comm-central/comm'
     schedule: 'H H/6 * * *'
     quiet_period: 14400
     workers: 3
     job_weight: 4
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && python client.py checkout && ./mozilla/mach vcs-setup -u && ./mozilla/mach clobber && ./mozilla/mach build'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -302,7 +301,6 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && python client.py checkout && ./mozilla/mach clobber && ./mozilla/mach build'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -321,7 +319,6 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && python client.py checkout && ./mozilla/mach clobber && ./mozilla/mach build'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -396,7 +393,6 @@ trees:
     quiet_period: 14400
     job_weight: 4
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && python client.py checkout && ./mozilla/mach clobber && ./mozilla/mach build'
     mozconfig:
       - 'mk_add_options AUTOCLOBBER=1'
       - 'ac_add_options --enable-debug'
@@ -744,12 +740,6 @@ trees:
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/projects/python-nss'
-
-  - name: 'mozillasvn'
-    schedule: '@weekly'
-    disabled_plugins: 'xpidl'
-    repos:
-      - url: 'https://cvs.mozilla.org/mozillasvn'
 
   - name: 'tamarin-central'
     schedule: '@weekly'

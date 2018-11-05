@@ -74,11 +74,6 @@ echo "deb-src https://deb.nodesource.com/node_8.x ${DISTRO} main" >> /etc/apt/so
 apt-get update -y
 apt-get install -y nodejs
 
-# Install deps for mozilla-central
-wget -O bootstrap.py https://hg.mozilla.org/mozilla-central/raw-file/tip/python/mozboot/bin/bootstrap.py
-python2.7 bootstrap.py --application-choice=browser --no-interactive
-rm -f bootstrap.py
-
 # Dependencies for rust crates
 export CARGO_HOME="/home/jenkins/.cargo"
 export RUSTUP_HOME="/home/jenkins/.rustup"
@@ -89,6 +84,11 @@ rm -f rustup.sh
 # Add Cargo to PATH
 . /home/jenkins/.cargo/env
 cargo install --force cbindgen
+
+# Install deps for mozilla-central
+wget -O bootstrap.py https://hg.mozilla.org/mozilla-central/raw-file/tip/python/mozboot/bin/bootstrap.py
+python2.7 bootstrap.py --application-choice=browser --no-interactive
+rm -f bootstrap.py
 
 mkdir -p /etc/mercurial
 cat <<EOF > /etc/mercurial/hgrc

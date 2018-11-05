@@ -7,6 +7,8 @@ server {
 
     # "cookie" session storage won't work as cookies will be >4k,
     # which then will be truncated and fail decoding
+    set $session_name "session";
+    set $session.check.ua off;
     set $session_storage shm;
     set $session_cookie_persistent on;
     set $session_cookie_path "/";
@@ -15,6 +17,12 @@ server {
     # using lua-resty-session (which we do use)
     set $session_check_ssi off;
     set $session_secret "{{ session_secret }}";
+    set $session_cookie_samesite off;
+    # Default session to 7 days (604800s), if used with refresh_session_interval or
+    # access_token_expires_in. Then session can be rather long (usually 7 to 30 days)
+    # since the session will be invalidated when the user is no longer valid regardless
+    # of the cookie's actual expiration.
+    set $session_cookie_lifetime 604800;
 
     # Where your OIDC config is
     set $config_loader "/usr/local/openresty/nginx/conf/conf.d/ldap_pwless.lua";
@@ -23,13 +31,21 @@ server {
         root /var/www/html;
     }
 
+    location /jnlpJars/ {
+        # Bypass auth0 for this path
+        #proxy_set_header "X-Forwarded-Proto" "https";
+        #proxy_set_header "X-Forwarded-Port" "443";
+        # proxy_set_header "Host" "";
+        proxy_pass http://127.0.0.1:8080;
+    }
+
     location / {
         access_by_lua_file '/usr/local/openresty/nginx/conf/openidc_layer.lua';
 
         proxy_set_header        Host $host:$server_port;
         proxy_set_header        X-Real-IP $remote_addr;
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header        X-Forwarded-Proto https;
+        proxy_set_header        X-Forwarded-Proto $scheme;
 
         # Mitigate httpoxy attack
         proxy_set_header        Proxy "";
