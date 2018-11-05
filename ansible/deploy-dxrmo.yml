@@ -11,7 +11,7 @@
 
 - hosts: jenkins-master
   vars:
-    domain: jenkins-dxr.mozilla.org
+    domain: dxr-jenkins1.dmz.mdc1.mozilla.com
   roles:
     - common
     - jenkins-master
@@ -33,7 +33,7 @@
 
 - hosts: dxr-builders
   vars:
-    jenkins_master: jenkins-dxr.mozilla.org
+    jenkins_master: dxr-jenkins1.dmz.mdc1.mozilla.com
   roles:
     - common
     - indexer
