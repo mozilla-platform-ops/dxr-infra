@@ -9,9 +9,6 @@
     data: "{{ es_is_data|lower }}"
   http:
     enabled: "{{ es_http_enabled|lower }}"
-{% if es_http_enabled is defined %}
-    max_content_length: "{{ es_http_max_content_length }}"
-{% endif %}
   discovery:
     zen:
       ping.unicast.hosts:
@@ -30,8 +27,8 @@
   logger:
     index.search.slowlog: "INFO"
     index.indexing.slowlog: "INFO"
-  script:
-    disable_dynamic: "false"
+  script.inline: "on"
+  script.indexed: "on"
   index:
     number_of_replicas: "1"
     indexing:
