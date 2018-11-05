@@ -52,6 +52,9 @@ apt_packages+=('libgstreamer-plugins-base0.10-dev')
 apt_packages+=('libgl1-mesa-dev')
 apt_packages+=('libgl1-mesa-glx')
 
+# Enable deb-src for the build-dep step below
+sed -i~orig -e 's/# deb-src/deb-src/' /etc/apt/sources.list
+
 apt-get update -y
 
 apt-get install -y --force-yes ${apt_packages[@]}
