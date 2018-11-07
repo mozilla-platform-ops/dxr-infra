@@ -2,7 +2,7 @@
 # downloads latest dxr.config from repo and indexes the given tree
 
 # Grab the latest config
-wget -q -O dxr.config https://github.com/klibby/dxr-infra/raw/mdc1/dxr.config
+wget -q -O dxr.config https://github.com/mozilla-platform-ops/dxr-infra/raw/master/dxr.config
 ret=$?
 if [ "$ret" != 0 ];then
     echo "wget encounterd an error pulling dxr.config: $ret"
