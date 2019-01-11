@@ -21,7 +21,7 @@ defaults:
   job_weight: 1
   build_command: ''   # DXR's default is 'make ...'
   mail_rcpts: fubar@mozilla.com erose@mozilla.com
-  docker_img: 'quay.io/fubar/ubuntu-indexer:latest'
+  docker_img: 'klibby/ubuntu-indexer:latest'
   docker_vol: '/data/dxr_data:/home/jenkins/src'
   repo_dir: '../../../dxr_data'
   dxr_plugins:
