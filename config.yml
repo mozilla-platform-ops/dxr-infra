@@ -39,10 +39,7 @@ trees:
     workers: 3
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    plugins:
-      - plugin: 'xpidl'
-        header_path: 'src/mozilla-central/obj-x86_64-pc-linux-gnu/dist/include'
-        include_folders: 'src/mozilla-central/obj-x86_64-pc-linux-gnu/dist/idl'
+    disabled_plugins: 'xpidl'
 
   - name: 'mozilla-aurora'
     proj_dir: 'releases'
