@@ -35,22 +35,10 @@ trees:
   - name: 'mozilla-central'
     repos:
       - url: 'https://hg.mozilla.org/mozilla-central'
-    schedule: 'H H/6 * * *'
-    quiet_period: 14400
     job_weight: 4
     workers: 3
     es_index: 'dxr_hot_{format}_{tree}_{unique}'
     ignore_patterns: 'all-tests.json .hg .git CVS .svn .bzr .deps .libs .DS_Store .nfs* *~ ._* *.pyc'
-    build_command: 'cd $source_folder && ./mach vcs-setup -u && ./mach clobber && ./mach build -j {workers}'
-    mozconfig:
-      - 'mk_add_options AUTOCLOBBER=1'
-      - 'ac_add_options --enable-debug'
-      - 'ac_add_options --disable-elf-hack'
-      - 'ac_add_options --enable-default-toolkit=cairo-gtk3'
-    plugins:
-      - plugin: 'xpidl'
-        header_path: 'src/mozilla-central/obj-x86_64-pc-linux-gnu/dist/include'
-        include_folders: 'src/mozilla-central/obj-x86_64-pc-linux-gnu/dist/idl'
 
   - name: 'mozilla-aurora'
     proj_dir: 'releases'
