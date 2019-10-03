@@ -564,6 +564,34 @@
           disable-changelog: true
 
 - project:
+    name: 'mozilla-esr68'
+    is_disabled: False
+    proj_dir: 'releases/mozilla-esr68'
+    schedule: 'H H/4 * * *'
+    quiet_period: 3600
+    docker_img: 'klibby/ubuntu-indexer:latest'
+    docker_vol: '/data/dxr_data:/home/jenkins/src'
+    mail_rcpts: fubar@mozilla.com erose@mozilla.com
+    job_weight: 2
+    jobs:
+        - "{name}"
+
+- scm:
+    name: 'mozilla-esr68_scm'
+    scm:
+      - hg-mozilla-esr68
+
+- scm:
+    name: 'hg-mozilla-esr68'
+    scm:
+      - hg:
+          url: 'https://hg.mozilla.org/releases/mozilla-esr68'
+          subdir: '../../../dxr_data/releases/mozilla-esr68'
+          revision_type: 'branch'
+          revision: 'default'
+          disable-changelog: true
+
+- project:
     name: 'comm-central'
     is_disabled: False
     proj_dir: 'comm-central'
