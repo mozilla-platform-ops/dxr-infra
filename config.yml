@@ -238,6 +238,13 @@ trees:
         header_path: 'src/releases/mozilla-esr60/obj-x86_64-unknown-linux-gnu/dist/include'
         include_folders: 'src/releases/mozilla-esr60/obj-x86_64-unknown-linux-gnu/dist/idl'
 
+  - name: 'mozilla-esr68'
+    proj_dir: 'releases'
+    job_weight: 2
+    disabled_plugins: 'xpidl'
+    repos:
+      - url: 'https://hg.mozilla.org/releases/mozilla-esr68'
+
   - name: 'comm-central'
     type: 'tree'
     proj_dir: 'comm-central'
