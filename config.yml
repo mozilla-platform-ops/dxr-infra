@@ -240,7 +240,7 @@ trees:
 
   - name: 'mozilla-esr68'
     proj_dir: 'releases'
-    job_weight: 2
+    job_weight: 4
     disabled_plugins: 'xpidl'
     repos:
       - url: 'https://hg.mozilla.org/releases/mozilla-esr68'
