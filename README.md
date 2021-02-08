@@ -1,4 +1,6 @@
-# DXR build system
+# This repo is archived
+
+## DXR build system
 
 [DXR](https://github.com/mozilla/dxr) is a code search and navigation tool aimed at making sense of large projects like Firefox.
 
